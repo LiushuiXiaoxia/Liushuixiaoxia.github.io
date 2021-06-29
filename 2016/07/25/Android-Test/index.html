@@ -1,0 +1,1245 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android测试总结, 流水不腐小夏">
+    <meta name="description" content="Liushuixiaoxia(流水不腐小夏) https://github.com/LiushuiXiaoxia">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Android测试总结 | 流水不腐小夏</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">流水不腐小夏</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">流水不腐小夏</div>
+        <div class="logo-desc">
+            
+            Liushuixiaoxia(流水不腐小夏) https://github.com/LiushuiXiaoxia
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Android测试总结</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">Android测试</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">测试</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2016-07-25
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Android测试总结"><a href="#Android测试总结" class="headerlink" title="Android测试总结"></a>Android测试总结</h1><hr>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>最近整理了Android测试方便的只是，主要涉及代码测试和自动化测试。</p>
+<span id="more"></span>
+
+<h1 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h1><h2 id="Junit"><a href="#Junit" class="headerlink" title="Junit"></a>Junit</h2><p><a href="http://mycommons.cn/2016/07/19/JUnit%E6%B5%85%E8%B0%88/">JUnit浅谈</a></p>
+<h2 id="Mockito"><a href="#Mockito" class="headerlink" title="Mockito"></a>Mockito</h2><p><a href="http://mycommons.cn/2016/07/19/Mockito%E6%B5%85%E8%B0%88/">Mockito浅谈</a></p>
+<h2 id="Mockwebserver"><a href="#Mockwebserver" class="headerlink" title="Mockwebserver"></a>Mockwebserver</h2><p><a href="http://mycommons.cn/2016/07/25/MockWebServer/">MockWebServer</a></p>
+<h1 id="Android自动化测试"><a href="#Android自动化测试" class="headerlink" title="Android自动化测试"></a>Android自动化测试</h1><h2 id="Android-monkey"><a href="#Android-monkey" class="headerlink" title="Android monkey"></a>Android monkey</h2><p><a href="http://mycommons.cn/2016/07/19/Android-Monkey%E6%95%B4%E7%90%86/">Android Monkey整理</a></p>
+<h2 id="Android-monkeyrunner"><a href="#Android-monkeyrunner" class="headerlink" title="Android monkeyrunner"></a>Android monkeyrunner</h2><p><a href="http://mycommons.cn/2016/07/25/AndroidMonkeyRunner/">Android monkeyrunner整理</a></p>
+<h2 id="Android-UIAutomator"><a href="#Android-UIAutomator" class="headerlink" title="Android UIAutomator"></a>Android UIAutomator</h2><p><a href="http://mycommons.cn/2016/07/25/Android-UIAutomator/">Android UIAutomator浅谈</a></p>
+<h2 id="Android-Espresso"><a href="#Android-Espresso" class="headerlink" title="Android Espresso"></a>Android Espresso</h2><p><a href="http://mycommons.cn/2016/07/25/Android-Espresso/">Android Espresso浅谈</a></p>
+<h2 id="自动化测试示例"><a href="#自动化测试示例" class="headerlink" title="自动化测试示例"></a>自动化测试示例</h2><p>下面示例一个Android项目，就是一个简单的登录页面，依次使用上面介绍的自动化测试方案测试界面。</p>
+<p>首先是界面布局:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:id</span>=<span class="string">&quot;@+id/activity_main&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">&quot;http://schemas.android.com/tools&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:padding</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">&quot;cn.mycommons.testcase.MainActivity&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/edtUserName&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;50dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:hint</span>=<span class="string">&quot;Input user name&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/edtPasswd&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;50dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:hint</span>=<span class="string">&quot;Input password&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:contentDescription</span>=<span class="string">&quot;Input password&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:inputType</span>=<span class="string">&quot;textPassword&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btnLogin&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;50dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;Login&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其次是页面代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.mycommons.testcase;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"><span class="keyword">import</span> android.widget.EditText;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    EditText edtUserName;</span><br><span class="line">    EditText edtPasswd;</span><br><span class="line">    Button btnLogin;</span><br><span class="line"></span><br><span class="line">    String userName;</span><br><span class="line">    String passwd;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        edtUserName = (EditText) findViewById(R.id.edtUserName);</span><br><span class="line">        edtPasswd = (EditText) findViewById(R.id.edtPasswd);</span><br><span class="line">        btnLogin = (Button) findViewById(R.id.btnLogin);</span><br><span class="line"></span><br><span class="line">        btnLogin.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                userName = edtUserName.getText().toString();</span><br><span class="line">                passwd = edtPasswd.getText().toString();</span><br><span class="line">                <span class="keyword">if</span> (check(userName, passwd)) &#123;</span><br><span class="line">                    doLogin(userName, passwd);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">check</span><span class="params">(String userName, String passwd)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (userName.length() &lt; <span class="number">5</span>) &#123;</span><br><span class="line">                showToast(<span class="string">&quot;User name invalidate&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (passwd.length() &lt; <span class="number">5</span>) &#123;</span><br><span class="line">                showToast(<span class="string">&quot;Password invalidate&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">while</span> (<span class="keyword">false</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doLogin</span><span class="params">(String userName, String passwd)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">&quot;admin&quot;</span>.equals(userName) &amp;&amp; <span class="string">&quot;admin&quot;</span>.equals(passwd)) &#123;</span><br><span class="line">            showToast(<span class="string">&quot;Login success&quot;</span>);</span><br><span class="line">            startActivity(<span class="keyword">new</span> Intent(<span class="keyword">this</span>, SuccessActivity.class));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            showToast(<span class="string">&quot;Login fail&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showToast</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(<span class="keyword">this</span>, msg, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Monkey"><a href="#Monkey" class="headerlink" title="Monkey"></a>Monkey</h3><p>Monkey只是检查使用下shell命令即可。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell monkey -p cn.mycommons.testcase -v 50000</span><br></pre></td></tr></table></figure>
+
+<h3 id="Monkey-Runner"><a href="#Monkey-Runner" class="headerlink" title="Monkey Runner"></a>Monkey Runner</h3><p>Monkey Runner提供的是一个python文件，然后调用monkeyrunner命令即可。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ monkeyrunner test_case.py</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Imports the monkeyrunner modules used by this program</span></span><br><span class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyRunner, MonkeyDevice</span><br><span class="line"></span><br><span class="line"><span class="comment"># Connects to the current device, returning a MonkeyDevice object</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;wait for device connection.&#x27;</span></span><br><span class="line">device = MonkeyRunner.waitForConnection()</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;connect device success.&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Takes a screenshot</span></span><br><span class="line">result = device.takeSnapshot()</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;takeSnapshot success.&#x27;</span></span><br><span class="line"><span class="comment"># Writes the screenshot to a file</span></span><br><span class="line">result.writeToFile(<span class="string">&#x27;./test_case1.png&#x27;</span>,<span class="string">&#x27;png&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;save image to file success.&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># input user name</span></span><br><span class="line">device.touch(<span class="number">200</span>,<span class="number">380</span>,<span class="string">&#x27;DOWN_AND_UP&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;touch user name&#x27;</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> xrange(<span class="number">1</span>,<span class="number">100</span>):</span><br><span class="line">	device.press(<span class="string">&quot;KEYCODE_DEL&quot;</span>,<span class="string">&#x27;DOWN_AND_UP&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;delete user name&#x27;</span></span><br><span class="line">device.<span class="built_in">type</span>(<span class="string">&quot;admin&quot;</span>)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;input admin to user name&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># input passwd </span></span><br><span class="line">device.touch(<span class="number">200</span>,<span class="number">500</span>,<span class="string">&#x27;DOWN_AND_UP&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;touch password&#x27;</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> xrange(<span class="number">1</span>,<span class="number">100</span>):</span><br><span class="line">	device.press(<span class="string">&quot;KEYCODE_DEL&quot;</span>,<span class="string">&#x27;DOWN_AND_UP&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;delete password&#x27;</span></span><br><span class="line">device.<span class="built_in">type</span>(<span class="string">&quot;admin&quot;</span>)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;input admin to password&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># press login button</span></span><br><span class="line">device.touch(<span class="number">200</span>,<span class="number">680</span>,<span class="string">&#x27;DOWN_AND_UP&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;press login button&#x27;</span></span><br><span class="line"></span><br><span class="line">MonkeyRunner.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Takes a screenshot</span></span><br><span class="line">result = device.takeSnapshot()</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;takeSnapshot success.&#x27;</span></span><br><span class="line"><span class="comment"># Writes the screenshot to a file</span></span><br><span class="line">result.writeToFile(<span class="string">&#x27;./test_case2.png&#x27;</span>,<span class="string">&#x27;png&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;save image to file success.&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="UiAutomator"><a href="#UiAutomator" class="headerlink" title="UiAutomator"></a>UiAutomator</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.mycommons.testcase;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.os.Build;</span><br><span class="line"><span class="keyword">import</span> android.support.test.InstrumentationRegistry;</span><br><span class="line"><span class="keyword">import</span> android.support.test.filters.SdkSuppress;</span><br><span class="line"><span class="keyword">import</span> android.support.test.runner.AndroidJUnit4;</span><br><span class="line"><span class="keyword">import</span> android.support.test.uiautomator.By;</span><br><span class="line"><span class="keyword">import</span> android.support.test.uiautomator.UiDevice;</span><br><span class="line"><span class="keyword">import</span> android.support.test.uiautomator.UiObject;</span><br><span class="line"><span class="keyword">import</span> android.support.test.uiautomator.UiObjectNotFoundException;</span><br><span class="line"><span class="keyword">import</span> android.support.test.uiautomator.UiSelector;</span><br><span class="line"><span class="keyword">import</span> android.support.test.uiautomator.Until;</span><br><span class="line"><span class="keyword">import</span> org.hamcrest.Matchers;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.assertThat;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith(AndroidJUnit4.class)</span></span><br><span class="line"><span class="meta">@SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN_MR2)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivityTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String BASIC_SAMPLE_PACKAGE = <span class="string">&quot;cn.mycommons.testcase&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> LAUNCH_TIMEOUT = <span class="number">5000</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String STRING_TO_BE_TYPED = <span class="string">&quot;UiAutomator&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> UiDevice mDevice;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());</span><br><span class="line">        mDevice.pressHome();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Wait for launcher</span></span><br><span class="line">        <span class="keyword">final</span> String launcherPackage = mDevice.getLauncherPackageName();</span><br><span class="line">        assertThat(launcherPackage, Matchers.notNullValue());</span><br><span class="line">        mDevice.wait(Until.hasObject(By.pkg(launcherPackage).depth(<span class="number">0</span>)), LAUNCH_TIMEOUT);</span><br><span class="line"></span><br><span class="line">        Context context = InstrumentationRegistry.getContext();</span><br><span class="line">        <span class="keyword">final</span> Intent intent = context.getPackageManager().getLaunchIntentForPackage(BASIC_SAMPLE_PACKAGE);</span><br><span class="line">        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);</span><br><span class="line">        context.startActivity(intent);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Wait for the app to appear</span></span><br><span class="line">        mDevice.wait(Until.hasObject(By.pkg(BASIC_SAMPLE_PACKAGE).depth(<span class="number">0</span>)), LAUNCH_TIMEOUT);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin1</span><span class="params">()</span> <span class="keyword">throws</span> UiObjectNotFoundException </span>&#123;</span><br><span class="line">        UiObject login = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Login&quot;</span>));</span><br><span class="line">        UiObject edtUserName = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Input user name&quot;</span>));</span><br><span class="line">        UiObject edtPasswd = mDevice.findObject(<span class="keyword">new</span> UiSelector().descriptionContains(<span class="string">&quot;Input password&quot;</span>));</span><br><span class="line"></span><br><span class="line">        edtUserName.clearTextField();</span><br><span class="line">        edtPasswd.clearTextField();</span><br><span class="line"></span><br><span class="line">        edtUserName.setText(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        edtPasswd.setText(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        login.click();</span><br><span class="line"></span><br><span class="line">        mDevice.waitForWindowUpdate(BuildConfig.FLAVOR, <span class="number">3000</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin2</span><span class="params">()</span> <span class="keyword">throws</span> UiObjectNotFoundException </span>&#123;</span><br><span class="line">        UiObject login = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Login&quot;</span>));</span><br><span class="line">        UiObject edtUserName = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Input user name&quot;</span>));</span><br><span class="line">        UiObject edtPasswd = mDevice.findObject(<span class="keyword">new</span> UiSelector().descriptionContains(<span class="string">&quot;Input password&quot;</span>));</span><br><span class="line"></span><br><span class="line">        edtUserName.clearTextField();</span><br><span class="line">        edtPasswd.clearTextField();</span><br><span class="line">        edtUserName.setText(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        edtPasswd.setText(<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        login.click();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin3</span><span class="params">()</span> <span class="keyword">throws</span> UiObjectNotFoundException </span>&#123;</span><br><span class="line">        UiObject login = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Login&quot;</span>));</span><br><span class="line">        UiObject edtUserName = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Input user name&quot;</span>));</span><br><span class="line">        UiObject edtPasswd = mDevice.findObject(<span class="keyword">new</span> UiSelector().descriptionContains(<span class="string">&quot;Input password&quot;</span>));</span><br><span class="line"></span><br><span class="line">        edtUserName.clearTextField();</span><br><span class="line">        edtPasswd.clearTextField();</span><br><span class="line">        edtUserName.setText(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">        edtPasswd.setText(<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        login.click();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin4</span><span class="params">()</span> <span class="keyword">throws</span> UiObjectNotFoundException </span>&#123;</span><br><span class="line">        UiObject login = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Login&quot;</span>));</span><br><span class="line">        UiObject edtUserName = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Input user name&quot;</span>));</span><br><span class="line">        UiObject edtPasswd = mDevice.findObject(<span class="keyword">new</span> UiSelector().descriptionContains(<span class="string">&quot;Input password&quot;</span>));</span><br><span class="line"></span><br><span class="line">        edtUserName.clearTextField();</span><br><span class="line">        edtPasswd.clearTextField();</span><br><span class="line">        edtUserName.setText(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        edtPasswd.setText(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        login.click();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin5</span><span class="params">()</span> <span class="keyword">throws</span> UiObjectNotFoundException </span>&#123;</span><br><span class="line">        UiObject login = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Login&quot;</span>));</span><br><span class="line">        UiObject edtUserName = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Input user name&quot;</span>));</span><br><span class="line">        UiObject edtPasswd = mDevice.findObject(<span class="keyword">new</span> UiSelector().descriptionContains(<span class="string">&quot;Input password&quot;</span>));</span><br><span class="line"></span><br><span class="line">        edtUserName.clearTextField();</span><br><span class="line">        edtPasswd.clearTextField();</span><br><span class="line">        edtUserName.setText(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">        edtPasswd.setText(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        login.click();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin6</span><span class="params">()</span> <span class="keyword">throws</span> UiObjectNotFoundException </span>&#123;</span><br><span class="line">        UiObject login = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Login&quot;</span>));</span><br><span class="line">        UiObject edtUserName = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Input user name&quot;</span>));</span><br><span class="line">        UiObject edtPasswd = mDevice.findObject(<span class="keyword">new</span> UiSelector().descriptionContains(<span class="string">&quot;Input password&quot;</span>));</span><br><span class="line"></span><br><span class="line">        edtUserName.clearTextField();</span><br><span class="line">        edtPasswd.clearTextField();</span><br><span class="line">        edtUserName.setText(<span class="string">&quot;abcedf&quot;</span>);</span><br><span class="line">        edtPasswd.setText(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        login.click();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin7</span><span class="params">()</span> <span class="keyword">throws</span> UiObjectNotFoundException </span>&#123;</span><br><span class="line">        UiObject login = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Login&quot;</span>));</span><br><span class="line">        UiObject edtUserName = mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">&quot;Input user name&quot;</span>));</span><br><span class="line">        UiObject edtPasswd = mDevice.findObject(<span class="keyword">new</span> UiSelector().descriptionContains(<span class="string">&quot;Input password&quot;</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        edtUserName.clearTextField();</span><br><span class="line">        edtPasswd.clearTextField();</span><br><span class="line">        edtUserName.setText(<span class="string">&quot;abcedf&quot;</span>);</span><br><span class="line">        edtPasswd.setText(<span class="string">&quot;abcedf&quot;</span>);</span><br><span class="line"></span><br><span class="line">        login.click();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Espressor"><a href="#Espressor" class="headerlink" title="Espressor"></a>Espressor</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.mycommons.testcase;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.support.test.espresso.Espresso;</span><br><span class="line"><span class="keyword">import</span> android.support.test.espresso.action.ViewActions;</span><br><span class="line"><span class="keyword">import</span> android.support.test.espresso.matcher.ViewMatchers;</span><br><span class="line"><span class="keyword">import</span> android.support.test.rule.ActivityTestRule;</span><br><span class="line"><span class="keyword">import</span> android.support.test.runner.AndroidJUnit4;</span><br><span class="line"><span class="keyword">import</span> org.junit.Rule;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith(AndroidJUnit4.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivityEspressoTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Rule</span></span><br><span class="line">    <span class="keyword">public</span> ActivityTestRule&lt;MainActivity&gt; testRule = <span class="keyword">new</span> ActivityTestRule&lt;&gt;(MainActivity.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Espresso.onView(ViewMatchers.withContentDescription(R.id.edtUserName)).perform(ViewActions.typeText(<span class="string">&quot;admin&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtPasswd)).perform(ViewActions.typeText(<span class="string">&quot;admin&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.btnLogin)).perform(ViewActions.click());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtUserName)).perform(ViewActions.typeText(<span class="string">&quot;&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtPasswd)).perform(ViewActions.typeText(<span class="string">&quot;&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.btnLogin)).perform(ViewActions.click());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtUserName)).perform(ViewActions.typeText(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtPasswd)).perform(ViewActions.typeText(<span class="string">&quot;&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.btnLogin)).perform(ViewActions.click());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtUserName)).perform(ViewActions.typeText(<span class="string">&quot;&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtPasswd)).perform(ViewActions.typeText(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.btnLogin)).perform(ViewActions.click());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtUserName)).perform(ViewActions.typeText(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtPasswd)).perform(ViewActions.typeText(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.btnLogin)).perform(ViewActions.click());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogin5</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtUserName)).perform(ViewActions.typeText(<span class="string">&quot;abcdef&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.edtPasswd)).perform(ViewActions.typeText(<span class="string">&quot;abcdef&quot;</span>));</span><br><span class="line">        Espresso.onView(ViewMatchers.withId(R.id.btnLogin)).perform(ViewActions.click());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自动化测试总结"><a href="#自动化测试总结" class="headerlink" title="自动化测试总结"></a>自动化测试总结</h2><ul>
+<li><p>Monkey<br>准确来说，这不算是自动化测试，因为其只能产生随机的事件，无法按照既定的步骤操作；</p>
+</li>
+<li><p>Monkeyrunner<br>优点：操作最为简单，可以录制测试脚本，可视化操作；<br>缺点：主要生成坐标的自动化操作，移植性不强，功能最为局限，上面代码中已经显示出来，完全使用的数字坐标，移植到另外一个设备，则不能运行。</p>
+</li>
+<li><p> UiAutomator<br>优点：可以对所有操作进行自动化，操作简单；<br>缺点：Android版本需要高于4.3，无法根据控件ID操作，相对来说功能较为局限，但也够用了；</p>
+</li>
+<li><p>Espresso<br>优点：主要针对某一个APK进行自动化测试，APK可以有源码，也可以没有源码，功能强大；<br>缺点：针对APK操作，因此操作相对复杂；</p>
+</li>
+</ul>
+<p><strong>总结：</strong>由上面介绍可以有这样的结论：测试某个APK，可以选择Espresso；测试过程可能涉及多个APK，选择UiAutomator；一些简单的测试，选择Monkeyrunner；</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">流水不腐小夏</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://mycommons.cn/2016/07/25/Android-Test/">https://mycommons.cn/2016/07/25/Android-Test/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">流水不腐小夏</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Android%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">Android测试</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">测试</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/images/alipay.jpeg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/images/wechat_pay.jpeg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://mycommons.cn/2016/07/25/Android-Test/';
+        this.page.identifier = '/2016/07/25/Android-Test/';
+        this.page.title = 'Android测试总结';
+    };
+    let disqus_shortname = 'mycommons-cn';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2016/12/25/Android-Net/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Android Http网络开发神兵利器">
+                        
+                        <span class="card-title">Android Http网络开发神兵利器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android Http网络开发神兵利器
+本人在Android移动端开发已经有不少年的经验，经历颇多，感受颇深，特写下此文记录下在Android Http网络开发中的各种工具使用，如果有其他想法和建议，欢迎前来交流 &#120;&#105;
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2016-12-25
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            流水不腐小夏
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Http/">
+                        <span class="chip bg-color">Http</span>
+                    </a>
+                    
+                    <a href="/tags/OkHttp/">
+                        <span class="chip bg-color">OkHttp</span>
+                    </a>
+                    
+                    <a href="/tags/Curl/">
+                        <span class="chip bg-color">Curl</span>
+                    </a>
+                    
+                    <a href="/tags/PostMan/">
+                        <span class="chip bg-color">PostMan</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2016/07/25/MockWebServer/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="MockWebServer">
+                        
+                        <span class="card-title">MockWebServer</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            MockWebServer
+简介MockWebServer Github地址
+按照官方文档定义，MockWebServer是一个可脚本化的用于测试HTTP客户端的Web服务器。主要用于测试你的应用在进行HTTP、HTTPS请求时是否按照预期
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2016-07-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            流水不腐小夏
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">测试</span>
+                    </a>
+                    
+                    <a href="/tags/Web-Server-Test/">
+                        <span class="chip bg-color">Web Server Test</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2015-2021</span>
+            
+            <span id="year">2015</span>
+            <a href="/about" target="_blank">流水不腐小夏</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LiushuiXiaoxia" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:xiaqiulei@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?55458ffca1f60dd283f11b9a7f82b262";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

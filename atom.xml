@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>流水不腐小夏</title>
+  
+  <subtitle>https://mycommons.cn</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://mycommons.cn/"/>
+  <updated>2021-05-21T10:08:31.000Z</updated>
+  <id>https://mycommons.cn/</id>
+  
+  <author>
+    <name>流水不腐小夏</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker快速删除</title>
+    <link href="https://mycommons.cn/2020/01/14/docker-remove/"/>
+    <id>https://mycommons.cn/2020/01/14/docker-remove/</id>
+    <published>2020-01-14T06:32:40.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Docker快速删除&quot;&gt;&lt;a href=&quot;#Docker快速删除&quot; class=&quot;headerlink&quot; title=&quot;Docker快速删除&quot;&gt;&lt;/a&gt;Docker快速删除&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;Docker删除无效的容器&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Docker" scheme="https://mycommons.cn/categories/Docker/"/>
+    
+    
+      <category term="Docker" scheme="https://mycommons.cn/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 命令报错</title>
+    <link href="https://mycommons.cn/2019/12/02/hexo-error/"/>
+    <id>https://mycommons.cn/2019/12/02/hexo-error/</id>
+    <published>2019-12-02T12:02:45.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Hexo-命令报错&quot;&gt;&lt;a href=&quot;#Hexo-命令报错&quot; class=&quot;headerlink&quot; title=&quot;Hexo 命令报错&quot;&gt;&lt;/a&gt;Hexo 命令报错&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;好友没有写博客了，今天Hexo，发现命令不可用，出现这样的错误&lt;code&gt;TypeError: Cannot read property &amp;#39;replace&amp;#39; of null&lt;/code&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://mycommons.cn/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://mycommons.cn/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Restful风格的验证码</title>
+    <link href="https://mycommons.cn/2019/12/02/restful-captcha/"/>
+    <id>https://mycommons.cn/2019/12/02/restful-captcha/</id>
+    <published>2019-12-02T03:33:10.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Restful风格的验证码&quot;&gt;&lt;a href=&quot;#Restful风格的验证码&quot; class=&quot;headerlink&quot; title=&quot;Restful风格的验证码&quot;&gt;&lt;/a&gt;Restful风格的验证码&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;原有的验证码使用流的方式，对移动端不友好，并且现在后端是分布式的微服务系统，原有的基于cookie的验证码方式，显得力不从心。&lt;/p&gt;
+&lt;p&gt;Restful 风格的验证码，图片使用Base64编码，后端使用Redis存储验证码。Android 客户端使用Retrofit + OkHttp。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Spring Boot" scheme="https://mycommons.cn/tags/Spring-Boot/"/>
+    
+      <category term="restful" scheme="https://mycommons.cn/tags/restful/"/>
+    
+      <category term="验证码" scheme="https://mycommons.cn/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MyBatis-Plus Gradle 代码生成插件了解一下</title>
+    <link href="https://mycommons.cn/2018/12/21/mpg/"/>
+    <id>https://mycommons.cn/2018/12/21/mpg/</id>
+    <published>2018-12-21T10:08:06.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Mybatis-Plus-Gradle-Generator&quot;&gt;&lt;a href=&quot;#Mybatis-Plus-Gradle-Generator&quot; class=&quot;headerlink&quot; title=&quot;Mybatis Plus Gradle Generator&quot;&gt;&lt;/a&gt;Mybatis Plus Gradle Generator&lt;/h1&gt;&lt;hr&gt;
+&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;Web开发中使用mybatis比较多，&lt;a href=&quot;https://mp.baomidou.com/&quot;&gt;MyBatis Plus&lt;/a&gt;是一个比较好的扩展，并且还可以自动生成代码，比较方便。&lt;br&gt;但是MyBatis Plus 对maven比较友好，对Gradle就比较差了，现在Spring Boot也对Gradle支持比较好，在使用Gradle生成代码的时候就比较麻烦。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="后端开发" scheme="https://mycommons.cn/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="mybatis plus" scheme="https://mycommons.cn/tags/mybatis-plus/"/>
+    
+      <category term="gradle plugin" scheme="https://mycommons.cn/tags/gradle-plugin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jenkins can&#39;t parse argument number changelog.url 问题</title>
+    <link href="https://mycommons.cn/2018/11/26/changelog-url/"/>
+    <id>https://mycommons.cn/2018/11/26/changelog-url/</id>
+    <published>2018-11-25T16:17:13.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近使用了Jenkins，碰到一问题，提示如下。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;org.apache.commons.jelly.JellyTagException: jar:file:/Users/xiaqiulei/.jenkins/war/WEB-INF/lib/jenkins-core-&lt;span class=&quot;number&quot;&gt;2.147&lt;/span&gt;.jar!/hudson/model/UpdateCenter/CoreUpdateMonitor/message.jelly:&lt;span class=&quot;number&quot;&gt;53&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;: &amp;lt;j:otherwise&amp;gt; can&lt;span class=&quot;string&quot;&gt;&amp;#x27;t parse argument number: changelog.url&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;	at org.apache.commons.jelly.impl.TagScript.handleException(TagScript.java:726)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;	at org.apache.commons.jelly.impl.TagScript.run(TagScript.java:281)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;	at org.apache.commons.jelly.impl.ScriptBlock.run(ScriptBlock.java:95)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;	at org.apache.commons.jelly.TagSupport.invokeBody(TagSupport.java:161)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;	at org.apache.commons.jelly.tags.core.ChooseTag.doTag(ChooseTag.java:38)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;	at org.apache.commons.jelly.impl.TagScript.run(TagScript.java:269)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;	at org.apache.commons.jelly.impl.ScriptBlock.run(ScriptBlock.java:95)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;	at org.kohsuke.stapler.jelly.ReallyStaticTagLibrary$1.run(ReallyStaticTagLi&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;排查了好久，才发现问题，原因是升级了一个插件导致的，经过一个多小时的排查，终于找到了，是jeknins中文语言包，卸载或者降级即可。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Jenkins" scheme="https://mycommons.cn/categories/Jenkins/"/>
+    
+    
+      <category term="Jeknins" scheme="https://mycommons.cn/tags/Jeknins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ssh自动登录</title>
+    <link href="https://mycommons.cn/2018/11/25/ssh-login/"/>
+    <id>https://mycommons.cn/2018/11/25/ssh-login/</id>
+    <published>2018-11-25T07:53:35.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;ssh自动登录&quot;&gt;&lt;a href=&quot;#ssh自动登录&quot; class=&quot;headerlink&quot; title=&quot;ssh自动登录&quot;&gt;&lt;/a&gt;ssh自动登录&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;登录服务器的时候，经常使用&lt;code&gt;ssh&lt;/code&gt;进行远程的登录，经常输入密码，比较麻烦，可以使用&lt;code&gt;sshpass&lt;/code&gt;配合&lt;code&gt;iTerm2&lt;/code&gt;简化操作。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="工具使用" scheme="https://mycommons.cn/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="ssh" scheme="https://mycommons.cn/tags/ssh/"/>
+    
+      <category term="sshpass" scheme="https://mycommons.cn/tags/sshpass/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GsonSerializedNameGen</title>
+    <link href="https://mycommons.cn/2018/10/25/GsonSerializedNameGen/"/>
+    <id>https://mycommons.cn/2018/10/25/GsonSerializedNameGen/</id>
+    <published>2018-10-25T08:05:48.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Gson-SerializedName-Gen&quot;&gt;&lt;a href=&quot;#Gson-SerializedName-Gen&quot; class=&quot;headerlink&quot; title=&quot;Gson SerializedName Gen&quot;&gt;&lt;/a&gt;Gson SerializedName Gen&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;GsonSerializedNameGen 是一个自动生成Gson SerializedName注解的插件。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/LiushuiXiaoxia/SerializedNameGen/tree/master/jars&quot;&gt;下载地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://plugins.jetbrains.com/plugin/11225-gsonserializednamegen&quot;&gt;插件地址&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;有时候经常会维护一些老的项目，可能由于历史或开发人员能力问题，代码会稍微不规范。&lt;/p&gt;
+&lt;p&gt;比如在请求网络数据时会需要把json反序列化成实体，然后下面是常见的一种方式。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="插件工具" scheme="https://mycommons.cn/categories/%E6%8F%92%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Andorid Studio plugin" scheme="https://mycommons.cn/tags/Andorid-Studio-plugin/"/>
+    
+      <category term="gson" scheme="https://mycommons.cn/tags/gson/"/>
+    
+      <category term="jackson" scheme="https://mycommons.cn/tags/jackson/"/>
+    
+      <category term="fastjson" scheme="https://mycommons.cn/tags/fastjson/"/>
+    
+      <category term="plugin" scheme="https://mycommons.cn/tags/plugin/"/>
+    
+      <category term="注解生成工具" scheme="https://mycommons.cn/tags/%E6%B3%A8%E8%A7%A3%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac Git终端代理问题</title>
+    <link href="https://mycommons.cn/2018/09/25/git-proxy/"/>
+    <id>https://mycommons.cn/2018/09/25/git-proxy/</id>
+    <published>2018-09-25T08:03:04.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Mac-Git终端代理问题&quot;&gt;&lt;a href=&quot;#Mac-Git终端代理问题&quot; class=&quot;headerlink&quot; title=&quot;Mac Git终端代理问题&quot;&gt;&lt;/a&gt;Mac
+        
+      
+    
+    </summary>
+    
+      <category term="工具使用" scheme="https://mycommons.cn/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="git" scheme="https://mycommons.cn/tags/git/"/>
+    
+      <category term="proxy" scheme="https://mycommons.cn/tags/proxy/"/>
+    
+      <category term="socks5" scheme="https://mycommons.cn/tags/socks5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 项目自动发布与Supervisor</title>
+    <link href="https://mycommons.cn/2018/06/01/SpringBootSupervisor/"/>
+    <id>https://mycommons.cn/2018/06/01/SpringBootSupervisor/</id>
+    <published>2018-06-01T09:07:50.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Spring-Boot-项目自动发布与Supervisor&quot;&gt;&lt;a href=&quot;#Spring-Boot-项目自动发布与Supervisor&quot; class=&quot;headerlink&quot; title=&quot;Spring Boot 项目自动发布与Supervisor&quot;&gt;&lt;/a&gt;Spring Boot 项目自动发布与Supervisor&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;前面写了一遍关于Spring Boot项目自动发布的&lt;a href=&quot;https://www.jianshu.com/p/51459fc4560d&quot;&gt;文章&lt;/a&gt;，&lt;a href=&quot;https://github.com/LiushuiXiaoxia/springboot-deploy-demo&quot;&gt;这里是Github地址&lt;/a&gt;。&lt;br&gt;还是受到不少欢迎的，有不少点赞的朋友，这次再接再厉，跟着上一篇，介绍使用Supervisor管理Spring Boot项目。&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;supervisor是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。&lt;/p&gt;
+&lt;p&gt;什么意思呢？就是说，原先启动的Spring boot项目，正常情况下可以一直运行，但是如果程序中出现了Bug，程序会自动退出，那么服务就不可用了，可以使用用Supervisor来管理服务，当程序退出后服务可以自动重启。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Spring Boot" scheme="https://mycommons.cn/tags/Spring-Boot/"/>
+    
+      <category term="Supervisor" scheme="https://mycommons.cn/tags/Supervisor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于JSON RPC的一种Android跨进程调用解决方案了解一下？</title>
+    <link href="https://mycommons.cn/2018/05/30/Android-JSON-RPC/"/>
+    <id>https://mycommons.cn/2018/05/30/Android-JSON-RPC/</id>
+    <published>2018-05-29T17:02:02.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;基于JSON-RPC的一种Android跨进程调用解决方案了解一下？&quot;&gt;&lt;a href=&quot;#基于JSON-RPC的一种Android跨进程调用解决方案了解一下？&quot; class=&quot;headerlink&quot; title=&quot;基于JSON RPC的一种Android跨进程调用解决方案了解一下？&quot;&gt;&lt;/a&gt;基于JSON RPC的一种Android跨进程调用解决方案了解一下？&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;今天上午，看票圈有朋友分享爱奇艺的跨进程通信框架——&lt;a href=&quot;https://github.com/iqiyi/Andromeda&quot;&gt;Andromeda&lt;/a&gt;，觉的还是有点意思的。&lt;br&gt;以前项目中用到跨进程这种解决方案比较少，今天看了下Andromeda，发现调用方式很简单。&lt;/p&gt;
+&lt;p&gt;恰好最近一年都是在做后端工作，想到了Json RPC的方案，其实Android跨进程接也是一种rpc调用方式，那么参考json rpc协议，通过aidl通道也可以很简单一种跨进程通信方式，而且使用方式也很简单。&lt;/p&gt;
+&lt;p&gt;说干就干，但是作为了高级程序员，肯定要给项目起个名字高大上的名字——Bifrost（彩虹桥），参考复联电影雷神上面的彩虹桥，寓意可以传送到各地，也表达Android跨进程通信可以畅通无阻。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://mycommons.cn/tags/Android/"/>
+    
+      <category term="跨进程通信" scheme="https://mycommons.cn/tags/%E8%B7%A8%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
+    
+      <category term="JSON RPC" scheme="https://mycommons.cn/tags/JSON-RPC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 项目自动发布</title>
+    <link href="https://mycommons.cn/2018/04/24/SpringBootDeploy/"/>
+    <id>https://mycommons.cn/2018/04/24/SpringBootDeploy/</id>
+    <published>2018-04-24T15:21:29.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Spring-Boot-项目自动发布&quot;&gt;&lt;a href=&quot;#Spring-Boot-项目自动发布&quot; class=&quot;headerlink&quot; title=&quot;Spring Boot 项目自动发布&quot;&gt;&lt;/a&gt;Spring Boot 项目自动发布&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;在公司从移动端转后端已经快一年了，使用的技术框架一直是Spring Boot，和以前大学时候基于Tomcat的不太一样。&lt;/p&gt;
+&lt;p&gt;这篇文章简单介绍下如何发布Spring Boot 项目，原先使用Tomcat时候，发布的文件是war文件，现在使用Spring Boot就变得很简单了，直接是一个jar文件，启动方式按照启动jar文件方式即可。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="后端开发" scheme="https://mycommons.cn/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Spring Boot" scheme="https://mycommons.cn/tags/Spring-Boot/"/>
+    
+      <category term="Spring Boot Deploy" scheme="https://mycommons.cn/tags/Spring-Boot-Deploy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android KTX简介</title>
+    <link href="https://mycommons.cn/2018/02/07/Android-KTX/"/>
+    <id>https://mycommons.cn/2018/02/07/Android-KTX/</id>
+    <published>2018-02-07T07:59:38.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Android-KTX简介&quot;&gt;&lt;a href=&quot;#Android-KTX简介&quot; class=&quot;headerlink&quot; title=&quot;Android KTX简介&quot;&gt;&lt;/a&gt;Android KTX简介&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;昨天Google爸爸又发布了一个Android工具库，是使用Kotlin实现了。自从17年5月份声明支持Kotlin作为Android官方开发语言以来，Google爸爸对Kotlin的态度还是很积极的。&lt;br&gt;而且Jake大神后面也加入了Google，从博客的内容来看，也是这个类库也是出自Jake大神之手，所以特来拜读下。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="android" scheme="https://mycommons.cn/tags/android/"/>
+    
+      <category term="Kotlin" scheme="https://mycommons.cn/tags/Kotlin/"/>
+    
+      <category term="KTX" scheme="https://mycommons.cn/tags/KTX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot集成Kafka</title>
+    <link href="https://mycommons.cn/2017/11/26/SpringBoot-Kafka/"/>
+    <id>https://mycommons.cn/2017/11/26/SpringBoot-Kafka/</id>
+    <published>2017-11-26T07:06:44.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Spring-Boot集成Kafka&quot;&gt;&lt;a href=&quot;#Spring-Boot集成Kafka&quot; class=&quot;headerlink&quot; title=&quot;Spring Boot集成Kafka&quot;&gt;&lt;/a&gt;Spring Boot集成Kafka&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;前提介绍&quot;&gt;&lt;a href=&quot;#前提介绍&quot; class=&quot;headerlink&quot; title=&quot;前提介绍&quot;&gt;&lt;/a&gt;前提介绍&lt;/h2&gt;&lt;p&gt;由于公司使用了微服务架构，很多业务拆成了很多小模块。&lt;br&gt;有个场景是这样的A服务主要负责写入或者修改数据库中的数据，B服务主要负责读取，B服务使用缓存技术，当A发生了修改后，需要通知B来清除缓存。&lt;br&gt;中间两个服务之间通知使用了Kafka，这个是本篇文章主要介绍的，关于 &lt;a href=&quot;https://github.com/LiushuiXiaoxia/SpringCacheDemo&quot;&gt;缓存技术&lt;/a&gt; 我也简单介绍过。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="后端开发" scheme="https://mycommons.cn/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="spring boot" scheme="https://mycommons.cn/tags/spring-boot/"/>
+    
+      <category term="kafka" scheme="https://mycommons.cn/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Cache与Redis结合使用</title>
+    <link href="https://mycommons.cn/2017/11/19/Spring-Cache-Redis/"/>
+    <id>https://mycommons.cn/2017/11/19/Spring-Cache-Redis/</id>
+    <published>2017-11-19T15:48:13.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Spring-Cache与Redis结合使用&quot;&gt;&lt;a href=&quot;#Spring-Cache与Redis结合使用&quot; class=&quot;headerlink&quot; title=&quot;Spring Cache与Redis结合使用&quot;&gt;&lt;/a&gt;Spring Cache与Redis结合使用&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;前不久做了一个需要查询多，更新少的功能，老司机同事建议用Redis来做缓存，同时结合Spring Cache来做，特来总结下。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="后端开发" scheme="https://mycommons.cn/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="spring cache" scheme="https://mycommons.cn/tags/spring-cache/"/>
+    
+      <category term="redis" scheme="https://mycommons.cn/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>是时候来一波Android插件化了</title>
+    <link href="https://mycommons.cn/2017/10/25/Android-RePlugin/"/>
+    <id>https://mycommons.cn/2017/10/25/Android-RePlugin/</id>
+    <published>2017-10-25T10:46:55.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;是时候来一波Android插件化了&quot;&gt;&lt;a href=&quot;#是时候来一波Android插件化了&quot; class=&quot;headerlink&quot; title=&quot;是时候来一波Android插件化了&quot;&gt;&lt;/a&gt;是时候来一波Android插件化了&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;今年（2017年）6月时候，有幸参加了在北京举行的GMTC大会，恰巧360的张炅轩大神分享了360的插件化方案—— &lt;a href=&quot;https://github.com/Qihoo360/RePlugin&quot;&gt;RePlugin&lt;/a&gt; ，听了以后，受益匪浅。&lt;/p&gt;
+&lt;p&gt;因为是公司组织参加大会的，参会后需要技术分享，所以就选择介绍RePlugin以及Android插件化相关内容，本文也是主要介绍RePlugin以及自己对插件化的理解。&lt;/p&gt;
+&lt;p&gt;因为插件化涉及到的东西比较多，由于篇幅的限制，很多知识点只是简单介绍一下，同时会给出相关链接，读者可以点击作参考。&lt;/p&gt;
+&lt;p&gt;这几年，世面上就已经出现了不少几款插件化方案，同时热更新技术也是遍地开花。当时是比较抵触这类技术的，个人觉的这样会破坏Android的生态圈，但是毕竟出现了这么多的插件化方案，出现总是有道理的。本着学习的态度，还是要学习下插件化相关技术。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="https://mycommons.cn/categories/Android/"/>
+    
+    
+      <category term="Android插件化" scheme="https://mycommons.cn/tags/Android%E6%8F%92%E4%BB%B6%E5%8C%96/"/>
+    
+      <category term="Replugin" scheme="https://mycommons.cn/tags/Replugin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB查询总结</title>
+    <link href="https://mycommons.cn/2017/10/24/MongoDB-Query/"/>
+    <id>https://mycommons.cn/2017/10/24/MongoDB-Query/</id>
+    <published>2017-10-24T10:22:03.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;MongoDB查询总结&quot;&gt;&lt;a href=&quot;#MongoDB查询总结&quot; class=&quot;headerlink&quot; title=&quot;MongoDB查询总结&quot;&gt;&lt;/a&gt;MongoDB查询总结&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;前面写过一篇关于Mongodb的例子——&lt;a href=&quot;http://www.jianshu.com/p/9e1d34eb1d4c&quot;&gt;浅谈MongoDB数据库&lt;/a&gt;，当时使用的只是简单的查询，然后后面业务变的有点复杂，原先没有仔细研究过Mongodb的查询，以为就是简单调用下&lt;code&gt;find&lt;/code&gt;就可以了，乃衣服。&lt;/p&gt;
+&lt;p&gt;所以今天特地举例说明一下Mongo中查询问题。&lt;/p&gt;
+&lt;p&gt;Mongo查询可以分为2种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;普通查询，类似于Sql中的 &lt;code&gt;select where&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;聚合查询，类似于Sql中的 &lt;code&gt;group by&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://mycommons.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="MongoDB" scheme="https://mycommons.cn/tags/MongoDB/"/>
+    
+      <category term="Map reduce" scheme="https://mycommons.cn/tags/Map-reduce/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用MyMockServer模拟数据</title>
+    <link href="https://mycommons.cn/2017/10/13/MyMockServer/"/>
+    <id>https://mycommons.cn/2017/10/13/MyMockServer/</id>
+    <published>2017-10-13T10:34:12.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;使用MyMockServer模拟数据&quot;&gt;&lt;a href=&quot;#使用MyMockServer模拟数据&quot; class=&quot;headerlink&quot; title=&quot;使用MyMockServer模拟数据&quot;&gt;&lt;/a&gt;使用MyMockServer模拟数据&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;在开发的时候，前端、移动端、后端开发分离，开发流程是先定义好接口API，然后按照接口约定进行开发。所以经常需要根据接口Mock数据，有从代码层进行Mock，也有从网络层进行代理的。&lt;/p&gt;
+&lt;p&gt;本人使用方式是在网络代理进行Mock，因为在代码层Mock，数据不是很灵活，如果要改变数据，那么需要重新编译再启动（本人是移动开发），浪费不少时间。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Mock Server" scheme="https://mycommons.cn/tags/Mock-Server/"/>
+    
+      <category term="MyMockServer" scheme="https://mycommons.cn/tags/MyMockServer/"/>
+    
+      <category term="Proxy" scheme="https://mycommons.cn/tags/Proxy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈MongoDB数据库</title>
+    <link href="https://mycommons.cn/2017/09/28/MongoDb/"/>
+    <id>https://mycommons.cn/2017/09/28/MongoDb/</id>
+    <published>2017-09-28T10:39:17.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;浅谈MongoDB数据库&quot;&gt;&lt;a href=&quot;#浅谈MongoDB数据库&quot; class=&quot;headerlink&quot; title=&quot;浅谈MongoDB数据库&quot;&gt;&lt;/a&gt;浅谈MongoDB数据库&lt;/h1&gt;&lt;hr&gt;
+&lt;!-- TOC --&gt;
+
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;最近项目中需要分析Http报文，并且需要用数据库保存，刚刚开始打算用Mysql，后来咨询了老司机，老司机建议使用MongoDB来实现，所以特写一篇文章来总结下。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://mycommons.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="MongoDB" scheme="https://mycommons.cn/tags/MongoDB/"/>
+    
+      <category term="Java MongoDB" scheme="https://mycommons.cn/tags/Java-MongoDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Curl不显示统计信息% Total % Received %</title>
+    <link href="https://mycommons.cn/2017/09/21/Curl-S/"/>
+    <id>https://mycommons.cn/2017/09/21/Curl-S/</id>
+    <published>2017-09-21T10:42:29.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Curl不显示统计信息-Total-Received&quot;&gt;&lt;a href=&quot;#Curl不显示统计信息-Total-Received&quot; class=&quot;headerlink&quot; title=&quot;Curl不显示统计信息% Total % Received
+        
+      
+    
+    </summary>
+    
+      <category term="工具使用" scheme="https://mycommons.cn/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="Curl" scheme="https://mycommons.cn/tags/Curl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈Android Architecture Components</title>
+    <link href="https://mycommons.cn/2017/09/15/Android-Architecture-Components/"/>
+    <id>https://mycommons.cn/2017/09/15/Android-Architecture-Components/</id>
+    <published>2017-09-15T10:51:28.000Z</published>
+    <updated>2021-05-21T10:08:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;浅谈Android-Architecture-Components&quot;&gt;&lt;a href=&quot;#浅谈Android-Architecture-Components&quot; class=&quot;headerlink&quot; title=&quot;浅谈Android Architecture Components&quot;&gt;&lt;/a&gt;浅谈Android Architecture Components&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;Google IO 2017发布Android Architecture Components，自己先研究了一下，蛮有意思的，特来记录一下。本文内容主要是参考&lt;a href=&quot;https://developer.android.com/topic/libraries/architecture/index.html&quot;&gt;官方文档&lt;/a&gt;以及自己的理解，如有错误之处，恳请指出。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="https://mycommons.cn/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://mycommons.cn/tags/Android/"/>
+    
+      <category term="Android Architecture Components" scheme="https://mycommons.cn/tags/Android-Architecture-Components/"/>
+    
+      <category term="AAC" scheme="https://mycommons.cn/tags/AAC/"/>
+    
+      <category term="Google" scheme="https://mycommons.cn/tags/Google/"/>
+    
+  </entry>
+  
+</feed>

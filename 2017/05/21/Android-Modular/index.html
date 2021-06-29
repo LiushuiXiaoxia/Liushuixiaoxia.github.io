@@ -1,0 +1,1417 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="关于Android模块化我有一些话不知当讲不当讲, 流水不腐小夏">
+    <meta name="description" content="Liushuixiaoxia(流水不腐小夏) https://github.com/LiushuiXiaoxia">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>关于Android模块化我有一些话不知当讲不当讲 | 流水不腐小夏</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">流水不腐小夏</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">流水不腐小夏</div>
+        <div class="logo-desc">
+            
+            Liushuixiaoxia(流水不腐小夏) https://github.com/LiushuiXiaoxia
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">关于Android模块化我有一些话不知当讲不当讲</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android-Modular/">
+                                <span class="chip bg-color">Android Modular</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/">
+                                <span class="chip bg-color">模块化</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category">
+                                Android
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-05-21
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="关于Android模块化我有一些话不知当讲不当讲"><a href="#关于Android模块化我有一些话不知当讲不当讲" class="headerlink" title="关于Android模块化我有一些话不知当讲不当讲"></a>关于Android模块化我有一些话不知当讲不当讲</h1><hr>
+<p>最近公司一个项目使用了模块化设计，本人参与其中的一个小模块开发，但是整体的设计并不是我架构设计的，开发半年有余，在此记录下来我的想法。</p>
+<span id="more"></span>
+
+<h2 id="模块化场景"><a href="#模块化场景" class="headerlink" title="模块化场景"></a>模块化场景</h2><p>为什么需要模块化？</p>
+<p>当一个App用户量增多，业务量增长以后，就会有很多开发工程师参与同一个项目，人员增加了，原先小团队的开发方式已经不合适了。</p>
+<p>原先的一份代码，现在需要多个人来维护，每个人的代码质量也不相同，在进行代码Review的时候，也是比较困难的，同时也容易会产生代码冲突的问题。</p>
+<p>同时随着业务的增多，代码变的越来越复杂，每个模块之间的代码耦合变得越来越严重，解耦问题急需解决，同时编译时间也会越来越长。</p>
+<p>人员增多，每个业务的组件各自实现一套，导致同一个App的UI风格不一样，技术实现也不一样，团队技术无法得到沉淀。</p>
+<h2 id="架构演变"><a href="#架构演变" class="headerlink" title="架构演变"></a>架构演变</h2><p>在刚刚开始的时候，项目架构使用的是MVP模式，这也是最近几年很流行的一个架构方式，下面是项目的原始设计。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidModular/master/doc/1.png" alt="MVP"></p>
+<p>随着业务的增多，我们添加了Domain的概念，Domain从Data中获取数据，Data可能会是Net，File，Cache各种IO等，然后项目架构变成了这样。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidModular/master/doc/2.png" alt="MVP2"></p>
+<p>再然后随着人员增多，各种基础组件也变的越来越多，业务也很复杂，业务与业务之间还有很强的耦合，就变成了这样的。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidModular/master/doc/3.png"></p>
+<p>使用模块化技术以后，架构变成了这样。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidModular/master/doc/4.png" alt="组件化架构"></p>
+<h2 id="技术要点"><a href="#技术要点" class="headerlink" title="技术要点"></a>技术要点</h2><p>这里简单介绍下Android项目实现模块化需要使用的技术以及技术难点。</p>
+<h3 id="Library-module"><a href="#Library-module" class="headerlink" title="Library module"></a>Library module</h3><p>在开始开始进行模块化之前，需要把各个业务单独抽取成Android Library Module,这个是Android Studio自带一个功能，可以把依赖较少的，作为基本组件的抽取成一个单独模块。</p>
+<p>如图所示，我把各个模块单独分为一个独立的项目。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidModular/master/doc/5.png" alt="组件化架构"></p>
+<p>在主项目中使用gradle添加代码依赖。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// common</span></span><br><span class="line"><span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">&#x27;:ModuleBase&#x27;</span>)</span><br><span class="line"><span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">&#x27;:ModuleComponent&#x27;</span>)</span><br><span class="line"><span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">&#x27;:ModuleService&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// biz</span></span><br><span class="line"><span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">&#x27;:ModuleUser&#x27;</span>)</span><br><span class="line"><span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">&#x27;:ModuleOrder&#x27;</span>)</span><br><span class="line"><span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">&#x27;:ModuleShopping&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Library-module开发问题"><a href="#Library-module开发问题" class="headerlink" title="Library module开发问题"></a>Library module开发问题</h3><p>在把代码抽取到各个单独的Library Module中，会遇到各种问题。最常见的就是R文件问题，Android开发中，各个资源文件都是放在res目录中，在编译过程中，会生成R.java文件。R文件中包含有各个资源文件对应的id，这个id是静态常量，但是在Library Module中，这个id不是静态常量，那么在开发时候就要避开这样的问题。</p>
+<p>举个常见的例子，同一个方法处理多个view的点击事件，有时候会使用<code>switch(view.getId())</code>这样的方式，然后用<code>case R.id.btnLogin</code>这样进行判断，这时候就会出现问题，因为id不是经常常量，那么这种方式就用不了。</p>
+<p>同样开发时候，用的最多的一个第三方库就是ButterKnife，ButterKnife也是不可以用的，在使用ButterKnife的时候，需要用到注解配置一个id来找到对应view，或者绑定对应的各种事件处理，但是注解中的各个字段的赋值也是需要静态常量，那么就不能够使用ButterKnife了。</p>
+<p>解决方案有下面几种：</p>
+<p>1.重新一个Gradle插件，生成一个R2.java文件，这个文件中各个id都是静态常量，这样就可以正常使用了。</p>
+<p>2.使用Android系统提供的最原始的方式，直接用<code>findViewById</code>以及<code>setOnClickListener</code>方式。</p>
+<p>3.设置项目支持Databinding，然后使用Binding中的对象，但是会增加不少方法数，同时Databinding也会有编译问题和学习成本，但是这些也是小问题，个人觉的问题不大。</p>
+<p>上面是主流的解决方法，个人推荐的使用优先级为 3 &gt; 2 &gt; 1。</p>
+<p>当把个模块分开以后，每个人就可以单独分组对应的模块就行了，不过会有资源冲突问题，个人建议是对各个模块的资源名字添加前缀，比如user模块中的登录界面布局为<code>activity_login.xml</code>，那么可以写成这样<code>us_activity_login.xml</code>。这样就可以避免资源冲突问题。同时Gradle也提供的一个字段<code>resourcePrefix</code>，确保各个资源名字正确，具体用法可以参考官方文档。</p>
+<h3 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h3><p>当完成了Library module后，代码基本上已经很清晰了，跟我们上面的最终架构已经很相似了，有了最基本的骨架，但是还是没有完成，因为还是多个人操作同一个git仓库，各个开发小伙伴还是需要对同一个仓库进行各种fork和pr。</p>
+<p>随着对代码的分割，但是主项目app的依赖变多了，如果修改了lib中的代码，那么编译时间是很恐怖的，大概统计了一下，原先在同一个模块的时候，编译时间大概需要2-3min，但是分开以后大概需要5-6min，这个是绝对无法忍受的。</p>
+<p>上面的第一问题，可以这样解决，把各个子module分别使用单独的一个git仓库，这样每个人也只需要关注自己需要的git仓库即可，主仓库使用git submodule的方式，分别依赖各个子模块。</p>
+<p>但是这样还是无法解决编译时间过长的问题，我们把各个模块也单独打包，每次子模块开发完成以后，发布到maven仓库中，然后在主项目中使用版本进行依赖。</p>
+<p>举个例子，比如进行某一版本迭代，这个版本叫1.0.0，那么各个模块的版本也叫同样的版本，当版本完成测试发布后，对各个模块打对应版本的tag，然后就很清楚的了解各模块的代码分布。</p>
+<p>gradle依赖如下。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// common</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:base:1.0.0&#x27;</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:component:1.0.0&#x27;</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:service:1.0.0&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// biz</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:user:1.0.0&#x27;</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:order:1.0.0&#x27;</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:shopping:1.0.0&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>可能有人会问，既然各个模块已经分开开发，那么如果进行开发联调，别急，这个问题暂时保留，后面会对这个问题后面再表。</p>
+<h3 id="数据通信"><a href="#数据通信" class="headerlink" title="数据通信"></a>数据通信</h3><p>当一个大项目拆成若干小项目时候，调用的姿势发生了少许改变。我这边总结了App各个模块之间的数据通信几种方式。</p>
+<ul>
+<li>页面跳转，比如在订单页面下单时候，需要判断用户是否登录，如果没有则需要跳到登录界面。</li>
+<li>主动获取数据，比如在下单时候，用户已经登录，下单需要传递用户的基本信息。</li>
+<li>被动获得数据，比如在切换用户的时候，有时候需要更新数据，如订单页面，需要把原先用户的购物车数据给清空。</li>
+</ul>
+<p>再来看下App的架构。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidModular/master/doc/3.png" alt="App架构"></p>
+<p>第一个问题，原先的方式，直接指定某个页面的ActivityClass，然后通过intent跳转即可，但是在新的架构中，由于shopping模块不直接依赖user，那么则不能使用原始的进行跳转，我们解决方式使用Router路由跳转。</p>
+<p>第二个问题，原先的方式有个专门的业务单利，比如UserManager，直接可以调用即可，同样由于依赖发生了改变，不能够进行调用。解决方案是所有的需要的操作，定义成接口放在Service中。</p>
+<p>第三个问题，原先的方式，可以针对事件变化提供回调接口，当我需要监听某个事件时候，设置回调即可。</p>
+<h4 id="页面路由跳转"><a href="#页面路由跳转" class="headerlink" title="页面路由跳转"></a>页面路由跳转</h4><p>如上分析，原先方式代码如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, UserActivity.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+
+<p>但是使用Router后，调用方式改变了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RouterHelper.dispatch(getContext(), <span class="string">&quot;app://user&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>具体的原理是什么，很简单的，做一个简单的映射匹配即可，把<code>&quot;app://user&quot;</code>与<code>UserActivity.class</code>配对，具体的就是定义一个Map，key是对应的Router字符，value是Activity的class。在跳转时候从map中获取对应的ActivityClass，然后在使用原始的方式。</p>
+<p>可能有人的会问，要向另外一个页面传递参数怎么办，没事我们可以在router后面直接添加参数，如果是一个复杂的对象那么可以把对象序列化成json字符串，然后再从对应的页面通过反序列化的方式，得到对应的对象。</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RouterHelper.dispatch(getContext(), <span class="string">&quot;app://user?id=123&amp;obj=&#123;&quot;</span>name<span class="string">&quot;:&quot;</span>admin<span class="string">&quot;&#125;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong> 上面的router中json字符串是需要url编码的，不然会有问题的，这里只是做个示例。</p>
+<p>除了使用Router进行跳转外，我想了一下，可以参考Retrofit方式，直接定义跳转Java接口，如果需要传递额外参数，则以函数参数的方式定义。</p>
+<p>这个Java接口是没有实现类的，可以使用动态代理方式，然后接下来的方式，和使用Router的方式一样。</p>
+<p>那么这总两种方式有什么优缺点呢。</p>
+<p><strong>Router方式:</strong></p>
+<ul>
+<li>有点：不需要高难度的技术点，使用方便，直接使用字符串定义跳转，可以好的往后兼容</li>
+<li>缺点：因为使用的是字符串配置，如果字符输入字符，则很难发现bug，同时也很难知道某个参数对应的含义</li>
+</ul>
+<p><strong>仿Retrofit方式:</strong></p>
+<ul>
+<li>因为是Java接口定义，所以可以很简单找到对应的跳转方法，参数定义也很明确，可以直接写在接口定义处，方便查阅。</li>
+<li>同样因为是Java接口定义，那么如果需要扩展参数，只能重新定义新方法，这样会出现多个方法重载，如果在原先接口上修改，对应的原先调用方也要做响应的修改，比较麻烦。</li>
+</ul>
+<p>上面是两种实现方式，如果有相应同学要实现模块化，可以根据实际情况做出选择。</p>
+<h4 id="Interface和Implement"><a href="#Interface和Implement" class="headerlink" title="Interface和Implement"></a>Interface和Implement</h4><p>如上分析，如果需要从某个业务中获取数据，我们分别需要定义接口以及实现类，然在获取的时候在通过反射来实例化对象。</p>
+<p>下面是简单的代码示例</p>
+<p>接口定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IUserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">getUserName</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">IUserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;UserServiceImpl.getUserName&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>反射生成对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class InjectHelper &#123;</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    public static AppContext getAppContext() &#123;</span><br><span class="line">        return AppContext.getAppContext();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    public static IModuleConfig getIModuleConfig() &#123;</span><br><span class="line">        return getAppContext().getModuleConfig();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Nullable</span><br><span class="line">    public static &lt;T&gt; T getInstance(Class&lt;T&gt; tClass) &#123;</span><br><span class="line">        IModuleConfig config = getIModuleConfig();</span><br><span class="line">        Class&lt;? extends T&gt; implementClass = config.getServiceImplementClass(tClass);</span><br><span class="line">        if (implementClass != null) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                return implementClass.newInstance();</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IUserService userService = InjectHelper.getInstance(IUserService.class);</span><br><span class="line">if (userService != null) &#123;</span><br><span class="line">    Toast.makeText(getContext(), userService.getUserName(), Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本示例中每次调用都是用反射生成新的对象，实际应用中可能与IoC工具结合使用，比如Dagger2.</p>
+<h4 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h4><p>针对上面的第三个问题，原先设计的使用方式也是可以的，只需要把回调接口定义到对应的service接口中，然后调用方就可以使用。</p>
+<p>但是我建议可以使用另外一个方式——EventBus，EventBus也是利用观察者模式，对事件进行监听，是设置回调更优雅方式的实现。</p>
+<p>优点：不需要定义很多个回调接口，只需要定义事件Class，然后通过Claas的唯一性来进行事件匹配。</p>
+<p>缺点：需要定义很多额外的类来表示事件，同时也需要关注EventBus的生命周期，在不需要使用事件时候，需要注销事件绑定，不然容易发生内存泄漏。</p>
+<h2 id="映射匹配"><a href="#映射匹配" class="headerlink" title="映射匹配"></a>映射匹配</h2><p>上面的介绍的各个模块之间通信，都运涉及到映射匹配问题，在此我总结了一下，主要涉及到一下三种方式。</p>
+<h3 id="Map-register"><a href="#Map-register" class="headerlink" title="Map register"></a>Map register</h3><p>Map register是这样的，全局定义一个Map，各个模块在初始化的时候，分别在初始化的时候注册映射关系。</p>
+<p>下面是简单的代码示例，比如我们定义一个模块生命周期，用于初始化各个模块。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IModuleLifeCycle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(IModuleConfig config)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onTerminate</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块初始化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserModuleLifeCycle</span> <span class="keyword">extends</span> <span class="title">SimpleModuleLifeCycle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserModuleLifeCycle</span><span class="params">(<span class="meta">@NonNull</span> Application application)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(application);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(<span class="meta">@NonNull</span> IModuleConfig config)</span> </span>&#123;</span><br><span class="line">        config.registerService(IUserService.class, UserServiceImpl.class);</span><br><span class="line">        config.registerRouter(<span class="string">&quot;app://user&quot;</span>, UserActivity.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Application中完成初始化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppContext</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ModuleLifeCycleManager lifeCycleManager;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line"></span><br><span class="line">        lifeCycleManager = <span class="keyword">new</span> ModuleLifeCycleManager(<span class="keyword">this</span>);</span><br><span class="line">        lifeCycleManager.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTerminate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onTerminate();</span><br><span class="line"></span><br><span class="line">        lifeCycleManager.onTerminate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IModuleConfig <span class="title">getModuleConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lifeCycleManager.getModuleConfig();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ModuleLifeCycleManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="keyword">private</span> ModuleConfig moduleConfig;</span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> List&lt;IModuleLifeCycle&gt; moduleLifeCycleList;</span><br><span class="line"></span><br><span class="line">    ModuleLifeCycleManager(<span class="meta">@NonNull</span> Application application) &#123;</span><br><span class="line">        moduleConfig = <span class="keyword">new</span> ModuleConfig();</span><br><span class="line">        moduleLifeCycleList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        moduleLifeCycleList.add(<span class="keyword">new</span> UserModuleLifeCycle(application));</span><br><span class="line">        moduleLifeCycleList.add(<span class="keyword">new</span> OrderModuleLifeCycle(application));</span><br><span class="line">        moduleLifeCycleList.add(<span class="keyword">new</span> ShoppingModuleLifeCycle(application));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (IModuleLifeCycle lifeCycle : moduleLifeCycleList) &#123;</span><br><span class="line">            lifeCycle.onCreate(moduleConfig);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onTerminate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (IModuleLifeCycle lifeCycle : moduleLifeCycleList) &#123;</span><br><span class="line">            lifeCycle.onTerminate();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="function">IModuleConfig <span class="title">getModuleConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> moduleConfig;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="APT"><a href="#APT" class="headerlink" title="APT"></a>APT</h3><p>使用注解的方式配置映射信息，然后生成一个类似Database一样的文件，然后Database文件中包含一个Map字段，Map中记录各个映射信息。</p>
+<p>首先需要定义个Annotation。</p>
+<p>如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(ElementType.TYPE)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.CLASS)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Implements &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">Class <span class="title">parent</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要实现一个 Annotation Process Tool，来解析自己定义的Annotation。</p>
+<p>代码略，此代码有点复杂，暂时不贴了。</p>
+<p>编译产生的文件，大概如下所示。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Implement_</span>$$<span class="title">_Database</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Class&lt;?&gt;, Class&lt;?&gt;&gt; serviceConfig;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Implement_$$_Database() &#123;</span><br><span class="line"></span><br><span class="line">        serviceConfig = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        serviceConfig.put(IUserService.class, UserServiceImpl.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; Class&lt;? extends T&gt; getServiceImplementClass(Class&lt;T&gt; serviceClass) &#123;</span><br><span class="line">        <span class="keyword">return</span> (Class&lt;? extends T&gt;) serviceConfig.get(serviceClass);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后利用反射找到<code>Implement_$$_Database</code>这个类，然后从方法中找到配对。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class InjectHelper &#123;</span><br><span class="line"></span><br><span class="line">    @Nullable</span><br><span class="line">    public static &lt;T&gt; T getInstanceByDatabase(Class&lt;T&gt; tClass) &#123;</span><br><span class="line">        Implement_$$_Database database = new Implement_$$_Database();</span><br><span class="line">        Class&lt;? extends T&gt; implementClass = database.getServiceImplementClass(tClass);</span><br><span class="line">        if (implementClass != null) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                return implementClass.newInstance();</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在需要配置的地方添加注解即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Implements(parent = IUserService.class)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">IUserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;UserServiceImpl.getUserName&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用姿势。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">binding.button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        IUserService userService = InjectHelper.getInstanceByDatabase(IUserService.class);</span><br><span class="line">        <span class="keyword">if</span> (userService != <span class="keyword">null</span>) &#123;</span><br><span class="line">            Toast.makeText(getContext(), userService.getUserName(), Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>注意点：</strong></p>
+<p>有时候，在生成最终的配置文件的时候，文件的名字是固定的，比如上面的<code>Implement_$$_Database</code>,最终的路径是这样的<code>cn.mycommons.implements.database.Implement_$$_Database.java</code>，然后通过编译到apk中或则是aar中。</p>
+<p>但是有个问题，如果各个子模块都使用了这样的插件，那么每个子模块的就会有这个Implement_$$_Database.class，那么就会编译出错。</p>
+<p>因为aar中包含的时候class文件，不是java文件，不能在使用APT做处理了。下面有2中解决方案。</p>
+<ol>
+<li><p>子工程的插件生成的文件包含一定的规则，比如包含模块名字，如<code>User_Implement_$$_Database.java</code>，同时修改编译过程，把java文件也打包到aar中，主工程的插件在编译时候，提取aar中的文件，然后合并子工程的所有的代码，这个思路是可行的，不过技术实现起来比较麻烦。</p>
+</li>
+<li><p>同一的方式类似，也是生成有一定规则的的文件，或者在特地package下生成class，这些class再通过接下来的所讲的Gradle Transform方式，生成一个新的Database.class文件。</p>
+</li>
+</ol>
+<h3 id="Gradle-Transform"><a href="#Gradle-Transform" class="headerlink" title="Gradle Transform"></a>Gradle Transform</h3><p>这是Android Gradle编译提供的一个接口，可以供开发自定义一些功能，而我们就可以根据这个功能生成映射匹配，这种方式和APT类似，APT是运行在代码编译时期，而且Transform是直接扫描class，然后再生成新的class，class中包含Map映射信息。修改class文件，使用的是<a href="http://jboss-javassist.github.io/javassist/">javassist</a>一个第三方库。</p>
+<p>下面简单讲述代码实现，后面有机会单独写一篇文章讲解。</p>
+<p>首先定义一个注解，这个注解用于标注一个实现类的接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.mycommons.modulebase.annotations;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(ElementType.TYPE)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.CLASS)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Implements &#123;</span><br><span class="line">    <span class="function">Class <span class="title">parent</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个测试用的接口以及实现类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ITest</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Implements(parent = ITest.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestImpl</span> <span class="keyword">implements</span> <span class="title">ITest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>定义一个静态方法，用于获取某个接口的实现类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.mycommons.modulebase.annotations;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImplementsManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;Class, Class&gt; CONFIG = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Class <span class="title">getImplementsClass</span><span class="params">(Class parent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> CONFIG.get(parent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果不使用任何黑科技，直接使用Java技术，那么在定义时候需要主动的往CONFIG这个map中添加配置，但是这里我们利用transform，直接动态的添加。</p>
+<p>定义一个<code>ImplementsPlugin</code> gradle插件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImplementsPlugin</span> <span class="keyword">implements</span> <span class="title">Plugin</span>&lt;<span class="title">Project</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">(Project project)</span> </span>&#123;</span><br><span class="line">        AppExtension app = project.getExtensions().getByType(AppExtension.class);</span><br><span class="line">        app.registerTransform(<span class="keyword">new</span> ImplementsTransform(project));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>自定义的Transform实现。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImplementsTransform</span> <span class="keyword">extends</span> <span class="title">Transform</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String IMPLEMENTS_MANAGER = <span class="string">&quot;cn/mycommons/modulebase/annotations/ImplementsManager.class&quot;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String IMPLEMENTS_MANAGER_NAME = <span class="string">&quot;cn.mycommons.modulebase.annotations.ImplementsManager&quot;</span></span><br><span class="line">    Project project</span><br><span class="line"></span><br><span class="line">    ImplementsTransform(Project project) &#123;</span><br><span class="line">        <span class="built_in">this</span>.project = project</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> log(String msg, Object... args) &#123;</span><br><span class="line">        String text = String.format(msg, args)</span><br><span class="line"></span><br><span class="line">        project.getLogger().error(<span class="string">&quot;[ImplementsPlugin]:$&#123;text&#125;&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String getName() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ImplementsTransform&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Set&lt;QualifiedContent.ContentType&gt; getInputTypes() &#123;</span><br><span class="line">        <span class="keyword">return</span> ImmutableSet.of(QualifiedContent.DefaultContentType.CLASSES)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Set&lt;? super QualifiedContent.Scope&gt; getScopes() &#123;</span><br><span class="line">        return ImmutableSet.of(</span><br><span class="line">                QualifiedContent.Scope.PROJECT,</span><br><span class="line">                QualifiedContent.Scope.PROJECT_LOCAL_DEPS,</span><br><span class="line">                QualifiedContent.Scope.SUB_PROJECTS,</span><br><span class="line">                QualifiedContent.Scope.SUB_PROJECTS_LOCAL_DEPS,</span><br><span class="line">                QualifiedContent.Scope.EXTERNAL_LIBRARIES</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    boolean isIncremental() &#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    void transform(TransformInvocation transformInvocation)</span><br><span class="line">            throws TransformException, InterruptedException, IOException &#123;</span><br><span class="line">        super.transform(transformInvocation)</span><br><span class="line">        long time1 = System.currentTimeMillis();</span><br><span class="line">        log(this.toString() + <span class="string">&quot;.....transform&quot;</span>)</span><br><span class="line"></span><br><span class="line">        TransformOutputProvider outputProvider = transformInvocation.outputProvider</span><br><span class="line">        outputProvider.deleteAll()</span><br><span class="line"></span><br><span class="line">        def classPool = new ClassPool()</span><br><span class="line">        classPool.appendSystemPath()</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 记录所有的符合扫描条件的记录</span></span><br><span class="line">        List&lt;Entry&gt; implementsList = []</span><br><span class="line">        <span class="comment">// ImplementsManager 注解所在的jar文件</span></span><br><span class="line">        JarInput implementsManagerJar = null</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 扫描所有的文件</span></span><br><span class="line">        transformInvocation.inputs.each &#123;</span><br><span class="line">            it.directoryInputs.each &#123;</span><br><span class="line">                classPool.appendClassPath(it.file.absolutePath)</span><br><span class="line">                def dst = outputProvider.getContentLocation(it.name, it.contentTypes, it.scopes, Format.DIRECTORY)</span><br><span class="line">                FileUtils.copyDirectory(it.file, dst)</span><br><span class="line"></span><br><span class="line">                project.fileTree(dst).each &#123;</span><br><span class="line">                    String clazzPath = it.absolutePath.replace(dst.absolutePath, <span class="string">&quot;&quot;</span>)</span><br><span class="line">                    clazzPath = clazzPath.replace(<span class="string">&quot;/&quot;</span>, <span class="string">&quot;.&quot;</span>).substring(<span class="number">1</span>)</span><br><span class="line">                    if (clazzPath.endsWith(<span class="string">&quot;.class&quot;</span>)) &#123;</span><br><span class="line">                        clazzPath = clazzPath.substring(<span class="number">0</span>, clazzPath.size() - <span class="number">6</span>)</span><br><span class="line">                        CtClass clazz = classPool.get(clazzPath)</span><br><span class="line">                        <span class="comment">// 如果class中的类包含注解则先收集起来</span></span><br><span class="line">                        Implements annotation = clazz.getAnnotation(Implements.class)</span><br><span class="line">                        if (annotation != null) &#123;</span><br><span class="line">                            implementsList.add(new Entry(annotation, clazz))</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            it.jarInputs.each &#123;</span><br><span class="line">                classPool.appendClassPath(it.file.absolutePath)</span><br><span class="line"></span><br><span class="line">                if (implementsManagerJar == null &amp;&amp; isImplementsManager(it.file)) &#123;</span><br><span class="line">                    implementsManagerJar = it</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    def dst = outputProvider.getContentLocation(it.name, it.contentTypes, it.scopes, Format.JAR)</span><br><span class="line">                    FileUtils.copyFile(it.file, dst)</span><br><span class="line"></span><br><span class="line">                    def jarFile = new JarFile(it.file)</span><br><span class="line">                    def entries = jarFile.entries()</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// 如果jar中的class中的类包含注解则先收集起来</span></span><br><span class="line">                    while (entries.hasMoreElements()) &#123;</span><br><span class="line">                        def jarEntry = entries.nextElement()</span><br><span class="line">                        String clazzPath = jarEntry.getName()</span><br><span class="line">                        clazzPath = clazzPath.replace(<span class="string">&quot;/&quot;</span>, <span class="string">&quot;.&quot;</span>)</span><br><span class="line">                        if (clazzPath.endsWith(<span class="string">&quot;.class&quot;</span>)) &#123;</span><br><span class="line">                            clazzPath = clazzPath.substring(<span class="number">0</span>, clazzPath.size() - <span class="number">6</span>)</span><br><span class="line">                            def clazz = classPool.get(clazzPath)</span><br><span class="line">                            Implements annotation = clazz.getAnnotation(Implements.class)</span><br><span class="line">                            if (annotation != null) &#123;</span><br><span class="line">                                implementsList.add(new Entry(annotation, clazz))</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        log(<span class="string">&quot;implementsManagerJar = &quot;</span> + implementsManagerJar)</span><br><span class="line"></span><br><span class="line">        Map&lt;String, String&gt; config = new LinkedHashMap&lt;&gt;()</span><br><span class="line"></span><br><span class="line">        implementsList.each &#123;</span><br><span class="line">            def str = it.anImplements.toString();</span><br><span class="line">            log(<span class="string">&quot;anImplements =&quot;</span> + it.anImplements)</span><br><span class="line">            def parent = str.substring(str.indexOf(<span class="string">&quot;(&quot;</span>) + <span class="number">1</span>, str.indexOf(<span class="string">&quot;)&quot;</span>)).replace(<span class="string">&quot;parent=&quot;</span>, <span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;.class&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">            log(<span class="string">&quot;parent =&quot;</span> + parent)</span><br><span class="line">            log(<span class="string">&quot;sub =&quot;</span> + it.ctClass.name)</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 收集所有的接口以及实现类的路径</span></span><br><span class="line">            config.put(parent, it.ctClass.name)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        log(<span class="string">&quot;config = &quot;</span> + config)</span><br><span class="line"></span><br><span class="line">        long time2 = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        if (implementsManagerJar != null) &#123;</span><br><span class="line">            def implementsManagerCtClass = classPool.get(IMPLEMENTS_MANAGER_NAME)</span><br><span class="line">            log(<span class="string">&quot;implementsManagerCtClass = &quot;</span> + implementsManagerCtClass)</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 修改class，在class中插入静态代码块，做初始化</span></span><br><span class="line">            def body = <span class="string">&quot;&#123;\n&quot;</span></span><br><span class="line">            body += <span class="string">&quot;CONFIG = new java.util.HashMap();\n&quot;</span></span><br><span class="line"></span><br><span class="line">            for (Map.Entry&lt;String, String&gt; entry : config.entrySet()) &#123;</span><br><span class="line">                body += <span class="string">&quot;CONFIG.put($&#123;entry.key&#125;.class, $&#123;entry.value&#125;.class);\n&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            body += <span class="string">&quot;&#125;\n&quot;</span></span><br><span class="line">            log(<span class="string">&quot;body = &quot;</span> + body)</span><br><span class="line"></span><br><span class="line">            implementsManagerCtClass.makeClassInitializer().body = body</span><br><span class="line"></span><br><span class="line">            <span class="keyword">def</span> jar = implementsManagerJar</span><br><span class="line">            <span class="keyword">def</span> dst = outputProvider.getContentLocation(jar.name, jar.contentTypes, jar.scopes, Format.JAR)</span><br><span class="line">            println dst.absolutePath</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 修改完成后，完成后再写入到jar文件中</span></span><br><span class="line">            rewriteJar(implementsManagerJar.file, dst, IMPLEMENTS_MANAGER, implementsManagerCtClass.toBytecode())</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        log(<span class="string">&quot;time = &quot;</span> + (time2 - time1) / <span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span> isImplementsManager(File file) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JarFile(file).getEntry(IMPLEMENTS_MANAGER) != <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> rewriteJar(File src, File dst, String name, <span class="keyword">byte</span>[] bytes) &#123;</span><br><span class="line">        dst.getParentFile().mkdirs()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> jarOutput = <span class="keyword">new</span> JarOutputStream(<span class="keyword">new</span> FileOutputStream(dst))</span><br><span class="line">        <span class="keyword">def</span> rcJarFile = <span class="keyword">new</span> JarFile(src)</span><br><span class="line"></span><br><span class="line">        jarOutput.putNextEntry(<span class="keyword">new</span> JarEntry(name))</span><br><span class="line">        jarOutput.write(bytes)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>]</span><br><span class="line">        <span class="keyword">int</span> bytesRead</span><br><span class="line">        <span class="keyword">def</span> entries = rcJarFile.entries()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (entries.hasMoreElements()) &#123;</span><br><span class="line">            <span class="keyword">def</span> entry = entries.nextElement()</span><br><span class="line">            <span class="keyword">if</span> (entry.name == name) <span class="keyword">continue</span></span><br><span class="line">            jarOutput.putNextEntry(entry)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">def</span> jarInput = rcJarFile.getInputStream(entry)</span><br><span class="line">            <span class="keyword">while</span> ((bytesRead = jarInput.read(buffer)) != <span class="number">-1</span>) &#123;</span><br><span class="line">                jarOutput.write(buffer, <span class="number">0</span>, bytesRead)</span><br><span class="line">            &#125;</span><br><span class="line">            jarInput.close()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        jarOutput.close()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体代码可以参考<a href="https://github.com/LiushuiXiaoxia/AndroidModular/tree/master/ImplementsTransformPlugin">这里</a></p>
+<h3 id="映射匹配总结"><a href="#映射匹配总结" class="headerlink" title="映射匹配总结"></a>映射匹配总结</h3><p><strong>优点:</strong></p>
+<ul>
+<li>Map:简单明了，很容易入手，不会对编译时间产生任何影响，不会随着Gradle版本的升级而受影响，代码混淆时候不会有影响，无需配置混淆文件。</li>
+<li>APT：使用简单，使用注解配置，代码优雅，原理是用代码生成的方式生成新的文件。</li>
+<li>Transform：使用简单，使用注解配置，代码优雅，原理是用代码生成的方式生成新的文件，不过生成的文件的时期和APT不同，会编译时间产生少许影响。</li>
+</ul>
+<p><strong>缺点:</strong></p>
+<ul>
+<li>Map：在需要新添加映射的时候，需要手动添加，不然不会生效，代码不优雅。</li>
+<li>APT：在编译时期生成文件，会编译时间产生少许影响，同时在不同的Gradle的版本中可能会产生错误或者兼容问题。需要配置混淆设置，不然会丢失文件。技术实现复杂，较难维护。</li>
+<li>Transform：在编译时期生成文件，会编译时间产生少许影响，同时在不同的Gradle的版本中可能会产生错误或者兼容问题。需要配置混淆设置，不然会丢失文件。技术实现复杂，较难维护。</li>
+</ul>
+<p>从技术复杂性以及维护性来看，Map &gt; APT = Transform</p>
+<p>从使用复杂性以及代码优雅性来看，Transform &gt; APT  &gt; Map</p>
+<h2 id="开发调试技巧"><a href="#开发调试技巧" class="headerlink" title="开发调试技巧"></a>开发调试技巧</h2><h3 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h3><p>上面介绍了很多关于模块化的概念以及技术难题，当模块化完成以后，再进行完成开发时候还是会遇到不少问题。不如原先代码在一起的时候很方便的进行代码调试。但是进行模块化以后，直接使用的是aar依赖，不能直接修改代码，可以使用下面技巧，可以直接进行代码调试。</p>
+<p>在根目录下面创建一个module目录以及module.gradle文件，这个目录和文件是git ignore的，然后把对应的模块代码clone到里面，根目录的setting.gradlew apply module.gradle文件，如下所示，如果需要源码调试，则在module中添加对应的模块。然后在app的依赖中去掉aar依赖，同时添加项目依赖即可。当不需要源码调试好，再修改为到原先代码即可。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    apply <span class="keyword">from</span>: <span class="string">&quot;./module.gradle&quot;</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>module.gradle</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include</span> <span class="string">&#x27;:ModuleShopping&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>比如调试shopping模块</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// common</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:base:1.0.0&#x27;</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:component:1.0.0&#x27;</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:service:1.0.0&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// biz</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:user:1.0.0&#x27;</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">&#x27;cn.mycommons:order:1.0.0&#x27;</span></span><br><span class="line"><span class="comment">// compile &#x27;cn.mycommons:shopping:1.0.0&#x27;</span></span><br><span class="line"><span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">&#x27;:ModuleShopping&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>当然还有个更具技术挑战性方案，使用gradle插件的形式，如果发现root项目中包含的模块化的源码，则不适用aar依赖，直接使用源码依赖，当然这个想法是不错的，不过具有技术挑战性，同时有可能随着Gradle版本的升级，编写的gradle插件也要做相对于的兼容风险，这是只是简单提示一下。</p>
+<h3 id="容器设计"><a href="#容器设计" class="headerlink" title="容器设计"></a>容器设计</h3><p>上面讲到的如果要调试代码时候，需要完整的运行的整个项目，随着项目的增大，编译时间可能变得很长。</p>
+<p>我们可以做一个简单的，类似与主app模块一样，比如我是负责user模块的开发者，那么我只要调试我这个模块就行了，如果需要其他的模块，我可以简单的做一个mock，不是把其他的模块直接依赖过来，这样可以做到调试作用。等到再需要完整项目调试时候，我们在使用上面介绍的方式，这样可以节省不少开发时间。</p>
+<p>还有一种实现调试的方式，比如上面的user模块，目录下面的build.gradle文件是这样的</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">&#x27;com.android.library&#x27;</span></span><br><span class="line"></span><br><span class="line">xxx</span><br><span class="line">xxx</span><br></pre></td></tr></table></figure>
+
+<p>我们可以在gradle.properties中设置编译变参数isLibModule，当需要完整调试好，设置为<code>isLibModule=false</code>，这样我这个子模块就是一个<code>apply plugin: &#39;com.android.application&#39;</code>这样的模块，是可以单独运行的一个项目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    if (isLibModule) &#123;</span><br><span class="line">        apply from: &quot;./build_lib.gradle&quot;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        apply from: &quot;./build_app.gradle&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; catch (e) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可能有时候还是需要单独的运行环境，android编译方式有2中，一种是debug，一种是release。当打包成aar的时候，使用的是release方式，我们可以把需要调试的代码全部放到debug中，这样打包的时候就不会把调试的文件发布到aar中。不过这种实现方式，需要对Android项目的目录有较高的认识，才可以熟练使用。</p>
+<h3 id="CI"><a href="#CI" class="headerlink" title="CI"></a>CI</h3><p>上面介绍的各个模块需要单独到独立的git仓库，同时打包到单独的maven仓库，当开发完成后，这时候就需要进行打包，但这个是一个简单和重复的事情，所以我们需要一个工具来完成这些事情，我们可以利用CI系统来搞定这件事情，这里我推荐Jenkins，主流厂商使用jenkins作为CI服务器这个方案。</p>
+<p>具体的步骤就是，需要对每个模块的git仓库做web hook，我们公司使用的是git lab，可以对git的各种操作做hook，比如push，merge，tag等。</p>
+<p>当代码发送了变化了，我们可以发送事件到CI服务器，CI服务器再对各个事件做处理，比如user模块develop分支有代码变化，这个变化可能是merge，也有可能是push。我们可以把主项目代码和user项目的代码单独clone下拉，然后编译一下，确认是否有编译问题，如果有编译通过，那么在使用相关gradle命令发布到maven仓库中。</p>
+<p>不管每次编译结果怎样，是成功还是失败，我们都应该把结果回馈给开发者，常见的方式是邮件，不过这个信息邮件方式可能很频繁，我们建议使用slack。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>模块化架构主要思路就是分而治之，把依赖整理清楚，减少代码冗余和耦合，在把代码抽取到各自的模块后，了解各个模块的通信方式，以及可能发生的问题，规避问题或者解决问题。最后为了开发和调试方便，开发一些周边工具，帮助开发更好的完成任务。</p>
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a href="http://mobile.51cto.com/app-show-523490.htm">天猫手机解耦之路</a></p>
+<p><a href="https://github.com/alibaba/BeeHive">iOS 模块化BeeHive</a></p>
+<p><a href="http://limboy.me/tech/2016/03/10/mgj-components.html">蘑菇街 App 的组件化之路</a></p>
+<p><a href="http://limboy.me/tech/2016/03/14/mgj-components-continued.html">蘑菇街 App 的组件化之路·续</a></p>
+<p><a href="https://casatwy.com/iOS-Modulization.html">iOS应用架构谈 组件化方案</a></p>
+<p><a href="http://jboss-javassist.github.io/javassist/">javassist资料</a></p>
+<p><a href="http://www.jianshu.com/p/34f23b694412">iOS组件化方案调研</a></p>
+<p><a href="http://www.cnblogs.com/baronzhang/p/6442047.html">安居客Android项目架构演进</a></p>
+<p><a href="https://github.com/LiushuiXiaoxia/AndroidModular/">关于Android模块化我有一些话不知当讲不当讲</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">流水不腐小夏</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://mycommons.cn/2017/05/21/Android-Modular/">https://mycommons.cn/2017/05/21/Android-Modular/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">流水不腐小夏</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Android-Modular/">
+                                    <span class="chip bg-color">Android Modular</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/">
+                                    <span class="chip bg-color">模块化</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/images/alipay.jpeg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/images/wechat_pay.jpeg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://mycommons.cn/2017/05/21/Android-Modular/';
+        this.page.identifier = '/2017/05/21/Android-Modular/';
+        this.page.title = '关于Android模块化我有一些话不知当讲不当讲';
+    };
+    let disqus_shortname = 'mycommons-cn';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2017/07/11/CodeAnalysis/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Android静态代码分析">
+                        
+                        <span class="card-title">Android静态代码分析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android静态代码分析
+最佳项目里面来了很多新的小伙伴，然后每个人的代码风格还不一样，虽然有代码风格文档以及代码review。
+但是这些东西需要花费很多人力和时间来做，所以就研究了下静态代码分析，能用工具完成的坚决不用人肉。同时静态代码
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2017-07-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/" class="post-category">
+                                    代码分析
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">代码分析</span>
+                    </a>
+                    
+                    <a href="/tags/Android%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">Android静态代码分析</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/05/11/AutoValue/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Android Model正确使用姿势——AutoValue">
+                        
+                        <span class="card-title">Android Model正确使用姿势——AutoValue</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android Model正确使用姿势——AutoValue
+最近看到几篇博客是关于AutoValue的，然后自己十分喜欢，一下子觉的这样写代码很优雅，所以决定自己也写一篇文章介绍下AutoValue。
+本文最先发表于Github，如有转载
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-05-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Libs/" class="post-category">
+                                    Libs
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/AutoValue/">
+                        <span class="chip bg-color">AutoValue</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2015-2021</span>
+            
+            <span id="year">2015</span>
+            <a href="/about" target="_blank">流水不腐小夏</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LiushuiXiaoxia" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:xiaqiulei@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?55458ffca1f60dd283f11b9a7f82b262";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,1385 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android Model正确使用姿势——AutoValue, 流水不腐小夏">
+    <meta name="description" content="Liushuixiaoxia(流水不腐小夏) https://github.com/LiushuiXiaoxia">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Android Model正确使用姿势——AutoValue | 流水不腐小夏</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">流水不腐小夏</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">流水不腐小夏</div>
+        <div class="logo-desc">
+            
+            Liushuixiaoxia(流水不腐小夏) https://github.com/LiushuiXiaoxia
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Android Model正确使用姿势——AutoValue</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/AutoValue/">
+                                <span class="chip bg-color">AutoValue</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Libs/" class="post-category">
+                                Libs
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-05-11
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Android-Model正确使用姿势——AutoValue"><a href="#Android-Model正确使用姿势——AutoValue" class="headerlink" title="Android Model正确使用姿势——AutoValue"></a>Android Model正确使用姿势——AutoValue</h1><hr>
+<p>最近看到几篇博客是关于AutoValue的，然后自己十分喜欢，一下子觉的这样写代码很<strong>优雅</strong>，所以决定自己也写一篇文章介绍下AutoValue。</p>
+<p><strong>本文最先发表于<a href="https://github.com/LiushuiXiaoxia/AutoValueDemo">Github</a>，如有转载，请注明转载出处。</strong></p>
+<span id="more"></span>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>首先说Android Model，在开发中网络请求，以及数据库操作等，我们都会定义一个Model，不同人对这个的说法不一样，比如有Entry，Bean，Pojo。</p>
+<p>然后开发的过程中会遇到下面问题：</p>
+<ul>
+<li><p>构成方法：自定义构造方法，如果实体比较复杂，可能会用到工厂模式或者是建造者模式</p>
+</li>
+<li><p>序列化：比如实现Serializable接口，Parcelable接口。</p>
+</li>
+<li><p>Json解析：有时候直接使用的是json数据，比如@SerializedName注解。</p>
+</li>
+<li><p>自定义方法：对Model的字段有setter，getter方法，toString的实现，在处理hash的时候，需要实现equals和hashcode方法。</p>
+</li>
+</ul>
+<p>以上这么问题，其实在Eclipse和Android Studio中都是有快捷功能帮我们自动生成，后面的代码示例，就是我用Android Studio自动生成的。</p>
+<p>比如下面一个User类是我们的本次示例的一个Model，如果按照正常的写法，是这样的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SerializedName(&quot;id&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SerializedName(&quot;name&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == o) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        User user = (User) o;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (id != user.id) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> name != <span class="keyword">null</span> ? name.equals(user.name) : user.name == <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = id;</span><br><span class="line">        result = <span class="number">31</span> * result + (name != <span class="keyword">null</span> ? name.hashCode() : <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;User&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;id=&quot;</span> + id +</span><br><span class="line">                <span class="string">&quot;, name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>官方文档给出的解释是这样的，大致意思是说是一个生成Java不可变的值类型工具，仔细研读源代码后，使用的技术是Java Apt，这个后面再做详细解释。</p>
+<blockquote>
+<p>AutoValue - Immutable value-type code generation for Java 1.6+.</p>
+</blockquote>
+<h1 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h1><p>按照上面的例子，如果是AutoValue，代码是这样的。</p>
+<p>首先需要在Android项目里面引入apt功能，在项目根目录的gradle中添加，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &#x27;com.android.tools.build:gradle:2.2.2&#x27;</span><br><span class="line">        // 引入apt插件</span><br><span class="line">        classpath &#x27;com.neenbedankt.gradle.plugins:android-apt:1.8&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其次在module(一般是app目录)中gradle使用apt插件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;com.android.application&#x27;</span><br><span class="line">apply plugin: &#x27;com.neenbedankt.android-apt&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>最后加入AutoValue依赖。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    provided &#x27;com.google.auto.value:auto-value:1.3&#x27;</span><br><span class="line">    apt &#x27;com.google.auto.value:auto-value:1.3&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改User类，如下所示，User已经变成了一个抽象类，类似于使用Retrofit一样，申明已经变成了一个接口，然后实现类是由AutoValue生成的代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.google.auto.value.AutoValue;</span><br><span class="line"></span><br><span class="line"><span class="meta">@AutoValue</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">id</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> User <span class="title">newInstance</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AutoValue_User(id, name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看看AutoValue到底干了什么？</p>
+<p>AutoValue会自动生成一个AutoValue_User，这个类是继承了上面申明的User类，这个是默认default的访问权限，那么在其他package中是无法访问的，这样在其他代码里面也不会看到这么奇怪的名字。</p>
+<p>同时所有的字段都是final类型，如果字段是对象类型的，那么还不能为空，这个问题先保留，后面再做详解。因为申明的是final类型，那么所有的字段都是没有setter方法的。</p>
+<p>代码里同时也实现了equals、hashcode、toString方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">AutoValue_User</span> <span class="keyword">extends</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> id;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line"></span><br><span class="line">  AutoValue_User(</span><br><span class="line">      <span class="keyword">int</span> id,</span><br><span class="line">      String name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">    <span class="keyword">if</span> (name == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">&quot;Null name&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">id</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> id;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;User&#123;&quot;</span></span><br><span class="line">        + <span class="string">&quot;id=&quot;</span> + id + <span class="string">&quot;, &quot;</span></span><br><span class="line">        + <span class="string">&quot;name=&quot;</span> + name</span><br><span class="line">        + <span class="string">&quot;&#125;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">this</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (o <span class="keyword">instanceof</span> User) &#123;</span><br><span class="line">      User that = (User) o;</span><br><span class="line">      <span class="keyword">return</span> (<span class="keyword">this</span>.id == that.id())</span><br><span class="line">           &amp;&amp; (<span class="keyword">this</span>.name.equals(that.name()));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h = <span class="number">1</span>;</span><br><span class="line">    h *= <span class="number">1000003</span>;</span><br><span class="line">    h ^= <span class="keyword">this</span>.id;</span><br><span class="line">    h *= <span class="number">1000003</span>;</span><br><span class="line">    h ^= <span class="keyword">this</span>.name.hashCode();</span><br><span class="line">    <span class="keyword">return</span> h;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Immutable-Value-types"><a href="#Immutable-Value-types" class="headerlink" title="Immutable/Value types"></a>Immutable/Value types</h1><p>刚刚上面说到，所有的字段都是final类型，那么而且实现类也是final的，有个专业术语叫Immutable。</p>
+<p>Immutable/Value types 这个概念对有些朋友来说可能还比较陌生，简单来说就是一个数据对象一旦构造完成，就再也无法修改了。</p>
+<p>这样有什么好处呢？最大的好处就是多线程访问可以省去很多同步控制，因为它们是不可变的，一旦构造完成，就不会存在多线程竞争访问问题了。多线程最麻烦的处理就是控制好读写问题，如果大家都是读，那么就不存控制了，所以省去了很多同步操作。</p>
+<p>更多关于Immutable 的介绍，可以参阅 <a href="https://en.wikipedia.org/wiki/Immutable_object">wiki</a> 。</p>
+<p>举个Java中的例子：String和StringBuilder，String是immutable的，每次对于String对象的修改都将产生一个新的String对象，而原来的对象保持不变，而StringBuilder是mutable，因为每次对于它的对象的修改都作用于该对象本身，并没有产生新的对象。</p>
+<p>Immutable objects 比传统的mutable对象在多线程应用中更具有优势，它不仅能够保证对象的状态不被改变，而且还可以不使用锁机制就能被其他线程共享。</p>
+<p>总结下Immutable对象的优缺点：</p>
+<p><strong>优点</strong></p>
+<ul>
+<li>Immutable对象是线程安全的，可以不用被synchronize就在并发环境中共享</li>
+<li>Immutable对象简化了程序开发，因为它无需使用额外的锁机制就可以在线程间共享</li>
+<li>Immutable对象提高了程序的性能，因为它减少了synchroinzed的使用</li>
+<li>Immutable对象是可以被重复使用的，你可以将它们缓存起来重复使用，就像字符串字面量和整型数字一样。你可以使用静态工厂方法来提供类似于valueOf（）这样的方法，它可以从缓存中返回一个已经存在的Immutable对象，而不是重新创建一个。</li>
+</ul>
+<p><strong>缺点</strong></p>
+<p>Immutable也有一个缺点就是会制造大量垃圾，由于他们不能被重用而且对于它们的使用就是”用“然后”扔“，字符串就是一个典型的例子，它会创造很多的垃圾，给垃圾收集带来很大的麻烦。当然这只是个极端的例子，合理的使用immutable对象会创造很大的价值。</p>
+<h1 id="高级使用"><a href="#高级使用" class="headerlink" title="高级使用"></a>高级使用</h1><h2 id="Nullable"><a href="#Nullable" class="headerlink" title="Nullable"></a>Nullable</h2><p>上面说过如果类中有对象类型的成员变量，那么是为非空的，但是在实际情况下，有的字段的是值就是为null，所以在申明时候可申明为Nullable就可以了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.support.annotation.Nullable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.google.auto.value.AutoValue;</span><br><span class="line"><span class="keyword">import</span> com.google.gson.annotations.SerializedName;</span><br><span class="line"></span><br><span class="line"><span class="meta">@AutoValue</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">NullableUser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SerializedName(&quot;id&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">id</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@SerializedName(&quot;name&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> NullableUser <span class="title">newInstance</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AutoValue_NullableUser(id, name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>生成代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">AutoValue_NullableUser</span> <span class="keyword">extends</span> <span class="title">NullableUser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> id;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line"></span><br><span class="line">  AutoValue_NullableUser(</span><br><span class="line">      <span class="keyword">int</span> id,</span><br><span class="line">      <span class="meta">@Nullable</span> String name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试用例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test(expected = NullPointerException.class)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUserNullPointException</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    User.newInstance(<span class="number">100</span>, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUserNullable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    NullableUser user = NullableUser.newInstance(<span class="number">100</span>, <span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;user = &quot;</span> + user);</span><br><span class="line">    Assert.assertEquals(user.id(), <span class="number">100</span>);</span><br><span class="line">    Assert.assertEquals(user.name(), <span class="string">&quot;test&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Gson序列化"><a href="#Gson序列化" class="headerlink" title="Gson序列化"></a>Gson序列化</h2><p>Gson 使用比较麻烦，在普通的Model中，只需要在字段上面添加 @SerializedName注解即可。但是使用AutoValue，稍微有点繁琐。</p>
+<p>首先需要引入一个依赖包，这里是<a href="https://github.com/rharter/auto-value-gson">Auto value gson Github</a>。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">provided <span class="string">&#x27;com.ryanharter.auto.value:auto-value-gson:0.4.4&#x27;</span></span><br><span class="line">apt <span class="string">&#x27;com.ryanharter.auto.value:auto-value-gson:0.4.4&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>其次申明的抽象类中，每个方法上面添加对应的注解，然后再添加一个<code>typeAdapter</code>方法，申明这个方法，Gson就会根据这个找到对应的adapter，如下所示。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AutoValue</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SerializedName(&quot;id&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">id</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SerializedName(&quot;name&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> User <span class="title">newInstance</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AutoValue_User(id, name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TypeAdapter&lt;User&gt; <span class="title">typeAdapter</span><span class="params">(Gson gson)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AutoValue_User.GsonTypeAdapter(gson);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>typeAdapter</code>方法模板如下，T就是你当前Model的名字，写完以后会出现错误，没事重新编译下就好了，这样就会重新生成了代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TypeAdapter&lt;T&gt; <span class="title">typeAdapter</span><span class="params">(Gson gson)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">new</span> AutoValue_T.GsonTypeAdapter(gson);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第三申明一个TypeAdapterFactory的一个实现类，这个类是abstract的，AutoValue也会自动生成其实现类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GsonTypeAdapterFactory</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapterFactory</span> <span class="keyword">implements</span> <span class="title">TypeAdapterFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TypeAdapterFactory <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AutoValueGson_MyAdapterFactory();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后是单元测试，在json字符串转Model的时候，会使用一个Gson对象，这个对象不是平常使用的对象，需要自定义配置一些东西，然后这里就用到了上面所申明的<code>MyAdapterFactory</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUserToJson</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User user = User.newInstance(<span class="number">100</span>, <span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line">    String json = <span class="keyword">new</span> Gson().toJson(user);</span><br><span class="line">    System.out.println(json);</span><br><span class="line"></span><br><span class="line">    Assert.assertEquals(<span class="string">&quot;&#123;\&quot;id\&quot;:100,\&quot;name\&quot;:\&quot;test\&quot;&#125;&quot;</span>, json);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUserParseFromJson</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String json = <span class="string">&quot;&#123;\&quot;id\&quot;:100,\&quot;name\&quot;:\&quot;test\&quot;&#125;&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 自定义的Gson对象，需要配置 MyAdapterFactory</span></span><br><span class="line">    Gson gson = <span class="keyword">new</span> GsonBuilder().registerTypeAdapterFactory(MyAdapterFactory.create()).create();</span><br><span class="line"></span><br><span class="line">    User user = gson.fromJson(json, User.class);</span><br><span class="line">    System.out.println(user);</span><br><span class="line">    Assert.assertNotNull(user);</span><br><span class="line">    Assert.assertEquals(user.name(), <span class="string">&quot;test&quot;</span>);</span><br><span class="line">    Assert.assertEquals(user.id(), <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    NullableUser nullableUser = gson.fromJson(json, NullableUser.class);</span><br><span class="line">    System.out.println(nullableUser);</span><br><span class="line">    Assert.assertNotNull(nullableUser);</span><br><span class="line">    Assert.assertEquals(nullableUser.name(), <span class="string">&quot;test&quot;</span>);</span><br><span class="line">    Assert.assertEquals(nullableUser.id(), <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Serializable-amp-Parcelable"><a href="#Serializable-amp-Parcelable" class="headerlink" title="Serializable &amp; Parcelable"></a>Serializable &amp; Parcelable</h2><p>Serializable是Java自带的序列化方式，和AutoValue结合不影响原先使用，只需要在申明的Model中实现Serializable接口即可。</p>
+<p>Parcelable是Android提供的序列化方式，如果需要和AutoValue结合使用，和Serializable基本差不多，实现相关接口，然后在Gradle文件引入相关apt依赖即可。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt <span class="string">&#x27;com.ryanharter.auto.value:auto-value-parcel:0.2.5&#x27;</span></span><br><span class="line">// Optionally <span class="keyword">for</span> TypeAdapter support</span><br><span class="line">// compile <span class="string">&#x27;com.ryanharter.auto.value:auto-value-parcel-adapter:0.2.5&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/rharter/auto-value-parcel">auto-value-parcel Github地址</a></p>
+<p>上面的<code>auto-value-parcel-adapter</code>是可选项，是auto-value-parcel提供自定义类型转化，相关使用可以参见Github地址。</p>
+<p>检查下Autovalue自动给我们实现的代码，果然不出所料，全部自动生成了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">AutoValue_User</span> <span class="keyword">extends</span> $<span class="title">AutoValue_User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Parcelable.Creator&lt;AutoValue_User&gt; CREATOR = <span class="keyword">new</span> Parcelable.Creator&lt;AutoValue_User&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AutoValue_User <span class="title">createFromParcel</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> AutoValue_User(</span><br><span class="line">          in.readInt(),</span><br><span class="line">          in.readString()</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> AutoValue_User[] newArray(<span class="keyword">int</span> size) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> AutoValue_User[size];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  AutoValue_User(<span class="keyword">int</span> id, String name) &#123;</span><br><span class="line">    <span class="keyword">super</span>(id, name);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel dest, <span class="keyword">int</span> flags)</span> </span>&#123;</span><br><span class="line">    dest.writeInt(id());</span><br><span class="line">    dest.writeString(name());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Retrofit和Rxjava结合使用"><a href="#Retrofit和Rxjava结合使用" class="headerlink" title="Retrofit和Rxjava结合使用"></a>Retrofit和Rxjava结合使用</h2><p>Android 开发的时候，很多开发者使用Retrofit这个网络库，以及RxJava异步工具。下面举例如何结合使用AutoValue，Retrofit，Rxjava。</p>
+<p>这里有个获取天气的接口，返回的结果是json，我们用这个来测试下Retrofit。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// https://api.thinkpage.cn/v3/weather/now.json?key=x4qjfuniyu97mt9y&amp;location=beijing&amp;language=zh-Hans&amp;unit=c</span><br><span class="line">&#123;</span><br><span class="line">  &quot;results&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;location&quot;: &#123;</span><br><span class="line">        &quot;id&quot;: &quot;WX4FBXXFKE4F&quot;,</span><br><span class="line">        &quot;name&quot;: &quot;北京&quot;,</span><br><span class="line">        &quot;country&quot;: &quot;CN&quot;,</span><br><span class="line">        &quot;path&quot;: &quot;北京,北京,中国&quot;,</span><br><span class="line">        &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,</span><br><span class="line">        &quot;timezone_offset&quot;: &quot;+08:00&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;now&quot;: &#123;</span><br><span class="line">        &quot;text&quot;: &quot;霾&quot;,</span><br><span class="line">        &quot;code&quot;: &quot;31&quot;,</span><br><span class="line">        &quot;temperature&quot;: &quot;10&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;last_update&quot;: &quot;2016-12-02T14:45:00+08:00&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>申明Retrofit Api接口，一个普通的调用，一个是RxJava的方式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IWeatherApi</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GET(&quot;/v3/weather/now.json?key=x4qjfuniyu97mt9y&amp;location=beijing&amp;language=zh-Hans&amp;unit=c&quot;)</span></span><br><span class="line">    <span class="function">Call&lt;Weather&gt; <span class="title">getWeather</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GET(&quot;/v3/weather/now.json?key=x4qjfuniyu97mt9y&amp;location=beijing&amp;language=zh-Hans&amp;unit=c&quot;)</span></span><br><span class="line">    <span class="function">Observable&lt;Weather&gt; <span class="title">getWeatherWithRx</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Retrofit 接口创建</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RetrofitUtil</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">createApi</span><span class="params">(<span class="meta">@NonNull</span> Class&lt;T&gt; tClass, Gson gson)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Retrofit.Builder()</span><br><span class="line">                .baseUrl(<span class="string">&quot;https://api.thinkpage.cn&quot;</span>)</span><br><span class="line">                .client(<span class="keyword">new</span> OkHttpClient.Builder().build())</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create(gson))</span><br><span class="line">                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</span><br><span class="line">                .build()</span><br><span class="line">                .create(tClass);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Weather Model申明</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Weather</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SerializedName(&quot;results&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> List&lt;ResultsItem&gt; <span class="title">results</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TypeAdapter&lt;Weather&gt; <span class="title">typeAdapter</span><span class="params">(Gson gson)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AutoValue_Weather.GsonTypeAdapter(gson);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试用例，注意：Retrofit使用Gson和前面使用Gson使用方式一样，需要自己自定义，不然无法解决json解析问题。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testRetrofitWithAutoValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Gson gson = <span class="keyword">new</span> GsonBuilder().registerTypeAdapterFactory(MyAdapterFactory.create()).create();</span><br><span class="line">    IWeatherApi weatherApi = RetrofitUtil.createApi(IWeatherApi.class, gson);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 同步调用</span></span><br><span class="line">        Weather weather = weatherApi.getWeather().execute().body();</span><br><span class="line">        Assert.assertNotNull(weather);</span><br><span class="line"></span><br><span class="line">        System.out.println(weather);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Rxjava 使用</span></span><br><span class="line">        weatherApi.getWeatherWithRx().subscribe(<span class="keyword">new</span> Action1&lt;Weather&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Weather weather)</span> </span>&#123;</span><br><span class="line">                System.out.println(weather);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果，正常的返回天气信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Weather&#123;results=[ResultsItem&#123;now=Now&#123;code=31, temperature=9, text=霾&#125;, lastUpdate=2016-12-02T14:15:00+08:00, location=Location&#123;country=CN, path=北京,北京,中国, timezone=Asia/Shanghai, timezoneOffset=+08:00, name=北京, id=WX4FBXXFKE4F&#125;&#125;]&#125;</span><br><span class="line">Weather&#123;results=[ResultsItem&#123;now=Now&#123;code=31, temperature=9, text=霾&#125;, lastUpdate=2016-12-02T14:15:00+08:00, location=Location&#123;country=CN, path=北京,北京,中国, timezone=Asia/Shanghai, timezoneOffset=+08:00, name=北京, id=WX4FBXXFKE4F&#125;&#125;]&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="相关插件"><a href="#相关插件" class="headerlink" title="相关插件"></a>相关插件</h1><h2 id="RoboPOJOGenerator"><a href="#RoboPOJOGenerator" class="headerlink" title="RoboPOJOGenerator"></a>RoboPOJOGenerator</h2><p>GsonFormat是一款Android Studio的插件，它可以把json字符串，转变成Model对象，很多人都喜欢用它。</p>
+<p>但是如果使用了AutoValue，那么原先的插件就不能使用了，没有关系，本来打算自己高仿GsonFormat重新写了一个插件，以实现我们的需求，后面又发现有一款插件可以实现——RoboPOJOGenerator。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AutoValueDemo/master/doc/1.png"></p>
+<p>RoboPOJOGenerator使用， <a href="https://github.com/robohorse/RoboPOJOGenerator">RoboPOJOGenerator Github地址</a></p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AutoValueDemo/master/doc/2.gif"></p>
+<h2 id="AutoValue-plugin"><a href="#AutoValue-plugin" class="headerlink" title="AutoValue plugin"></a>AutoValue plugin</h2><p>上面我们发现有了json字符串，有时候还要写factory和buildder方法，那么问题来了，没有插件能帮我们实现这个步骤，然代码更加的优雅，开发更加高效？</p>
+<p>答案是肯定的，Autovalue plugin就是干这个事的。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AutoValueDemo/master/doc/3.png"></p>
+<p><a href="https://github.com/afcastano/AutoValuePlugin">Auto value plugin Github</a></p>
+<p>我们用刚刚上面的Weather做演示，相关演示：</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AutoValueDemo/master/doc/4.gif"></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h1><p>本文重点介绍的AutoValue只是 <a href="https://github.com/google/auto">Google Auto</a> 中的一小部分，Auto中还有其他好玩的。</p>
+<h2 id="AutoFactory"><a href="#AutoFactory" class="headerlink" title="AutoFactory"></a>AutoFactory</h2><p>AutoFactory和AutoValue类似，可以自动帮助代码生成工厂类，兼容Java 依赖注入标准（JSR-330）。</p>
+<p>代码示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AutoFactory</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryUser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FactoryUser</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;FactoryUser&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;id=&quot;</span> + id +</span><br><span class="line">                <span class="string">&quot;, name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>生成后的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryUserFactory</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Inject</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FactoryUserFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> FactoryUser <span class="title">create</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> FactoryUser(id, name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFactoryUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    FactoryUser user = <span class="keyword">new</span> FactoryUserFactory().create(<span class="number">100</span>, <span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line">    System.out.println(user);</span><br><span class="line">    Assert.assertNotNull(user);</span><br><span class="line">    Assert.assertEquals(<span class="number">100</span>, user.getId());</span><br><span class="line">    Assert.assertEquals(<span class="string">&quot;test&quot;</span>, user.getName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="AutoService"><a href="#AutoService" class="headerlink" title="AutoService"></a>AutoService</h2><p>AutoService比较简单，就是在使用Java APT的时候，使用AutoService注解，可以自动生成meta信息。</p>
+<h2 id="AutoCommon"><a href="#AutoCommon" class="headerlink" title="AutoCommon"></a>AutoCommon</h2><p>这个是Google对Java Apt的一个扩展，一般的在自己写Apt的时候，都需要继承<code>AbstractProcessor</code>，但是google对它进行了扩展，<code>BasicAnnotationProcessor</code>，如果你想自己写个工具，那么就可以使用这个了。</p>
+<p>给大家举个栗子，Dagger当初是Square公司受到Guice的启发，然后自己开发出一套依赖注入框架，当时Dagger使用的是Java反射，大家知道Java反射的效率其实并不高。</p>
+<p>再后来都到了AutoValue的启发，在Dagger的分支上切个新分支，开发出Dagger2，然后这个Dagger2是由Google维护的，我们可以在Dagger2的Github上面找到证据。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AutoValueDemo/master/doc/5.png"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h1 id="Auto相关使用"><a href="#Auto相关使用" class="headerlink" title="Auto相关使用"></a>Auto相关使用</h1><h2 id="IntentBuilder"><a href="#IntentBuilder" class="headerlink" title="IntentBuilder"></a>IntentBuilder</h2><p>有时候几个Activity之间相互跳转的时候需要传递一些参数，这些参数可以是基本类型，也有可能是复杂的类型，如果是负责的类型，必须要实现Serializable 或 Parcelable接口，上面也有介绍。</p>
+<p>下面推IntentBuilder，IntentBuilder也是利用代码生成的方法实现的。</p>
+<p><a href="https://github.com/emilsjolander/IntentBuilder">IntentBuilder Github</a></p>
+<p>Activity传参</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IntentBuilder</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DetailActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Extra</span></span><br><span class="line">    String id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Extra</span> <span class="meta">@Nullable</span></span><br><span class="line">    String title;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        DetailActivityIntentBuilder.inject(getIntent(), <span class="keyword">this</span>);</span><br><span class="line">        <span class="comment">// TODO use id and title</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用方式</span></span><br><span class="line">startActivity(</span><br><span class="line">    <span class="keyword">new</span> DetailActivityIntentBuilder(<span class="string">&quot;12345&quot;</span>)</span><br><span class="line">        .title(<span class="string">&quot;MyTitle&quot;</span>)</span><br><span class="line">        .build(context)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>Service传参</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IntentBuilder</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DownloadService</span> <span class="keyword">extends</span> <span class="title">IntentService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Extra</span></span><br><span class="line">    String downloadUrl;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        MyServiceIntentBuilder.inject(intent, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">startService(<span class="keyword">new</span> DownloadServiceIntentBuilder(<span class="string">&quot;http://google.com&quot;</span>).build(context))</span><br></pre></td></tr></table></figure>
+
+<h2 id="FragmentArgs"><a href="#FragmentArgs" class="headerlink" title="FragmentArgs"></a>FragmentArgs</h2><p>上面介绍了Activity、Service的传参，但Fragment的传参方式是不一样的，还有需要提醒一句一般通过setter方法给Fragment传参是不是正确的方式，必须通过setArgs的方式。</p>
+<p><a href="https://github.com/sockeqwe/fragmentargs">fragmentargs Github</a></p>
+<p>相关代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FragmentWithArgs</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Arg</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        FragmentArgs.inject(<span class="keyword">this</span>); </span><br><span class="line">        <span class="comment">// inject 之后，就可以使用 id 了</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MyFragment fragment = MyFragmentBuilder.newMyFragment(<span class="number">101</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="其他相关"><a href="#其他相关" class="headerlink" title="其他相关"></a>其他相关</h1><h2 id="Kotlin-Data-Class"><a href="#Kotlin-Data-Class" class="headerlink" title="Kotlin Data Class"></a>Kotlin Data Class</h2><p>Kotlin 是一个基于 JVM 的新的编程语言，由 JetBrains 开发。有机会可以向大家介绍这种语言。</p>
+<p>Kotlin 中提供一种类似于AutoValue中的功能，Data Class表示这个类似是一个数据类型。</p>
+<p>比如下面是kotlin中对Model的写法，就是这么的简单、明了、优雅。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">KotlinUser</span></span>(<span class="keyword">val</span> id: <span class="built_in">Int</span>,</span><br><span class="line">                      <span class="keyword">val</span> name: String)</span><br></pre></td></tr></table></figure>
+
+<p>Kotlin与Java是可以相互调用的。下面是Java的测试用例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        KotlinUser user = <span class="keyword">new</span> KotlinUser(<span class="number">100</span>, <span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(user);</span><br><span class="line"></span><br><span class="line">        Assert.assertEquals(<span class="number">100</span>, user.getId());</span><br><span class="line">        Assert.assertEquals(<span class="string">&quot;test&quot;</span>, user.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以反编译Kotlin生成的class字节码，看看这个中间到底发生了什么，很明显Kotlin做了很多的语法糖，这里编译器生成的代码和上面Autovalue生成的代码很像。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AutoValueDemo/master/doc/6.png"></p>
+<h2 id="Object-C"><a href="#Object-C" class="headerlink" title="Object-C"></a>Object-C</h2><p>Object-C中可以过直接申明@property方式，然后就可以自动实现setter和getter方法，如果要实现Immutable type方式，需要注明readonly。</p>
+<p>hash、equals、description如果使用APPCode，代码是可以自动生成的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">@interface OcUser : NSObject</span><br><span class="line"></span><br><span class="line">@property(readonly) int id;</span><br><span class="line"></span><br><span class="line">@property(retain, readonly) NSString *name;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithId:(int)id name:(NSString *)name;</span><br><span class="line"></span><br><span class="line">- (NSString *)description;</span><br><span class="line"></span><br><span class="line">- (BOOL)isEqual:(id)other;</span><br><span class="line"></span><br><span class="line">- (BOOL)isEqualToUser:(OcUser *)user;</span><br><span class="line"></span><br><span class="line">- (NSUInteger)hash;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">// ==========================</span><br><span class="line"></span><br><span class="line">#import &quot;OcUser.h&quot;</span><br><span class="line">@implementation OcUser &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">- (instancetype)initWithId:(int)id name:(NSString *)name &#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        _id   = id;</span><br><span class="line">        _name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)isEqual:(id)other &#123;</span><br><span class="line">    if (other == self)</span><br><span class="line">        return YES;</span><br><span class="line">    if (!other || ![[other class] isEqual:[self class]])</span><br><span class="line">        return NO;</span><br><span class="line"></span><br><span class="line">    return [self isEqualToUser:other];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)isEqualToUser:(OcUser *)user &#123;</span><br><span class="line">    if (self == user)</span><br><span class="line">        return YES;</span><br><span class="line">    if (user == nil)</span><br><span class="line">        return NO;</span><br><span class="line">    if (self.id != user.id)</span><br><span class="line">        return NO;</span><br><span class="line">    return !(self.name != user.name &amp;&amp; ![self.name isEqualToString:user.name]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSUInteger)hash &#123;</span><br><span class="line">    NSUInteger hash = (NSUInteger) self.id;</span><br><span class="line">    hash = hash * 31u + [self.name hash];</span><br><span class="line">    return hash;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSString *)description &#123;</span><br><span class="line">    NSMutableString *description = [NSMutableString stringWithFormat:@&quot;&lt;%@: &quot;, NSStringFromClass([self class])];</span><br><span class="line">    [description appendFormat:@&quot;self.id=%i&quot;, self.id];</span><br><span class="line">    [description appendFormat:@&quot;, self.name=%@&quot;, self.name];</span><br><span class="line">    [description appendString:@&quot;&gt;&quot;];</span><br><span class="line">    return description;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>测试用例</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&quot;OcUser.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> *argv[]) &#123;</span><br><span class="line">    <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line">        OcUser *user = [[OcUser alloc] initWithId:<span class="number">100</span> name:<span class="string">@&quot;test&quot;</span>];</span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@&quot;user = %@&quot;</span>, user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// user = &lt;OcUser: self.id=100, self.name=test&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文主要介绍了Autovalue的主要用法，以及AutoValu周边只是，可能说的比较多，比较杂，而且有的地方也不够深入，但是个人觉的这是一种思路，一种解决方案，后面如果自己需要造轮子的时候，我们是可以借鉴的。</p>
+<p>本示例代码地址 <a href="https://github.com/LiushuiXiaoxia/AutoValueDemo">AutoValueDemo</a></p>
+<h1 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h1><p><a href="https://github.com/LiushuiXiaoxia/AutoValueDemo">AutoValueDemo</a></p>
+<p><a href="http://bigmercu.top/2016/09/08/%E5%AE%8C%E7%BE%8EModel%E4%B9%8BAutoValue%E4%BD%BF%E7%94%A8/">完美Model之AutoValue使用</a></p>
+<p><a href="http://blog.piasy.com/2016/05/06/Perfect-Android-Model-Layer/">完美的安卓 model 层架构（上）</a></p>
+<p><a href="http://blog.piasy.com/2016/05/12/Perfect-Android-Model-Layer-2/">完美的安卓 model 层架构（下）</a></p>
+<p><a href="https://github.com/google/auto/tree/master/value">AutoValue Github</a></p>
+<p><a href="https://my.oschina.net/jasonultimate/blog/166810">Java Immutable 介绍</a></p>
+<p><a href="https://github.com/rharter/auto-value-gson">Auto value gson Github</a></p>
+<p><a href="https://github.com/rharter/auto-value-parcel">Auto value parcel Github</a></p>
+<p><a href="https://github.com/robohorse/RoboPOJOGenerator">RoboPOJOGenerator Github</a></p>
+<p><a href="https://github.com/afcastano/AutoValuePlugin">Auto value plugin Github</a></p>
+<p><a href="https://github.com/emilsjolander/IntentBuilder">IntentBuilder Github</a></p>
+<p><a href="https://github.com/sockeqwe/fragmentargs">Fragmentargs Github</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">流水不腐小夏</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://mycommons.cn/2017/05/11/AutoValue/">https://mycommons.cn/2017/05/11/AutoValue/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">流水不腐小夏</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/AutoValue/">
+                                    <span class="chip bg-color">AutoValue</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/images/alipay.jpeg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/images/wechat_pay.jpeg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://mycommons.cn/2017/05/11/AutoValue/';
+        this.page.identifier = '/2017/05/11/AutoValue/';
+        this.page.title = 'Android Model正确使用姿势——AutoValue';
+    };
+    let disqus_shortname = 'mycommons-cn';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2017/05/21/Android-Modular/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="关于Android模块化我有一些话不知当讲不当讲">
+                        
+                        <span class="card-title">关于Android模块化我有一些话不知当讲不当讲</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            关于Android模块化我有一些话不知当讲不当讲
+最近公司一个项目使用了模块化设计，本人参与其中的一个小模块开发，但是整体的设计并不是我架构设计的，开发半年有余，在此记录下来我的想法。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2017-05-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android-Modular/">
+                        <span class="chip bg-color">Android Modular</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/">
+                        <span class="chip bg-color">模块化</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/04/18/AutoValue2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="安利AutoValue第二波">
+                        
+                        <span class="card-title">安利AutoValue第二波</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            安利AutoValue第二波
+简介前面介绍了如何使用AutoValue如何使用, 参见这里Android Model正确使用姿势——AutoValue ，如果喜欢或者决定使用AutoValue的小伙伴是不是迫不及待打算开始使用。
+那么问题了
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-04-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Libs/" class="post-category">
+                                    Libs
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/AutoValue/">
+                        <span class="chip bg-color">AutoValue</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2015-2021</span>
+            
+            <span id="year">2015</span>
+            <a href="/about" target="_blank">流水不腐小夏</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LiushuiXiaoxia" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:xiaqiulei@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?55458ffca1f60dd283f11b9a7f82b262";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

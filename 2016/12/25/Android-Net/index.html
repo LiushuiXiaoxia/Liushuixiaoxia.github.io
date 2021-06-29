@@ -1,0 +1,1455 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android Http网络开发神兵利器, 流水不腐小夏">
+    <meta name="description" content="Liushuixiaoxia(流水不腐小夏) https://github.com/LiushuiXiaoxia">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Android Http网络开发神兵利器 | 流水不腐小夏</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">流水不腐小夏</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">流水不腐小夏</div>
+        <div class="logo-desc">
+            
+            Liushuixiaoxia(流水不腐小夏) https://github.com/LiushuiXiaoxia
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Android Http网络开发神兵利器</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/">
+                                <span class="chip bg-color">Android</span>
+                            </a>
+                        
+                            <a href="/tags/Http/">
+                                <span class="chip bg-color">Http</span>
+                            </a>
+                        
+                            <a href="/tags/OkHttp/">
+                                <span class="chip bg-color">OkHttp</span>
+                            </a>
+                        
+                            <a href="/tags/Curl/">
+                                <span class="chip bg-color">Curl</span>
+                            </a>
+                        
+                            <a href="/tags/PostMan/">
+                                <span class="chip bg-color">PostMan</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2016-12-25
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Android-Http网络开发神兵利器"><a href="#Android-Http网络开发神兵利器" class="headerlink" title="Android Http网络开发神兵利器"></a>Android Http网络开发神兵利器</h1><hr>
+<p>本人在Android移动端开发已经有不少年的经验，经历颇多，感受颇深，特写下此文记录下在Android Http网络开发中的各种工具使用，如果有其他想法和建议，欢迎前来交流 <a href="mailto:&#120;&#105;&#97;&#113;&#105;&#x75;&#x6c;&#101;&#105;&#64;&#x31;&#50;&#54;&#x2e;&#99;&#x6f;&#109;">&#120;&#105;&#97;&#113;&#105;&#x75;&#x6c;&#101;&#105;&#64;&#x31;&#50;&#54;&#x2e;&#99;&#x6f;&#109;</a> 。 本人文笔较差，请不要见怪。</p>
+<p>Android开发的时候，很多APP都是基于网络请求的，大部分应用都是基于http的，少部分是基于Socket的，本文主要介绍Android Http开发的主要实践和工具。</p>
+<p>本文最先发表于<a href="https://github.com/LiushuiXiaoxia/AndroidHttp">Github</a>，如有转载，请注明转载出处。</p>
+<span id="more"></span>
+
+<h1 id="Http协议"><a href="#Http协议" class="headerlink" title="Http协议"></a>Http协议</h1><p>说起Http网络请求，那么要介绍下Http协议，我在公司面试的时候也很喜欢问这个问题。很多做好了3-5年的工程师，竟然不知道Http协议，只知道怎么调用类库，不知道原理。</p>
+<p>作为一个有追求的程序员，Http协议还是需要了解的。知其然知其所以然，在了解Http协议的情况下，才能在实际开发中灵活运用和优化。</p>
+<p>这里有篇 <a href="http://www.cnblogs.com/ranyonsue/p/5984001.html">文章</a> ，Http协议介绍的很详细。</p>
+<h2 id="HTTP简介"><a href="#HTTP简介" class="headerlink" title="HTTP简介"></a>HTTP简介</h2><p>HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。</p>
+<p>HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。</p>
+<p>HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。目前在WWW中使用的是HTTP/1.0的第六版，HTTP/1.1的规范化工作正在进行之中，而且HTTP-NG(Next Generation of HTTP)的建议已经提出。</p>
+<p>HTTP协议工作于客户端-服务端架构为上。浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。Web服务器根据接收到的请求后，向客户端发送响应信息。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/http_request_response.jpg"></p>
+<h2 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h2><p>1、简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</p>
+<p>2、灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。</p>
+<p>3.无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</p>
+<p>4.无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</p>
+<p>5、支持B/S及C/S模式。</p>
+<h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/http_request.png" alt="Http请求消息结构"></p>
+<p>上图是一个Http请求消息结构，我们可以使用抓包工具抓取网络请求,因为是Get请求，所以后面没有请求数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET /562f25980001b1b106000338.jpg HTTP/1.1</span><br><span class="line">Host    img.mukewang.com</span><br><span class="line">User-Agent    Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36</span><br><span class="line">Accept    image/webp,image/*,*/*;q=0.8</span><br><span class="line">Referer    http://www.imooc.com/</span><br><span class="line">Accept-Encoding    gzip, deflate, sdch</span><br><span class="line">Accept-Language    zh-CN,zh;q=0.8</span><br></pre></td></tr></table></figure>
+
+<p>第一部分：请求行，用来说明请求类型,要访问的资源以及所使用的HTTP版本.</p>
+<p>GET说明请求类型为GET,[/562f25980001b1b106000338.jpg]为要访问的资源，该行的最后一部分说明使用的是HTTP1.1版本。</p>
+<p>第二部分：请求头部，紧接着请求行（即第一行）之后的部分，用来说明服务器要使用的附加信息</p>
+<p>从第二行起为请求头部，HOST将指出请求的目的地.User-Agent,服务器端和客户端脚本都能访问它,它是浏览器类型检测逻辑的重要基础.该信息由你的浏览器来定义,并且在每个请求中自动发送等等</p>
+<p>第三部分：空行，请求头部后面的空行是必须的</p>
+<p>即使第四部分的请求数据为空，也必须有空行。</p>
+<p>第四部分：请求数据也叫主体，可以添加任意的其他数据。</p>
+<p>这个例子的请求数据为空。</p>
+<p>下面这个例子是Post方式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP1.1</span><br><span class="line">Host:www.wrox.com</span><br><span class="line">User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)</span><br><span class="line">Content-Type:application/x-www-form-urlencoded</span><br><span class="line">Content-Length:40</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line"></span><br><span class="line">name=Professional%20Ajax&amp;publisher=Wiley</span><br></pre></td></tr></table></figure>
+
+<p>第一部分：请求行，第一行明了是post请求，以及http1.1版本。</p>
+<p>第二部分：请求头部，第二行至第六行。</p>
+<p>第三部分：空行，第七行的空行。</p>
+<p>第四部分：请求数据，第八行。</p>
+<h2 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h2><p>一般情况下，服务器接收并处理客户端发过来的请求后会返回一个HTTP的响应消息。</p>
+<p>HTTP响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/http_reponse.jpg" alt="Http响应消息结构"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Fri, 22 May 2009 06:07:21 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">      &lt;head&gt;&lt;/head&gt;</span><br><span class="line">      &lt;body&gt;</span><br><span class="line">            &lt;!--body goes here--&gt;</span><br><span class="line">      &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>第一部分：状态行，由HTTP协议版本号， 状态码， 状态消息 三部分组成。</p>
+<p>第一行为状态行，（HTTP/1.1）表明HTTP版本为1.1版本，状态码为200，状态消息为（ok）</p>
+<p>第二部分：消息报头，用来说明客户端要使用的一些附加信息</p>
+<p>第二行和第三行为消息报头，<br>Date:生成响应的日期和时间；Content-Type:指定了MIME类型的HTML(text/html),编码类型是UTF-8</p>
+<p>第三部分：空行，消息报头后面的空行是必须的</p>
+<p>第四部分：响应正文，服务器返回给客户端的文本信息。</p>
+<p>空行后面的html部分为响应正文。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>状态代码有三位数字组成，第一个数字定义了响应的类别，共分五种类别:</p>
+<p>1xx：指示信息–表示请求已接收，继续处理</p>
+<p>2xx：成功–表示请求已被成功接收、理解、接受</p>
+<p>3xx：重定向–要完成请求必须进行更进一步的操作</p>
+<p>4xx：客户端错误–请求有语法错误或请求无法实现</p>
+<p>5xx：服务器端错误–服务器未能实现合法的请求</p>
+<p>常见状态码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">200 OK                        // 客户端请求成功</span><br><span class="line">400 Bad Request               // 客户端请求有语法错误，不能被服务器所理解</span><br><span class="line">401 Unauthorized              // 请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用</span><br><span class="line">403 Forbidden                 // 服务器收到请求，但是拒绝提供服务</span><br><span class="line">404 Not Found                 // 请求资源不存在，eg：输入了错误的URL</span><br><span class="line">500 Internal Server Error     // 服务器发生不可预期的错误</span><br><span class="line">503 Server Unavailable        // 服务器当前不能处理客户端的请求，一段时间后可能恢复正常</span><br></pre></td></tr></table></figure>
+
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p>根据HTTP标准，HTTP请求可以使用多种请求方法。<br>HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法。<br>HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET     请求指定的页面信息，并返回实体主体。</span><br><span class="line">HEAD     类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</span><br><span class="line">POST     向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</span><br><span class="line">PUT     从客户端向服务器传送的数据取代指定的文档的内容。</span><br><span class="line">DELETE      请求服务器删除指定的页面。</span><br><span class="line">CONNECT     HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</span><br><span class="line">OPTIONS     允许客户端查看服务器的性能。</span><br><span class="line">TRACE     回显服务器收到的请求，主要用于测试或诊断。</span><br></pre></td></tr></table></figure>
+
+<h2 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h2><p>HTTP消息由客户端到服务器的请求和服务器到客户端的响应组成。请求消息和响应消息都是由开始行（对于请求消息，开始行就是请求行，对于响应消息，开始行就是状态行），消息报头（可选），空行（只有CRLF的行），消息正文（可选）组成。</p>
+<p>HTTP消息报头包括普通报头、请求报头、响应报头、实体报头。<br>每一个报头域都是由名字+“：”+空格+值 组成，消息报头域的名字是大小写无关的。</p>
+<h1 id="网络请求库"><a href="#网络请求库" class="headerlink" title="网络请求库"></a>网络请求库</h1><p>下面介绍几个常见的Android http网路开发的工具库。</p>
+<h2 id="URLConnection"><a href="#URLConnection" class="headerlink" title="URLConnection"></a>URLConnection</h2><p>URLConnection是Java JDK中自带的网络请求类，使用的场景不多，因为使用比较繁琐，直接使用底层IO流进行开发，需要了解Http协议才能很好的使用，很多时候需要自己封装，不方便。一般的一些提供第三方服务的sdk会使用，一是为了保证sdk体积大小，二是减少不必要的第三方库引入。</p>
+<p>这里不做详细介绍， <a href="http://www.blogjava.net/supercrsky/articles/247449.html">这里有一篇博可以详细介绍了</a> 。</p>
+<h2 id="Apache-HttpClient"><a href="#Apache-HttpClient" class="headerlink" title="Apache HttpClient"></a>Apache HttpClient</h2><p>HttpClient是Apache Jakarta Common下的子项目，用来提供高效的、最新的、功能丰富的支持HTTP协议的客户端编程工具包，并且它支持HTTP协议最新的版本和建议。HttpClient已经应用在很多的项目中，比如Apache Jakarta上很著名的另外两个开源项目Cactus和HTMLUnit都使用了HttpClient。</p>
+<p>HttpClient相比传统JDK自带的URLConnection，增加了易用性和灵活性，它不仅是客户端发送Http请求变得容易，而且也方便了开发人员测试接口（基于Http协议的），即提高了开发的效率，也方便提高代码的健壮性。</p>
+<p>Android在低版本的系统Api中也有Httpclient相关类，但是后来就已经废弃,相关资料可以 <a href="https://developer.android.com/reference/org/apache/http/client/package-summary.html">参考这里</a>.</p>
+<p><a href="http://blog.csdn.net/wangpeng047/article/details/19624529">HttpClient相关博客</a></p>
+<h2 id="Volley"><a href="#Volley" class="headerlink" title="Volley"></a>Volley</h2><p><a href="https://developer.android.com/training/volley/index.html">Android Volley</a> 是在2013年Google I/O大会上推出了一个新的网络通信框架——Volley。Volley可是说是把AsyncHttpClient和Universal-Image-Loader的优点集于了一身，既可以像AsyncHttpClient一样非常简单地进行HTTP通信，也可以像Universal-Image-Loader一样轻松加载网络上的图片。除了简单易用之外，Volley在性能方面也进行了大幅度的调整，它的设计目标就是非常适合去进行数据量不大，但通信频繁的网络操作，而对于大数据量的网络操作，比如说下载文件等，Volley的表现就会非常糟糕。</p>
+<p>有 <a href="http://blog.csdn.net/guolin_blog/article/details/12452307">资料</a> 指出Volley在进行网络请求时，在Android 2.3及以上版本，使用的是HttpURLConnection，而在Android 2.2及以下版本，使用的是HttpClient。主要是因为HttpURLConnection存在相关bug。</p>
+<p><a href="http://blog.csdn.net/guolin_blog/article/details/17482095">Volley相关资料</a></p>
+<p><a href="http://blog.csdn.net/guolin_blog/article/details/12452307">Volley相关资料</a></p>
+<h2 id="OkHttp-amp-Retrofit"><a href="#OkHttp-amp-Retrofit" class="headerlink" title="OkHttp &amp; Retrofit"></a>OkHttp &amp; Retrofit</h2><p>OkHttpSquare公司开源的处理网络请求的开源项目,是安卓端最火热的轻量级框架，用于替代HttpUrlConnection和Apache HttpClient。最新的版本是OkHttp3，Github地址在 <a href="https://github.com/square/okhttp">这里</a> 。</p>
+<p>Retrofit也是是Square公司开发的一款针对Android网络请求的框架，Retrofit2底层基于OkHttp实现的，OkHttp现在已经得到Google官方认可，大量的app都采用OkHttp做网络请求， <a href="https://github.com/square/retrofit">Github地址</a> 。</p>
+<p>网络上也有很多关于OkHttp、Retrofit的示例和资料，而且是目前Android移动端最流行的框架，还是很值得了解一下，在这里就不做详细介绍。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="Charles"><a href="#Charles" class="headerlink" title="Charles"></a>Charles</h2><p>Charles是一个HTTP代理服务器,HTTP监视器,反转代理服务器·它允许一个开发者查看所有连接互联网的HTTP通信·这些包括request、response、headers（包含cookies与caching信息），由于笔者的开发机器是Mac，所以只介绍了Charles，Windows开发环境的同学可以使用fiddler。</p>
+<p><a href="http://blog.devtang.com/2015/11/14/charles-introduction/">Charles介绍</a></p>
+<p>Charles 主要的功能包括：</p>
+<blockquote>
+<p>截取 Http 和 Https 网络封包。</p>
+</blockquote>
+<blockquote>
+<p>支持网络请求调试，设置断点，方便调试</p>
+</blockquote>
+<blockquote>
+<p>支持重发网络请求，方便后端调试。</p>
+</blockquote>
+<blockquote>
+<p>支持修改网络请求参数。</p>
+</blockquote>
+<blockquote>
+<p>支持网络请求的截获并动态修改。</p>
+</blockquote>
+<blockquote>
+<p>支持模拟弱网。</p>
+</blockquote>
+<p>上面介绍了，可以使用Charles方便设置断点，方便调试，可以很容易的修改数据包，这样可以动态修改数据，mock api接口，在实际开发过程中很有用。</p>
+<p><a href="http://blog.csdn.net/guijiaoba/article/details/43198503">Charles Mock 数据</a></p>
+<h2 id="PostMan-amp-Paw"><a href="#PostMan-amp-Paw" class="headerlink" title="PostMan &amp; Paw"></a>PostMan &amp; Paw</h2><p>上面介绍了网络抓包工具Charles，先介绍2款模拟http请求的软件。</p>
+<p>Postman是一款功能强大的网页调试与发送网页HTTP请求的Chrome插件,使用很简单。</p>
+<p>下图模拟发送知乎Api的网络请求。</p>
+<p><code>http://news-at.zhihu.com/api/4/themes</code></p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/post_man.png"></p>
+<p><a href="https://www.getpostman.com/">Postman官网</a></p>
+<p><a href="http://chromecj.com/web-development/2014-09/60.html">Postman资料</a></p>
+<p>Paw 也是类似于Postman的一款模拟http请求的软件，只不过postman依赖于chrome，经常需要点击2此才可以打开postman，所以个人更加喜欢paw，下图是paw请求知乎api的示例。BTW, paw是一款收费的软件，不过么网上也有破解的，在这里就不介绍如何获取了，反正大家都懂的。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/paw.png"></p>
+<p><a href="https://paw.cloud/">Paw 官网</a></p>
+<p><a href="https://yq.aliyun.com/articles/29772">Paw 使用教程</a></p>
+<h2 id="Chrome-Dev-Tools"><a href="#Chrome-Dev-Tools" class="headerlink" title="Chrome Dev Tools"></a>Chrome Dev Tools</h2><p>Chrome dev tools是Google Chrome浏览器中自带一块调试工具。如果你是做软件开发的，基本都了解过。</p>
+<p>虽然Chrome dev tools 在web开发中使用很多，但是在移动端中也是有用到的，这个后面再介绍。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/chrome_dev_tools.png"></p>
+<p><a href="https://developer.chrome.com/devtools">Chrome dev tools 相关资料</a></p>
+<p><a href="https://github.com/GoogleChrome/devtools-docs">Chrome dev tools 相关资料</a></p>
+<p><a href="https://segmentfault.com/a/1190000000683599">Chrome dev tools 相关资料</a></p>
+<h2 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h2><p>curl也是和上面poastman与paw功能类似的，不过没有和上面两款放在一起讲是因为curl比较重要，而且具有统一标准性与方便性。</p>
+<p>curl是利用URL语法在命令行方式下工作的开源文件传输工具。它被广泛应用在Unix、多种Linux发行版中，并且有DOS和Win32、Win64下的移植版本。</p>
+<p>还是原先的例子，请求知乎的api。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/curl.png"></p>
+<p>很简单在curl命令直接加入url即可发送网络请求。</p>
+<p>为什么有postman和paw这么友好的软件后，还需要介绍的curl呢，因为curl是一个命令，是文本，是字符串，当你其他同事开发联调的时候，直接通过im工具发送即可，这样网络请求就能很容移动复现。很多的上面介绍的charles、paw、google dev tool都支持把某一条请求导出为curl命令。这就相当于curl是一个标准，可以在不同机器上面复用，所以了解和使用curl是很有必要的。比如联调开发时候，服务器某个api调试不通过，需要与服务器同学沟通与复习，你直接丢一个curl语句即可，如果对方很懂，那么会觉的你很专业，如果对方不懂，顺便可以装个逼。</p>
+<p><a href="http://www.cnblogs.com/gbyukg/p/3326825.html">curl 资料</a></p>
+<p><a href="https://curl.haxx.se/">curl 官网</a></p>
+<h1 id="OkHttp相关"><a href="#OkHttp相关" class="headerlink" title="OkHttp相关"></a>OkHttp相关</h1><p>前面介绍了OkHttp，下面介绍几个基于OkHttp拦截器机制衍生出的常用的工具。</p>
+<h2 id="logging-interceptor"><a href="#logging-interceptor" class="headerlink" title="logging-interceptor"></a>logging-interceptor</h2><p>开发中经常需要对网络请求进行查看，抓包是可以的，不过现在很多app都是全栈https，想要抓包就没有那么容易了，那么最简单的还是打日志。</p>
+<p><code>logging-interceptor</code>就是干这个事的，在初始化okhttpclient的时候，添加下这个拦截器，那么所有的网络请求会被记录下来。</p>
+<p><a href="https://github.com/square/okhttp/wiki/Interceptors">相关资料</a></p>
+<p><a href="https://github.com/ihsanbal/LoggingInterceptor">相关资料</a></p>
+<h2 id="Stetho"><a href="#Stetho" class="headerlink" title="Stetho"></a>Stetho</h2><p>Stetho是Facebook开源的一个工具，前面说过Google Chrome dev tools，那么Stetho可以让Chrome调试Android，监控网络请求。</p>
+<p>同时Stetho还支持查看数据库，SharePreference等，而这个前提是必须root，查看view树，使用Stetho也可以做到。</p>
+<p>网上也有很多也有很多相关资料，这里不介绍详细使用。</p>
+<p><a href="https://github.com/facebook/stetho">stetho github</a></p>
+<p><a href="http://www.jianshu.com/p/03da9f91f41f">stetho 相关资料</a></p>
+<h2 id="chuck"><a href="#chuck" class="headerlink" title="chuck"></a>chuck</h2><p>上面介绍的两款工具，一种是需要在logcat中查看网络请求数据，一种是需要在chrome中查看数据，有没有办法不需要借助任何第三方工具，直接查看呢，答案是肯定的。chuck是我最近关注比较高的一个开源工具，而且很快的就在项目中使用了。</p>
+<p>下面官网的截图，可以先了解下chuck的使用效果。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/chuck.gif"></p>
+<p>在高版本的Android中，还支持多屏显示，那么一边操作一边显示。</p>
+<p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/multiwindow.gif"></p>
+<p>集成的方法都很简单，只需要在初始化OkHttpClient的时候，添加对应的拦截器即可。</p>
+<p>Gradle依赖</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">   debugCompile <span class="string">&#x27;com.readystatesoftware.chuck:library:1.0.4&#x27;</span></span><br><span class="line">   releaseCompile <span class="string">&#x27;com.readystatesoftware.chuck:library-no-op:1.0.4&#x27;</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>添加拦截器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient.Builder()</span><br><span class="line">  .addInterceptor(<span class="keyword">new</span> ChuckInterceptor(context))</span><br><span class="line">  .build();</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/jgilfelt/chuck">Chuck github</a></p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="RESTful"><a href="#RESTful" class="headerlink" title="RESTful"></a>RESTful</h2><p>RESTful一种软件架构风格，设计风格而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</p>
+<p>REST（英文：Representational State Transfer，简称REST）描述了一个架构样式的网络系统，比如 web 应用程序。它首次出现在 2000 年 Roy Fielding 的博士论文中，他是 HTTP 规范的主要编写者之一。在目前主流的三种Web服务交互方案中，REST相比于SOAP（Simple Object Access protocol，简单对象访问协议）以及XML-RPC更加简单明了，无论是对URL的处理还是对Payload的编码，REST都倾向于用更加简单轻量的方法设计和实现。值得注意的是REST并没有一个明确的标准，而更像是一种设计的风格。</p>
+<p>虽然本文的主题是介绍Android Http开发的相关内容，并且RESTful是服务端的一种概念。但是我觉的，还是有很必要了解的，最起码可以作为判断你的服务端小伙伴给的接口是否满足RESTful的标准的依据。</p>
+<p>后面贴一篇<a href="http://www.ruanyifeng.com/blog/2011/09/restful">阮一峰大神的博客介绍RESTful</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>上面介绍了很多种关于网络请求的工具，具体可以分为这几类。</p>
+<p>HTTP接口调用工具，这类工具主要是模拟客户端，发起网络请求，方便调试服务器接口。</p>
+<ul>
+<li>postman</li>
+<li>paw</li>
+<li>curl</li>
+</ul>
+<p>抓包工具，这类工具不光适合Android开发，也适合其他网络开发，工具使用简单，不过在使用前需要做少许代理配置。WiresShark是一款更加强大的工具，使用比较复杂，而且比较底层，所以在本文中就没介绍，有兴趣的同学可以自己查阅相关资料。</p>
+<ul>
+<li>Charles</li>
+<li>Fiddler</li>
+<li>WiresShark</li>
+</ul>
+<p>Android Http请求工具库，这类工具类变化很快，经常会过个几年就会有新的一种工具替换，但是本质思想还是一样的，都是基于URLConnection和HTTP做了一次封装调用。</p>
+<ul>
+<li>URLConnection</li>
+<li>HttpClient</li>
+<li>Volley</li>
+<li>OkHttp</li>
+</ul>
+<p>OkHttp相关，这类工具都是基于OkHttp做了二次封装开发，这个主要归功于OkHttp强大开发模式和架构，开发人员可以方便对OkHttp进行自定义和二次开发。工具很强大，不过也有局限性，只能依附于OkHttp的框架，不利于扩展到其他平台和工具。</p>
+<ul>
+<li>logging-interceptor</li>
+<li>Stetho</li>
+<li>Chuck</li>
+</ul>
+<h2 id="工具对比"><a href="#工具对比" class="headerlink" title="工具对比"></a>工具对比</h2><p>上面介绍好几款可以监控App网络请求的工具，那么如何根据实际情况，选择一款适合自己项目和团队的工具呢？</p>
+<h3 id="Charles-amp-Fiddler"><a href="#Charles-amp-Fiddler" class="headerlink" title="Charles &amp; Fiddler"></a>Charles &amp; Fiddler</h3><p>这类工具不依赖与平台和App开发的工具库，不管你是Android、还是iOS，不管使用的是Volley，还是OkHttp都是可以监控的，同时还支持HTTP的调试，方便mock数据，简直是神器。</p>
+<p>不过也有少许缺点，比如是不支持Https，如果你的app使用的是https接口，那么这类工具一般情况是不能使用的，不过也有办法，比如把charles的证书设置为根证书，则可以检测到。但是也是有局限的，如果app设置强制校验https证书，此类方法还是不可行。</p>
+<p>因为平台无光，可检测到某个手机设备上面的全部网络请求，数据量有时候会很大，如果经常调试某一个app，那么域名一般是固定的，可进行相对应的过滤。</p>
+<h3 id="OkHttp相关-1"><a href="#OkHttp相关-1" class="headerlink" title="OkHttp相关"></a>OkHttp相关</h3><p>通过标题可以看成，此类工具必须依附于OKHttp，那么只能满足Android平台并且App的网络请求库是OkHttp。上面介绍的三款工具，可以选择性的选择其中几种或者是全部，暂时还没有发现冲突的地方。因为是直接嵌入到代码中，那么Https也是可以监控到。同时也只能监控当前设备上的当前应用，不可以检测其他的app。</p>
+<p>不过在发布线上或者正式颁布时，需要手动去除这些代码，否则会有很大麻烦，同时也会把相关的隐私和安全反馈给使用的用户。</p>
+<p>好了，上面就是关于App网络情况的监控工具比较，建议两个大分类都可以几个或者多个配合使用，具体问题在根据具体工具使用，方便问题解决与网络监控。</p>
+<h2 id="其他建议"><a href="#其他建议" class="headerlink" title="其他建议"></a>其他建议</h2><p>上面介绍的OkHttp的相关的工具，都是需要在初始化OkHttpClient的时候，手动添加对应的拦截器，如果忘记添加则不会产生效果。</p>
+<p>那么可以使用现在流行的Aop技术，在编译时候，会在所有调用OkHttpClient的地方，自动添加，保证不会忘记，如果你的App还是用其他的sdk，sdk里面也是用OKhttp的话，也会监控到sdk里面的网络请求，不少大厂已经使用了这种方法，然后收集请求数据到后端，方便管理和优化。</p>
+<p>下面简单介绍相关代码:</p>
+<p>首先集成<code>gradle_plugin_android_aspectjx</code>插件</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">classpath</span> <span class="string">&#x27;com.hujiang.aspectjx:gradle-android-plugin-aspectjx:1.0.9&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后定义Aspectj切入点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.facebook.stetho.okhttp3.StethoInterceptor;</span><br><span class="line"><span class="keyword">import</span> com.readystatesoftware.chuck.ChuckInterceptor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.ProceedingJoinPoint;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Around;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Aspect;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Pointcut;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> me.ele.breakfastapp.AppContext;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OkHttpAspect</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pointcut(&quot;call(public okhttp3.OkHttpClient build())&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Around(&quot;build()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">aroundBuild</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        Object target = joinPoint.getTarget();</span><br><span class="line">        <span class="keyword">if</span> (target <span class="keyword">instanceof</span> OkHttpClient.Builder) &#123;</span><br><span class="line">            OkHttpClient.Builder builder = (OkHttpClient.Builder) target;</span><br><span class="line">            builder.addNetworkInterceptor(<span class="keyword">new</span> StethoInterceptor());</span><br><span class="line">            builder.addNetworkInterceptor(<span class="keyword">new</span> ChuckInterceptor(AppContext.get()));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> joinPoint.proceed();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么在代码编译的时候，会自动插入字节码。</p>
+<p>Aop相关资料:</p>
+<p><a href="http://blog.csdn.net/innost/article/details/49387395">Aop介绍</a></p>
+<p><a href="http://blog.csdn.net/crazy__chen/article/details/52014672">Aop资料</a></p>
+<p><a href="http://www.jianshu.com/p/bb9343e8af17">Assectj</a></p>
+<p><a href="https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx">Assectj Gradle 插件</a></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.cnblogs.com/ranyonsue/p/5984001.html">Http博客</a></p>
+<p><a href="http://www.cnblogs.com/li0803/archive/2008/11/03/1324746.html">Http博客</a></p>
+<p><a href="http://www.blogjava.net/supercrsky/articles/247449.html">URLConnection</a></p>
+<p><a href="https://developer.android.com/reference/org/apache/http/client/package-summary.html">Android HttpClient</a></p>
+<p><a href="http://blog.csdn.net/wangpeng047/article/details/19624529">HttpClient相关博客</a></p>
+<p><a href="http://blog.csdn.net/guolin_blog/article/details/17482095">Volley相关资料</a></p>
+<p><a href="http://blog.csdn.net/guolin_blog/article/details/12452307">Volley相关资料</a></p>
+<p><a href="https://github.com/square/okhttp">OkHttp</a></p>
+<p><a href="https://github.com/square/retrofit">Retrofit Github地址</a></p>
+<p><a href="http://blog.devtang.com/2015/11/14/charles-introduction/">Charles介绍</a></p>
+<p><a href="http://blog.csdn.net/guijiaoba/article/details/43198503">Charles Mock 数据</a></p>
+<p><a href="https://www.getpostman.com/">Postman官网</a></p>
+<p><a href="http://chromecj.com/web-development/2014-09/60.html">Postman资料</a></p>
+<p><a href="https://paw.cloud/">Paw 官网</a></p>
+<p><a href="https://yq.aliyun.com/articles/29772">Paw 使用教程</a></p>
+<p><a href="https://developer.chrome.com/devtools">Chrome dev tools 相关资料</a></p>
+<p><a href="https://github.com/GoogleChrome/devtools-docs">Chrome dev tools 相关资料</a></p>
+<p><a href="https://segmentfault.com/a/1190000000683599">Chrome dev tools 相关资料</a></p>
+<p><a href="http://www.cnblogs.com/gbyukg/p/3326825.html">curl 资料</a></p>
+<p><a href="https://curl.haxx.se/">curl 官网</a></p>
+<p><a href="https://github.com/square/okhttp/wiki/Interceptors">Interceptors相关资料</a></p>
+<p><a href="https://github.com/ihsanbal/LoggingInterceptor">LoggingInterceptors相关资料</a></p>
+<p><a href="https://github.com/facebook/stetho">stetho github</a></p>
+<p><a href="http://www.jianshu.com/p/03da9f91f41f">stetho 相关资料</a></p>
+<p><a href="https://github.com/jgilfelt/chuck">Chuck github</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2011/09/restful">RESTful</a></p>
+<p><a href="http://blog.csdn.net/innost/article/details/49387395">Aop介绍</a></p>
+<p><a href="http://blog.csdn.net/crazy__chen/article/details/52014672">Aop资料</a></p>
+<p><a href="http://www.jianshu.com/p/bb9343e8af17">Assectj</a></p>
+<p><a href="https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx">Assectj Gradle 插件</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">流水不腐小夏</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://mycommons.cn/2016/12/25/Android-Net/">https://mycommons.cn/2016/12/25/Android-Net/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">流水不腐小夏</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Android/">
+                                    <span class="chip bg-color">Android</span>
+                                </a>
+                            
+                                <a href="/tags/Http/">
+                                    <span class="chip bg-color">Http</span>
+                                </a>
+                            
+                                <a href="/tags/OkHttp/">
+                                    <span class="chip bg-color">OkHttp</span>
+                                </a>
+                            
+                                <a href="/tags/Curl/">
+                                    <span class="chip bg-color">Curl</span>
+                                </a>
+                            
+                                <a href="/tags/PostMan/">
+                                    <span class="chip bg-color">PostMan</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/images/alipay.jpeg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/images/wechat_pay.jpeg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://mycommons.cn/2016/12/25/Android-Net/';
+        this.page.identifier = '/2016/12/25/Android-Net/';
+        this.page.title = 'Android Http网络开发神兵利器';
+    };
+    let disqus_shortname = 'mycommons-cn';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2017/02/25/Android-databing-plugin/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="AndroidStudio插件：布局文件转化Databinding">
+                        
+                        <span class="card-title">AndroidStudio插件：布局文件转化Databinding</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            AndroidStudio插件：布局文件转化Databinding
+序这几天一直在做代码重构，因为Android是提供Databinding的MVVM架构，所以就想把代码里面所有的Butterknife代码换成Databinding形式。
+
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2017-02-25
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Plugin/" class="post-category">
+                                    Plugin
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Andorid-Studio-plugin/">
+                        <span class="chip bg-color">Andorid Studio plugin</span>
+                    </a>
+                    
+                    <a href="/tags/Databinding/">
+                        <span class="chip bg-color">Databinding</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2016/07/25/Android-Test/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Android测试总结">
+                        
+                        <span class="card-title">Android测试总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android测试总结
+简介最近整理了Android测试方便的只是，主要涉及代码测试和自动化测试。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2016-07-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            流水不腐小夏
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">Android测试</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">测试</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2015-2021</span>
+            
+            <span id="year">2015</span>
+            <a href="/about" target="_blank">流水不腐小夏</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LiushuiXiaoxia" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:xiaqiulei@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?55458ffca1f60dd283f11b9a7f82b262";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
