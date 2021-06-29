@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -406,17 +450,26 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="关于Git的错误"><a href="#关于Git的错误" class="headerlink" title="关于Git的错误"></a>关于Git的错误</h1><p>写完代码以后，不能继续提交，错误显示是这样的。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fatal: Unable to create &#x27;/Users/Demo/.git/index.lock&#x27;: File exists.</span><br><span class="line"></span><br><span class="line">Another git process seems to be running in this repository, e.g.</span><br><span class="line">an editor opened by &#x27;git commit&#x27;. Please make sure all processes</span><br><span class="line">are terminated then try again. If it still fails, a git process</span><br><span class="line">may have crashed in this repository earlier:</span><br><span class="line">remove the file manually to continue.</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">fatal: Unable to create &#39;&#x2F;Users&#x2F;Demo&#x2F;.git&#x2F;index.lock&#39;: File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by &#39;git commit&#39;. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>大致意思是，有个其他进程在操作这个仓库，所以无法继续提交。</p>
 <p>只需要删除<code>index.lock</code>文件即可。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm .git/index.lock</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">rm .git&#x2F;index.lock<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -794,6 +847,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -801,6 +856,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -966,9 +1023,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1178,8 +1235,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

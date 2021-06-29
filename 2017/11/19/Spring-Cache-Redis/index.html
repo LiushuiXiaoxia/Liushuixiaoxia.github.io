@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -410,6 +454,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -421,10 +468,14 @@
 
 <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>Redis 是一个高性能key-value数据库，个人感觉就像java中的Map，不过比它更加强大。</p>
 <p>由于我用的是Mac，下面介绍如何安装Redis。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line"></span><br><span class="line">brew install redis</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew update
+
+brew <span class="token function">install</span> redis<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>开启服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew services start redis</span><br><span class="line"></span><br><span class="line">brew services list</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew services start redis
+
+brew services list<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>下面是我本机的运行截图</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1520343-0681b36a99876f74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
@@ -434,24 +485,136 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/1520343-a4070880af6988f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <h2 id="集成Redis"><a href="#集成Redis" class="headerlink" title="集成Redis"></a>集成Redis</h2><p>集成Redis，直接在配置文件配置即可。</p>
 <p>application.properties</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#redis</span><br><span class="line">spring.redis.host=localhost</span><br><span class="line">spring.redis.port=6379</span><br><span class="line">spring.redis.password=</span><br><span class="line">spring.redis.timeout=0</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">#redis
+spring.redis.host&#x3D;localhost
+spring.redis.port&#x3D;6379
+spring.redis.password&#x3D;
+spring.redis.timeout&#x3D;0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>然后测试下Redis是否集成功。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringcacheApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    StringRedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Assert.assertNotNull(redisTemplate);</span><br><span class="line"></span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>);</span><br><span class="line">        String value = redisTemplate.opsForValue().get(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">        log.info(<span class="string">&quot;value = &quot;</span> + value);</span><br><span class="line"></span><br><span class="line">        redisTemplate.delete(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">        value = redisTemplate.opsForValue().get(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">        log.info(<span class="string">&quot;value = &quot;</span> + value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
+<span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootTest</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringcacheApplicationTests</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token class-name">StringRedisTemplate</span> redisTemplate<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextLoads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">assertNotNull</span><span class="token punctuation">(</span>redisTemplate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        redisTemplate<span class="token punctuation">.</span><span class="token function">opsForValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> value <span class="token operator">=</span> redisTemplate<span class="token punctuation">.</span><span class="token function">opsForValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"value = "</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        redisTemplate<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        value <span class="token operator">=</span> redisTemplate<span class="token punctuation">.</span><span class="token function">opsForValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"value = "</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>运行结果如下，如果没有出错，则表示集成功。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2017-11-19 14:56:10.075  INFO 73896 --- [           main] c.m.s.SpringcacheApplicationTests        : value = world</span><br><span class="line">2017-11-19 14:56:10.076  INFO 73896 --- [           main] c.m.s.SpringcacheApplicationTests        : value = null</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">2017-11-19 14:56:10.075  INFO 73896 --- [           main] c.m.s.SpringcacheApplicationTests        : value &#x3D; world
+2017-11-19 14:56:10.076  INFO 73896 --- [           main] c.m.s.SpringcacheApplicationTests        : value &#x3D; null<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="Cache部分代码"><a href="#Cache部分代码" class="headerlink" title="Cache部分代码"></a>Cache部分代码</h2><p>配置CacheManager，它的实现部分是由RedisCacheManager来实现的，我们先设置缓存时间为3s，超过这个时间，缓存自动失效。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableCaching</span><br><span class="line">public class CachingConfig &#123;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public CacheManager cacheManager(RedisTemplate redisTemplate) &#123;</span><br><span class="line">        RedisCacheManager redisCacheManager = new RedisCacheManager(redisTemplate);</span><br><span class="line">        redisCacheManager.setDefaultExpiration(3);</span><br><span class="line">        return redisCacheManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public CacheErrorHandler errorHandler() &#123;</span><br><span class="line">        return new RedisCacheErrorHandler();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Slf4j</span><br><span class="line">    private static class RedisCacheErrorHandler extends SimpleCacheErrorHandler &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void handleCacheGetError(RuntimeException exception, Cache cache, Object key) &#123;</span><br><span class="line">            log.error(&quot;handleCacheGetError key = &#123;&#125;, value = &#123;&#125;&quot;, key, cache);</span><br><span class="line">            log.error(&quot;cache get error&quot;, exception);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void handleCachePutError(RuntimeException exception, Cache cache, Object key, Object value) &#123;</span><br><span class="line">            log.error(&quot;handleCachePutError key = &#123;&#125;, value = &#123;&#125;&quot;, key, cache);</span><br><span class="line">            log.error(&quot;cache put error&quot;, exception);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void handleCacheEvictError(RuntimeException exception, Cache cache, Object key) &#123;</span><br><span class="line">            log.error(&quot;handleCacheEvictError key = &#123;&#125;, value = &#123;&#125;&quot;, key, cache);</span><br><span class="line">            log.error(&quot;cache evict error&quot;, exception);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void handleCacheClearError(RuntimeException exception, Cache cache) &#123;</span><br><span class="line">            log.error(&quot;handleCacheClearError value = &#123;&#125;&quot;, cache);</span><br><span class="line">            log.error(&quot;cache clear error&quot;, exception);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">@Configuration
+@EnableCaching
+public class CachingConfig &#123;
+
+    @Bean
+    public CacheManager cacheManager(RedisTemplate redisTemplate) &#123;
+        RedisCacheManager redisCacheManager &#x3D; new RedisCacheManager(redisTemplate);
+        redisCacheManager.setDefaultExpiration(3);
+        return redisCacheManager;
+    &#125;
+
+    @Bean
+    public CacheErrorHandler errorHandler() &#123;
+        return new RedisCacheErrorHandler();
+    &#125;
+
+    @Slf4j
+    private static class RedisCacheErrorHandler extends SimpleCacheErrorHandler &#123;
+
+        @Override
+        public void handleCacheGetError(RuntimeException exception, Cache cache, Object key) &#123;
+            log.error(&quot;handleCacheGetError key &#x3D; &#123;&#125;, value &#x3D; &#123;&#125;&quot;, key, cache);
+            log.error(&quot;cache get error&quot;, exception);
+        &#125;
+
+        @Override
+        public void handleCachePutError(RuntimeException exception, Cache cache, Object key, Object value) &#123;
+            log.error(&quot;handleCachePutError key &#x3D; &#123;&#125;, value &#x3D; &#123;&#125;&quot;, key, cache);
+            log.error(&quot;cache put error&quot;, exception);
+        &#125;
+
+        @Override
+        public void handleCacheEvictError(RuntimeException exception, Cache cache, Object key) &#123;
+            log.error(&quot;handleCacheEvictError key &#x3D; &#123;&#125;, value &#x3D; &#123;&#125;&quot;, key, cache);
+            log.error(&quot;cache evict error&quot;, exception);
+        &#125;
+
+        @Override
+        public void handleCacheClearError(RuntimeException exception, Cache cache) &#123;
+            log.error(&quot;handleCacheClearError value &#x3D; &#123;&#125;&quot;, cache);
+            log.error(&quot;cache clear error&quot;, exception);
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>添加一个简单的实体，然后添加服务接口和实现类。</p>
 <p><code>@Data</code>是lombok提供的，可以减少简洁代码。注意实体必须实现<code>Serializable</code>接口。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">&#123;</span>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addUser</span><span class="params">(User user)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">User <span class="title">findById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Integer, User&gt; db = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;addUser.user = &quot;</span> + user);</span><br><span class="line">        db.put(user.getId(), user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Cacheable(cacheNames = &quot;user_cache&quot;, key = &quot;#id&quot;)</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findById</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;findById.id = &quot;</span> + id);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> db.get(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@CacheEvict(cacheNames = &quot;user_cache&quot;, key = &quot;#id&quot;)</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;delete.id = &quot;</span> + id);</span><br><span class="line"></span><br><span class="line">        db.remove(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> email<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserService</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">void</span> <span class="token function">addUser</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">User</span> <span class="token function">findById</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">void</span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">UserService</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">></span></span> db <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addUser</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"addUser.user = "</span> <span class="token operator">+</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        db<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Cacheable</span><span class="token punctuation">(</span>cacheNames <span class="token operator">=</span> <span class="token string">"user_cache"</span><span class="token punctuation">,</span> key <span class="token operator">=</span> <span class="token string">"#id"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">User</span> <span class="token function">findById</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"findById.id = "</span> <span class="token operator">+</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> db<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@CacheEvict</span><span class="token punctuation">(</span>cacheNames <span class="token operator">=</span> <span class="token string">"user_cache"</span><span class="token punctuation">,</span> key <span class="token operator">=</span> <span class="token string">"#id"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"delete.id = "</span> <span class="token operator">+</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        db<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>上面<code>Cacheable</code>和<code>CacheEvict</code>就是Spring Cache提供的注解。具体说明如下。</p>
 <ul>
@@ -481,10 +644,67 @@
 </li>
 </ul>
 <p>测试用例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CacheTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Assert.assertNotNull(userService);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建一个实体</span></span><br><span class="line">        User user = <span class="keyword">new</span> User();</span><br><span class="line">        user.setId(<span class="number">100</span>);</span><br><span class="line">        user.setName(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        user.setEmail(<span class="string">&quot;admin@123.com&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加一个</span></span><br><span class="line">        userService.addUser(user);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据Id查询</span></span><br><span class="line">        log.info(<span class="string">&quot;user1 = &quot;</span> + userService.findById(<span class="number">100</span>));</span><br><span class="line">        sleep(<span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 等1s再次查询</span></span><br><span class="line">        log.info(<span class="string">&quot;user2 = &quot;</span> + userService.findById(<span class="number">100</span>));</span><br><span class="line">        sleep(<span class="number">5</span>);</span><br><span class="line">        <span class="comment">// 等5s再次查询</span></span><br><span class="line">        log.info(<span class="string">&quot;user3 = &quot;</span> + userService.findById(<span class="number">100</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加一个</span></span><br><span class="line">        userService.addUser(user);</span><br><span class="line">        <span class="comment">// 根据Id查询</span></span><br><span class="line">        log.info(<span class="string">&quot;user4 = &quot;</span> + userService.findById(<span class="number">100</span>));</span><br><span class="line">        <span class="comment">// 删除</span></span><br><span class="line">        userService.delete(<span class="number">100</span>);</span><br><span class="line">        <span class="comment">// 根据Id查询</span></span><br><span class="line">        log.info(<span class="string">&quot;user5 = &quot;</span> + userService.findById(<span class="number">100</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(i * <span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
+<span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootTest</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CacheTest</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token class-name">UserService</span> userService<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextLoads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">assertNotNull</span><span class="token punctuation">(</span>userService<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 创建一个实体</span>
+        <span class="token class-name">User</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        user<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        user<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        user<span class="token punctuation">.</span><span class="token function">setEmail</span><span class="token punctuation">(</span><span class="token string">"admin@123.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 添加一个</span>
+        userService<span class="token punctuation">.</span><span class="token function">addUser</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 根据Id查询</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"user1 = "</span> <span class="token operator">+</span> userService<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 等1s再次查询</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"user2 = "</span> <span class="token operator">+</span> userService<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 等5s再次查询</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"user3 = "</span> <span class="token operator">+</span> userService<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 添加一个</span>
+        userService<span class="token punctuation">.</span><span class="token function">addUser</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 根据Id查询</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"user4 = "</span> <span class="token operator">+</span> userService<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 删除</span>
+        userService<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 根据Id查询</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"user5 = "</span> <span class="token operator">+</span> userService<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>i <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>测试结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">2017-11-19 15:08:35.732  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : addUser.user = User(id=100, name=admin, email=admin@123.com)</span><br><span class="line">2017-11-19 15:08:35.921  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : findById.id = 100</span><br><span class="line">2017-11-19 15:08:35.951  INFO 76558 --- [           main] cn.mycommons.springcache.CacheTest       : user1 = User(id=100, name=admin, email=admin@123.com)</span><br><span class="line">2017-11-19 15:08:37.016  INFO 76558 --- [           main] cn.mycommons.springcache.CacheTest       : user2 = User(id=100, name=admin, email=admin@123.com)</span><br><span class="line">2017-11-19 15:08:42.019  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : findById.id = 100</span><br><span class="line">2017-11-19 15:08:42.021  INFO 76558 --- [           main] cn.mycommons.springcache.CacheTest       : user3 = User(id=100, name=admin, email=admin@123.com)</span><br><span class="line">2017-11-19 15:08:42.021  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : addUser.user = User(id=100, name=admin, email=admin@123.com)</span><br><span class="line">2017-11-19 15:08:42.022  INFO 76558 --- [           main] cn.mycommons.springcache.CacheTest       : user4 = User(id=100, name=admin, email=admin@123.com)</span><br><span class="line">2017-11-19 15:08:42.023  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : delete.id = 100</span><br><span class="line">2017-11-19 15:08:42.025  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : findById.id = 100</span><br><span class="line">2017-11-19 15:08:42.025  INFO 76558 --- [           main] cn.mycommons.springcache.CacheTest       : user5 = null</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">2017-11-19 15:08:35.732  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : addUser.user &#x3D; User(id&#x3D;100, name&#x3D;admin, email&#x3D;admin@123.com)
+2017-11-19 15:08:35.921  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : findById.id &#x3D; 100
+2017-11-19 15:08:35.951  INFO 76558 --- [           main] cn.mycommons.springcache.CacheTest       : user1 &#x3D; User(id&#x3D;100, name&#x3D;admin, email&#x3D;admin@123.com)
+2017-11-19 15:08:37.016  INFO 76558 --- [           main] cn.mycommons.springcache.CacheTest       : user2 &#x3D; User(id&#x3D;100, name&#x3D;admin, email&#x3D;admin@123.com)
+2017-11-19 15:08:42.019  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : findById.id &#x3D; 100
+2017-11-19 15:08:42.021  INFO 76558 --- [           main] cn.mycommons.springcache.CacheTest       : user3 &#x3D; User(id&#x3D;100, name&#x3D;admin, email&#x3D;admin@123.com)
+2017-11-19 15:08:42.021  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : addUser.user &#x3D; User(id&#x3D;100, name&#x3D;admin, email&#x3D;admin@123.com)
+2017-11-19 15:08:42.022  INFO 76558 --- [           main] cn.mycommons.springcache.CacheTest       : user4 &#x3D; User(id&#x3D;100, name&#x3D;admin, email&#x3D;admin@123.com)
+2017-11-19 15:08:42.023  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : delete.id &#x3D; 100
+2017-11-19 15:08:42.025  INFO 76558 --- [           main] c.m.s.service.impl.UserServiceImpl       : findById.id &#x3D; 100
+2017-11-19 15:08:42.025  INFO 76558 --- [           main] cn.mycommons.springcache.CacheTest       : user5 &#x3D; null<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>从结果来看，添加一个数据后，第一次，查询是从UserServiceImpl中获取，再次查询，则没有直接调用UserServiceImpl，直接返回了缓存结果。</p>
 <p>当超过缓存时间后，再次去查询，我们这边设置缓存时间为3s，等待5s后，再次查询，发现又从UserServiceImpl中获取数据。</p>
@@ -875,6 +1095,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -882,6 +1104,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1047,9 +1271,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1259,8 +1483,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

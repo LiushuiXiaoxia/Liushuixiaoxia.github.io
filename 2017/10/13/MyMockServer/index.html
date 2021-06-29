@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -405,6 +449,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -433,21 +480,99 @@
 </li>
 </ul>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用Mac HomeBrew安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// add tap</span><br><span class="line">brew tap LiushuiXiaoxia/mms</span><br><span class="line"></span><br><span class="line">// brew install</span><br><span class="line">brew install mms</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">// <span class="token function">add</span> tap
+brew tap LiushuiXiaoxia/mms
+
+// brew <span class="token function">install</span>
+brew <span class="token function">install</span> mms<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>其他平台直接下载压缩包即可，然后把压缩包中的bin目录添加到系统环境变量中，然后直接调用<code>MyMockServer</code>或者<code>MyMockServer.bat</code>。</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>可以直接使用<code>mms</code>即可启动服务，<code>mms</code>支持参数如下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ mms -h</span><br><span class="line">Path: /usr/<span class="built_in">local</span>/bin/.</span><br><span class="line">Cmd: mms -h</span><br><span class="line">Log level : INFO</span><br><span class="line">usage: mms [options]</span><br><span class="line"> -c,--config &lt;arg&gt;   mock server path, default is current directory</span><br><span class="line"> -h,--<span class="built_in">help</span>           output usage information</span><br><span class="line"> -i,--init           init some path as mock workspace</span><br><span class="line"> -l,--level &lt;arg&gt;    <span class="built_in">log</span> level ALL,DEBUG,INFO,WARN,ERROR,FATAL,OFF,TRACE</span><br><span class="line"> -p,--port &lt;arg&gt;     mock server port, default is 9090</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ mms -h
+Path: /usr/local/bin/.
+Cmd: mms -h
+Log level <span class="token builtin class-name">:</span> INFO
+usage: mms <span class="token punctuation">[</span>options<span class="token punctuation">]</span>
+ -c,--config <span class="token operator">&lt;</span>arg<span class="token operator">></span>   mock server path, default is current directory
+ -h,--help           output usage information
+ -i,--init           init some path as mock workspace
+ -l,--level <span class="token operator">&lt;</span>arg<span class="token operator">></span>    log level ALL,DEBUG,INFO,WARN,ERROR,FATAL,OFF,TRACE
+ -p,--port <span class="token operator">&lt;</span>arg<span class="token operator">></span>     mock server port, default is <span class="token number">9090</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>首先定义一个工作目录，默认情况下使用当前目录作为工作目录，工作目录用于保存配置文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir proxy</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> proxy</span><br><span class="line"></span><br><span class="line">$ mms -i</span><br><span class="line">Path: /Users/xiaqiulei/proxy/.</span><br><span class="line">Cmd: mms -i</span><br><span class="line">Log level : INFO</span><br><span class="line"></span><br><span class="line">$ ls</span><br><span class="line">template.groovy</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">mkdir</span> proxy
+
+$ <span class="token builtin class-name">cd</span> proxy
+
+$ mms -i
+Path: /Users/xiaqiulei/proxy/.
+Cmd: mms -i
+Log level <span class="token builtin class-name">:</span> INFO
+
+$ <span class="token function">ls</span>
+template.groovy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>当然了也可以手动指定工作目录，这两种方式一样。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir proxy</span><br><span class="line"></span><br><span class="line">$ mms -i -c ./proxy</span><br><span class="line">Path: /Users/xiaqiulei/<span class="built_in">test</span>/.</span><br><span class="line">Cmd: mms -i -c ./proxy</span><br><span class="line">Log level : INFO</span><br><span class="line"></span><br><span class="line">$ ls proxy</span><br><span class="line">template.groovy</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">mkdir</span> proxy
+
+$ mms -i -c ./proxy
+Path: /Users/xiaqiulei/test/.
+Cmd: mms -i -c ./proxy
+Log level <span class="token builtin class-name">:</span> INFO
+
+$ <span class="token function">ls</span> proxy
+template.groovy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在工作目录中会自动生成模板文件<code>template.groovy</code>。</p>
 <p>其实这个代理服务器使用的就是用Groovy实现的DSL功能。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">mock &#123;</span><br><span class="line"><span class="comment">//    enable true</span></span><br><span class="line">    desc <span class="string">&quot;template&quot;</span></span><br><span class="line">    request &#123;</span><br><span class="line"><span class="comment">//        scheme &quot;http&quot;</span></span><br><span class="line">        host <span class="string">&quot;www.google.com&quot;</span></span><br><span class="line"><span class="comment">//        port 80</span></span><br><span class="line"><span class="comment">//        path &quot;/api/login/&quot;</span></span><br><span class="line">        method <span class="string">&quot;GET&quot;</span></span><br><span class="line">        params &#123;</span><br><span class="line"><span class="comment">//            param &quot;param_key_1&quot;, &quot;param_value_1&quot;</span></span><br><span class="line"><span class="comment">//            param &quot;param_key_2&quot;, &quot;param_value_2&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        headers &#123;</span><br><span class="line">            header <span class="string">&quot;header_key_1&quot;</span>, <span class="string">&quot;header_value_1&quot;</span></span><br><span class="line">            header <span class="string">&quot;time&quot;</span>, <span class="keyword">new</span> Date().format(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        body &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    response &#123;</span><br><span class="line"><span class="comment">//        version &#x27;HTTP/1.1&#x27;</span></span><br><span class="line"><span class="comment">//        code 200</span></span><br><span class="line">        headers &#123;</span><br><span class="line">            header <span class="string">&quot;header_key_1&quot;</span>, <span class="string">&quot;header_value_1&quot;</span></span><br><span class="line">            header <span class="string">&quot;time&quot;</span>, <span class="keyword">new</span> Date().format(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        body &#123;</span><br><span class="line"><span class="comment">//            text &quot;text&quot;</span></span><br><span class="line"><span class="comment">//            textFile &quot;file.txt&quot;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">            json <span class="string">&quot;&quot;&quot;&#123;&quot;key&quot;:&quot;value&quot;&#125;&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">//            jsonFile &quot;file.txt&quot;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//            xml &quot;&lt;xml/&gt;&quot;</span></span><br><span class="line"><span class="comment">//            xmlFile &quot;file.txt&quot;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//            html &quot;&lt;html/&gt;&quot;</span></span><br><span class="line"><span class="comment">//            htmlFile &quot;file.txt&quot;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//            file &quot;file.txt&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    control &#123;</span></span><br><span class="line"><span class="comment">//        delay 3</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">mock <span class="token punctuation">&#123;</span>
+<span class="token comment">//    enable true</span>
+    desc <span class="token string gstring">"template"</span>
+    request <span class="token punctuation">&#123;</span>
+<span class="token comment">//        scheme "http"</span>
+        host <span class="token string gstring">"www.google.com"</span>
+<span class="token comment">//        port 80</span>
+<span class="token comment">//        path "/api/login/"</span>
+        method <span class="token string gstring">"GET"</span>
+        params <span class="token punctuation">&#123;</span>
+<span class="token comment">//            param "param_key_1", "param_value_1"</span>
+<span class="token comment">//            param "param_key_2", "param_value_2"</span>
+        <span class="token punctuation">&#125;</span>
+        headers <span class="token punctuation">&#123;</span>
+            header <span class="token string gstring">"header_key_1"</span><span class="token punctuation">,</span> <span class="token string gstring">"header_value_1"</span>
+            header <span class="token string gstring">"time"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string gstring">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        body <span class="token punctuation">&#123;</span>
+
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    response <span class="token punctuation">&#123;</span>
+<span class="token comment">//        version 'HTTP/1.1'</span>
+<span class="token comment">//        code 200</span>
+        headers <span class="token punctuation">&#123;</span>
+            header <span class="token string gstring">"header_key_1"</span><span class="token punctuation">,</span> <span class="token string gstring">"header_value_1"</span>
+            header <span class="token string gstring">"time"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string gstring">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        body <span class="token punctuation">&#123;</span>
+<span class="token comment">//            text "text"</span>
+<span class="token comment">//            textFile "file.txt"</span>
+<span class="token comment">//</span>
+            json <span class="token string gstring">"""&#123;"key":"value"&#125;"""</span>
+<span class="token comment">//            jsonFile "file.txt"</span>
+<span class="token comment">//</span>
+<span class="token comment">//            xml "&lt;xml/>"</span>
+<span class="token comment">//            xmlFile "file.txt"</span>
+<span class="token comment">//</span>
+<span class="token comment">//            html "&lt;html/>"</span>
+<span class="token comment">//            htmlFile "file.txt"</span>
+<span class="token comment">//</span>
+<span class="token comment">//            file "file.txt"</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token comment">//    control &#123;</span>
+<span class="token comment">//        delay 3</span>
+<span class="token comment">//    &#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>做Android的同学，看到这个是不是眼熟，跟咱们的gradle是不是很像，没错，gradle也是一种DSL。</p>
 <p>下面依次做讲解，mock下面主要分为4部分：描述，请求匹配、响应信息、控制部分。</p>
@@ -479,20 +604,84 @@
 <p><strong>file</strong>: 设置body为一个文件的内容，参数为文件路径</p>
 <p>因为配置文件使用的是Groovy，所以可以使用三个双引号来设置字符串，比如设置返回为json字符，json是是包含双引号的，如果按照Java中方式，那么就会出现转码，这样不方便阅读和修改。</p>
 <p>那么可以这样设置，是不是很方便。</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">json <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    &quot;</span>key<span class="string">&quot;:&quot;</span>value<span class="string">&quot;,</span></span><br><span class="line"><span class="string">    &quot;</span>hello<span class="string">&quot;:&quot;</span>world<span class="string">&quot;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-gradle" data-language="gradle"><code class="language-gradle">json &quot;&quot;&quot;
+&#123;
+    &quot;key&quot;:&quot;value&quot;,
+    &quot;hello&quot;:&quot;world&quot;
+&#125;
+&quot;&quot;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="控制信息"><a href="#控制信息" class="headerlink" title="控制信息"></a>控制信息</h3><p><strong>delay</strong>: 设置响应时间，可以模拟入网环境，如果不设置，那么里面返回数据。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>比如我想Mock接口为<code>http://www.baidu.com</code>一条数据，那么首先启动mms服务。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">$ mms</span><br><span class="line">Path: /usr/<span class="built_in">local</span>/bin/.</span><br><span class="line">Cmd: mms</span><br><span class="line">Log level : INFO</span><br><span class="line"></span><br><span class="line">          _____                    _____                    _____</span><br><span class="line">         /\    \                  /\    \                  /\    \</span><br><span class="line">        /::\____\                /::\____\                /::\    \</span><br><span class="line">       /::::|   |               /::::|   |               /::::\    \</span><br><span class="line">      /:::::|   |              /:::::|   |              /::::::\    \</span><br><span class="line">     /::::::|   |             /::::::|   |             /:::/\:::\    \</span><br><span class="line">    /:::/|::|   |            /:::/|::|   |            /:::/__\:::\    \</span><br><span class="line">   /:::/ |::|   |           /:::/ |::|   |            \:::\   \:::\    \</span><br><span class="line">  /:::/  |::|___|______    /:::/  |::|___|______    ___\:::\   \:::\    \</span><br><span class="line"> /:::/   |::::::::\    \  /:::/   |::::::::\    \  /\   \:::\   \:::\    \</span><br><span class="line">/:::/    |:::::::::\____\/:::/    |:::::::::\____\/::\   \:::\   \:::\____\</span><br><span class="line">\::/    / ~~~~~/:::/    /\::/    / ~~~~~/:::/    /\:::\   \:::\   \::/    /</span><br><span class="line"> \/____/      /:::/    /  \/____/      /:::/    /  \:::\   \:::\   \/____/</span><br><span class="line">             /:::/    /               /:::/    /    \:::\   \:::\    \</span><br><span class="line">            /:::/    /               /:::/    /      \:::\   \:::\____\</span><br><span class="line">           /:::/    /               /:::/    /        \:::\  /:::/    /</span><br><span class="line">          /:::/    /               /:::/    /          \:::\/:::/    /</span><br><span class="line">         /:::/    /               /:::/    /            \::::::/    /</span><br><span class="line">        /:::/    /               /:::/    /              \::::/    /</span><br><span class="line">        \::/    /                \::/    /                \::/    /</span><br><span class="line">         \/____/                  \/____/                  \/____/</span><br><span class="line"></span><br><span class="line">[2017-09-20 19:39:45 | INFO] &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br><span class="line">[2017-09-20 19:39:45 | INFO] Parse GET : [ [http/https]://www.google.com/[path]/ ] 		 /Users/xiaqiulei/<span class="built_in">test</span>/proxy/./template.groovy -&gt; template</span><br><span class="line">[2017-09-20 19:39:45 | INFO] &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><br><span class="line">[2017-09-20 19:39:45 | INFO] Starting proxy at address: 0.0.0.0/0.0.0.0:9090</span><br><span class="line">[2017-09-20 19:39:45 | INFO] Proxy listening with TCP transport</span><br><span class="line">[2017-09-20 19:39:46 | INFO] Proxy started at address: /0:0:0:0:0:0:0:0:9090</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ mms
+Path: /usr/local/bin/.
+Cmd: mms
+Log level <span class="token builtin class-name">:</span> INFO
+
+          _____                    _____                    _____
+         /<span class="token punctuation">\</span>    <span class="token punctuation">\</span>                  /<span class="token punctuation">\</span>    <span class="token punctuation">\</span>                  /<span class="token punctuation">\</span>    <span class="token punctuation">\</span>
+        /::<span class="token punctuation">\</span>____<span class="token punctuation">\</span>                /::<span class="token punctuation">\</span>____<span class="token punctuation">\</span>                /::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>
+       /::::<span class="token operator">|</span>   <span class="token operator">|</span>               /::::<span class="token operator">|</span>   <span class="token operator">|</span>               /::::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>
+      /:::::<span class="token operator">|</span>   <span class="token operator">|</span>              /:::::<span class="token operator">|</span>   <span class="token operator">|</span>              /::::::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>
+     /::::::<span class="token operator">|</span>   <span class="token operator">|</span>             /::::::<span class="token operator">|</span>   <span class="token operator">|</span>             /:::/<span class="token punctuation">\</span>:::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>
+    /:::/<span class="token operator">|</span>::<span class="token operator">|</span>   <span class="token operator">|</span>            /:::/<span class="token operator">|</span>::<span class="token operator">|</span>   <span class="token operator">|</span>            /:::/__<span class="token punctuation">\</span>:::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>
+   /:::/ <span class="token operator">|</span>::<span class="token operator">|</span>   <span class="token operator">|</span>           /:::/ <span class="token operator">|</span>::<span class="token operator">|</span>   <span class="token operator">|</span>            <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>
+  /:::/  <span class="token operator">|</span>::<span class="token operator">|</span>___<span class="token operator">|</span>______    /:::/  <span class="token operator">|</span>::<span class="token operator">|</span>___<span class="token operator">|</span>______    ___<span class="token punctuation">\</span>:::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>
+ /:::/   <span class="token operator">|</span>::::::::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>  /:::/   <span class="token operator">|</span>::::::::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>  /<span class="token punctuation">\</span>   <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>
+/:::/    <span class="token operator">|</span>:::::::::<span class="token punctuation">\</span>____<span class="token punctuation">\</span>/:::/    <span class="token operator">|</span>:::::::::<span class="token punctuation">\</span>____<span class="token punctuation">\</span>/::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>____<span class="token punctuation">\</span>
+<span class="token punctuation">\</span>::/    / ~~~~~/:::/    /<span class="token punctuation">\</span>::/    / ~~~~~/:::/    /<span class="token punctuation">\</span>:::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>::/    /
+ <span class="token punctuation">\</span>/____/      /:::/    /  <span class="token punctuation">\</span>/____/      /:::/    /  <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>/____/
+             /:::/    /               /:::/    /    <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>    <span class="token punctuation">\</span>
+            /:::/    /               /:::/    /      <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>   <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>____<span class="token punctuation">\</span>
+           /:::/    /               /:::/    /        <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>  /:::/    /
+          /:::/    /               /:::/    /          <span class="token punctuation">\</span>:::<span class="token punctuation">\</span>/:::/    /
+         /:::/    /               /:::/    /            <span class="token punctuation">\</span>::::::/    /
+        /:::/    /               /:::/    /              <span class="token punctuation">\</span>::::/    /
+        <span class="token punctuation">\</span>::/    /                <span class="token punctuation">\</span>::/    /                <span class="token punctuation">\</span>::/    /
+         <span class="token punctuation">\</span>/____/                  <span class="token punctuation">\</span>/____/                  <span class="token punctuation">\</span>/____/
+
+<span class="token punctuation">[</span><span class="token number">2017</span>-09-20 <span class="token number">19</span>:39:45 <span class="token operator">|</span> INFO<span class="token punctuation">]</span> <span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span>
+<span class="token punctuation">[</span><span class="token number">2017</span>-09-20 <span class="token number">19</span>:39:45 <span class="token operator">|</span> INFO<span class="token punctuation">]</span> Parse GET <span class="token builtin class-name">:</span> <span class="token punctuation">[</span> <span class="token punctuation">[</span>http/https<span class="token punctuation">]</span>://www.google.com/<span class="token punctuation">[</span>path<span class="token punctuation">]</span>/ <span class="token punctuation">]</span> 		 /Users/xiaqiulei/test/proxy/./template.groovy -<span class="token operator">></span> template
+<span class="token punctuation">[</span><span class="token number">2017</span>-09-20 <span class="token number">19</span>:39:45 <span class="token operator">|</span> INFO<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;</span>
+<span class="token punctuation">[</span><span class="token number">2017</span>-09-20 <span class="token number">19</span>:39:45 <span class="token operator">|</span> INFO<span class="token punctuation">]</span> Starting proxy at address: <span class="token number">0.0</span>.0.0/0.0.0.0:9090
+<span class="token punctuation">[</span><span class="token number">2017</span>-09-20 <span class="token number">19</span>:39:45 <span class="token operator">|</span> INFO<span class="token punctuation">]</span> Proxy listening with TCP transport
+<span class="token punctuation">[</span><span class="token number">2017</span>-09-20 <span class="token number">19</span>:39:46 <span class="token operator">|</span> INFO<span class="token punctuation">]</span> Proxy started at address: /0:0:0:0:0:0:0:0:9090<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>添加配置文件<code>baidu.groovy</code>，注意文件后缀必须是<code>.groovy</code>结尾。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mock &#123;</span><br><span class="line">    desc <span class="string">&quot;baidu&quot;</span></span><br><span class="line">    request &#123;</span><br><span class="line">        host <span class="string">&quot;www.baidu.com&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    response &#123;</span><br><span class="line">        code <span class="number">200</span></span><br><span class="line">        headers &#123;</span><br><span class="line">            header <span class="string">&quot;header_key_1&quot;</span>, <span class="string">&quot;header_value_1&quot;</span></span><br><span class="line">            header <span class="string">&quot;header_key_2&quot;</span>, <span class="string">&quot;header_value_2&quot;</span></span><br><span class="line">            header <span class="string">&quot;time&quot;</span>, <span class="keyword">new</span> Date().format(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        body &#123;</span><br><span class="line">            json <span class="string">&quot;&quot;&quot;&#123;</span></span><br><span class="line"><span class="string">    &quot;key&quot;:&quot;value&quot;,</span></span><br><span class="line"><span class="string">    &quot;hello&quot;:&quot;world&quot;</span></span><br><span class="line"><span class="string">&#125;&quot;&quot;&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    control &#123;</span><br><span class="line">        delay <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">mock <span class="token punctuation">&#123;</span>
+    desc <span class="token string gstring">"baidu"</span>
+    request <span class="token punctuation">&#123;</span>
+        host <span class="token string gstring">"www.baidu.com"</span>
+    <span class="token punctuation">&#125;</span>
+    response <span class="token punctuation">&#123;</span>
+        code <span class="token number">200</span>
+        headers <span class="token punctuation">&#123;</span>
+            header <span class="token string gstring">"header_key_1"</span><span class="token punctuation">,</span> <span class="token string gstring">"header_value_1"</span>
+            header <span class="token string gstring">"header_key_2"</span><span class="token punctuation">,</span> <span class="token string gstring">"header_value_2"</span>
+            header <span class="token string gstring">"time"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string gstring">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        body <span class="token punctuation">&#123;</span>
+            json <span class="token string gstring">"""&#123;
+    "key":"value",
+    "hello":"world"
+&#125;"""</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    control <span class="token punctuation">&#123;</span>
+        delay <span class="token number">2</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>过一会控制台就会出现文件修改的事件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[2017-09-20 19:40:25 | INFO] &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br><span class="line">[2017-09-20 19:40:25 | INFO] Parse X : [ [http/https]://baidu.com/[path]/ ] 		 /Users/xiaqiulei/<span class="built_in">test</span>/proxy/./baidu.groovy -&gt; baidu</span><br><span class="line">[2017-09-20 19:40:25 | INFO] Parse GET : [ [http/https]://www.google.com/[path]/ ] 		 /Users/xiaqiulei/<span class="built_in">test</span>/proxy/./template.groovy -&gt; template</span><br><span class="line">[2017-09-20 19:40:25 | INFO] &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span><span class="token number">2017</span>-09-20 <span class="token number">19</span>:40:25 <span class="token operator">|</span> INFO<span class="token punctuation">]</span> <span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span>
+<span class="token punctuation">[</span><span class="token number">2017</span>-09-20 <span class="token number">19</span>:40:25 <span class="token operator">|</span> INFO<span class="token punctuation">]</span> Parse X <span class="token builtin class-name">:</span> <span class="token punctuation">[</span> <span class="token punctuation">[</span>http/https<span class="token punctuation">]</span>://baidu.com/<span class="token punctuation">[</span>path<span class="token punctuation">]</span>/ <span class="token punctuation">]</span> 		 /Users/xiaqiulei/test/proxy/./baidu.groovy -<span class="token operator">></span> baidu
+<span class="token punctuation">[</span><span class="token number">2017</span>-09-20 <span class="token number">19</span>:40:25 <span class="token operator">|</span> INFO<span class="token punctuation">]</span> Parse GET <span class="token builtin class-name">:</span> <span class="token punctuation">[</span> <span class="token punctuation">[</span>http/https<span class="token punctuation">]</span>://www.google.com/<span class="token punctuation">[</span>path<span class="token punctuation">]</span>/ <span class="token punctuation">]</span> 		 /Users/xiaqiulei/test/proxy/./template.groovy -<span class="token operator">></span> template
+<span class="token punctuation">[</span><span class="token number">2017</span>-09-20 <span class="token number">19</span>:40:25 <span class="token operator">|</span> INFO<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>然后我们用curl来验证下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl http://www.baidu.com</span><br><span class="line"></span><br><span class="line">curl http://www.baidu.com --proxy localhost:9090 -v</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> http://www.baidu.com
+
+<span class="token function">curl</span> http://www.baidu.com --proxy localhost:9090 -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="http://upload-images.jianshu.io/upload_images/1520343-63e619ea0a5b37a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>很显然，两次请求返回的数据是不一样的，只不过第二次我们设置了代理，然后代理返回Mock的数据，同样，在移动端，可以设置的网络代理，然后就可以Mock App中的请求数据。</p>
@@ -891,6 +1080,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -898,6 +1089,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1063,9 +1256,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1275,8 +1468,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

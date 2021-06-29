@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -410,6 +454,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -430,42 +477,98 @@
 <h3 id="数据库安装"><a href="#数据库安装" class="headerlink" title="数据库安装"></a>数据库安装</h3><p>因为用的是Mac，简单介绍下MongoDB在Mac上面的安装，Windows用户可以参考官网。</p>
 <p>Mac上安装，直接使用Homebrew就可以了，如果不清楚Homebrew是什么，可以参考<a href="https://brew.sh/">这里</a>。</p>
 <p>brew 安装MongoDB</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mongodb</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew <span class="token function">install</span> mongodb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>结果如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ brew install mongodb</span><br><span class="line">Updating Homebrew...</span><br><span class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/mongodb-3.4.9.sierra.bottle.tar.gz</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring mongodb-3.4.9.sierra.bottle.tar.gz</span><br><span class="line">==&gt; Caveats</span><br><span class="line">To have launchd start mongodb now and restart at login:</span><br><span class="line">  brew services start mongodb</span><br><span class="line">Or, <span class="keyword">if</span> you don<span class="string">&#x27;t want/need a background service you can just run:</span></span><br><span class="line"><span class="string">  mongod --config /usr/local/etc/mongod.conf</span></span><br><span class="line"><span class="string">==&gt; Summary</span></span><br><span class="line"><span class="string">🍺  /usr/local/Cellar/mongodb/3.4.9: 19 files, 284.9MB</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ brew <span class="token function">install</span> mongodb
+Updating Homebrew<span class="token punctuation">..</span>.
+<span class="token operator">==</span><span class="token operator">></span> Downloading https://homebrew.bintray.com/bottles/mongodb-3.4.9.sierra.bottle.tar.gz
+<span class="token comment">######################################################################## 100.0%</span>
+<span class="token operator">==</span><span class="token operator">></span> Pouring mongodb-3.4.9.sierra.bottle.tar.gz
+<span class="token operator">==</span><span class="token operator">></span> Caveats
+To have launchd start mongodb now and restart at login:
+  brew services start mongodb
+Or, <span class="token keyword">if</span> you don't want/need a background <span class="token function">service</span> you can just run:
+  mongod --config /usr/local/etc/mongod.conf
+<span class="token operator">==</span><span class="token operator">></span> Summary
+🍺  /usr/local/Cellar/mongodb/3.4.9: <span class="token number">19</span> files, <span class="token number">284</span>.9MB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>上面给的信息说明很清楚，如果当做一个服务器来用，直接用<code>brew services start mongodb</code>就行了，如果只是作为一个程序，那么用<code>mongod --config /usr/local/etc/mongod.conf</code>启动，<code>/usr/local/etc/mongod.conf</code>是默认配置文件。</p>
 <p>我们可以看下配置文件内容，分别是日志路径、存储路径。最后一个是IP访问设置，默认只能本地访问，如果其他机器需要访问这个数据库，需要在配置文件中添加对应的IP。假如想省事，可以设置为<code>0.0.0.0</code>，那么任意机器都是可以访问的。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ cat /usr/<span class="built_in">local</span>/etc/mongod.conf</span><br><span class="line">systemLog:</span><br><span class="line">  destination: file</span><br><span class="line">  path: /usr/<span class="built_in">local</span>/var/<span class="built_in">log</span>/mongodb/mongo.log</span><br><span class="line">  logAppend: <span class="literal">true</span></span><br><span class="line">storage:</span><br><span class="line">  dbPath: /usr/<span class="built_in">local</span>/var/mongodb</span><br><span class="line">net:</span><br><span class="line">  bindIp: 127.0.0.1</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> /usr/local/etc/mongod.conf
+systemLog:
+  destination: <span class="token function">file</span>
+  path: /usr/local/var/log/mongodb/mongo.log
+  logAppend: <span class="token boolean">true</span>
+storage:
+  dbPath: /usr/local/var/mongodb
+net:
+  bindIp: <span class="token number">127.0</span>.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="MongoDB使用"><a href="#MongoDB使用" class="headerlink" title="MongoDB使用"></a>MongoDB使用</h2><p>我这里就简单开启一个MongoDB服务，直接调用<code>brew services start mongodb</code>就行了，这样MongoDB就启动了。</p>
 <p>使用<code>mongo</code>命令即可进入MongoDB控制台。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1520343-acd14283311d877c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">show dbs                     show database names</span><br><span class="line">show collections             show collections <span class="keyword">in</span> current database</span><br><span class="line">show users                   show users <span class="keyword">in</span> current database</span><br><span class="line">show profile                 show most recent system.profile entries with time &gt;= 1ms</span><br><span class="line">show logs                    show the accessible logger names</span><br><span class="line">show <span class="built_in">log</span> [name]              prints out the last segment of <span class="built_in">log</span> <span class="keyword">in</span> memory, <span class="string">&#x27;global&#x27;</span> is default</span><br><span class="line">use &lt;db_name&gt;                <span class="built_in">set</span> current database</span><br><span class="line">db.foo.find()                list objects <span class="keyword">in</span> collection foo</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">show dbs                     show database names
+show collections             show collections <span class="token keyword">in</span> current database
+show <span class="token function">users</span>                   show <span class="token function">users</span> <span class="token keyword">in</span> current database
+show profile                 show <span class="token function">most</span> recent system.profile entries with <span class="token function">time</span> <span class="token operator">>=</span> 1ms
+show logs                    show the accessible logger names
+show log <span class="token punctuation">[</span>name<span class="token punctuation">]</span>              prints out the last segment of log <span class="token keyword">in</span> memory, <span class="token string">'global'</span> is default
+use <span class="token operator">&lt;</span>db_name<span class="token operator">></span>                <span class="token builtin class-name">set</span> current database
+db.foo.find<span class="token punctuation">(</span><span class="token punctuation">)</span>                list objects <span class="token keyword">in</span> collection foo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>下面简单演示数据库的增删改查，具体用法请参考<a href="https://docs.mongodb.com/manual/crud/">官方CRUD文档</a>。</p>
 <p>创建一个<code>abc123</code>的database</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use abc123</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">use abc123<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>创建一个<code>user</code>的collection，并插入两条数据。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.user.insert(&#123;name:<span class="string">&#x27;aaa&#x27;</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">&quot;nInserted&quot;</span> : 1 &#125;)</span><br><span class="line"></span><br><span class="line">&gt; db.user.insert(&#123;name:<span class="string">&#x27;bbb&#x27;</span>,age:22&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">&quot;nInserted&quot;</span> : 1 &#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> db.user.insert<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>name:<span class="token string">'aaa'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+WriteResult<span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token string">"nInserted"</span> <span class="token builtin class-name">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token operator">></span> db.user.insert<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>name:<span class="token string">'bbb'</span>,age:22<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+WriteResult<span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token string">"nInserted"</span> <span class="token builtin class-name">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>查看<code>user</code>中的数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.user.<span class="function"><span class="title">find</span></span>()</span><br><span class="line">&#123; <span class="string">&quot;_id&quot;</span> : ObjectId(<span class="string">&quot;59bf7bde5d6768f6ee06de2b&quot;</span>), <span class="string">&quot;name&quot;</span> : <span class="string">&quot;aaa&quot;</span> &#125;</span><br><span class="line">&#123; <span class="string">&quot;_id&quot;</span> : ObjectId(<span class="string">&quot;59bf7d045d6768f6ee06de2c&quot;</span>), <span class="string">&quot;name&quot;</span> : <span class="string">&quot;bbb&quot;</span>, <span class="string">&quot;age&quot;</span> : 22 &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> db.user.<span class="token function-name function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span> <span class="token string">"_id"</span> <span class="token builtin class-name">:</span> ObjectId<span class="token punctuation">(</span><span class="token string">"59bf7bde5d6768f6ee06de2b"</span><span class="token punctuation">)</span>, <span class="token string">"name"</span> <span class="token builtin class-name">:</span> <span class="token string">"aaa"</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#123;</span> <span class="token string">"_id"</span> <span class="token builtin class-name">:</span> ObjectId<span class="token punctuation">(</span><span class="token string">"59bf7d045d6768f6ee06de2c"</span><span class="token punctuation">)</span>, <span class="token string">"name"</span> <span class="token builtin class-name">:</span> <span class="token string">"bbb"</span>, <span class="token string">"age"</span> <span class="token builtin class-name">:</span> <span class="token number">22</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>根据条件查询</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.user.find(&#123;name:<span class="string">&#x27;bbb&#x27;</span>&#125;)</span><br><span class="line">&#123; <span class="string">&quot;_id&quot;</span> : ObjectId(<span class="string">&quot;59bf7d045d6768f6ee06de2c&quot;</span>), <span class="string">&quot;name&quot;</span> : <span class="string">&quot;bbb&quot;</span>, <span class="string">&quot;age&quot;</span> : 22 &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> db.user.find<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>name:<span class="token string">'bbb'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span> <span class="token string">"_id"</span> <span class="token builtin class-name">:</span> ObjectId<span class="token punctuation">(</span><span class="token string">"59bf7d045d6768f6ee06de2c"</span><span class="token punctuation">)</span>, <span class="token string">"name"</span> <span class="token builtin class-name">:</span> <span class="token string">"bbb"</span>, <span class="token string">"age"</span> <span class="token builtin class-name">:</span> <span class="token number">22</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>修改数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.user.updateOne(&#123;name:<span class="string">&#x27;aaa&#x27;</span>&#125;,&#123;<span class="variable">$set</span>:&#123;age:11&#125;&#125;)</span><br><span class="line">&#123; <span class="string">&quot;acknowledged&quot;</span> : <span class="literal">true</span>, <span class="string">&quot;matchedCount&quot;</span> : 1, <span class="string">&quot;modifiedCount&quot;</span> : 1 &#125;</span><br><span class="line"></span><br><span class="line">&gt; db.user.find();</span><br><span class="line">&#123; <span class="string">&quot;_id&quot;</span> : ObjectId(<span class="string">&quot;59bf7bde5d6768f6ee06de2b&quot;</span>), <span class="string">&quot;name&quot;</span> : <span class="string">&quot;aaa&quot;</span>, <span class="string">&quot;age&quot;</span> : 11 &#125;</span><br><span class="line">&#123; <span class="string">&quot;_id&quot;</span> : ObjectId(<span class="string">&quot;59bf7d045d6768f6ee06de2c&quot;</span>), <span class="string">&quot;name&quot;</span> : <span class="string">&quot;bbb&quot;</span>, <span class="string">&quot;age&quot;</span> : 22 &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> db.user.updateOne<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>name:<span class="token string">'aaa'</span><span class="token punctuation">&#125;</span>,<span class="token punctuation">&#123;</span><span class="token variable">$set</span>:<span class="token punctuation">&#123;</span>age:11<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span> <span class="token string">"acknowledged"</span> <span class="token builtin class-name">:</span> true, <span class="token string">"matchedCount"</span> <span class="token builtin class-name">:</span> <span class="token number">1</span>, <span class="token string">"modifiedCount"</span> <span class="token builtin class-name">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span>
+
+<span class="token operator">></span> db.user.find<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#123;</span> <span class="token string">"_id"</span> <span class="token builtin class-name">:</span> ObjectId<span class="token punctuation">(</span><span class="token string">"59bf7bde5d6768f6ee06de2b"</span><span class="token punctuation">)</span>, <span class="token string">"name"</span> <span class="token builtin class-name">:</span> <span class="token string">"aaa"</span>, <span class="token string">"age"</span> <span class="token builtin class-name">:</span> <span class="token number">11</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#123;</span> <span class="token string">"_id"</span> <span class="token builtin class-name">:</span> ObjectId<span class="token punctuation">(</span><span class="token string">"59bf7d045d6768f6ee06de2c"</span><span class="token punctuation">)</span>, <span class="token string">"name"</span> <span class="token builtin class-name">:</span> <span class="token string">"bbb"</span>, <span class="token string">"age"</span> <span class="token builtin class-name">:</span> <span class="token number">22</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>删除数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.user.deleteMany(&#123;name:<span class="string">&#x27;aaa&#x27;</span>&#125;)</span><br><span class="line">&#123; <span class="string">&quot;acknowledged&quot;</span> : <span class="literal">true</span>, <span class="string">&quot;deletedCount&quot;</span> : 1 &#125;</span><br><span class="line"></span><br><span class="line">&gt; db.user.<span class="function"><span class="title">find</span></span>()</span><br><span class="line">&#123; <span class="string">&quot;_id&quot;</span> : ObjectId(<span class="string">&quot;59bf7d045d6768f6ee06de2c&quot;</span>), <span class="string">&quot;name&quot;</span> : <span class="string">&quot;bbb&quot;</span>, <span class="string">&quot;age&quot;</span> : 22 &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> db.user.deleteMany<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>name:<span class="token string">'aaa'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span> <span class="token string">"acknowledged"</span> <span class="token builtin class-name">:</span> true, <span class="token string">"deletedCount"</span> <span class="token builtin class-name">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span>
+
+<span class="token operator">></span> db.user.<span class="token function-name function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span> <span class="token string">"_id"</span> <span class="token builtin class-name">:</span> ObjectId<span class="token punctuation">(</span><span class="token string">"59bf7d045d6768f6ee06de2c"</span><span class="token punctuation">)</span>, <span class="token string">"name"</span> <span class="token builtin class-name">:</span> <span class="token string">"bbb"</span>, <span class="token string">"age"</span> <span class="token builtin class-name">:</span> <span class="token number">22</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>刚刚开始说过，Mongo的数据结构是类似于json的数据结构，数据里面的”_id”就是主键，是系统自己生成的。</p>
 <p>当然也可以自己指定，在插入数据的时候，指定”_id”字段即可。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.user.insert(&#123;<span class="string">&quot;_id&quot;</span>:<span class="string">&quot;12345&quot;</span>,name:<span class="string">&quot;Hello&quot;</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">&quot;nInserted&quot;</span> : 1 &#125;)</span><br><span class="line"></span><br><span class="line">&gt; db.user.<span class="function"><span class="title">find</span></span>()</span><br><span class="line">&#123; <span class="string">&quot;_id&quot;</span> : ObjectId(<span class="string">&quot;59bf7d045d6768f6ee06de2c&quot;</span>), <span class="string">&quot;name&quot;</span> : <span class="string">&quot;bbb&quot;</span>, <span class="string">&quot;age&quot;</span> : 22 &#125;</span><br><span class="line">&#123; <span class="string">&quot;_id&quot;</span> : <span class="string">&quot;12345&quot;</span>, <span class="string">&quot;name&quot;</span> : <span class="string">&quot;Hello&quot;</span> &#125;</span><br><span class="line"></span><br><span class="line">&gt; db.user.insert(&#123;<span class="string">&quot;_id&quot;</span>:<span class="string">&quot;12345&quot;</span>,name:<span class="string">&quot;Hello&quot;</span>&#125;)</span><br><span class="line">WriteResult(&#123;</span><br><span class="line">	<span class="string">&quot;nInserted&quot;</span> : 0,</span><br><span class="line">	<span class="string">&quot;writeError&quot;</span> : &#123;</span><br><span class="line">		<span class="string">&quot;code&quot;</span> : 11000,</span><br><span class="line">		<span class="string">&quot;errmsg&quot;</span> : <span class="string">&quot;E11000 duplicate key error collection: abc123.user index: _id_ dup key: &#123; : \&quot;12345\&quot; &#125;&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> db.user.insert<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"_id"</span><span class="token builtin class-name">:</span><span class="token string">"12345"</span>,name:<span class="token string">"Hello"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+WriteResult<span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token string">"nInserted"</span> <span class="token builtin class-name">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token operator">></span> db.user.<span class="token function-name function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span> <span class="token string">"_id"</span> <span class="token builtin class-name">:</span> ObjectId<span class="token punctuation">(</span><span class="token string">"59bf7d045d6768f6ee06de2c"</span><span class="token punctuation">)</span>, <span class="token string">"name"</span> <span class="token builtin class-name">:</span> <span class="token string">"bbb"</span>, <span class="token string">"age"</span> <span class="token builtin class-name">:</span> <span class="token number">22</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#123;</span> <span class="token string">"_id"</span> <span class="token builtin class-name">:</span> <span class="token string">"12345"</span>, <span class="token string">"name"</span> <span class="token builtin class-name">:</span> <span class="token string">"Hello"</span> <span class="token punctuation">&#125;</span>
+
+<span class="token operator">></span> db.user.insert<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"_id"</span><span class="token builtin class-name">:</span><span class="token string">"12345"</span>,name:<span class="token string">"Hello"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+WriteResult<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+	<span class="token string">"nInserted"</span> <span class="token builtin class-name">:</span> <span class="token number">0</span>,
+	<span class="token string">"writeError"</span> <span class="token builtin class-name">:</span> <span class="token punctuation">&#123;</span>
+		<span class="token string">"code"</span> <span class="token builtin class-name">:</span> <span class="token number">11000</span>,
+		<span class="token string">"errmsg"</span> <span class="token builtin class-name">:</span> <span class="token string">"E11000 duplicate key error collection: abc123.user index: _id_ dup key: &#123; : <span class="token entity" title="\&quot;">\"</span>12345<span class="token entity" title="\&quot;">\"</span> &#125;"</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>上面示例表示，第一次插入数据的时候，是成功的，查询结果也是符合预期，当再次执行的时候，插入失败，说明主键冲突。</p>
 <h3 id="MongoDB可视化工具"><a href="#MongoDB可视化工具" class="headerlink" title="MongoDB可视化工具"></a>MongoDB可视化工具</h3><p>上面使用的是命令行工具查看数据，可能对有些同学不是很优化，我在这里推荐一款可视化功工具<a href="http://blog.robomongo.org/">Robo 3T</a></p>
@@ -473,37 +576,130 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/1520343-2988a2e07e9d3743.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <h2 id="Java操作MongoDB"><a href="#Java操作MongoDB" class="headerlink" title="Java操作MongoDB"></a>Java操作MongoDB</h2><p>Java操作Mongo比较简单，直接调用MongoDB的驱动即可，其他部分基本上和上面的语法一样。</p>
 <p>本次使用的版本是<code>3.5.0</code>，下面是依赖方式。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mongodb<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mongodb-driver<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.mongodb<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mongodb-driver<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.5.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  compile <span class="string">&#x27;org.mongodb:mongodb-driver:3.5.0&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">dependencies <span class="token punctuation">&#123;</span>
+  compile <span class="token string">'org.mongodb:mongodb-driver:3.5.0'</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>数据库连接</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> MongoClient client;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Before</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String url = <span class="string">&quot;mongodb://127.0.0.1:27017/abc123&quot;</span>;</span><br><span class="line">    MongoClientURI uri = <span class="keyword">new</span> MongoClientURI(url);</span><br><span class="line">    client = <span class="keyword">new</span> MongoClient(uri);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token class-name">MongoClient</span> client<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Before</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span> url <span class="token operator">=</span> <span class="token string">"mongodb://127.0.0.1:27017/abc123"</span><span class="token punctuation">;</span>
+    <span class="token class-name">MongoClientURI</span> uri <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MongoClientURI</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    client <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MongoClient</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>查询数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFind</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MongoDatabase database = client.getDatabase(<span class="string">&quot;abc123&quot;</span>);</span><br><span class="line">    MongoCollection&lt;Document&gt; collection = database.getCollection(<span class="string">&quot;user&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (Document document : collection.find()) &#123;</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, Object&gt; entry : document.entrySet()) &#123;</span><br><span class="line">            System.out.print(entry.getKey() + <span class="string">&quot;:&quot;</span> + entry.getValue() + <span class="string">&quot;\t&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testFind</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">MongoDatabase</span> database <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">getDatabase</span><span class="token punctuation">(</span><span class="token string">"abc123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">MongoCollection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Document</span><span class="token punctuation">></span></span> collection <span class="token operator">=</span> database<span class="token punctuation">.</span><span class="token function">getCollection</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Document</span> document <span class="token operator">:</span> collection<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Map<span class="token punctuation">.</span>Entry</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> entry <span class="token operator">:</span> document<span class="token punctuation">.</span><span class="token function">entrySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span><span class="token function">getKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">":"</span> <span class="token operator">+</span> entry<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>根据先前的数据，查到的结果2条。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0</span><br><span class="line">_id:12345	name:Hello</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0
+_id:12345	name:Hello<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>添加数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testInsert</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    testFind();</span><br><span class="line"></span><br><span class="line">    MongoDatabase database = client.getDatabase(<span class="string">&quot;abc123&quot;</span>);</span><br><span class="line">    MongoCollection&lt;Document&gt; collection = database.getCollection(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    Document document = <span class="keyword">new</span> Document();</span><br><span class="line">    document.put(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;World&quot;</span>);</span><br><span class="line">    document.put(<span class="string">&quot;age&quot;</span>, <span class="number">33</span>);</span><br><span class="line">    collection.insertOne(document);</span><br><span class="line"></span><br><span class="line">    testFind();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testInsert</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">testFind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">MongoDatabase</span> database <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">getDatabase</span><span class="token punctuation">(</span><span class="token string">"abc123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">MongoCollection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Document</span><span class="token punctuation">></span></span> collection <span class="token operator">=</span> database<span class="token punctuation">.</span><span class="token function">getCollection</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Document</span> document <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Document</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"World"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    collection<span class="token punctuation">.</span><span class="token function">insertOne</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">testFind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>插入前总共为2条数据，插入后为3条数据。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0</span><br><span class="line">_id:12345	name:Hello</span><br><span class="line"></span><br><span class="line">_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0</span><br><span class="line">_id:12345	name:Hello</span><br><span class="line">_id:59bf8282fe37ad04a81fd012	name:World	age:33</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0
+_id:12345	name:Hello
+
+_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0
+_id:12345	name:Hello
+_id:59bf8282fe37ad04a81fd012	name:World	age:33<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>修改数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUpdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;before update&quot;</span>);</span><br><span class="line">    testFind();</span><br><span class="line"></span><br><span class="line">    MongoDatabase database = client.getDatabase(<span class="string">&quot;abc123&quot;</span>);</span><br><span class="line">    MongoCollection&lt;Document&gt; collection = database.getCollection(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    collection.updateMany(</span><br><span class="line">            Filters.eq(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;World&quot;</span>),</span><br><span class="line">            Updates.set(<span class="string">&quot;age&quot;</span>, <span class="number">44</span>)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    System.out.println();</span><br><span class="line">    System.out.println();</span><br><span class="line">    System.out.println(<span class="string">&quot;after update&quot;</span>);</span><br><span class="line">    testFind();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before update"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">testFind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">MongoDatabase</span> database <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">getDatabase</span><span class="token punctuation">(</span><span class="token string">"abc123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">MongoCollection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Document</span><span class="token punctuation">></span></span> collection <span class="token operator">=</span> database<span class="token punctuation">.</span><span class="token function">getCollection</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    collection<span class="token punctuation">.</span><span class="token function">updateMany</span><span class="token punctuation">(</span>
+            <span class="token class-name">Filters</span><span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"World"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token class-name">Updates</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after update"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">testFind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>修改数据和其他的不一样，<code>collection.updateMany</code>有2个参数，第一个参数<code>Filters.eq(&quot;name&quot;, &quot;World&quot;)</code>是查询条件，第二个参数<code>Updates.set(&quot;age&quot;, 44)</code>为赋值语句。</p>
 <p>在修改前数据为<code>_id:59bf8282fe37ad04a81fd012    name:World    age:33</code>，修改后就变成了<code>_id:59bf8282fe37ad04a81fd012    name:World    age:44</code>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">before update</span><br><span class="line">_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0</span><br><span class="line">_id:12345	name:Hello</span><br><span class="line">_id:59bf8282fe37ad04a81fd012	name:World	age:33</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">after update</span><br><span class="line">_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0</span><br><span class="line">_id:12345	name:Hello</span><br><span class="line">_id:59bf8282fe37ad04a81fd012	name:World	age:44</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">before update
+_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0
+_id:12345	name:Hello
+_id:59bf8282fe37ad04a81fd012	name:World	age:33
+
+
+after update
+_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0
+_id:12345	name:Hello
+_id:59bf8282fe37ad04a81fd012	name:World	age:44<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>删除数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;before delete&quot;</span>);</span><br><span class="line">    testFind();</span><br><span class="line"></span><br><span class="line">    MongoDatabase database = client.getDatabase(<span class="string">&quot;abc123&quot;</span>);</span><br><span class="line">    MongoCollection&lt;Document&gt; collection = database.getCollection(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    collection.deleteMany(</span><br><span class="line">            Filters.eq(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;World&quot;</span>)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    System.out.println();</span><br><span class="line">    System.out.println();</span><br><span class="line">    System.out.println(<span class="string">&quot;after delete&quot;</span>);</span><br><span class="line">    testFind();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testDelete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before delete"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">testFind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">MongoDatabase</span> database <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">getDatabase</span><span class="token punctuation">(</span><span class="token string">"abc123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">MongoCollection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Document</span><span class="token punctuation">></span></span> collection <span class="token operator">=</span> database<span class="token punctuation">.</span><span class="token function">getCollection</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    collection<span class="token punctuation">.</span><span class="token function">deleteMany</span><span class="token punctuation">(</span>
+            <span class="token class-name">Filters</span><span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"World"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after delete"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">testFind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>删除前有三条数据，删除后只有2条数据。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">before delete</span><br><span class="line">_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0</span><br><span class="line">_id:12345	name:Hello</span><br><span class="line">_id:59bf8282fe37ad04a81fd012	name:World	age:44</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">after delete</span><br><span class="line">_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0</span><br><span class="line">_id:12345	name:Hello</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">before delete
+_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0
+_id:12345	name:Hello
+_id:59bf8282fe37ad04a81fd012	name:World	age:44
+
+
+after delete
+_id:59bf7d045d6768f6ee06de2c	name:bbb	age:22.0
+_id:12345	name:Hello<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，MongoDB使用还是很简单的，相对于传统的关系型数据库，优缺点表现如下。</p>
 <p><strong>优点:</strong></p>
@@ -926,6 +1122,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -933,6 +1131,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1098,9 +1298,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1310,8 +1510,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

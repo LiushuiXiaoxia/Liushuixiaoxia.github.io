@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -414,6 +458,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -424,23 +471,44 @@
 <p>这里是<a href="https://github.com/LiushuiXiaoxia/WaterMark">地址https://github.com/LiushuiXiaoxia/WaterMark</a>，水印生成器，可以给指定图片文件或者目录添加水印，水印支持自定义文本、位置、颜色、大小。</p>
 <span id="more"></span>
 
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap LiushuiXiaoxia/watermark</span><br><span class="line">brew install watermark</span><br></pre></td></tr></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew tap LiushuiXiaoxia/watermark
+brew <span class="token function">install</span> watermark<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>执行<code>watermark -h</code>，显示帮助信息，说明安装成功。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ watermark -h</span><br><span class="line">usage: watermark.py [-h] -f FILE -t TEXT -o OUT [-c COLOR] [-s SIZE]</span><br><span class="line">                    [-p POSITION]</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --<span class="built_in">help</span>            show this <span class="built_in">help</span> message and <span class="built_in">exit</span></span><br><span class="line">  -f FILE, --file FILE  image path or directory</span><br><span class="line">  -t TEXT, --text TEXT  water mart text</span><br><span class="line">  -o OUT, --out OUT     image output directory</span><br><span class="line">  -c COLOR, --color COLOR</span><br><span class="line">                        text color, red、blue and so on</span><br><span class="line">  -s SIZE, --size SIZE  text size</span><br><span class="line">  -p POSITION, --position POSITION</span><br><span class="line">                        text position, left_top、left_bottom、right_top、ri</span><br><span class="line">                        ght_bottom、center，default is center,</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ watermark -h
+usage: watermark.py <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> -f FILE -t TEXT -o OUT <span class="token punctuation">[</span>-c COLOR<span class="token punctuation">]</span> <span class="token punctuation">[</span>-s SIZE<span class="token punctuation">]</span>
+                    <span class="token punctuation">[</span>-p POSITION<span class="token punctuation">]</span>
+
+optional arguments:
+  -h, --help            show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
+  -f FILE, --file FILE  image path or directory
+  -t TEXT, --text TEXT  water mart text
+  -o OUT, --out OUT     image output directory
+  -c COLOR, --color COLOR
+                        text color, red、blue and so on
+  -s SIZE, --size SIZE  text size
+  -p POSITION, --position POSITION
+                        text position, left_top、left_bottom、right_top、ri
+                        ght_bottom、center，default is center,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p>参数说明:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-h, --<span class="built_in">help</span>                    帮助信息</span><br><span class="line">-f FILE, --file FILE          图片路径或者图片目录</span><br><span class="line">-t TEXT, --text TEXT          水印文本</span><br><span class="line">-o OUT, --out OUT             图片输出目录</span><br><span class="line">-c COLOR, --color COLOR       水印文本颜色，可以是red、blue、white等</span><br><span class="line">-s SIZE, --size SIZE          文本大小</span><br><span class="line">-p POSITION, --position       文本位置可以是left_top、left_bottom、right_top、right_botto center，默认是center</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">-h, --help                    帮助信息
+-f FILE, --file FILE          图片路径或者图片目录
+-t TEXT, --text TEXT          水印文本
+-o OUT, --out OUT             图片输出目录
+-c COLOR, --color COLOR       水印文本颜色，可以是red、blue、white等
+-s SIZE, --size SIZE          文本大小
+-p POSITION, --position       文本位置可以是left_top、left_bottom、right_top、right_botto center，默认是center<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>比如举例一个图片，文件路径是<code>image/test.png</code></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1520343-5f4470a63d69266a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>执行命令如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watermark -f image/test.png -t <span class="string">&quot;流水不腐小夏&quot;</span> -o new -c red -s 23 -p left_top</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">watermark -f image/test.png -t <span class="token string">"流水不腐小夏"</span> -o new -c red -s <span class="token number">23</span> -p left_top<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>则效果如下</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1520343-00d90e4050966973.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <p>当然如果你有整个文件夹要处理，可以直接指定一个目录。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watermark -f image -t <span class="string">&quot;流水不腐小夏&quot;</span> -c black  -o new  -p left_top</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">watermark -f image -t <span class="token string">"流水不腐小夏"</span> -c black  -o new  -p left_top<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="http://upload-images.jianshu.io/upload_images/1520343-ef41155203606de6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>如有想法或者意见，欢迎交流。</p>
@@ -852,6 +920,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -859,6 +929,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1024,9 +1096,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1236,8 +1308,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

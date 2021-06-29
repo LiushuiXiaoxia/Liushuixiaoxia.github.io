@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -413,13 +457,16 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Android-Http网络开发神兵利器"><a href="#Android-Http网络开发神兵利器" class="headerlink" title="Android Http网络开发神兵利器"></a>Android Http网络开发神兵利器</h1><hr>
-<p>本人在Android移动端开发已经有不少年的经验，经历颇多，感受颇深，特写下此文记录下在Android Http网络开发中的各种工具使用，如果有其他想法和建议，欢迎前来交流 <a href="mailto:&#120;&#105;&#97;&#113;&#105;&#x75;&#x6c;&#101;&#105;&#64;&#x31;&#50;&#54;&#x2e;&#99;&#x6f;&#109;">&#120;&#105;&#97;&#113;&#105;&#x75;&#x6c;&#101;&#105;&#64;&#x31;&#50;&#54;&#x2e;&#99;&#x6f;&#109;</a> 。 本人文笔较差，请不要见怪。</p>
+<p>本人在Android移动端开发已经有不少年的经验，经历颇多，感受颇深，特写下此文记录下在Android Http网络开发中的各种工具使用，如果有其他想法和建议，欢迎前来交流 <a href="mailto:&#x78;&#x69;&#97;&#113;&#x69;&#x75;&#108;&#101;&#x69;&#x40;&#49;&#50;&#x36;&#46;&#99;&#x6f;&#109;">&#x78;&#x69;&#97;&#113;&#x69;&#x75;&#108;&#101;&#x69;&#x40;&#49;&#50;&#x36;&#46;&#99;&#x6f;&#109;</a> 。 本人文笔较差，请不要见怪。</p>
 <p>Android开发的时候，很多APP都是基于网络请求的，大部分应用都是基于http的，少部分是基于Socket的，本文主要介绍Android Http开发的主要实践和工具。</p>
 <p>本文最先发表于<a href="https://github.com/LiushuiXiaoxia/AndroidHttp">Github</a>，如有转载，请注明转载出处。</p>
 <span id="more"></span>
@@ -439,7 +486,13 @@
 <p>5、支持B/S及C/S模式。</p>
 <h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/http_request.png" alt="Http请求消息结构"></p>
 <p>上图是一个Http请求消息结构，我们可以使用抓包工具抓取网络请求,因为是Get请求，所以后面没有请求数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET /562f25980001b1b106000338.jpg HTTP/1.1</span><br><span class="line">Host    img.mukewang.com</span><br><span class="line">User-Agent    Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36</span><br><span class="line">Accept    image/webp,image/*,*/*;q=0.8</span><br><span class="line">Referer    http://www.imooc.com/</span><br><span class="line">Accept-Encoding    gzip, deflate, sdch</span><br><span class="line">Accept-Language    zh-CN,zh;q=0.8</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">GET &#x2F;562f25980001b1b106000338.jpg HTTP&#x2F;1.1
+Host    img.mukewang.com
+User-Agent    Mozilla&#x2F;5.0 (Windows NT 10.0; WOW64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;51.0.2704.106 Safari&#x2F;537.36
+Accept    image&#x2F;webp,image&#x2F;*,*&#x2F;*;q&#x3D;0.8
+Referer    http:&#x2F;&#x2F;www.imooc.com&#x2F;
+Accept-Encoding    gzip, deflate, sdch
+Accept-Language    zh-CN,zh;q&#x3D;0.8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>第一部分：请求行，用来说明请求类型,要访问的资源以及所使用的HTTP版本.</p>
 <p>GET说明请求类型为GET,[/562f25980001b1b106000338.jpg]为要访问的资源，该行的最后一部分说明使用的是HTTP1.1版本。</p>
@@ -450,7 +503,14 @@
 <p>第四部分：请求数据也叫主体，可以添加任意的其他数据。</p>
 <p>这个例子的请求数据为空。</p>
 <p>下面这个例子是Post方式。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP1.1</span><br><span class="line">Host:www.wrox.com</span><br><span class="line">User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)</span><br><span class="line">Content-Type:application/x-www-form-urlencoded</span><br><span class="line">Content-Length:40</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line"></span><br><span class="line">name=Professional%20Ajax&amp;publisher=Wiley</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">POST &#x2F; HTTP1.1
+Host:www.wrox.com
+User-Agent:Mozilla&#x2F;4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)
+Content-Type:application&#x2F;x-www-form-urlencoded
+Content-Length:40
+Connection: Keep-Alive
+
+name&#x3D;Professional%20Ajax&amp;publisher&#x3D;Wiley<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>第一部分：请求行，第一行明了是post请求，以及http1.1版本。</p>
 <p>第二部分：请求头部，第二行至第六行。</p>
@@ -459,7 +519,16 @@
 <h2 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h2><p>一般情况下，服务器接收并处理客户端发过来的请求后会返回一个HTTP的响应消息。</p>
 <p>HTTP响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/http_reponse.jpg" alt="Http响应消息结构"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Fri, 22 May 2009 06:07:21 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">      &lt;head&gt;&lt;/head&gt;</span><br><span class="line">      &lt;body&gt;</span><br><span class="line">            &lt;!--body goes here--&gt;</span><br><span class="line">      &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">HTTP&#x2F;1.1 200 OK
+Date: Fri, 22 May 2009 06:07:21 GMT
+Content-Type: text&#x2F;html; charset&#x3D;UTF-8
+
+&lt;html&gt;
+      &lt;head&gt;&lt;&#x2F;head&gt;
+      &lt;body&gt;
+            &lt;!--body goes here--&gt;
+      &lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>第一部分：状态行，由HTTP协议版本号， 状态码， 状态消息 三部分组成。</p>
 <p>第一行为状态行，（HTTP/1.1）表明HTTP版本为1.1版本，状态码为200，状态消息为（ok）</p>
@@ -475,10 +544,23 @@
 <p>4xx：客户端错误–请求有语法错误或请求无法实现</p>
 <p>5xx：服务器端错误–服务器未能实现合法的请求</p>
 <p>常见状态码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">200 OK                        // 客户端请求成功</span><br><span class="line">400 Bad Request               // 客户端请求有语法错误，不能被服务器所理解</span><br><span class="line">401 Unauthorized              // 请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用</span><br><span class="line">403 Forbidden                 // 服务器收到请求，但是拒绝提供服务</span><br><span class="line">404 Not Found                 // 请求资源不存在，eg：输入了错误的URL</span><br><span class="line">500 Internal Server Error     // 服务器发生不可预期的错误</span><br><span class="line">503 Server Unavailable        // 服务器当前不能处理客户端的请求，一段时间后可能恢复正常</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">200 OK                        &#x2F;&#x2F; 客户端请求成功
+400 Bad Request               &#x2F;&#x2F; 客户端请求有语法错误，不能被服务器所理解
+401 Unauthorized              &#x2F;&#x2F; 请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用
+403 Forbidden                 &#x2F;&#x2F; 服务器收到请求，但是拒绝提供服务
+404 Not Found                 &#x2F;&#x2F; 请求资源不存在，eg：输入了错误的URL
+500 Internal Server Error     &#x2F;&#x2F; 服务器发生不可预期的错误
+503 Server Unavailable        &#x2F;&#x2F; 服务器当前不能处理客户端的请求，一段时间后可能恢复正常<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p>根据HTTP标准，HTTP请求可以使用多种请求方法。<br>HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法。<br>HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET     请求指定的页面信息，并返回实体主体。</span><br><span class="line">HEAD     类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</span><br><span class="line">POST     向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</span><br><span class="line">PUT     从客户端向服务器传送的数据取代指定的文档的内容。</span><br><span class="line">DELETE      请求服务器删除指定的页面。</span><br><span class="line">CONNECT     HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</span><br><span class="line">OPTIONS     允许客户端查看服务器的性能。</span><br><span class="line">TRACE     回显服务器收到的请求，主要用于测试或诊断。</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">GET     请求指定的页面信息，并返回实体主体。
+HEAD     类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头
+POST     向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和&#x2F;或已有资源的修改。
+PUT     从客户端向服务器传送的数据取代指定的文档的内容。
+DELETE      请求服务器删除指定的页面。
+CONNECT     HTTP&#x2F;1.1协议中预留给能够将连接改为管道方式的代理服务器。
+OPTIONS     允许客户端查看服务器的性能。
+TRACE     回显服务器收到的请求，主要用于测试或诊断。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h2><p>HTTP消息由客户端到服务器的请求和服务器到客户端的响应组成。请求消息和响应消息都是由开始行（对于请求消息，开始行就是请求行，对于响应消息，开始行就是状态行），消息报头（可选），空行（只有CRLF的行），消息正文（可选）组成。</p>
 <p>HTTP消息报头包括普通报头、请求报头、响应报头、实体报头。<br>每一个报头域都是由名字+“：”+空格+值 组成，消息报头域的名字是大小写无关的。</p>
@@ -561,10 +643,15 @@
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidHttp/master/doc/multiwindow.gif"></p>
 <p>集成的方法都很简单，只需要在初始化OkHttpClient的时候，添加对应的拦截器即可。</p>
 <p>Gradle依赖</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">   debugCompile <span class="string">&#x27;com.readystatesoftware.chuck:library:1.0.4&#x27;</span></span><br><span class="line">   releaseCompile <span class="string">&#x27;com.readystatesoftware.chuck:library-no-op:1.0.4&#x27;</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-gradle" data-language="gradle"><code class="language-gradle">dependencies &#123;
+   debugCompile &#39;com.readystatesoftware.chuck:library:1.0.4&#39;
+   releaseCompile &#39;com.readystatesoftware.chuck:library-no-op:1.0.4&#39;
+ &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>添加拦截器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient.Builder()</span><br><span class="line">  .addInterceptor(<span class="keyword">new</span> ChuckInterceptor(context))</span><br><span class="line">  .build();</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">OkHttpClient</span> client <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OkHttpClient<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">addInterceptor</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ChuckInterceptor</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p><a href="https://github.com/jgilfelt/chuck">Chuck github</a></p>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="RESTful"><a href="#RESTful" class="headerlink" title="RESTful"></a>RESTful</h2><p>RESTful一种软件架构风格，设计风格而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</p>
@@ -608,10 +695,42 @@
 <p>那么可以使用现在流行的Aop技术，在编译时候，会在所有调用OkHttpClient的地方，自动添加，保证不会忘记，如果你的App还是用其他的sdk，sdk里面也是用OKhttp的话，也会监控到sdk里面的网络请求，不少大厂已经使用了这种方法，然后收集请求数据到后端，方便管理和优化。</p>
 <p>下面简单介绍相关代码:</p>
 <p>首先集成<code>gradle_plugin_android_aspectjx</code>插件</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">classpath</span> <span class="string">&#x27;com.hujiang.aspectjx:gradle-android-plugin-aspectjx:1.0.9&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-gradle" data-language="gradle"><code class="language-gradle">dependencies &#123;
+    classpath &#39;com.hujiang.aspectjx:gradle-android-plugin-aspectjx:1.0.9&#39;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>然后定义Aspectj切入点</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.facebook.stetho.okhttp3.StethoInterceptor;</span><br><span class="line"><span class="keyword">import</span> com.readystatesoftware.chuck.ChuckInterceptor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.ProceedingJoinPoint;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Around;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Aspect;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Pointcut;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> me.ele.breakfastapp.AppContext;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OkHttpAspect</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pointcut(&quot;call(public okhttp3.OkHttpClient build())&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Around(&quot;build()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">aroundBuild</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        Object target = joinPoint.getTarget();</span><br><span class="line">        <span class="keyword">if</span> (target <span class="keyword">instanceof</span> OkHttpClient.Builder) &#123;</span><br><span class="line">            OkHttpClient.Builder builder = (OkHttpClient.Builder) target;</span><br><span class="line">            builder.addNetworkInterceptor(<span class="keyword">new</span> StethoInterceptor());</span><br><span class="line">            builder.addNetworkInterceptor(<span class="keyword">new</span> ChuckInterceptor(AppContext.get()));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> joinPoint.proceed();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>facebook<span class="token punctuation">.</span>stetho<span class="token punctuation">.</span>okhttp3<span class="token punctuation">.</span></span><span class="token class-name">StethoInterceptor</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>readystatesoftware<span class="token punctuation">.</span>chuck<span class="token punctuation">.</span></span><span class="token class-name">ChuckInterceptor</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>aspectj<span class="token punctuation">.</span>lang<span class="token punctuation">.</span></span><span class="token class-name">ProceedingJoinPoint</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>aspectj<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Around</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>aspectj<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Aspect</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>aspectj<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Pointcut</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">me<span class="token punctuation">.</span>ele<span class="token punctuation">.</span>breakfastapp<span class="token punctuation">.</span></span><span class="token class-name">AppContext</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">okhttp3<span class="token punctuation">.</span></span><span class="token class-name">OkHttpClient</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Aspect</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OkHttpAspect</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Pointcut</span><span class="token punctuation">(</span><span class="token string">"call(public okhttp3.OkHttpClient build())"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Around</span><span class="token punctuation">(</span><span class="token string">"build()"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">aroundBuild</span><span class="token punctuation">(</span><span class="token class-name">ProceedingJoinPoint</span> joinPoint<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Throwable</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Object</span> target <span class="token operator">=</span> joinPoint<span class="token punctuation">.</span><span class="token function">getTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token keyword">instanceof</span> <span class="token class-name">OkHttpClient<span class="token punctuation">.</span>Builder</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">OkHttpClient<span class="token punctuation">.</span>Builder</span> builder <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">OkHttpClient<span class="token punctuation">.</span>Builder</span><span class="token punctuation">)</span> target<span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">addNetworkInterceptor</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">StethoInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">addNetworkInterceptor</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ChuckInterceptor</span><span class="token punctuation">(</span><span class="token class-name">AppContext</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> joinPoint<span class="token punctuation">.</span><span class="token function">proceed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>那么在代码编译的时候，会自动插入字节码。</p>
 <p>Aop相关资料:</p>
@@ -1043,6 +1162,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -1050,6 +1171,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1215,9 +1338,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1427,8 +1550,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

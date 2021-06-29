@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -410,6 +454,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -427,45 +474,181 @@
 <p>正如Checkstyle的开发者所言，这个工具能够帮助你在项目中定义和维持一个非常精确和灵活的代码规范形式。当你启动CheckStyle，它会根据所提供的配置文件分析你的Java代码并告诉你发现的所有错误。</p>
 <p>Checkstyle会发现大量的问题，特别是在你运用了大量的规则配置，如同你设置了一个非常精确的语法。<br>尽管我通过Gradle使用checkstyle，例如在我进行推送之前，我仍然推荐你为IntellJ/Android Studio使用checkstyle插件(你可以通过Android Studio的工作面板文件/设置/插件直接安装插件)。<br>这种方式下，你可以根据那些为Gradle配置的相同文件在你的工程中使用checkstyle，但是远不止这些，你可以直接在Android Studio中获取带有超链接结果，<br>这些结果通过超链接在你的代码中对应，这是非常有用的(Gradle的这种方式仍然很重要的，因为你可以使用它自动构建系统，如Jenkins)。</p>
 <h2 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h2><p>在Android中集成CheckStyle也很简单，只需要在Gradle添加少许配置即可。</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">&#x27;checkstyle&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义生成文件目录</span></span><br><span class="line"><span class="keyword">def</span> checkStyleReportPath = <span class="string">&quot;$&#123;project.rootDir&#125;/reports/&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在clean时候，自动删除原先生成报告</span></span><br><span class="line">clean.<span class="keyword">doFirst</span> &#123;</span><br><span class="line">    <span class="keyword">delete</span> checkStyleReportPath</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> projectCheckStyle(type: <span class="keyword">Checkstyle</span>) &#123;</span><br><span class="line">    <span class="keyword">source</span> <span class="string">&#x27;src&#x27;</span></span><br><span class="line">    configFile <span class="keyword">file</span>(<span class="string">&quot;checkstyle.xml&quot;</span>) <span class="comment">// 配置样式</span></span><br><span class="line">    <span class="keyword">include</span> <span class="string">&#x27;**/*.java&#x27;</span></span><br><span class="line">    <span class="keyword">exclude</span> <span class="string">&#x27;**/gen/**&#x27;</span></span><br><span class="line">    <span class="keyword">classpath</span> = files()</span><br><span class="line">    ignoreFailures <span class="keyword">true</span> <span class="comment">// 配置是否忽略失败</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自定义报告生成路径</span></span><br><span class="line">    reports &#123;</span><br><span class="line">        html &#123;</span><br><span class="line">            destination <span class="string">&quot;$&#123;checkStyleReportPath&#125;/Checkstyle.html&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        xml &#123;</span><br><span class="line">            destination <span class="string">&quot;$&#123;checkStyleReportPath&#125;/Checkstyle.xml&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tasks.withType(<span class="keyword">Checkstyle</span>).<span class="keyword">each</span> &#123; checkstyleTask -&gt;</span><br><span class="line">    checkstyleTask.<span class="keyword">doLast</span> &#123;</span><br><span class="line">        reports.all &#123; report -&gt;</span><br><span class="line">            <span class="comment">// 检查生成报告中是否有错误</span></span><br><span class="line">            <span class="keyword">def</span> outputFile = report.destination</span><br><span class="line">            <span class="keyword">if</span> (outputFile.exists() &amp;&amp; outputFile.text.contains(<span class="string">&quot;&lt;error &quot;</span>) &amp;&amp; !checkstyleTask.ignoreFailures) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> GradleException(<span class="string">&quot;There were checkstyle errors! For more info check $outputFile&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// preBuild的时候，执行projectCheckStyle任务</span></span><br><span class="line">preBuild.dependsOn projectCheckStyle</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-gradle" data-language="gradle"><code class="language-gradle">apply plugin: &#39;checkstyle&#39;
+
+
+&#x2F;&#x2F; 定义生成文件目录
+def checkStyleReportPath &#x3D; &quot;$&#123;project.rootDir&#125;&#x2F;reports&#x2F;&quot;
+
+&#x2F;&#x2F; 在clean时候，自动删除原先生成报告
+clean.doFirst &#123;
+    delete checkStyleReportPath
+&#125;
+
+task projectCheckStyle(type: Checkstyle) &#123;
+    source &#39;src&#39;
+    configFile file(&quot;checkstyle.xml&quot;) &#x2F;&#x2F; 配置样式
+    include &#39;**&#x2F;*.java&#39;
+    exclude &#39;**&#x2F;gen&#x2F;**&#39;
+    classpath &#x3D; files()
+    ignoreFailures true &#x2F;&#x2F; 配置是否忽略失败
+
+    &#x2F;&#x2F; 自定义报告生成路径
+    reports &#123;
+        html &#123;
+            destination &quot;$&#123;checkStyleReportPath&#125;&#x2F;Checkstyle.html&quot;
+        &#125;
+        xml &#123;
+            destination &quot;$&#123;checkStyleReportPath&#125;&#x2F;Checkstyle.xml&quot;
+        &#125;
+    &#125;
+&#125;
+
+tasks.withType(Checkstyle).each &#123; checkstyleTask -&gt;
+    checkstyleTask.doLast &#123;
+        reports.all &#123; report -&gt;
+            &#x2F;&#x2F; 检查生成报告中是否有错误
+            def outputFile &#x3D; report.destination
+            if (outputFile.exists() &amp;&amp; outputFile.text.contains(&quot;&lt;error &quot;) &amp;&amp; !checkstyleTask.ignoreFailures) &#123;
+                throw new GradleException(&quot;There were checkstyle errors! For more info check $outputFile&quot;)
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+&#x2F;&#x2F; preBuild的时候，执行projectCheckStyle任务
+preBuild.dependsOn projectCheckStyle<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="PMD"><a href="#PMD" class="headerlink" title="PMD"></a>PMD</h1><p><a href="https://pmd.github.io/">PMD官网</a></p>
 <p>事实上，PMD是一个工作有点类似Findbugs的强大工具，但是(PMD)直接检查源代码而不是检查字节码(顺便说句，PMD适用很多语言)。<br>(PMD和Findbugs)的核心目标是相同的，通过静态分析方法找出哪些模式引起的bug。因此为什么同时使用Findbugs和PMD呢？<br>好吧！尽管Findbugs和PMD拥有相同的目标，(但是)他们的检查方法是不同的。所以PMD有时检查出的bug但是Findbugs却检查不出来，反之亦然。</p>
-<h2 id="集成-1"><a href="#集成-1" class="headerlink" title="集成"></a>集成</h2><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">&#x27;pmd&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义生成文件目录</span></span><br><span class="line"><span class="keyword">def</span> pmdReportPath = <span class="string">&quot;$&#123;project.rootDir&#125;/analysis/reports/&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> projectPmd(type: Pmd) &#123;</span><br><span class="line">    ignoreFailures = <span class="keyword">true</span></span><br><span class="line">    ruleSetFiles = files(<span class="string">&quot;pmd.xml&quot;</span>) <span class="comment">// 自定义规则</span></span><br><span class="line">    ruleSets = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">source</span> <span class="string">&#x27;src&#x27;</span></span><br><span class="line">    <span class="keyword">include</span> <span class="string">&#x27;**/*.java&#x27;</span></span><br><span class="line">    <span class="keyword">exclude</span> <span class="string">&#x27;**/gen/**&#x27;</span>, <span class="string">&#x27;**/build/**&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义输出报告</span></span><br><span class="line">    reports &#123;</span><br><span class="line">        xml &#123;</span><br><span class="line">            enabled = <span class="keyword">false</span></span><br><span class="line">            destination <span class="string">&quot;$pmdReportPath/Pmd.xml&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        html &#123;</span><br><span class="line">            enabled = <span class="keyword">true</span></span><br><span class="line">            destination <span class="string">&quot;$pmdReportPath/Pmd.html&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">preBuild.dependsOn projectPmd</span><br></pre></td></tr></table></figure>
+<h2 id="集成-1"><a href="#集成-1" class="headerlink" title="集成"></a>集成</h2><pre class="line-numbers language-gradle" data-language="gradle"><code class="language-gradle">apply plugin: &#39;pmd&#39;
+
+&#x2F;&#x2F; 定义生成文件目录
+def pmdReportPath &#x3D; &quot;$&#123;project.rootDir&#125;&#x2F;analysis&#x2F;reports&#x2F;&quot;
+
+task projectPmd(type: Pmd) &#123;
+    ignoreFailures &#x3D; true
+    ruleSetFiles &#x3D; files(&quot;pmd.xml&quot;) &#x2F;&#x2F; 自定义规则
+    ruleSets &#x3D; []
+
+    source &#39;src&#39;
+    include &#39;**&#x2F;*.java&#39;
+    exclude &#39;**&#x2F;gen&#x2F;**&#39;, &#39;**&#x2F;build&#x2F;**&#39;
+
+    &#x2F;&#x2F; 定义输出报告
+    reports &#123;
+        xml &#123;
+            enabled &#x3D; false
+            destination &quot;$pmdReportPath&#x2F;Pmd.xml&quot;
+        &#125;
+        html &#123;
+            enabled &#x3D; true
+            destination &quot;$pmdReportPath&#x2F;Pmd.html&quot;
+        &#125;
+    &#125;
+&#125;
+
+preBuild.dependsOn projectPmd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="FindBugs"><a href="#FindBugs" class="headerlink" title="FindBugs"></a>FindBugs</h1><p><a href="http://findbugs.sourceforge.net/">FindBugs官网</a></p>
 <p>findbugs是一个分析bytecode并找出其中可疑部分的一个工具。它给项目字节码做一个全面扫描，通过一些通用规则去判断可能潜在的一些问题，比如性能，多线程安全等等。</p>
 <p>FindBugs基本上只需要一个程序来做分析的字节码，所以这是非常容易使用。它能检测到常见的错误，如错误的布尔运算符。<br>FindBugs也能够检测到由于误解语言特点的错误，如Java参数调整（这不是真的有可能因为它的参数是传值）。</p>
-<h2 id="集成-2"><a href="#集成-2" class="headerlink" title="集成"></a>集成</h2><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">&#x27;findbugs&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义生成文件目录</span></span><br><span class="line"><span class="keyword">def</span> findbugsReportPath = <span class="string">&quot;$&#123;project.rootDir&#125;/reports/&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> findbugs(type: FindBugs) &#123;</span><br><span class="line">    ignoreFailures = <span class="keyword">true</span></span><br><span class="line">    excludeFilter = <span class="keyword">new</span> <span class="keyword">File</span>(<span class="string">&quot;findbugs.xml&quot;</span>) <span class="comment">// 自定义配置文件</span></span><br><span class="line">    <span class="keyword">classpath</span> = files()</span><br><span class="line">    classes = <span class="keyword">fileTree</span>(<span class="string">&#x27;build/intermediates/classes/&#x27;</span>)</span><br><span class="line">    effort = <span class="string">&#x27;max&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">source</span> = <span class="keyword">fileTree</span>(<span class="string">&#x27;src&#x27;</span>)</span><br><span class="line">    <span class="keyword">include</span> <span class="string">&#x27;**/*.java&#x27;</span></span><br><span class="line">    <span class="keyword">exclude</span> <span class="string">&#x27;**/gen/**&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义输出报告</span></span><br><span class="line">    reports &#123;</span><br><span class="line">        xml &#123;</span><br><span class="line">            enabled = <span class="keyword">false</span></span><br><span class="line">            destination <span class="string">&quot;$findbugsReportPath/FindBugs.xml&quot;</span></span><br><span class="line">            xml.withMessages <span class="keyword">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        html &#123;</span><br><span class="line">            enabled = <span class="keyword">true</span></span><br><span class="line">            destination <span class="string">&quot;$findbugsReportPath/FindBugs.html&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">afterEvaluate &#123;</span><br><span class="line">    tasks.withType(<span class="keyword">Task</span>).<span class="keyword">each</span> &#123; <span class="keyword">task</span> -&gt;</span><br><span class="line">        <span class="keyword">task</span>.<span class="keyword">doLast</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">task</span>.name.startsWith(<span class="string">&quot;assemble&quot;</span>)) &#123;</span><br><span class="line">                tasks.findByName(<span class="string">&quot;findbugs&quot;</span>).execute()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="集成-2"><a href="#集成-2" class="headerlink" title="集成"></a>集成</h2><pre class="line-numbers language-gradle" data-language="gradle"><code class="language-gradle">apply plugin: &#39;findbugs&#39;
+
+&#x2F;&#x2F; 定义生成文件目录
+def findbugsReportPath &#x3D; &quot;$&#123;project.rootDir&#125;&#x2F;reports&#x2F;&quot;
+
+task findbugs(type: FindBugs) &#123;
+    ignoreFailures &#x3D; true
+    excludeFilter &#x3D; new File(&quot;findbugs.xml&quot;) &#x2F;&#x2F; 自定义配置文件
+    classpath &#x3D; files()
+    classes &#x3D; fileTree(&#39;build&#x2F;intermediates&#x2F;classes&#x2F;&#39;)
+    effort &#x3D; &#39;max&#39;
+
+    source &#x3D; fileTree(&#39;src&#39;)
+    include &#39;**&#x2F;*.java&#39;
+    exclude &#39;**&#x2F;gen&#x2F;**&#39;
+
+    &#x2F;&#x2F; 定义输出报告
+    reports &#123;
+        xml &#123;
+            enabled &#x3D; false
+            destination &quot;$findbugsReportPath&#x2F;FindBugs.xml&quot;
+            xml.withMessages true
+        &#125;
+        html &#123;
+            enabled &#x3D; true
+            destination &quot;$findbugsReportPath&#x2F;FindBugs.html&quot;
+        &#125;
+    &#125;
+&#125;
+
+afterEvaluate &#123;
+    tasks.withType(Task).each &#123; task -&gt;
+        task.doLast &#123;
+            if (task.name.startsWith(&quot;assemble&quot;)) &#123;
+                tasks.findByName(&quot;findbugs&quot;).execute()
+            &#125;
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="Infer"><a href="#Infer" class="headerlink" title="Infer"></a>Infer</h1><p><a href="http://fbinfer.com/">Facebook infer官网</a></p>
 <p>Infer 是Facebook的一个开源代码扫描工具。目前在移动端, Infer 是比较好用的一个检查空对象引用的静态扫描工具.</p>
 <p>在mac上面使用infer比较简单，参考如下步骤即可，其他平台可以参考<a href="http://fbinfer.com/docs/getting-started.html">官网教程</a>。</p>
 <p>首先使用brew安装infer</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install infer</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">brew install infer<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>然后在项目根目录运行如下命令即可，最后会在根目录下面生成infer-out目录。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew clean; infer -- ./gradlew build</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">.&#x2F;gradlew clean; infer -- .&#x2F;gradlew build<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>同时Github上面有个Infer的Gradle插件，<a href="https://github.com/uber-common/infer-plugin">地址</a>，可以参考下。</p>
 <p>使用也比较简单，根目录添加插件依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenCentral()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        ...</span><br><span class="line">        classpath &quot;com.uber:infer-plugin:0.7.4&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">buildscript &#123;
+    repositories &#123;
+        mavenCentral()
+    &#125;
+    dependencies &#123;
+        ...
+        classpath &quot;com.uber:infer-plugin:0.7.4&quot;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Java项目可以使用如下配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;java&#x27;</span><br><span class="line">apply plugin: &#x27;com.uber.infer.java&#x27;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">apply plugin: &#39;java&#39;
+apply plugin: &#39;com.uber.infer.java&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>Android的配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;com.android.application&#x27;</span><br><span class="line">apply plugin: &#x27;com.uber.infer.android&#x27;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">apply plugin: &#39;com.android.application&#39;
+apply plugin: &#39;com.uber.infer.android&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>同时支持配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">inferPlugin &#123;</span><br><span class="line">    infer &#123;</span><br><span class="line">        include = project.files(&quot;&lt;PATH_TO_INCLUDE&gt;&quot;)</span><br><span class="line">        exclude = project.files(&quot;&lt;PATH_TO_EXCLUDE&gt;&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    eradicate &#123;</span><br><span class="line">        include = project.files(&quot;&lt;PATH_TO_INCLUDE&gt;&quot;)</span><br><span class="line">        exclude = project.files(&quot;&lt;PATH_TO_EXCLUDE&gt;&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">inferPlugin &#123;
+    infer &#123;
+        include &#x3D; project.files(&quot;&lt;PATH_TO_INCLUDE&gt;&quot;)
+        exclude &#x3D; project.files(&quot;&lt;PATH_TO_EXCLUDE&gt;&quot;)
+    &#125;
+    eradicate &#123;
+        include &#x3D; project.files(&quot;&lt;PATH_TO_INCLUDE&gt;&quot;)
+        exclude &#x3D; project.files(&quot;&lt;PATH_TO_EXCLUDE&gt;&quot;)
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="Lint"><a href="#Lint" class="headerlink" title="Lint"></a>Lint</h1><p><a href="https://developer.android.com/studio/write/lint.html">Lint官网</a></p>
 <p><a href="http://google.github.io/android-gradle-dsl/2.3/index.html">Lint Api</a></p>
 <p>Lint是Android官网出的一款功能强大的静态代码分析工具，不仅可以分析代码，还可以分析布局文件，而且还可以硬编码、多余未使用的资源，以及可能出现的bug等。</p>
 <p>这里有一篇介绍Lint使用的<a href="http://blog.csdn.net/u010687392/article/details/47835743">博客</a></p>
 <p>Lint可以在Gradle中集成，当然也可以自定义输出，也可以在Android Studio中单独使用，使用『Analyze』-&gt;『Inspect Code』即可。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    lintOptions &#123;</span><br><span class="line">        abortOnError false</span><br><span class="line">        disable &#x27;LogNotTimber&#x27;, &#x27;IconMissingDensityFolder&#x27;</span><br><span class="line">        htmlReport true</span><br><span class="line">        htmlOutput file(&quot;$&#123;project.rootDir&#125;/analysis/reports/lint-report.html&quot;)</span><br><span class="line">        xmlReport true</span><br><span class="line">        xmlOutput file(&quot;$&#123;project.rootDir&#125;/analysis/reports/lint-report.xml&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">android &#123;
+    lintOptions &#123;
+        abortOnError false
+        disable &#39;LogNotTimber&#39;, &#39;IconMissingDensityFolder&#39;
+        htmlReport true
+        htmlOutput file(&quot;$&#123;project.rootDir&#125;&#x2F;analysis&#x2F;reports&#x2F;lint-report.html&quot;)
+        xmlReport true
+        xmlOutput file(&quot;$&#123;project.rootDir&#125;&#x2F;analysis&#x2F;reports&#x2F;lint-report.xml&quot;)
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="CI集成"><a href="#CI集成" class="headerlink" title="CI集成"></a>CI集成</h1><p><a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html">CI介绍</a></p>
 <p>互联网软件的开发和发布，已经形成了一套标准流程，最重要的组成部分就是持续集成（Continuous integration，简称CI）。</p>
@@ -879,6 +1062,8 @@ Lombok 官网上面有个几分钟的视频，接单
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -886,6 +1071,8 @@ Lombok 官网上面有个几分钟的视频，接单
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1051,9 +1238,9 @@ Lombok 官网上面有个几分钟的视频，接单
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1263,8 +1450,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

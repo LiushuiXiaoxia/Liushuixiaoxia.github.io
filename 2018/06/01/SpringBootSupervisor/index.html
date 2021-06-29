@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -401,6 +445,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -413,34 +460,184 @@
 <span id="more"></span>
 
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装supervisor很简单，我这边使用的是ubuntu，直接用<code>apt-get</code>安装即可，命令是<code>sudo apt-get install supervisor</code>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install supervisor</span><br><span class="line">正在读取软件包列表... 完成</span><br><span class="line">正在分析软件包的依赖关系树</span><br><span class="line">正在读取状态信息... 完成</span><br><span class="line">建议安装：</span><br><span class="line">  supervisor-doc</span><br><span class="line">下列【新】软件包将被安装：</span><br><span class="line">  supervisor</span><br><span class="line">升级了 0 个软件包，新安装了 1 个软件包，要卸载 0 个软件包，有 0 个软件包未被升级。</span><br><span class="line">需要下载 253 kB 的归档。</span><br><span class="line">解压缩后会消耗 1,401 kB 的额外空间。</span><br><span class="line">获取:1 http://mirrors.aliyun.com/ubuntu xenial-updates/universe amd64 supervisor all 3.2.0-2ubuntu0.2 [253 kB]</span><br><span class="line">已下载 253 kB，耗时 0秒 (508 kB/s)</span><br><span class="line">正在选中未选择的软件包 supervisor。</span><br><span class="line">(正在读取数据库 ... 系统当前共安装有 229783 个文件和目录。)</span><br><span class="line">正准备解包 .../supervisor_3.2.0-2ubuntu0.2_all.deb  ...</span><br><span class="line">正在解包 supervisor (3.2.0-2ubuntu0.2) ...</span><br><span class="line">正在处理用于 man-db (2.7.5-1) 的触发器 ...</span><br><span class="line">正在处理用于 systemd (229-4ubuntu21.2) 的触发器 ...</span><br><span class="line">正在处理用于 ureadahead (0.100.0-19) 的触发器 ...</span><br><span class="line">正在设置 supervisor (3.2.0-2ubuntu0.2) ...</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> supervisor
+正在读取软件包列表<span class="token punctuation">..</span>. 完成
+正在分析软件包的依赖关系树
+正在读取状态信息<span class="token punctuation">..</span>. 完成
+建议安装：
+  supervisor-doc
+下列【新】软件包将被安装：
+  supervisor
+升级了 <span class="token number">0</span> 个软件包，新安装了 <span class="token number">1</span> 个软件包，要卸载 <span class="token number">0</span> 个软件包，有 <span class="token number">0</span> 个软件包未被升级。
+需要下载 <span class="token number">253</span> kB 的归档。
+解压缩后会消耗 <span class="token number">1,401</span> kB 的额外空间。
+获取:1 http://mirrors.aliyun.com/ubuntu xenial-updates/universe amd64 supervisor all <span class="token number">3.2</span>.0-2ubuntu0.2 <span class="token punctuation">[</span><span class="token number">253</span> kB<span class="token punctuation">]</span>
+已下载 <span class="token number">253</span> kB，耗时 <span class="token number">0</span>秒 <span class="token punctuation">(</span><span class="token number">508</span> kB/s<span class="token punctuation">)</span>
+正在选中未选择的软件包 supervisor。
+<span class="token punctuation">(</span>正在读取数据库 <span class="token punctuation">..</span>. 系统当前共安装有 <span class="token number">229783</span> 个文件和目录。<span class="token punctuation">)</span>
+正准备解包 <span class="token punctuation">..</span>./supervisor_3.2.0-2ubuntu0.2_all.deb  <span class="token punctuation">..</span>.
+正在解包 supervisor <span class="token punctuation">(</span><span class="token number">3.2</span>.0-2ubuntu0.2<span class="token punctuation">)</span> <span class="token punctuation">..</span>.
+正在处理用于 man-db <span class="token punctuation">(</span><span class="token number">2.7</span>.5-1<span class="token punctuation">)</span> 的触发器 <span class="token punctuation">..</span>.
+正在处理用于 systemd <span class="token punctuation">(</span><span class="token number">229</span>-4ubuntu21.2<span class="token punctuation">)</span> 的触发器 <span class="token punctuation">..</span>.
+正在处理用于 ureadahead <span class="token punctuation">(</span><span class="token number">0.100</span>.0-19<span class="token punctuation">)</span> 的触发器 <span class="token punctuation">..</span>.
+正在设置 supervisor <span class="token punctuation">(</span><span class="token number">3.2</span>.0-2ubuntu0.2<span class="token punctuation">)</span> <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>安装成功后可以在 <code>/etc/supervisor/</code> 目录下找到<code>supervisord.conf</code>配置文件，用<code>vi</code>命令来编辑。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># xiaqiulei @ ubuntu in /etc/supervisor [15:08:39]</span></span><br><span class="line">$ <span class="built_in">cd</span> /etc/supervisor/</span><br><span class="line"></span><br><span class="line"><span class="comment"># xiaqiulei @ ubuntu in /etc/supervisor [15:08:46]</span></span><br><span class="line">$ cat supervisord.conf</span><br><span class="line">; supervisor config file</span><br><span class="line"></span><br><span class="line">[unix_http_server]</span><br><span class="line">file=/var/run/supervisor.sock   ; (the path to the socket file)</span><br><span class="line">chmod=0700                       ; sockef file mode (default 0700)</span><br><span class="line"></span><br><span class="line">[supervisord]</span><br><span class="line">logfile=/var/<span class="built_in">log</span>/supervisor/supervisord.log ; (main <span class="built_in">log</span> file;default <span class="variable">$CWD</span>/supervisord.log)</span><br><span class="line">pidfile=/var/run/supervisord.pid ; (supervisord pidfile;default supervisord.pid)</span><br><span class="line">childlogdir=/var/<span class="built_in">log</span>/supervisor            ; (<span class="string">&#x27;AUTO&#x27;</span> child <span class="built_in">log</span> dir, default <span class="variable">$TEMP</span>)</span><br><span class="line"></span><br><span class="line">; the below section must remain <span class="keyword">in</span> the config file <span class="keyword">for</span> RPC</span><br><span class="line">; (supervisorctl/web interface) to work, additional interfaces may be</span><br><span class="line">; added by defining them <span class="keyword">in</span> separate rpcinterface: sections</span><br><span class="line">[rpcinterface:supervisor]</span><br><span class="line">supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface</span><br><span class="line"></span><br><span class="line">[supervisorctl]</span><br><span class="line">serverurl=unix:///var/run/supervisor.sock ; use a unix:// URL  <span class="keyword">for</span> a unix socket</span><br><span class="line"></span><br><span class="line">; The [include] section can just contain the <span class="string">&quot;files&quot;</span> setting.  This</span><br><span class="line">; setting can list multiple files (separated by whitespace or</span><br><span class="line">; newlines).  It can also contain wildcards.  The filenames are</span><br><span class="line">; interpreted as relative to this file.  Included files *cannot*</span><br><span class="line">; include files themselves.</span><br><span class="line"></span><br><span class="line">[include]</span><br><span class="line">files = /etc/supervisor/conf.d/*.conf</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># xiaqiulei @ ubuntu in /etc/supervisor [15:08:39]</span>
+$ <span class="token builtin class-name">cd</span> /etc/supervisor/
+
+<span class="token comment"># xiaqiulei @ ubuntu in /etc/supervisor [15:08:46]</span>
+$ <span class="token function">cat</span> supervisord.conf
+<span class="token punctuation">;</span> supervisor config <span class="token function">file</span>
+
+<span class="token punctuation">[</span>unix_http_server<span class="token punctuation">]</span>
+<span class="token assign-left variable">file</span><span class="token operator">=</span>/var/run/supervisor.sock   <span class="token punctuation">;</span> <span class="token punctuation">(</span>the path to the socket <span class="token function">file</span><span class="token punctuation">)</span>
+<span class="token assign-left variable">chmod</span><span class="token operator">=</span>0700                       <span class="token punctuation">;</span> sockef <span class="token function">file</span> mode <span class="token punctuation">(</span>default 0700<span class="token punctuation">)</span>
+
+<span class="token punctuation">[</span>supervisord<span class="token punctuation">]</span>
+<span class="token assign-left variable">logfile</span><span class="token operator">=</span>/var/log/supervisor/supervisord.log <span class="token punctuation">;</span> <span class="token punctuation">(</span>main log <span class="token function">file</span><span class="token punctuation">;</span>default <span class="token variable">$CWD</span>/supervisord.log<span class="token punctuation">)</span>
+<span class="token assign-left variable">pidfile</span><span class="token operator">=</span>/var/run/supervisord.pid <span class="token punctuation">;</span> <span class="token punctuation">(</span>supervisord pidfile<span class="token punctuation">;</span>default supervisord.pid<span class="token punctuation">)</span>
+<span class="token assign-left variable">childlogdir</span><span class="token operator">=</span>/var/log/supervisor            <span class="token punctuation">;</span> <span class="token punctuation">(</span><span class="token string">'AUTO'</span> child log dir, default <span class="token variable">$TEMP</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">;</span> the below section must remain <span class="token keyword">in</span> the config <span class="token function">file</span> <span class="token keyword">for</span> RPC
+<span class="token punctuation">;</span> <span class="token punctuation">(</span>supervisorctl/web interface<span class="token punctuation">)</span> to work, additional interfaces may be
+<span class="token punctuation">;</span> added by defining them <span class="token keyword">in</span> separate rpcinterface: sections
+<span class="token punctuation">[</span>rpcinterface:supervisor<span class="token punctuation">]</span>
+supervisor.rpcinterface_factory <span class="token operator">=</span> supervisor.rpcinterface:make_main_rpcinterface
+
+<span class="token punctuation">[</span>supervisorctl<span class="token punctuation">]</span>
+<span class="token assign-left variable">serverurl</span><span class="token operator">=</span>unix:///var/run/supervisor.sock <span class="token punctuation">;</span> use a unix:// URL  <span class="token keyword">for</span> a unix socket
+
+<span class="token punctuation">;</span> The <span class="token punctuation">[</span>include<span class="token punctuation">]</span> section can just contain the <span class="token string">"files"</span> setting.  This
+<span class="token punctuation">;</span> setting can list multiple files <span class="token punctuation">(</span>separated by whitespace or
+<span class="token punctuation">;</span> newlines<span class="token punctuation">)</span>.  It can also contain wildcards.  The filenames are
+<span class="token punctuation">;</span> interpreted as relative to this file.  Included files *cannot*
+<span class="token punctuation">;</span> include files themselves.
+
+<span class="token punctuation">[</span>include<span class="token punctuation">]</span>
+files <span class="token operator">=</span> /etc/supervisor/conf.d/*.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>在<code>supervisord.conf</code>这个文件的最后加上以下内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[program:you program name] <span class="comment"># 你的程序名，随便命名</span></span><br><span class="line"><span class="built_in">command</span>=python /home/pi/test.py <span class="comment"># 你的命令，可以是任何运行在终端的命令</span></span><br><span class="line">autostart=<span class="literal">true</span> <span class="comment"># 自动启动</span></span><br><span class="line">autorestart=<span class="literal">true</span></span><br><span class="line">user=root</span><br><span class="line">log_stderr=<span class="literal">true</span></span><br><span class="line">logfile=/var/<span class="built_in">log</span>/testpy.log <span class="comment"># 日志文件的地址</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>program:you program name<span class="token punctuation">]</span> <span class="token comment"># 你的程序名，随便命名</span>
+<span class="token assign-left variable">command</span><span class="token operator">=</span>python /home/pi/test.py <span class="token comment"># 你的命令，可以是任何运行在终端的命令</span>
+<span class="token assign-left variable">autostart</span><span class="token operator">=</span>true <span class="token comment"># 自动启动</span>
+<span class="token assign-left variable">autorestart</span><span class="token operator">=</span>true
+<span class="token assign-left variable">user</span><span class="token operator">=</span>root
+<span class="token assign-left variable">log_stderr</span><span class="token operator">=</span>true
+<span class="token assign-left variable">logfile</span><span class="token operator">=</span>/var/log/testpy.log <span class="token comment"># 日志文件的地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在前面，是使用<code>start.sh</code>来启动程序，现在也只需要在supervisor中配置执行这个文件即可。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># xiaqiulei @ ubuntu in ~/deploy [15:18:35]</span></span><br><span class="line">$ ls</span><br><span class="line">application-prod.properties  application.properties  <span class="built_in">log</span>  logback-spring.xml  restart.sh  springboot-deploy-demo-0.0.1-SNAPSHOT.jar  start.sh  stop.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># xiaqiulei @ ubuntu in ~/deploy [15:18:36]</span></span><br><span class="line">$ ls -al</span><br><span class="line">总用量 15764</span><br><span class="line">drwxrwxr-x  3 xiaqiulei xiaqiulei     4096 4月  24 22:24 .</span><br><span class="line">drwxr-xr-x 34 xiaqiulei xiaqiulei     4096 6月   1 15:18 ..</span><br><span class="line">-rw-r--r--  1 xiaqiulei xiaqiulei       63 6月   1 15:17 application-prod.properties</span><br><span class="line">-rw-r--r--  1 xiaqiulei xiaqiulei       27 6月   1 15:17 application.properties</span><br><span class="line">drwxrwxr-x  2 xiaqiulei xiaqiulei     4096 6月   1 15:16 <span class="built_in">log</span></span><br><span class="line">-rw-r--r--  1 xiaqiulei xiaqiulei      881 6月   1 15:17 logback-spring.xml</span><br><span class="line">-rwxr-xr-x  1 xiaqiulei xiaqiulei       32 6月   1 15:17 restart.sh</span><br><span class="line">-rw-r--r--  1 xiaqiulei xiaqiulei 16103697 6月   1 15:17 springboot-deploy-demo-0.0.1-SNAPSHOT.jar</span><br><span class="line">-rwxr--r--  1 xiaqiulei xiaqiulei      970 6月   1 15:17 start.sh</span><br><span class="line">-rwxr-xr-x  1 xiaqiulei xiaqiulei      291 6月   1 15:17 stop.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># xiaqiulei @ ubuntu in ~/deploy [15:18:39]</span></span><br><span class="line">$ ./start.sh</span><br><span class="line">INFO: /home/xiaqiulei/deploy/springboot-deploy-demo-0.0.1-SNAPSHOT.jar is running! pid=114791</span><br><span class="line">http://127.0.0.1:8088/heartbeat</span><br><span class="line">http code: 000</span><br><span class="line">http code: 000</span><br><span class="line">http code: 000</span><br><span class="line">http code: 000</span><br><span class="line">http code: 200</span><br><span class="line">server start success...</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># xiaqiulei @ ubuntu in ~/deploy [15:18:35]</span>
+$ <span class="token function">ls</span>
+application-prod.properties  application.properties  log  logback-spring.xml  restart.sh  springboot-deploy-demo-0.0.1-SNAPSHOT.jar  start.sh  stop.sh
+
+<span class="token comment"># xiaqiulei @ ubuntu in ~/deploy [15:18:36]</span>
+$ <span class="token function">ls</span> -al
+总用量 <span class="token number">15764</span>
+drwxrwxr-x  <span class="token number">3</span> xiaqiulei xiaqiulei     <span class="token number">4096</span> <span class="token number">4</span>月  <span class="token number">24</span> <span class="token number">22</span>:24 <span class="token builtin class-name">.</span>
+drwxr-xr-x <span class="token number">34</span> xiaqiulei xiaqiulei     <span class="token number">4096</span> <span class="token number">6</span>月   <span class="token number">1</span> <span class="token number">15</span>:18 <span class="token punctuation">..</span>
+-rw-r--r--  <span class="token number">1</span> xiaqiulei xiaqiulei       <span class="token number">63</span> <span class="token number">6</span>月   <span class="token number">1</span> <span class="token number">15</span>:17 application-prod.properties
+-rw-r--r--  <span class="token number">1</span> xiaqiulei xiaqiulei       <span class="token number">27</span> <span class="token number">6</span>月   <span class="token number">1</span> <span class="token number">15</span>:17 application.properties
+drwxrwxr-x  <span class="token number">2</span> xiaqiulei xiaqiulei     <span class="token number">4096</span> <span class="token number">6</span>月   <span class="token number">1</span> <span class="token number">15</span>:16 log
+-rw-r--r--  <span class="token number">1</span> xiaqiulei xiaqiulei      <span class="token number">881</span> <span class="token number">6</span>月   <span class="token number">1</span> <span class="token number">15</span>:17 logback-spring.xml
+-rwxr-xr-x  <span class="token number">1</span> xiaqiulei xiaqiulei       <span class="token number">32</span> <span class="token number">6</span>月   <span class="token number">1</span> <span class="token number">15</span>:17 restart.sh
+-rw-r--r--  <span class="token number">1</span> xiaqiulei xiaqiulei <span class="token number">16103697</span> <span class="token number">6</span>月   <span class="token number">1</span> <span class="token number">15</span>:17 springboot-deploy-demo-0.0.1-SNAPSHOT.jar
+-rwxr--r--  <span class="token number">1</span> xiaqiulei xiaqiulei      <span class="token number">970</span> <span class="token number">6</span>月   <span class="token number">1</span> <span class="token number">15</span>:17 start.sh
+-rwxr-xr-x  <span class="token number">1</span> xiaqiulei xiaqiulei      <span class="token number">291</span> <span class="token number">6</span>月   <span class="token number">1</span> <span class="token number">15</span>:17 stop.sh
+
+<span class="token comment"># xiaqiulei @ ubuntu in ~/deploy [15:18:39]</span>
+$ ./start.sh
+INFO: /home/xiaqiulei/deploy/springboot-deploy-demo-0.0.1-SNAPSHOT.jar is running<span class="token operator">!</span> <span class="token assign-left variable">pid</span><span class="token operator">=</span><span class="token number">114791</span>
+http://127.0.0.1:8088/heartbeat
+http code: 000
+http code: 000
+http code: 000
+http code: 000
+http code: <span class="token number">200</span>
+server start success<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>需要先修改下<code>start.sh</code>文件，然后在修改下supervisor配置。因为原先的<code>start.sh</code>启动方式会将java程序作为一个后台进程。<br>主要语句是去除 <code>2&gt;&amp;1 &amp;</code>，原先的校验功能也需要去除。如果此功能是必要的，可单独写成一个文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># start.sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#get pwd</span></span><br><span class="line">DIR_HOME=<span class="string">&quot;<span class="variable">$&#123;BASH_SOURCE-$0&#125;</span>&quot;</span></span><br><span class="line">DIR_HOME=<span class="string">&quot;<span class="subst">$(dirname <span class="string">&quot;<span class="variable">$DIR_HOME</span>&quot;</span>)</span>&quot;</span></span><br><span class="line">PRGDIR=<span class="string">&quot;<span class="subst">$(cd <span class="string">&quot;<span class="variable">$&#123;DIR_HOME&#125;</span>&quot;</span>; pwd)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jarfile=<span class="variable">$PRGDIR</span>/springboot-deploy-demo-0.0.1-SNAPSHOT.jar</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#get runing pid</span></span><br><span class="line">pid=$(ps -ef | grep java | grep <span class="variable">$jarfile</span> | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#create log dir</span></span><br><span class="line">mkdir -p <span class="variable">$PRGDIR</span>/<span class="built_in">log</span>/</span><br><span class="line"></span><br><span class="line">nohup java -jar <span class="variable">$jarfile</span> -Dfile.encoding=UTF-8 --spring.config.location=<span class="variable">$PRGDIR</span>/ &gt;<span class="variable">$PRGDIR</span>/<span class="built_in">log</span>/start.log</span><br><span class="line">pid=$(ps -ef | grep java | grep <span class="variable">$jarfile</span> | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;INFO: <span class="variable">$jarfile</span> is running! pid=<span class="variable">$pid</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
+
+<span class="token comment"># start.sh</span>
+
+<span class="token comment">#get pwd</span>
+<span class="token assign-left variable">DIR_HOME</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$&#123;<span class="token environment constant">BASH_SOURCE</span>-$0&#125;</span>"</span>
+<span class="token assign-left variable">DIR_HOME</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">dirname</span> <span class="token string">"<span class="token variable">$DIR_HOME</span>"</span><span class="token variable">)</span></span>"</span>
+<span class="token assign-left variable">PRGDIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">$&#123;DIR_HOME&#125;</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span>
+
+
+<span class="token assign-left variable">jarfile</span><span class="token operator">=</span><span class="token variable">$PRGDIR</span>/springboot-deploy-demo-0.0.1-SNAPSHOT.jar
+
+
+<span class="token comment">#get runing pid</span>
+<span class="token assign-left variable">pid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> java <span class="token operator">|</span> <span class="token function">grep</span> $jarfile <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123;print $2&#125;'</span><span class="token variable">)</span></span>
+
+<span class="token comment">#create log dir</span>
+<span class="token function">mkdir</span> -p <span class="token variable">$PRGDIR</span>/log/
+
+<span class="token function">nohup</span> java -jar <span class="token variable">$jarfile</span> -Dfile.encoding<span class="token operator">=</span>UTF-8 --spring.config.location<span class="token operator">=</span><span class="token variable">$PRGDIR</span>/ <span class="token operator">></span><span class="token variable">$PRGDIR</span>/log/start.log
+<span class="token assign-left variable">pid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> java <span class="token operator">|</span> <span class="token function">grep</span> $jarfile <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123;print $2&#125;'</span><span class="token variable">)</span></span>
+<span class="token builtin class-name">echo</span> <span class="token string">"INFO: <span class="token variable">$jarfile</span> is running! pid=<span class="token variable">$pid</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>单独的校验文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># validate.sh</span></span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://127.0.0.1:8088/heartbeat&quot;</span>;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$url</span></span><br><span class="line"><span class="keyword">while</span> [ <span class="literal">true</span> ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    sleep 1</span><br><span class="line">    HTTP_CODE=`curl -G -m 10 -o /dev/null -s -w %&#123;http_code&#125; <span class="variable">$url</span>`</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;http code: <span class="variable">$&#123;HTTP_CODE&#125;</span>&quot;</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$&#123;HTTP_CODE&#125;</span> -eq 200 ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;server start success...&quot;</span></span><br><span class="line">        <span class="built_in">exit</span> 0</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
+
+<span class="token comment"># validate.sh</span>
+
+<span class="token assign-left variable">url</span><span class="token operator">=</span><span class="token string">"http://127.0.0.1:8088/heartbeat"</span><span class="token punctuation">;</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$url</span>
+<span class="token keyword">while</span> <span class="token punctuation">[</span> <span class="token boolean">true</span> <span class="token punctuation">]</span>
+<span class="token keyword">do</span>
+    <span class="token function">sleep</span> <span class="token number">1</span>
+    <span class="token assign-left variable">HTTP_CODE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">curl</span> -G -m <span class="token number">10</span> -o /dev/null -s -w %<span class="token punctuation">&#123;</span>http_code<span class="token punctuation">&#125;</span> $url<span class="token variable">`</span></span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"http code: <span class="token variable">$&#123;HTTP_CODE&#125;</span>"</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$&#123;HTTP_CODE&#125;</span> -eq <span class="token number">200</span> <span class="token punctuation">]</span>
+    <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"server start success..."</span>
+        <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+    <span class="token keyword">fi</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>完成脚本的修改操作后，就可以修改supervisor的配置。 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[program:spring_boot_demo]</span><br><span class="line">user = xiaqiulei</span><br><span class="line">directory = /home/xiaqiulei/deploy</span><br><span class="line"><span class="built_in">command</span> = bash -c ./start.sh</span><br><span class="line">autostart = <span class="literal">true</span></span><br><span class="line">autorestart =  <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>program:spring_boot_demo<span class="token punctuation">]</span>
+user <span class="token operator">=</span> xiaqiulei
+directory <span class="token operator">=</span> /home/xiaqiulei/deploy
+<span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token function">bash</span> -c ./start.sh
+autostart <span class="token operator">=</span> <span class="token boolean">true</span>
+autorestart <span class="token operator">=</span>  <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>然后重新加载配置，最后开启服务即可。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ sudo supervisorctl status</span><br><span class="line"></span><br><span class="line">$ sudo supervisorctl reload</span><br><span class="line">Restarted supervisord</span><br><span class="line"></span><br><span class="line">$ sudo supervisorctl status</span><br><span class="line">spring_boot_demo                 STOPPED   Jun 01 04:25 PM</span><br><span class="line"></span><br><span class="line">$ sudo supervisorctl start spring_boot_demo</span><br><span class="line">spring_boot_demo: started</span><br><span class="line"></span><br><span class="line">$ sudo supervisorctl status</span><br><span class="line">spring_boot_demo                 RUNNING   pid 119403, uptime 0:00:10</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> supervisorctl status
+
+$ <span class="token function">sudo</span> supervisorctl reload
+Restarted supervisord
+
+$ <span class="token function">sudo</span> supervisorctl status
+spring_boot_demo                 STOPPED   Jun 01 04:25 PM
+
+$ <span class="token function">sudo</span> supervisorctl start spring_boot_demo
+spring_boot_demo: started
+
+$ <span class="token function">sudo</span> supervisorctl status
+spring_boot_demo                 RUNNING   pid <span class="token number">119403</span>, <span class="token function">uptime</span> <span class="token number">0</span>:00:10<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以测试下，当程序退出的时候，服务会自动重启，如下所示，kill掉当前的进程，然后在看下状态，服务还在，并且pid是和原先不一样的。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ sudo supervisorctl status</span><br><span class="line">spring_boot_demo                 RUNNING   pid 119607, uptime 0:03:16</span><br><span class="line"></span><br><span class="line">$ sudo supervisorctl</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">kill</span> -9 119607</span><br><span class="line"></span><br><span class="line">$ sudo supervisorctl status</span><br><span class="line">spring_boot_demo                 RUNNING   pid 119807, uptime 0:00:02</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> supervisorctl status
+spring_boot_demo                 RUNNING   pid <span class="token number">119607</span>, <span class="token function">uptime</span> <span class="token number">0</span>:03:16
+
+$ <span class="token function">sudo</span> supervisorctl
+
+$ <span class="token function">kill</span> -9 <span class="token number">119607</span>
+
+$ <span class="token function">sudo</span> supervisorctl status
+spring_boot_demo                 RUNNING   pid <span class="token number">119807</span>, <span class="token function">uptime</span> <span class="token number">0</span>:00:02<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以使用校验文件，检查下服务。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ./validate.sh</span><br><span class="line">http://127.0.0.1:8088/heartbeat</span><br><span class="line">http code: 200</span><br><span class="line">server start success...</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ./validate.sh
+http://127.0.0.1:8088/heartbeat
+http code: <span class="token number">200</span>
+server start success<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="设置supervisor开机自启"><a href="#设置supervisor开机自启" class="headerlink" title="设置supervisor开机自启"></a>设置supervisor开机自启</h1><p>编辑<code>/etc/rc.local</code>文件 ，让 <code>supervisor</code> 开机启动，这样就可以使脚本在开机的时候随supervisor启动运行。<br>在这个配置文件的<code>exit 0</code>前面一行加上 <code>service supervisor start</code>保存。</p>
 <h2 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h2><p><a href="https://github.com/LiushuiXiaoxia/springboot-deploy-demo">源码地址 https://github.com/LiushuiXiaoxia/springboot-deploy-demo</a></p>
@@ -833,6 +1030,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -840,6 +1039,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1005,9 +1206,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1217,8 +1418,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

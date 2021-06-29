@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -406,6 +450,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -416,46 +463,162 @@
 <span id="more"></span>
 
 <h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>首先let()的定义是这样的，默认当前这个对象作为闭包的it参数，返回值是函数里面最后一行，或者指定return</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T, R&gt;</span> T.<span class="title">let</span><span class="params">(f: (<span class="type">T</span>) -&gt; <span class="type">R</span>)</span></span>: R = f(<span class="keyword">this</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> R<span class="token operator">></span> T<span class="token punctuation">.</span><span class="token function">let</span><span class="token punctuation">(</span>f<span class="token operator">:</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-></span> R<span class="token punctuation">)</span><span class="token operator">:</span> R <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>简单示例:</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">testLet</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    <span class="comment">// fun &lt;T, R&gt; T.let(f: (T) -&gt; R): R &#123; f(this)&#125;</span></span><br><span class="line">    <span class="string">&quot;testLet&quot;</span>.let &#123;</span><br><span class="line">        println(it)</span><br><span class="line">        println(it)</span><br><span class="line">        println(it)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//运行结果</span></span><br><span class="line"><span class="comment">//testLet</span></span><br><span class="line"><span class="comment">//testLet</span></span><br><span class="line"><span class="comment">//testLet</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">testLet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">&#123;</span>
+    <span class="token comment">// fun &lt;T, R> T.let(f: (T) -> R): R &#123; f(this)&#125;</span>
+    <span class="token string">"testLet"</span><span class="token punctuation">.</span><span class="token function">let</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">println</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span>
+        <span class="token function">println</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span>
+        <span class="token function">println</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//运行结果</span>
+<span class="token comment">//testLet</span>
+<span class="token comment">//testLet</span>
+<span class="token comment">//testLet</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以看看最后生成的class文件，代码已经经过格式化了，编译器只是在我们原先的变量后面添加了let里面的内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static final int testLet() &#123;</span><br><span class="line">    String str1 = &quot;testLet&quot;;</span><br><span class="line">    String it = (String)str1;</span><br><span class="line">    int $i$a$1$let;</span><br><span class="line">    System.out.println(it);</span><br><span class="line">    System.out.println(it);</span><br><span class="line">    System.out.println(it);</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public static final int testLet() &#123;
+    String str1 &#x3D; &quot;testLet&quot;;
+    String it &#x3D; (String)str1;
+    int $i$a$1$let;
+    System.out.println(it);
+    System.out.println(it);
+    System.out.println(it);
+    return 1;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>来个复杂一定的例子</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">testLet</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    <span class="comment">// fun &lt;T, R&gt; T.let(f: (T) -&gt; R): R &#123; f(this)&#125;</span></span><br><span class="line">    <span class="string">&quot;testLet&quot;</span>.let &#123;</span><br><span class="line">        <span class="keyword">if</span> (Random().nextBoolean()) &#123;</span><br><span class="line">            println(it)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            println(it)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">testLet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">&#123;</span>
+    <span class="token comment">// fun &lt;T, R> T.let(f: (T) -> R): R &#123; f(this)&#125;</span>
+    <span class="token string">"testLet"</span><span class="token punctuation">.</span><span class="token function">let</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextBoolean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">println</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">1</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">println</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">2</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>编译过后的class文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static final int testLet() &#123;</span><br><span class="line">    String str1 = &quot;testLet&quot;;</span><br><span class="line">    String it = (String)str1;</span><br><span class="line">    int $i$a$1$let;</span><br><span class="line">    if (new Random().nextBoolean())</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(it);</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(it);</span><br><span class="line">    return 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public static final int testLet() &#123;
+    String str1 &#x3D; &quot;testLet&quot;;
+    String it &#x3D; (String)str1;
+    int $i$a$1$let;
+    if (new Random().nextBoolean())
+    &#123;
+        System.out.println(it);
+        return 1;
+    &#125;
+    System.out.println(it);
+    return 2;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <h2 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h2><p>apply函数是这样的，调用某对象的apply函数，在函数范围内，可以任意调用该对象的任意方法，并返回该对象</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> T.<span class="title">apply</span><span class="params">(f: <span class="type">T</span>.() -&gt; <span class="type">Unit</span>)</span></span>: T &#123; f(); <span class="keyword">return</span> <span class="keyword">this</span> &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>f<span class="token operator">:</span> T<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token punctuation">&#123;</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token keyword">this</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>代码示例</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">testApply</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// fun &lt;T&gt; T.apply(f: T.() -&gt; Unit): T &#123; f(); return this &#125;</span></span><br><span class="line">    ArrayList&lt;String&gt;().apply &#123;</span><br><span class="line">        add(<span class="string">&quot;testApply&quot;</span>)</span><br><span class="line">        add(<span class="string">&quot;testApply&quot;</span>)</span><br><span class="line">        add(<span class="string">&quot;testApply&quot;</span>)</span><br><span class="line">        println(<span class="string">&quot;this = &quot;</span> + <span class="keyword">this</span>)</span><br><span class="line">    &#125;.let &#123; println(it) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// this = [testApply, testApply, testApply]</span></span><br><span class="line"><span class="comment">// [testApply, testApply, testApply]</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">testApply</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// fun &lt;T> T.apply(f: T.() -> Unit): T &#123; f(); return this &#125;</span>
+    ArrayList<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"testApply"</span><span class="token punctuation">)</span>
+        <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"testApply"</span><span class="token punctuation">)</span>
+        <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"testApply"</span><span class="token punctuation">)</span>
+        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"this = "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">.</span><span class="token function">let</span> <span class="token punctuation">&#123;</span> <span class="token function">println</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 运行结果</span>
+<span class="token comment">// this = [testApply, testApply, testApply]</span>
+<span class="token comment">// [testApply, testApply, testApply]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>编译过后的class文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static final void testApply()</span><br><span class="line">&#123;</span><br><span class="line">  ArrayList localArrayList1 = new ArrayList();</span><br><span class="line">  ArrayList localArrayList2 = (ArrayList)localArrayList1;</span><br><span class="line">  int $i$a$1$apply;</span><br><span class="line">  ArrayList $receiver;</span><br><span class="line">  $receiver.add(&quot;testApply&quot;);</span><br><span class="line">  $receiver.add(&quot;testApply&quot;);</span><br><span class="line">  $receiver.add(&quot;testApply&quot;);</span><br><span class="line">  String str = &quot;this = &quot; + $receiver;</span><br><span class="line">  System.out.println(str);</span><br><span class="line">  localArrayList1 = localArrayList1;</span><br><span class="line">  ArrayList it = (ArrayList)localArrayList1;</span><br><span class="line">  int $i$a$2$let;</span><br><span class="line">  System.out.println(it);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public static final void testApply()
+&#123;
+  ArrayList localArrayList1 &#x3D; new ArrayList();
+  ArrayList localArrayList2 &#x3D; (ArrayList)localArrayList1;
+  int $i$a$1$apply;
+  ArrayList $receiver;
+  $receiver.add(&quot;testApply&quot;);
+  $receiver.add(&quot;testApply&quot;);
+  $receiver.add(&quot;testApply&quot;);
+  String str &#x3D; &quot;this &#x3D; &quot; + $receiver;
+  System.out.println(str);
+  localArrayList1 &#x3D; localArrayList1;
+  ArrayList it &#x3D; (ArrayList)localArrayList1;
+  int $i$a$2$let;
+  System.out.println(it);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="with"><a href="#with" class="headerlink" title="with"></a>with</h2><p>with函数是一个单独的函数，并不是Kotlin中的extension，所以调用方式有点不一样，返回是最后一行，然后可以直接调用对象的方法，感觉像是let和apply的结合。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T, R&gt;</span> <span class="title">with</span><span class="params">(receiver: <span class="type">T</span>, f: <span class="type">T</span>.() -&gt; <span class="type">R</span>)</span></span>: R = receiver.f()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> R<span class="token operator">></span> <span class="token function">with</span><span class="token punctuation">(</span>receiver<span class="token operator">:</span> T<span class="token punctuation">,</span> f<span class="token operator">:</span> T<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> R<span class="token punctuation">)</span><span class="token operator">:</span> R <span class="token operator">=</span> receiver<span class="token punctuation">.</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>代码示例:</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">testWith</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// fun &lt;T, R&gt; with(receiver: T, f: T.() -&gt; R): R = receiver.f()</span></span><br><span class="line">    with(ArrayList&lt;String&gt;()) &#123;</span><br><span class="line">        add(<span class="string">&quot;testWith&quot;</span>)</span><br><span class="line">        add(<span class="string">&quot;testWith&quot;</span>)</span><br><span class="line">        add(<span class="string">&quot;testWith&quot;</span>)</span><br><span class="line">        println(<span class="string">&quot;this = &quot;</span> + <span class="keyword">this</span>)</span><br><span class="line">    &#125;.let &#123; println(it) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// this = [testWith, testWith, testWith]</span></span><br><span class="line"><span class="comment">// kotlin.Unit</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">testWith</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// fun &lt;T, R> with(receiver: T, f: T.() -> R): R = receiver.f()</span>
+    <span class="token function">with</span><span class="token punctuation">(</span>ArrayList<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"testWith"</span><span class="token punctuation">)</span>
+        <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"testWith"</span><span class="token punctuation">)</span>
+        <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"testWith"</span><span class="token punctuation">)</span>
+        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"this = "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">.</span><span class="token function">let</span> <span class="token punctuation">&#123;</span> <span class="token function">println</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 运行结果</span>
+<span class="token comment">// this = [testWith, testWith, testWith]</span>
+<span class="token comment">// kotlin.Unit</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>class文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static final void testWith()</span><br><span class="line"> &#123;</span><br><span class="line">   Object localObject = new ArrayList();</span><br><span class="line">   ArrayList localArrayList1 = (ArrayList)localObject;</span><br><span class="line">   int $i$a$1$with;</span><br><span class="line">   ArrayList $receiver;</span><br><span class="line">   $receiver.add(&quot;testWith&quot;);</span><br><span class="line">   $receiver.add(&quot;testWith&quot;);</span><br><span class="line">   $receiver.add(&quot;testWith&quot;);</span><br><span class="line">   String str = &quot;this = &quot; + $receiver;</span><br><span class="line">   System.out.println(str);</span><br><span class="line">   localObject = Unit.INSTANCE;</span><br><span class="line">   Unit it = (Unit)localObject;</span><br><span class="line">   int $i$a$2$let;</span><br><span class="line">   System.out.println(it);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public static final void testWith()
+ &#123;
+   Object localObject &#x3D; new ArrayList();
+   ArrayList localArrayList1 &#x3D; (ArrayList)localObject;
+   int $i$a$1$with;
+   ArrayList $receiver;
+   $receiver.add(&quot;testWith&quot;);
+   $receiver.add(&quot;testWith&quot;);
+   $receiver.add(&quot;testWith&quot;);
+   String str &#x3D; &quot;this &#x3D; &quot; + $receiver;
+   System.out.println(str);
+   localObject &#x3D; Unit.INSTANCE;
+   Unit it &#x3D; (Unit)localObject;
+   int $i$a$2$let;
+   System.out.println(it);
+ &#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="run"><a href="#run" class="headerlink" title="run"></a>run</h2><p>run函数和apply函数很像，只不过run函数是使用最后一行的返回，apply返回当前自己的对象。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T, R&gt;</span> T.<span class="title">run</span><span class="params">(f: <span class="type">T</span>.() -&gt; <span class="type">R</span>)</span></span>: R = f()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> R<span class="token operator">></span> T<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>f<span class="token operator">:</span> T<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> R<span class="token punctuation">)</span><span class="token operator">:</span> R <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>代码示例</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">testRun</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// fun &lt;T, R&gt; T.run(f: T.() -&gt; R): R = f()</span></span><br><span class="line">    <span class="string">&quot;testRun&quot;</span>.run &#123;</span><br><span class="line">        println(<span class="string">&quot;this = &quot;</span> + <span class="keyword">this</span>)</span><br><span class="line">    &#125;.let &#123; println(it) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// this = testRun</span></span><br><span class="line"><span class="comment">// kotlin.Unit</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">testRun</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// fun &lt;T, R> T.run(f: T.() -> R): R = f()</span>
+    <span class="token string">"testRun"</span><span class="token punctuation">.</span><span class="token function">run</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"this = "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">.</span><span class="token function">let</span> <span class="token punctuation">&#123;</span> <span class="token function">println</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 运行结果</span>
+<span class="token comment">// this = testRun</span>
+<span class="token comment">// kotlin.Unit</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>class文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static final void testRun()</span><br><span class="line">&#123;</span><br><span class="line">  Object localObject = &quot;testRun&quot;;</span><br><span class="line">  String str1 = (String)localObject;</span><br><span class="line">  int $i$a$1$run;</span><br><span class="line">  String $receiver;</span><br><span class="line">  String str2 = &quot;this = &quot; + $receiver;</span><br><span class="line">  System.out.println(str2);</span><br><span class="line">  localObject = Unit.INSTANCE;</span><br><span class="line">  Unit it = (Unit)localObject;</span><br><span class="line">  int $i$a$2$let;</span><br><span class="line">  System.out.println(it);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public static final void testRun()
+&#123;
+  Object localObject &#x3D; &quot;testRun&quot;;
+  String str1 &#x3D; (String)localObject;
+  int $i$a$1$run;
+  String $receiver;
+  String str2 &#x3D; &quot;this &#x3D; &quot; + $receiver;
+  System.out.println(str2);
+  localObject &#x3D; Unit.INSTANCE;
+  Unit it &#x3D; (Unit)localObject;
+  int $i$a$2$let;
+  System.out.println(it);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>怎么样，是不是看晕了，没关系，我们来总结下。</p>
 <table>
@@ -875,6 +1038,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -882,6 +1047,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1047,9 +1214,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1259,8 +1426,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

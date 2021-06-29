@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -414,6 +458,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -423,7 +470,18 @@
 <p>最近换了手机，刚刚写完代码，需要提交到Github，发现以前设置过二次校验，是通过Google authenticator设置的。</p>
 <p>发现以前备份的code，也丢失了，重新安装了Google authenticator也不行，最好只要找官方客服，发邮件求帮助。</p>
 <p>下面是帮助地址，<a href="https://github.com/contact">https://github.com/contact</a>，然后过了几个小时，就有人回复了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Hello there,</span><br><span class="line"></span><br><span class="line">The recovery codes would have had the default filename github-recovery-codes.txt or github_2fa_recovery_codes.txt - it may still be worth searching your computer, data backup, and/or email account for this document, just in case!</span><br><span class="line"></span><br><span class="line">If you don&#x27;t have valid recovery codes, you may be able to verify account ownership using an SSH key you have added to your account. To do this, please run the following command on the computer where your SSH key exists, and send us the full output:</span><br><span class="line"></span><br><span class="line">ssh -T git@github.com verify</span><br><span class="line"></span><br><span class="line">If you can verify account ownership, we can disable 2FA on your account so you can sign in again.</span><br><span class="line"></span><br><span class="line">All the best,</span><br><span class="line">Andrew</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">Hello there,
+
+The recovery codes would have had the default filename github-recovery-codes.txt or github_2fa_recovery_codes.txt - it may still be worth searching your computer, data backup, and/or email account for this document, just in case!
+
+If you don't have valid recovery codes, you may be able to verify account ownership using an SSH key you have added to your account. To do this, please run the following command on the computer where your SSH key exists, and send us the full output:
+
+ssh -T git@github.com verify
+
+If you can verify account ownership, we can disable 2FA on your account so you can sign in again.
+
+All the best,
+Andrew<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>然后就把<code>ssh -T git@github.com verify</code>命令执行了一般，最后把结果发过去，还在等结果。</p>
 <p>悲剧的一天，下班，代码不提交了。</p>
@@ -826,6 +884,8 @@ Lombok 官网上面有个几分钟的视频，接单
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -833,6 +893,8 @@ Lombok 官网上面有个几分钟的视频，接单
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -998,9 +1060,9 @@ Lombok 官网上面有个几分钟的视频，接单
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1210,8 +1272,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

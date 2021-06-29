@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -410,6 +454,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -422,62 +469,204 @@
 
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>使用Idea创建一个带Spring Boot的项目，使用gradle管理项目。</p>
 <p>使用gradle依赖很简单，同时创建两个Controller，一个用户表示线上api接口，一个表示心跳接口，用于测试。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compileOnly(<span class="string">&#x27;org.projectlombok:lombok&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    compile(<span class="string">&#x27;org.springframework.boot:spring-boot-starter-web&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    testCompile(<span class="string">&#x27;org.springframework.boot:spring-boot-starter-test&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">dependencies <span class="token punctuation">&#123;</span>
+    <span class="token function">compileOnly</span><span class="token punctuation">(</span><span class="token string">'org.projectlombok:lombok'</span><span class="token punctuation">)</span>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;app.env&#125;&quot;)</span></span><br><span class="line">    String env;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(path = &quot;/hello&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;hello&gt;&gt;&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>);</span><br><span class="line">        map.put(<span class="string">&quot;env&quot;</span>, env);</span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">&quot;map = &quot;</span> + map);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <span class="token function">compile</span><span class="token punctuation">(</span><span class="token string">'org.springframework.boot:spring-boot-starter-web'</span><span class="token punctuation">)</span>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeartbeatController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(path = &quot;/heartbeat&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">heartbeat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <span class="token function">testCompile</span><span class="token punctuation">(</span><span class="token string">'org.springframework.boot:spring-boot-starter-test'</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
+<span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorldController</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"$&#123;app.env&#125;"</span><span class="token punctuation">)</span>
+    <span class="token class-name">String</span> env<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"/hello"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token class-name">RequestMethod</span><span class="token punctuation">.</span>GET<span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"hello>>>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"env"</span><span class="token punctuation">,</span> env<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"map = "</span> <span class="token operator">+</span> map<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> map<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
+<span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HeartbeatController</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"/heartbeat"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">heartbeat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">"success"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>同时配置好对应的配置文件，我这有三个配置文件，一个dev环境，一个表示prod环境，还有一个表示开关。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1520343-029afdd83e348a09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p>Spring支持选择对应的config文件，开发时候，配置成dev，则生效的文件<code>application-dev.properties</code>。</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.profiles.active</span>=<span class="string">dev</span></span><br><span class="line"><span class="comment">#spring.profiles.active=prod</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">spring.profiles.active</span><span class="token punctuation">=</span><span class="token attr-value">dev</span>
+<span class="token comment">#spring.profiles.active=prod</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>dev</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">server.port</span>=<span class="string">8080</span></span><br><span class="line"><span class="meta">app.env</span>=<span class="string">dev</span></span><br><span class="line"><span class="meta">logging.config</span>=<span class="string">classpath:logback-spring.xml</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8080</span>
+<span class="token attr-name">app.env</span><span class="token punctuation">=</span><span class="token attr-value">dev</span>
+<span class="token attr-name">logging.config</span><span class="token punctuation">=</span><span class="token attr-value">classpath:logback-spring.xml</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>prod</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">server.port</span>=<span class="string">8088</span></span><br><span class="line"><span class="meta">app.env</span>=<span class="string">prod</span></span><br><span class="line"><span class="meta">logging.config</span>=<span class="string">classpath:logback-spring.xml</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8088</span>
+<span class="token attr-name">app.env</span><span class="token punctuation">=</span><span class="token attr-value">prod</span>
+<span class="token attr-name">logging.config</span><span class="token punctuation">=</span><span class="token attr-value">classpath:logback-spring.xml</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>我这边用<code>app.env</code>字段表示不同环境的内容，实际情况，可以配置数据库的内容，开发和线上的数据库是不一样的。</p>
 <p>启动程序，然后测试下请求。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl http://127.0.0.1:8080/hello    </span><br><span class="line">&#123;<span class="string">&quot;hello&quot;</span>:<span class="string">&quot;world&quot;</span>,<span class="string">&quot;env&quot;</span>:<span class="string">&quot;dev&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> http://127.0.0.1:8080/hello    
+<span class="token punctuation">&#123;</span><span class="token string">"hello"</span><span class="token builtin class-name">:</span><span class="token string">"world"</span>,<span class="token string">"env"</span><span class="token builtin class-name">:</span><span class="token string">"dev"</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>数据是正常的，env读取的也是dev数据。</p>
 <h2 id="编译和发布"><a href="#编译和发布" class="headerlink" title="编译和发布"></a>编译和发布</h2><p>由于项目使用gradle管理，那么在发布时候，直接使用gradle命令编译即可，命令如下，clean是可选的，不过一般在本地开发然后再发布，建议先clean下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew clean build</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./gradlew clean build<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>编译成功后，在项目生成目录中可以找到对应的jar文件，路径是<code>./build/libs/springboot-deploy-demo-0.0.1-SNAPSHOT.jar</code>。</p>
 <p>可以直接使用java命令来启动。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1520343-0d1142420338eedd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p>为了方便起见我在项目中写个简单脚本，编译成功后，复制目标文件到相应的目录，然后直接同步到服务器即可。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"></span><br><span class="line">./gradlew clean build</span><br><span class="line"></span><br><span class="line">cp build/libs/* deploy/</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
+
+./gradlew clean build
+
+<span class="token function">cp</span> build/libs/* deploy/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>deploy 目录除了有目标文件外，还有线上环境的配置文件，几个服务启动停止shell文件。</p>
 <p>start.sh，很简单，在启动前，检查是否已经启动，在没有启动情况下，在启动服务。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#get pwd</span></span><br><span class="line">DIR_HOME=<span class="string">&quot;<span class="variable">$&#123;BASH_SOURCE-$0&#125;</span>&quot;</span></span><br><span class="line">DIR_HOME=<span class="string">&quot;<span class="subst">$(dirname <span class="string">&quot;<span class="variable">$DIR_HOME</span>&quot;</span>)</span>&quot;</span></span><br><span class="line">PRGDIR=<span class="string">&quot;<span class="subst">$(cd <span class="string">&quot;<span class="variable">$&#123;DIR_HOME&#125;</span>&quot;</span>; pwd)</span>&quot;</span></span><br><span class="line"></span><br><span class="line">jarfile=<span class="variable">$PRGDIR</span>/springboot-deploy-demo-0.0.1-SNAPSHOT.jar</span><br><span class="line"></span><br><span class="line"><span class="comment">#get runing pid</span></span><br><span class="line">pid=$(ps -ef | grep java | grep <span class="variable">$jarfile</span> | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#create log dir</span></span><br><span class="line">mkdir -p <span class="variable">$PRGDIR</span>/<span class="built_in">log</span>/</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$pid</span>&quot;</span> != <span class="string">&quot;&quot;</span> ];<span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;ERROR: <span class="variable">$jarfile</span> is running! pid=<span class="variable">$pid</span>. You must stop it first!&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    nohup java -jar <span class="variable">$jarfile</span> -Dfile.encoding=UTF-8 --spring.config.location=<span class="variable">$PRGDIR</span>/ &gt;<span class="variable">$PRGDIR</span>/<span class="built_in">log</span>/start.log 2&gt;&amp;1 &amp;</span><br><span class="line">    pid=$(ps -ef | grep java | grep <span class="variable">$jarfile</span> | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;INFO: <span class="variable">$jarfile</span> is running! pid=<span class="variable">$pid</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    url=<span class="string">&quot;http://127.0.0.1:8088/heartbeat&quot;</span>;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$url</span></span><br><span class="line">    <span class="keyword">while</span> [ <span class="literal">true</span> ]</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">        sleep 1</span><br><span class="line">        HTTP_CODE=`curl -G -m 10 -o /dev/null -s -w %&#123;http_code&#125; <span class="variable">$url</span>`</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;http code: <span class="variable">$&#123;HTTP_CODE&#125;</span>&quot;</span></span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$&#123;HTTP_CODE&#125;</span> -eq 200 ]</span><br><span class="line">        <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;server start success...&quot;</span></span><br><span class="line">            <span class="built_in">exit</span> 0</span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
+
+
+<span class="token comment">#get pwd</span>
+<span class="token assign-left variable">DIR_HOME</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$&#123;<span class="token environment constant">BASH_SOURCE</span>-$0&#125;</span>"</span>
+<span class="token assign-left variable">DIR_HOME</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">dirname</span> <span class="token string">"<span class="token variable">$DIR_HOME</span>"</span><span class="token variable">)</span></span>"</span>
+<span class="token assign-left variable">PRGDIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">$&#123;DIR_HOME&#125;</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span>
+
+<span class="token assign-left variable">jarfile</span><span class="token operator">=</span><span class="token variable">$PRGDIR</span>/springboot-deploy-demo-0.0.1-SNAPSHOT.jar
+
+<span class="token comment">#get runing pid</span>
+<span class="token assign-left variable">pid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> java <span class="token operator">|</span> <span class="token function">grep</span> $jarfile <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123;print $2&#125;'</span><span class="token variable">)</span></span>
+
+<span class="token comment">#create log dir</span>
+<span class="token function">mkdir</span> -p <span class="token variable">$PRGDIR</span>/log/
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$pid</span>"</span> <span class="token operator">!=</span> <span class="token string">""</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"ERROR: <span class="token variable">$jarfile</span> is running! pid=<span class="token variable">$pid</span>. You must stop it first!"</span>
+<span class="token keyword">else</span>
+    <span class="token function">nohup</span> java -jar <span class="token variable">$jarfile</span> -Dfile.encoding<span class="token operator">=</span>UTF-8 --spring.config.location<span class="token operator">=</span><span class="token variable">$PRGDIR</span>/ <span class="token operator">></span><span class="token variable">$PRGDIR</span>/log/start.log <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span>
+    <span class="token assign-left variable">pid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> java <span class="token operator">|</span> <span class="token function">grep</span> $jarfile <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123;print $2&#125;'</span><span class="token variable">)</span></span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"INFO: <span class="token variable">$jarfile</span> is running! pid=<span class="token variable">$pid</span>"</span>
+
+    <span class="token assign-left variable">url</span><span class="token operator">=</span><span class="token string">"http://127.0.0.1:8088/heartbeat"</span><span class="token punctuation">;</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$url</span>
+    <span class="token keyword">while</span> <span class="token punctuation">[</span> <span class="token boolean">true</span> <span class="token punctuation">]</span>
+    <span class="token keyword">do</span>
+        <span class="token function">sleep</span> <span class="token number">1</span>
+        <span class="token assign-left variable">HTTP_CODE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">curl</span> -G -m <span class="token number">10</span> -o /dev/null -s -w %<span class="token punctuation">&#123;</span>http_code<span class="token punctuation">&#125;</span> $url<span class="token variable">`</span></span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"http code: <span class="token variable">$&#123;HTTP_CODE&#125;</span>"</span>
+        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$&#123;HTTP_CODE&#125;</span> -eq <span class="token number">200</span> <span class="token punctuation">]</span>
+        <span class="token keyword">then</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">"server start success..."</span>
+            <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+        <span class="token keyword">fi</span>
+    <span class="token keyword">done</span>
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>同时启动前，需要配置spring boot运行的参数，最重要的有Spring Boot启动的配置文件的位置<code>--spring.config.location</code>，我配置的位置是<code>./</code>。</p>
 <p>需要注意的是，prod的配置文件，一些参数需要注意路径，开发中路径是<code>classpath:</code>开头，线上是不需要的，当然了也是根据实际情况来看。</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">server.port</span>=<span class="string">8088</span></span><br><span class="line"><span class="meta">app.env</span>=<span class="string">prod</span></span><br><span class="line"><span class="meta">logging.config</span>=<span class="string">logback-spring.xml</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8088</span>
+<span class="token attr-name">app.env</span><span class="token punctuation">=</span><span class="token attr-value">prod</span>
+<span class="token attr-name">logging.config</span><span class="token punctuation">=</span><span class="token attr-value">logback-spring.xml</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>在启动服务后，会尝试调用相应的接口，测试启动是否成功。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">url=<span class="string">&quot;http://127.0.0.1:8088/heartbeat&quot;</span>;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$url</span></span><br><span class="line"><span class="keyword">while</span> [ <span class="literal">true</span> ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    sleep 1</span><br><span class="line">    HTTP_CODE=`curl -G -m 10 -o /dev/null -s -w %&#123;http_code&#125; <span class="variable">$url</span>`</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;http code: <span class="variable">$&#123;HTTP_CODE&#125;</span>&quot;</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$&#123;HTTP_CODE&#125;</span> -eq 200 ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;server start success...&quot;</span></span><br><span class="line">        <span class="built_in">exit</span> 0</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">url</span><span class="token operator">=</span><span class="token string">"http://127.0.0.1:8088/heartbeat"</span><span class="token punctuation">;</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$url</span>
+<span class="token keyword">while</span> <span class="token punctuation">[</span> <span class="token boolean">true</span> <span class="token punctuation">]</span>
+<span class="token keyword">do</span>
+    <span class="token function">sleep</span> <span class="token number">1</span>
+    <span class="token assign-left variable">HTTP_CODE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">curl</span> -G -m <span class="token number">10</span> -o /dev/null -s -w %<span class="token punctuation">&#123;</span>http_code<span class="token punctuation">&#125;</span> $url<span class="token variable">`</span></span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"http code: <span class="token variable">$&#123;HTTP_CODE&#125;</span>"</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$&#123;HTTP_CODE&#125;</span> -eq <span class="token number">200</span> <span class="token punctuation">]</span>
+    <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"server start success..."</span>
+        <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+    <span class="token keyword">fi</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>stop.sh</p>
 <p>停止服务很简单，直接查找对应的进程，然后杀掉，这里需要注意进程名字是以jar文件来查找的。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">process=springboot-deploy-demo-0.0.1-SNAPSHOT.jar</span><br><span class="line"></span><br><span class="line">ifrun=$(ps -ef | grep <span class="variable">$process</span> | grep java)</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$ifrun</span>&quot;</span> != <span class="string">&quot;&quot;</span> ];<span class="keyword">then</span></span><br><span class="line">    <span class="built_in">kill</span> -9 `ps -ef | grep <span class="variable">$process</span> | grep java | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>`</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;INFO: <span class="variable">$process</span> is stoped!&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;WARN: Not found <span class="variable">$process</span> running.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
+
+<span class="token assign-left variable">process</span><span class="token operator">=</span>springboot-deploy-demo-0.0.1-SNAPSHOT.jar
+
+<span class="token assign-left variable">ifrun</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> $process <span class="token operator">|</span> <span class="token function">grep</span> java<span class="token variable">)</span></span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$ifrun</span>"</span> <span class="token operator">!=</span> <span class="token string">""</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token function">kill</span> -9 <span class="token variable"><span class="token variable">`</span><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> $process <span class="token operator">|</span> <span class="token function">grep</span> java <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123;print $2&#125;'</span><span class="token variable">`</span></span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"INFO: <span class="token variable">$process</span> is stoped!"</span>
+<span class="token keyword">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"WARN: Not found <span class="token variable">$process</span> running."</span>
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>restart.sh</p>
 <p>这个比较简单，就是先停止，再启动。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">./stop.sh</span><br><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
+
+./stop.sh
+./start.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="同步到服务器"><a href="#同步到服务器" class="headerlink" title="同步到服务器"></a>同步到服务器</h2><p>这里做简单演示，我使用的是Ubuntu虚拟机，使用scp命令上传到服务器上，实际情况可以根据自己需求来选择，比如使用svn，ftp等。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp deploy/* xiaqiulei@192.168.153.134:~/deploy</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">scp</span> deploy/* xiaqiulei@192.168.153.134:~/deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>然后ssh登陆上<code>192.168.153.134</code>机器，进入<code>deploy</code>目录，执行<code>./start</code>即可。</p>
 <p>示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">$ scp deploy/* xiaqiulei@192.168.153.134:~/deploy</span><br><span class="line">xiaqiulei@192.168.153.134<span class="string">&#x27;s password: </span></span><br><span class="line"><span class="string">application-prod.properties                                                                                                                                                                  100%   63    84.7KB/s   00:00    </span></span><br><span class="line"><span class="string">application.properties                                                                                                                                                                       100%   27    26.4KB/s   00:00    </span></span><br><span class="line"><span class="string">deploy/log: not a regular file</span></span><br><span class="line"><span class="string">logback-spring.xml                                                                                                                                                                           100%  881   753.4KB/s   00:00    </span></span><br><span class="line"><span class="string">restart.sh                                                                                                                                                                                   100%   32    23.3KB/s   00:00    </span></span><br><span class="line"><span class="string">springboot-deploy-demo-0.0.1-SNAPSHOT.jar                                                                                                                                                    100%   15MB  32.5MB/s   00:00    </span></span><br><span class="line"><span class="string">start.sh                                                                                                                                                                                     100%  970     1.5MB/s   00:00    </span></span><br><span class="line"><span class="string">stop.sh                                                                                                                                                                                      100%  291   169.0KB/s   00:00    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">$ ssh xiaqiulei@192.168.153.134</span></span><br><span class="line"><span class="string">xiaqiulei@192.168.153.134&#x27;</span>s password: </span><br><span class="line">Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.4.0-109-generic x86_64)</span><br><span class="line"></span><br><span class="line"> * Documentation:  https://help.ubuntu.com</span><br><span class="line"> * Management:     https://landscape.canonical.com</span><br><span class="line"> * Support:        https://ubuntu.com/advantage</span><br><span class="line"></span><br><span class="line">299 packages can be updated.</span><br><span class="line">161 updates are security updates.</span><br><span class="line"></span><br><span class="line">Last login: Tue Apr 24 23:04:57 2018 from 192.168.153.1</span><br><span class="line"></span><br><span class="line"><span class="comment"># xiaqiulei @ ubuntu in ~ [23:07:59] </span></span><br><span class="line">$ <span class="built_in">cd</span> deploy </span><br><span class="line"></span><br><span class="line"><span class="comment"># xiaqiulei @ ubuntu in ~/deploy [23:08:01] </span></span><br><span class="line">$ ./start.sh </span><br><span class="line">INFO: /home/xiaqiulei/deploy/springboot-deploy-demo-0.0.1-SNAPSHOT.jar is running! pid=4645</span><br><span class="line">http://127.0.0.1:8088/heartbeat</span><br><span class="line">http code: 000</span><br><span class="line">http code: 000</span><br><span class="line">http code: 000</span><br><span class="line">http code: 000</span><br><span class="line">http code: 000</span><br><span class="line">http code: 200</span><br><span class="line">server start success...</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> deploy/* xiaqiulei@192.168.153.134:~/deploy
+xiaqiulei@192.168.153.134<span class="token string">'s password: 
+application-prod.properties                                                                                                                                                                  100%   63    84.7KB/s   00:00    
+application.properties                                                                                                                                                                       100%   27    26.4KB/s   00:00    
+deploy/log: not a regular file
+logback-spring.xml                                                                                                                                                                           100%  881   753.4KB/s   00:00    
+restart.sh                                                                                                                                                                                   100%   32    23.3KB/s   00:00    
+springboot-deploy-demo-0.0.1-SNAPSHOT.jar                                                                                                                                                    100%   15MB  32.5MB/s   00:00    
+start.sh                                                                                                                                                                                     100%  970     1.5MB/s   00:00    
+stop.sh                                                                                                                                                                                      100%  291   169.0KB/s   00:00    
+
+$ ssh xiaqiulei@192.168.153.134
+xiaqiulei@192.168.153.134'</span>s password: 
+Welcome to Ubuntu <span class="token number">16.04</span>.3 LTS <span class="token punctuation">(</span>GNU/Linux <span class="token number">4.4</span>.0-109-generic x86_64<span class="token punctuation">)</span>
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+<span class="token number">299</span> packages can be updated.
+<span class="token number">161</span> updates are security updates.
+
+Last login: Tue Apr <span class="token number">24</span> <span class="token number">23</span>:04:57 <span class="token number">2018</span> from <span class="token number">192.168</span>.153.1
+
+<span class="token comment"># xiaqiulei @ ubuntu in ~ [23:07:59] </span>
+$ <span class="token builtin class-name">cd</span> deploy 
+
+<span class="token comment"># xiaqiulei @ ubuntu in ~/deploy [23:08:01] </span>
+$ ./start.sh 
+INFO: /home/xiaqiulei/deploy/springboot-deploy-demo-0.0.1-SNAPSHOT.jar is running<span class="token operator">!</span> <span class="token assign-left variable">pid</span><span class="token operator">=</span><span class="token number">4645</span>
+http://127.0.0.1:8088/heartbeat
+http code: 000
+http code: 000
+http code: 000
+http code: 000
+http code: 000
+http code: <span class="token number">200</span>
+server start success<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文只是简单介绍使相关脚本发布Spring Boot服务到linux机器上，基本满足小项目需求。</p>
 <p>当然了，还有不够完善的地方，比如启动的方式是<code>nohup</code>，当进程挂掉以后，不能够自动重启，高级的用法是使用<code>supervisor</code>。</p>
@@ -868,6 +1057,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -875,6 +1066,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1040,9 +1233,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1252,8 +1445,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

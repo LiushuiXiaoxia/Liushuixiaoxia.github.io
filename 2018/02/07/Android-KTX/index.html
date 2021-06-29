@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -405,6 +449,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -416,38 +463,114 @@
 
 <h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><p>从官方简介来看，主要是对Android原始的Api做了一些扩展，方便开发调用，使代码更加自然和简单,下面列举几个例子，详细的API介绍可以参考官方API文档。</p>
 <h3 id="字符串转为URI"><a href="#字符串转为URI" class="headerlink" title="字符串转为URI"></a>字符串转为URI</h3><p>通常情况下为<code>Uri.parse(uriString)</code>，但是Android KTX 会为字符串添加一个扩展函数，使字符串更加自然地转换为 URI。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Kotlin</span></span><br><span class="line"><span class="keyword">val</span> uri = Uri.parse(uriString)</span><br><span class="line"></span><br><span class="line"><span class="comment">// android KTX</span></span><br><span class="line"><span class="keyword">val</span> uri = uriString.toUri()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// Kotlin</span>
+<span class="token keyword">val</span> uri <span class="token operator">=</span> Uri<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>uriString<span class="token punctuation">)</span>
+
+<span class="token comment">// android KTX</span>
+<span class="token keyword">val</span> uri <span class="token operator">=</span> uriString<span class="token punctuation">.</span><span class="token function">toUri</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="SharedPreferences"><a href="#SharedPreferences" class="headerlink" title="SharedPreferences"></a>SharedPreferences</h3><p>SharedPreferences也经常使用，使用 Android KTX后，代码也简介不少。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// kotlin</span></span><br><span class="line">sharedPreferences.edit()</span><br><span class="line">    .putBoolean(<span class="string">&quot;key&quot;</span>, value)</span><br><span class="line">    .apply()</span><br><span class="line"></span><br><span class="line"><span class="comment">// KTX</span></span><br><span class="line">sharedPreferences.edit &#123;</span><br><span class="line">    putBoolean(<span class="string">&quot;key&quot;</span>, value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// kotlin</span>
+sharedPreferences<span class="token punctuation">.</span><span class="token function">edit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">putBoolean</span><span class="token punctuation">(</span><span class="token string">"key"</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// KTX</span>
+sharedPreferences<span class="token punctuation">.</span><span class="token function">edit</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">putBoolean</span><span class="token punctuation">(</span><span class="token string">"key"</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h3><p>两个路径之间的距离改变了100px</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// kotlin</span></span><br><span class="line"><span class="keyword">val</span> pathDifference = Path(myPath1).apply &#123;</span><br><span class="line">    op(myPath2, Path.Op.DIFFERENCE)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">canvas.apply &#123;</span><br><span class="line">  <span class="keyword">val</span> checkpoint = save()</span><br><span class="line">  translate(<span class="number">0F</span>, <span class="number">100F</span>)</span><br><span class="line">  drawPath(pathDifference, myPaint)</span><br><span class="line">  restoreToCount(checkpoint)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// KTX</span></span><br><span class="line"><span class="keyword">val</span> pathDifference = myPath1 - myPath2</span><br><span class="line"></span><br><span class="line">canvas.withTranslation(y = <span class="number">100F</span>) &#123;</span><br><span class="line">    drawPath(pathDifference, myPaint)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// kotlin</span>
+<span class="token keyword">val</span> pathDifference <span class="token operator">=</span> <span class="token function">Path</span><span class="token punctuation">(</span>myPath1<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">op</span><span class="token punctuation">(</span>myPath2<span class="token punctuation">,</span> Path<span class="token punctuation">.</span>Op<span class="token punctuation">.</span>DIFFERENCE<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+canvas<span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">val</span> checkpoint <span class="token operator">=</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">0F</span><span class="token punctuation">,</span> <span class="token number">100F</span><span class="token punctuation">)</span>
+  <span class="token function">drawPath</span><span class="token punctuation">(</span>pathDifference<span class="token punctuation">,</span> myPaint<span class="token punctuation">)</span>
+  <span class="token function">restoreToCount</span><span class="token punctuation">(</span>checkpoint<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// KTX</span>
+<span class="token keyword">val</span> pathDifference <span class="token operator">=</span> myPath1 <span class="token operator">-</span> myPath2
+
+canvas<span class="token punctuation">.</span><span class="token function">withTranslation</span><span class="token punctuation">(</span>y <span class="token operator">=</span> <span class="token number">100F</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">drawPath</span><span class="token punctuation">(</span>pathDifference<span class="token punctuation">,</span> myPaint<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="View的onPreDraw监听"><a href="#View的onPreDraw监听" class="headerlink" title="View的onPreDraw监听"></a>View的onPreDraw监听</h3><p>触发了视图中 onPreDraw 的回调</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// kotlin</span><br><span class="line">view.viewTreeObserver.addOnPreDrawListener(</span><br><span class="line">    object : ViewTreeObserver.OnPreDrawListener &#123;</span><br><span class="line">        override fun onPreDraw(): Boolean &#123;</span><br><span class="line">            viewTreeObserver.removeOnPreDrawListener(this)</span><br><span class="line">            actionToBeTriggered()</span><br><span class="line">            return true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">// KTX</span><br><span class="line">view.doOnPreDraw &#123;</span><br><span class="line">     actionToBeTriggered()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; kotlin
+view.viewTreeObserver.addOnPreDrawListener(
+    object : ViewTreeObserver.OnPreDrawListener &#123;
+        override fun onPreDraw(): Boolean &#123;
+            viewTreeObserver.removeOnPreDrawListener(this)
+            actionToBeTriggered()
+            return true
+        &#125;
+    &#125;)
+
+&#x2F;&#x2F; KTX
+view.doOnPreDraw &#123;
+     actionToBeTriggered()
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="代码接入"><a href="#代码接入" class="headerlink" title="代码接入"></a>代码接入</h2><p>代码接入也很简单，首先项目代码必须接入kotlin，这里不做介绍，直接使用Android Studio创建基于Kotlin的项目即可，然后添加相关依赖，现在的版本还是<code>0.1</code>。</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repositories</span> &#123;</span><br><span class="line">    google()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    implementation <span class="string">&#x27;androidx.core:core-ktx:0.1&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-gradle" data-language="gradle"><code class="language-gradle">repositories &#123;
+    google()
+&#125;
+
+dependencies &#123;
+    implementation &#39;androidx.core:core-ktx:0.1&#39;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><p>透过现象看本质，这样使用起来就不会迷惑，而且遇到问题也能方便排查。</p>
 <p>主要使用Kotlin语言的几个特性，了解了这些特性后，我们自己也能很方便的进行封装，这样就形成了我们自己的类库，便于自己技术的沉淀。</p>
 <h3 id="Extensions"><a href="#Extensions" class="headerlink" title="Extensions"></a>Extensions</h3><p>上面的第一个例子，uri的封装就是利用了这个，Kotlin的<a href="http://kotlinlang.org/docs/reference/extensions.html">官方文档</a>也有介绍。</p>
 <p>直接看源码就行了。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> String.<span class="title">toUri</span><span class="params">()</span></span>: Uri = Uri.parse(<span class="keyword">this</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> <span class="token keyword">fun</span> String<span class="token punctuation">.</span><span class="token function">toUri</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Uri <span class="token operator">=</span> Uri<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>其实就是对String做了一个扩展，如果使用Java的就很容易理解，如下所示，这种方式在日常开发中也很容易见到。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringUtil</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Uri <span class="title">parse</span><span class="params">(String uriString)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Uri.parse(uriString);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StringUtil</span><span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Uri</span> <span class="token function">parse</span><span class="token punctuation">(</span><span class="token class-name">String</span> uriString<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token class-name">Uri</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>uriString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="Lambdas"><a href="#Lambdas" class="headerlink" title="Lambdas"></a>Lambdas</h3><p>第二个例子主要使用了Lambdas这个特性，Kotlin文档在<a href="http://kotlinlang.org/docs/reference/lambdas.html">这里</a>。</p>
 <p>还是贴代码，首先对<code>SharedPreferences</code>做了扩展，然后这个扩展函数的参数是一个闭包，当函数最后一个参数是闭包的时候，函数的括号可以直接省略，然后在后面接上闭包就行了。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> SharedPreferences.<span class="title">edit</span><span class="params">(action: <span class="type">SharedPreferences</span>.<span class="type">Editor</span>.() -&gt; <span class="type">Unit</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> editor = edit()</span><br><span class="line">    action(editor)</span><br><span class="line">    editor.apply()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">inline</span> <span class="token keyword">fun</span> SharedPreferences<span class="token punctuation">.</span><span class="token function">edit</span><span class="token punctuation">(</span>action<span class="token operator">:</span> SharedPreferences<span class="token punctuation">.</span>Editor<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> editor <span class="token operator">=</span> <span class="token function">edit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">action</span><span class="token punctuation">(</span>editor<span class="token punctuation">)</span>
+    editor<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="Default-Arguments"><a href="#Default-Arguments" class="headerlink" title="Default Arguments"></a>Default Arguments</h3><p>这个特性上面的例子没有，可以单独列举，如下所示。官方文档<a href="http://kotlinlang.org/docs/reference/functions.html#default-arguments">介绍</a>。<br>也是就说，当一个函数中含有多个参数时候，不需要像Java中那样，依次赋值，可以仅仅赋需要的即可，Java中常见的解决的方法是方法重载，挨个传入默认值。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> context = InstrumentationRegistry.getContext()</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> view = View(context)</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">updatePadding</span><span class="params">()</span></span> &#123;</span><br><span class="line">        view.updatePadding(top = <span class="number">10</span>, right = <span class="number">20</span>)</span><br><span class="line">        assertEquals(<span class="number">0</span>, view.paddingLeft)</span><br><span class="line">        assertEquals(<span class="number">10</span>, view.paddingTop)</span><br><span class="line">        assertEquals(<span class="number">20</span>, view.paddingRight)</span><br><span class="line">        assertEquals(<span class="number">0</span>, view.paddingBottom)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">class</span> ViewTest <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> context <span class="token operator">=</span> InstrumentationRegistry<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> view <span class="token operator">=</span> <span class="token function">View</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span>
+
+    <span class="token annotation builtin">@Test</span>
+    <span class="token keyword">fun</span> <span class="token function">updatePadding</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        view<span class="token punctuation">.</span><span class="token function">updatePadding</span><span class="token punctuation">(</span>top <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> right <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">)</span>
+        <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> view<span class="token punctuation">.</span>paddingLeft<span class="token punctuation">)</span>
+        <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> view<span class="token punctuation">.</span>paddingTop<span class="token punctuation">)</span>
+        <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> view<span class="token punctuation">.</span>paddingRight<span class="token punctuation">)</span>
+        <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> view<span class="token punctuation">.</span>paddingBottom<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>看<code>updatePadding</code>方法定义。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> View.<span class="title">updatePadding</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="meta">@Px</span> left: <span class="type">Int</span> = paddingLeft,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="meta">@Px</span> top: <span class="type">Int</span> = paddingTop,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="meta">@Px</span> right: <span class="type">Int</span> = paddingRight,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="meta">@Px</span> bottom: <span class="type">Int</span> = paddingBottom</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span> &#123;</span><br><span class="line">    setPadding(left, top, right, bottom)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> View<span class="token punctuation">.</span><span class="token function">updatePadding</span><span class="token punctuation">(</span>
+    <span class="token annotation builtin">@Px</span> left<span class="token operator">:</span> Int <span class="token operator">=</span> paddingLeft<span class="token punctuation">,</span>
+    <span class="token annotation builtin">@Px</span> top<span class="token operator">:</span> Int <span class="token operator">=</span> paddingTop<span class="token punctuation">,</span>
+    <span class="token annotation builtin">@Px</span> right<span class="token operator">:</span> Int <span class="token operator">=</span> paddingRight<span class="token punctuation">,</span>
+    <span class="token annotation builtin">@Px</span> bottom<span class="token operator">:</span> Int <span class="token operator">=</span> paddingBottom
+<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">setPadding</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> top<span class="token punctuation">,</span> right<span class="token punctuation">,</span> bottom<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>对于默认参数，还可以这样玩，比如在Java中，常见的有建造在模式，对每个参数进行赋值，然后创建一个对象，如果使用这种特性，不需要改变的值，可以直接用默认值表示，这样在编码的时候，就会显得很简洁。</p>
 <h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a href="https://android-developers.googleblog.com/">官方博客</a></p>
@@ -843,6 +966,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -850,6 +975,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1015,9 +1142,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1227,8 +1354,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -406,21 +450,24 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Docker快速删除"><a href="#Docker快速删除" class="headerlink" title="Docker快速删除"></a>Docker快速删除</h1><hr>
-<h2 id="Docker删除无效的容器"><a href="#Docker删除无效的容器" class="headerlink" title="Docker删除无效的容器"></a>Docker删除无效的容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a | grep Exited | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span> | xargs docker rm</span><br></pre></td></tr></table></figure>
+<h2 id="Docker删除无效的容器"><a href="#Docker删除无效的容器" class="headerlink" title="Docker删除无效的容器"></a>Docker删除无效的容器</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token function">ps</span> -a <span class="token operator">|</span> <span class="token function">grep</span> Exited <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123;print $1&#125;'</span> <span class="token operator">|</span> <span class="token function">xargs</span> docker <span class="token function">rm</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="Docker删除无用镜像"><a href="#Docker删除无用镜像" class="headerlink" title="Docker删除无用镜像"></a>Docker删除无用镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images | grep none | awk <span class="string">&#x27;&#123;print $3&#125;&#x27;</span> | xargs docker rmi</span><br></pre></td></tr></table></figure>
+<h2 id="Docker删除无用镜像"><a href="#Docker删除无用镜像" class="headerlink" title="Docker删除无用镜像"></a>Docker删除无用镜像</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker images <span class="token operator">|</span> <span class="token function">grep</span> none <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123;print $3&#125;'</span> <span class="token operator">|</span> <span class="token function">xargs</span> docker rmi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="停用全部运行中的容器"><a href="#停用全部运行中的容器" class="headerlink" title="停用全部运行中的容器"></a>停用全部运行中的容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -q)</span><br></pre></td></tr></table></figure>
+<h2 id="停用全部运行中的容器"><a href="#停用全部运行中的容器" class="headerlink" title="停用全部运行中的容器"></a>停用全部运行中的容器</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker stop <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -q<span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="删除全部容器"><a href="#删除全部容器" class="headerlink" title="删除全部容器"></a>删除全部容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure>
+<h2 id="删除全部容器"><a href="#删除全部容器" class="headerlink" title="删除全部容器"></a>删除全部容器</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -aq<span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="停用并删除容器"><a href="#停用并删除容器" class="headerlink" title="停用并删除容器"></a>停用并删除容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure>
+<h2 id="停用并删除容器"><a href="#停用并删除容器" class="headerlink" title="停用并删除容器"></a>停用并删除容器</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker stop <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -q<span class="token variable">)</span></span> <span class="token operator">&amp;</span> docker <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -aq<span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -794,6 +841,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -801,6 +850,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -966,9 +1017,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1178,8 +1229,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -414,6 +458,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -426,7 +473,37 @@
 <p>资料里面列举了如下几种方法，对代码进行重构。</p>
 <span id="more"></span>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">31天重构学习笔记01. 封装集合</span><br><span class="line">31天重构学习笔记02. 移动方法</span><br><span class="line">31天重构学习笔记03. 提升方法</span><br><span class="line">31天重构学习笔记04. 降低方法</span><br><span class="line">31天重构学习笔记05. 提升字段</span><br><span class="line">31天重构学习笔记06. 降低字段</span><br><span class="line">31天重构学习笔记07. 重命名（方法，类，参数）</span><br><span class="line">31天重构学习笔记08. 使用委派代替继承</span><br><span class="line">31天重构学习笔记09. 提取接口</span><br><span class="line">31天重构学习笔记10. 提取方法</span><br><span class="line">31天重构学习笔记11. 使用策略类</span><br><span class="line">31天重构学习笔记12. 分解依赖</span><br><span class="line">31天重构学习笔记13. 提取方法对象</span><br><span class="line">31天重构学习笔记14. 分离职责</span><br><span class="line">31天重构学习笔记15. 移除重复内容</span><br><span class="line">31天重构学习笔记16. 封装条件</span><br><span class="line">31天重构学习笔记17. 提取父类</span><br><span class="line">31天重构学习笔记18. 使用条件判断代替异常</span><br><span class="line">31天重构学习笔记19. 提取工厂类</span><br><span class="line">31天重构学习笔记20. 提取子类</span><br><span class="line">31天重构学习笔记21. 合并继承</span><br><span class="line">31天重构学习笔记22. 分解方法</span><br><span class="line">31天重构学习笔记23. 引入参数对象</span><br><span class="line">31天重构学习笔记24. 分解复杂判断</span><br><span class="line">31天重构学习笔记25. 引入契约式设计</span><br><span class="line">31天重构学习笔记26. 避免双重否定</span><br><span class="line">31天重构学习笔记27. 去除上帝类</span><br><span class="line">31天重构学习笔记28. 为布尔方法命名</span><br><span class="line">31天重构学习笔记29. 去除中间人对象</span><br><span class="line">31天重构学习笔记30. 尽快返回</span><br><span class="line">31天重构学习笔记31. 使用多态代替条件判断</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">31天重构学习笔记01. 封装集合
+31天重构学习笔记02. 移动方法
+31天重构学习笔记03. 提升方法
+31天重构学习笔记04. 降低方法
+31天重构学习笔记05. 提升字段
+31天重构学习笔记06. 降低字段
+31天重构学习笔记07. 重命名（方法，类，参数）
+31天重构学习笔记08. 使用委派代替继承
+31天重构学习笔记09. 提取接口
+31天重构学习笔记10. 提取方法
+31天重构学习笔记11. 使用策略类
+31天重构学习笔记12. 分解依赖
+31天重构学习笔记13. 提取方法对象
+31天重构学习笔记14. 分离职责
+31天重构学习笔记15. 移除重复内容
+31天重构学习笔记16. 封装条件
+31天重构学习笔记17. 提取父类
+31天重构学习笔记18. 使用条件判断代替异常
+31天重构学习笔记19. 提取工厂类
+31天重构学习笔记20. 提取子类
+31天重构学习笔记21. 合并继承
+31天重构学习笔记22. 分解方法
+31天重构学习笔记23. 引入参数对象
+31天重构学习笔记24. 分解复杂判断
+31天重构学习笔记25. 引入契约式设计
+31天重构学习笔记26. 避免双重否定
+31天重构学习笔记27. 去除上帝类
+31天重构学习笔记28. 为布尔方法命名
+31天重构学习笔记29. 去除中间人对象
+31天重构学习笔记30. 尽快返回
+31天重构学习笔记31. 使用多态代替条件判断<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Android Studio是基于优秀的ide的，ide提供了丰富的功能，很方便的对代码进行重构，下图是我的Android Studio Refactor菜单，部分快捷键与默认快捷键不同是因为方便而修改的。</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//1.png" alt="Android Studio Refactor"></p>
 <p>古人云『工欲善其事必先利其器』，所以在对代码进行重构前，需要详细了解Android Studio提供的功能，下面对AS(Android Studio，后面简称AS)菜单进行简单示例。</p>
@@ -436,229 +513,845 @@
 <li>ChangeSignature，改变函数签名，可以修改函数的名字，参数的顺序，参数的名字。</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 改变签名</span><br><span class="line">void testChangeSignature(int second, int first) &#123;</span><br><span class="line">    System.out.println(first + &quot;-&gt;&quot; + second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 改变签名
+void testChangeSignature(int second, int first) &#123;
+    System.out.println(first + &quot;-&gt;&quot; + second);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//2.gif" alt="改变签名"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 改变签名</span><br><span class="line">void testChangeSignature(int one, int two) &#123;</span><br><span class="line">    System.out.println(one + &quot;-&gt;&quot; + two);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 改变签名
+void testChangeSignature(int one, int two) &#123;
+    System.out.println(one + &quot;-&gt;&quot; + two);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改前参数依次是second、first，修改是one、two。</p>
 <ul>
 <li>ChangeClassSignatuere，改变类的签名，可以修改类的泛型签名</li>
 </ul>
 <p>Before：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">    // 改变类的签名</span><br><span class="line">    void testChangeClassSignatuere() &#123;</span><br><span class="line">        String second = &quot;second&quot;;</span><br><span class="line">        int first = 100;</span><br><span class="line">        new ChangeClassSignatuere(second, first);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">// **********************分割线*******************************    </span><br><span class="line">    </span><br><span class="line">public class ChangeClassSignatuere &#123;</span><br><span class="line"></span><br><span class="line">    private int first;</span><br><span class="line">    private String second;</span><br><span class="line"></span><br><span class="line">    public ChangeClassSignatuere(String second, int first) &#123;</span><br><span class="line">        this.first = first;</span><br><span class="line">        this.second = second;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;ChangeClassSignatuere&#123;&quot; +</span><br><span class="line">                &quot;second=&#x27;&quot; + second + &#x27;\&#x27;&#x27; +</span><br><span class="line">                &quot;,first=&quot; + first +</span><br><span class="line">                &#x27;&#125;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">    &#x2F;&#x2F; 改变类的签名
+    void testChangeClassSignatuere() &#123;
+        String second &#x3D; &quot;second&quot;;
+        int first &#x3D; 100;
+        new ChangeClassSignatuere(second, first);
+    &#125;
+    
+&#x2F;&#x2F; **********************分割线*******************************    
+    
+public class ChangeClassSignatuere &#123;
+
+    private int first;
+    private String second;
+
+    public ChangeClassSignatuere(String second, int first) &#123;
+        this.first &#x3D; first;
+        this.second &#x3D; second;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;ChangeClassSignatuere&#123;&quot; +
+                &quot;second&#x3D;&#39;&quot; + second + &#39;\&#39;&#39; +
+                &quot;,first&#x3D;&quot; + first +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//3.gif" alt="改变类签名"></p>
 <p>After：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">    // 改变类的签名</span><br><span class="line">    void testChangeClassSignatuere() &#123;</span><br><span class="line">        String second = &quot;second&quot;;</span><br><span class="line">        int first = 100;</span><br><span class="line">        new ChangeClassSignatuere&lt;Activity&gt;(second, first);</span><br><span class="line">    &#125;</span><br><span class="line">// **********************分割线*******************************    </span><br><span class="line"></span><br><span class="line">public class ChangeClassSignatuere&lt;A&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private int first;</span><br><span class="line">    private String second;</span><br><span class="line"></span><br><span class="line">    public ChangeClassSignatuere(String second, int first) &#123;</span><br><span class="line">        this.first = first;</span><br><span class="line">        this.second = second;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;ChangeClassSignatuere&#123;&quot; +</span><br><span class="line">                &quot;second=&#x27;&quot; + second + &#x27;\&#x27;&#x27; +</span><br><span class="line">                &quot;,first=&quot; + first +</span><br><span class="line">                &#x27;&#125;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">    &#x2F;&#x2F; 改变类的签名
+    void testChangeClassSignatuere() &#123;
+        String second &#x3D; &quot;second&quot;;
+        int first &#x3D; 100;
+        new ChangeClassSignatuere&lt;Activity&gt;(second, first);
+    &#125;
+&#x2F;&#x2F; **********************分割线*******************************    
+
+public class ChangeClassSignatuere&lt;A&gt; &#123;
+
+    private int first;
+    private String second;
+
+    public ChangeClassSignatuere(String second, int first) &#123;
+        this.first &#x3D; first;
+        this.second &#x3D; second;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;ChangeClassSignatuere&#123;&quot; +
+                &quot;second&#x3D;&#39;&quot; + second + &#39;\&#39;&#39; +
+                &quot;,first&#x3D;&quot; + first +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>修改匿名类为内部类</li>
 </ul>
 <p>Before：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 匿名类改成内部类</span><br><span class="line">void testConvertAnonymousToInner() &#123;</span><br><span class="line">    View.OnClickListener clickListener = new View.OnClickListener() &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onClick(View v) &#123;</span><br><span class="line">            System.out.println(&quot;onClick&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 匿名类改成内部类
+void testConvertAnonymousToInner() &#123;
+    View.OnClickListener clickListener &#x3D; new View.OnClickListener() &#123;
+
+        @Override
+        public void onClick(View v) &#123;
+            System.out.println(&quot;onClick&quot;);
+        &#125;
+    &#125;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//4.gif" alt="改变类签名"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 匿名类改成内部类</span><br><span class="line">void testConvertAnonymousToInner() &#123;</span><br><span class="line"></span><br><span class="line">    View.OnClickListener clickListener = new Abc123();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static class Abc123 implements View.OnClickListener &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v) &#123;</span><br><span class="line">        System.out.println(&quot;onClick&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 匿名类改成内部类
+void testConvertAnonymousToInner() &#123;
+
+    View.OnClickListener clickListener &#x3D; new Abc123();
+&#125;
+
+private static class Abc123 implements View.OnClickListener &#123;
+
+    @Override
+    public void onClick(View v) &#123;
+        System.out.println(&quot;onClick&quot;);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个是我最喜欢的一个功能，有时候匿名类刚刚开始逻辑很简单，过不了多久逻辑太多，就可以使用快捷键变成一个内部类。</p>
 <ul>
 <li>ConvertToInstanceMethod，修改一个方法变成成员方法</li>
 </ul>
 <p>Befor:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    // 变成成员方法</span><br><span class="line">    void testConvertToInstanceMethod() &#123;</span><br><span class="line">        TestClass.convertToInstanceMethod(this, &quot;test&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">public class TestClass &#123;</span><br><span class="line"></span><br><span class="line">    static void convertToInstanceMethod(RefactorDemo demo, String string) &#123;</span><br><span class="line">        System.out.println(&quot;convertToInstanceMethod = &quot; + demo);</span><br><span class="line">        System.out.println(&quot;convertToInstanceMethod = &quot; + string);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">    &#x2F;&#x2F; 变成成员方法
+    void testConvertToInstanceMethod() &#123;
+        TestClass.convertToInstanceMethod(this, &quot;test&quot;);
+    &#125;
+    
+public class TestClass &#123;
+
+    static void convertToInstanceMethod(RefactorDemo demo, String string) &#123;
+        System.out.println(&quot;convertToInstanceMethod &#x3D; &quot; + demo);
+        System.out.println(&quot;convertToInstanceMethod &#x3D; &quot; + string);
+    &#125;
+&#125;    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 变成成员方法</span><br><span class="line">void testConvertToInstanceMethod() &#123;</span><br><span class="line">    this.convertToInstanceMethod(&quot;test&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void convertToInstanceMethod(String string) &#123;</span><br><span class="line">    System.out.println(&quot;convertToInstanceMethod = &quot; + this);</span><br><span class="line">    System.out.println(&quot;convertToInstanceMethod = &quot; + string);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 变成成员方法
+void testConvertToInstanceMethod() &#123;
+    this.convertToInstanceMethod(&quot;test&quot;);
+&#125;
+
+void convertToInstanceMethod(String string) &#123;
+    System.out.println(&quot;convertToInstanceMethod &#x3D; &quot; + this);
+    System.out.println(&quot;convertToInstanceMethod &#x3D; &quot; + string);
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在修改前，调用convertToInstanceMethod方法，第一个参数相是RefactorDemo，传递是this， 修改后就那个方法直接移动到本类中。</p>
 <ul>
 <li>Copy，复制一个类</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    // 复制一个类</span><br><span class="line">    void testCopy() &#123;</span><br><span class="line">        new FirstClass();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">public class FirstClass implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    public String first;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;FirstClass&#123;&quot; +</span><br><span class="line">                &quot;first=&#x27;&quot; + first + &#x27;\&#x27;&#x27; +</span><br><span class="line">                &#x27;&#125;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">    &#x2F;&#x2F; 复制一个类
+    void testCopy() &#123;
+        new FirstClass();
+    &#125;
+    
+public class FirstClass implements Serializable &#123;
+
+    public String first;
+
+    @Override
+    public String toString() &#123;
+        return &quot;FirstClass&#123;&quot; +
+                &quot;first&#x3D;&#39;&quot; + first + &#39;\&#39;&#39; +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//5.gif" alt="复制一个类"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class SecondClass implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    public String first;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;SecondClass&#123;&quot; +</span><br><span class="line">                &quot;first=&#x27;&quot; + first + &#x27;\&#x27;&#x27; +</span><br><span class="line">                &#x27;&#125;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public class SecondClass implements Serializable &#123;
+
+    public String first;
+
+    @Override
+    public String toString() &#123;
+        return &quot;SecondClass&#123;&quot; +
+                &quot;first&#x3D;&#39;&quot; + first + &#39;\&#39;&#39; +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>EncapsulateFields，压缩一个字段，间接访问</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String filed = &quot;filed&quot;;</span><br><span class="line"></span><br><span class="line">// 压缩一个字段，间接访问</span><br><span class="line">void testEncapsulateFields() &#123;</span><br><span class="line">    System.out.println(filed);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">String filed &#x3D; &quot;filed&quot;;
+
+&#x2F;&#x2F; 压缩一个字段，间接访问
+void testEncapsulateFields() &#123;
+    System.out.println(filed);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private String filed = &quot;filed&quot;;</span><br><span class="line"></span><br><span class="line">// 压缩一个字段，间接访问</span><br><span class="line">void testEncapsulateFields() &#123;</span><br><span class="line">    System.out.println(getFiled());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public String getFiled() &#123;</span><br><span class="line">    return filed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setFiled(String filed) &#123;</span><br><span class="line">    this.filed = filed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">private String filed &#x3D; &quot;filed&quot;;
+
+&#x2F;&#x2F; 压缩一个字段，间接访问
+void testEncapsulateFields() &#123;
+    System.out.println(getFiled());
+&#125;
+
+public String getFiled() &#123;
+    return filed;
+&#125;
+
+public void setFiled(String filed) &#123;
+    this.filed &#x3D; filed;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>相当于简介访问一个field，自动生成setter和getter。</p>
 <ul>
 <li>GenerifyRefactoring，泛型重构</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 泛型重构</span><br><span class="line">void testGenerifyRefactoring() &#123;</span><br><span class="line">    List list = new ArrayList();</span><br><span class="line">    list.add(&quot;one&quot;);</span><br><span class="line">    list.add(&quot;two&quot;);</span><br><span class="line">    list.add(&quot;three&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 泛型重构
+void testGenerifyRefactoring() &#123;
+    List list &#x3D; new ArrayList();
+    list.add(&quot;one&quot;);
+    list.add(&quot;two&quot;);
+    list.add(&quot;three&quot;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 泛型重构</span><br><span class="line">void testGenerifyRefactoring() &#123;</span><br><span class="line">    List&lt;String&gt; list = new ArrayList&lt;String&gt;();</span><br><span class="line">    list.add(&quot;one&quot;);</span><br><span class="line">    list.add(&quot;two&quot;);</span><br><span class="line">    list.add(&quot;three&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 泛型重构
+void testGenerifyRefactoring() &#123;
+    List&lt;String&gt; list &#x3D; new ArrayList&lt;String&gt;();
+    list.add(&quot;one&quot;);
+    list.add(&quot;two&quot;);
+    list.add(&quot;three&quot;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>自动添加泛型的参数。</p>
 <ul>
 <li>Inline，内联函数</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 内联</span><br><span class="line">void testInline() &#123;</span><br><span class="line">    int a = 100;</span><br><span class="line">    int b = 200;</span><br><span class="line">    System.out.println(add(a, b));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int add(int a, int b) &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 内联
+void testInline() &#123;
+    int a &#x3D; 100;
+    int b &#x3D; 200;
+    System.out.println(add(a, b));
+&#125;
+
+int add(int a, int b) &#123;
+    return a + b;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//6.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 内联</span><br><span class="line">void testInline() &#123;</span><br><span class="line">    int a = 100;</span><br><span class="line">    int b = 200;</span><br><span class="line">    System.out.println(a + b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 内联
+void testInline() &#123;
+    int a &#x3D; 100;
+    int b &#x3D; 200;
+    System.out.println(a + b);
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>原先需要调用一个函数的地方，直接把那个函数里面的代码复制过来。</p>
 <ul>
 <li>InvertBoolean，重构Boolean</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 重构Boolean</span><br><span class="line">void testInvertBoolean() &#123;</span><br><span class="line">    System.out.println(checkPaswd(null));</span><br><span class="line">    System.out.println(checkPaswd(&quot;&quot;));</span><br><span class="line">    System.out.println(checkPaswd(&quot;admin&quot;));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">boolean checkPaswd(String passwd) &#123;</span><br><span class="line">    if (passwd != null &amp;&amp; passwd.length() != 0) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 重构Boolean
+void testInvertBoolean() &#123;
+    System.out.println(checkPaswd(null));
+    System.out.println(checkPaswd(&quot;&quot;));
+    System.out.println(checkPaswd(&quot;admin&quot;));
+&#125;
+
+boolean checkPaswd(String passwd) &#123;
+    if (passwd !&#x3D; null &amp;&amp; passwd.length() !&#x3D; 0) &#123;
+        return true;
+    &#125;
+    return false;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//7.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 重构Boolean</span><br><span class="line">void testInvertBoolean() &#123;</span><br><span class="line">    System.out.println(checkPaswd(null));</span><br><span class="line">    System.out.println(checkPaswd(&quot;&quot;));</span><br><span class="line">    System.out.println(checkPaswd(&quot;admin&quot;));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">boolean checkPaswd(String passwd) &#123;</span><br><span class="line">    return passwd != null &amp;&amp; passwd.length() != 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 重构Boolean
+void testInvertBoolean() &#123;
+    System.out.println(checkPaswd(null));
+    System.out.println(checkPaswd(&quot;&quot;));
+    System.out.println(checkPaswd(&quot;admin&quot;));
+&#125;
+
+boolean checkPaswd(String passwd) &#123;
+    return passwd !&#x3D; null &amp;&amp; passwd.length() !&#x3D; 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <ul>
 <li>MakeClassStatic，使类变成静态的</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 使类变成静态的</span><br><span class="line">void testMakeClassStatic() &#123;</span><br><span class="line">    new MyClass().fun();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">String myClassField = &quot;abc&quot;;</span><br><span class="line"></span><br><span class="line">class MyClass &#123;</span><br><span class="line">    void fun() &#123;</span><br><span class="line">        System.out.println(&quot;myClassField = &quot; + myClassField);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 使类变成静态的
+void testMakeClassStatic() &#123;
+    new MyClass().fun();
+&#125;
+
+String myClassField &#x3D; &quot;abc&quot;;
+
+class MyClass &#123;
+    void fun() &#123;
+        System.out.println(&quot;myClassField &#x3D; &quot; + myClassField);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//8.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 使类变成静态的</span><br><span class="line">void testMakeClassStatic() &#123;</span><br><span class="line">    new MyClass(myClassField).fun();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">String myClassField = &quot;abc&quot;;</span><br><span class="line"></span><br><span class="line">static class MyClass &#123;</span><br><span class="line">    private String myClassField;</span><br><span class="line"></span><br><span class="line">    public MyClass(String myClassField) &#123;</span><br><span class="line">        this.myClassField = myClassField;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void fun() &#123;</span><br><span class="line">        System.out.println(&quot;myClassField = &quot; + myClassField);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 使类变成静态的
+void testMakeClassStatic() &#123;
+    new MyClass(myClassField).fun();
+&#125;
+
+String myClassField &#x3D; &quot;abc&quot;;
+
+static class MyClass &#123;
+    private String myClassField;
+
+    public MyClass(String myClassField) &#123;
+        this.myClassField &#x3D; myClassField;
+    &#125;
+
+    void fun() &#123;
+        System.out.println(&quot;myClassField &#x3D; &quot; + myClassField);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改前需要调用外部内的成员变量myClassField，实际编译过后MyClass的class是持有外部类的对象，这样才能访问myClassField，通过重构，使得myClassField通过构造方法传入进去，然后再在fun方法中使用，这样重构会减少类的依赖。</p>
 <ul>
 <li>MakeMethodStatic，使方法变成静态的</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 使方法变成静态的</span><br><span class="line">void testMakeMethodStatic() &#123;</span><br><span class="line">    myFun();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void myFun() &#123;</span><br><span class="line">    System.out.println(&quot;myFun&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 使方法变成静态的
+void testMakeMethodStatic() &#123;
+    myFun();
+&#125;
+
+void myFun() &#123;
+    System.out.println(&quot;myFun&quot;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 使方法变成静态的</span><br><span class="line">void testMakeMethodStatic() &#123;</span><br><span class="line">    myFun();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void myFun() &#123;</span><br><span class="line">    System.out.println(&quot;myFun&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 使方法变成静态的
+void testMakeMethodStatic() &#123;
+    myFun();
+&#125;
+
+static void myFun() &#123;
+    System.out.println(&quot;myFun&quot;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>Move，移动一个类</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 移动一个类</span><br><span class="line">void testMove() &#123;</span><br><span class="line">    new MoveClass().fun();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static class MoveClass &#123;</span><br><span class="line"></span><br><span class="line">    String movde;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;MoveClass&#123;&quot; +</span><br><span class="line">                &quot;movde=&#x27;&quot; + movde + &#x27;\&#x27;&#x27; +</span><br><span class="line">                &#x27;&#125;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void fun() &#123;</span><br><span class="line">        System.out.println(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 移动一个类
+void testMove() &#123;
+    new MoveClass().fun();
+&#125;
+
+static class MoveClass &#123;
+
+    String movde;
+
+    @Override
+    public String toString() &#123;
+        return &quot;MoveClass&#123;&quot; +
+                &quot;movde&#x3D;&#39;&quot; + movde + &#39;\&#39;&#39; +
+                &#39;&#125;&#39;;
+    &#125;
+
+    void fun() &#123;
+        System.out.println(this);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//9.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    // 移动一个类</span><br><span class="line">    void testMove() &#123;</span><br><span class="line">        new MoveClassxxxxxx().fun();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">class MoveClassxxxxxx &#123;</span><br><span class="line"></span><br><span class="line">    String movde;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;MoveClass&#123;&quot; +</span><br><span class="line">                &quot;movde=&#x27;&quot; + movde + &#x27;\&#x27;&#x27; +</span><br><span class="line">                &#x27;&#125;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void fun() &#123;</span><br><span class="line">        System.out.println(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">    &#x2F;&#x2F; 移动一个类
+    void testMove() &#123;
+        new MoveClassxxxxxx().fun();
+    &#125;
+    
+class MoveClassxxxxxx &#123;
+
+    String movde;
+
+    @Override
+    public String toString() &#123;
+        return &quot;MoveClass&#123;&quot; +
+                &quot;movde&#x3D;&#39;&quot; + movde + &#39;\&#39;&#39; +
+                &#39;&#125;&#39;;
+    &#125;
+
+    void fun() &#123;
+        System.out.println(this);
+    &#125;
+&#125;    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>PullMenmberUp，上移</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Base &#123;</span><br><span class="line"></span><br><span class="line">    public String baseString;</span><br><span class="line"></span><br><span class="line">    public Base(String baseString) &#123;</span><br><span class="line">        this.baseString = baseString;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void funBase() &#123;</span><br><span class="line">        System.out.println(baseString);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Sub extends Base &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public Sub(String baseString) &#123;</span><br><span class="line">        super(baseString);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void funSub() &#123;</span><br><span class="line">        System.out.println(baseString);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    // 上移</span><br><span class="line">    void testPullMenmberUp() &#123;</span><br><span class="line">        new Sub(&quot;base&quot;).funSub();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public class Base &#123;
+
+    public String baseString;
+
+    public Base(String baseString) &#123;
+        this.baseString &#x3D; baseString;
+    &#125;
+
+    public void funBase() &#123;
+        System.out.println(baseString);
+    &#125;
+&#125;
+public class Sub extends Base &#123;
+
+
+    public Sub(String baseString) &#123;
+        super(baseString);
+    &#125;
+
+    public void funSub() &#123;
+        System.out.println(baseString);
+    &#125;
+&#125;
+
+    &#x2F;&#x2F; 上移
+    void testPullMenmberUp() &#123;
+        new Sub(&quot;base&quot;).funSub();
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//10.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class Base &#123;</span><br><span class="line"></span><br><span class="line">    public String baseString;</span><br><span class="line"></span><br><span class="line">    public Base(String baseString) &#123;</span><br><span class="line">        this.baseString = baseString;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void funBase() &#123;</span><br><span class="line">        System.out.println(baseString);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void funSub() &#123;</span><br><span class="line">        System.out.println(baseString);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Sub extends Base &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public Sub(String baseString) &#123;</span><br><span class="line">        super(baseString);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public class Base &#123;
+
+    public String baseString;
+
+    public Base(String baseString) &#123;
+        this.baseString &#x3D; baseString;
+    &#125;
+
+    public void funBase() &#123;
+        System.out.println(baseString);
+    &#125;
+
+    public void funSub() &#123;
+        System.out.println(baseString);
+    &#125;
+&#125;
+
+public class Sub extends Base &#123;
+
+
+    public Sub(String baseString) &#123;
+        super(baseString);
+    &#125;
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实际上就是把子类中的方法移动到父类中。</p>
 <ul>
 <li>PullMenmberDown，下移</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Base &#123;</span><br><span class="line"></span><br><span class="line">    public String baseString;</span><br><span class="line"></span><br><span class="line">    public Base(String baseString) &#123;</span><br><span class="line">        this.baseString = baseString;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void funBase() &#123;</span><br><span class="line">        System.out.println(baseString);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Sub extends Base &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public Sub(String baseString) &#123;</span><br><span class="line">        super(baseString);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void funSub() &#123;</span><br><span class="line">        System.out.println(baseString);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    // 下移</span><br><span class="line">    void testPullMenmberDown() &#123;</span><br><span class="line">        new Sub(&quot;base&quot;).funBase();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public class Base &#123;
+
+    public String baseString;
+
+    public Base(String baseString) &#123;
+        this.baseString &#x3D; baseString;
+    &#125;
+
+    public void funBase() &#123;
+        System.out.println(baseString);
+    &#125;
+&#125;
+public class Sub extends Base &#123;
+
+
+    public Sub(String baseString) &#123;
+        super(baseString);
+    &#125;
+
+    public void funSub() &#123;
+        System.out.println(baseString);
+    &#125;
+&#125;
+    &#x2F;&#x2F; 下移
+    void testPullMenmberDown() &#123;
+        new Sub(&quot;base&quot;).funBase();
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Base &#123;</span><br><span class="line"></span><br><span class="line">    public String baseString;</span><br><span class="line"></span><br><span class="line">    public Base(String baseString) &#123;</span><br><span class="line">        this.baseString = baseString;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Sub extends Base &#123;</span><br><span class="line"></span><br><span class="line">    public Sub(String baseString) &#123;</span><br><span class="line">        super(baseString);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void funSub() &#123;</span><br><span class="line">        System.out.println(baseString);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void funBase() &#123;</span><br><span class="line">        System.out.println(baseString);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public class Base &#123;
+
+    public String baseString;
+
+    public Base(String baseString) &#123;
+        this.baseString &#x3D; baseString;
+    &#125;
+
+&#125;
+
+public class Sub extends Base &#123;
+
+    public Sub(String baseString) &#123;
+        super(baseString);
+    &#125;
+
+    public void funSub() &#123;
+        System.out.println(baseString);
+    &#125;
+
+    public void funBase() &#123;
+        System.out.println(baseString);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实际上就是把父类中的方法移动到子类中。</p>
 <ul>
 <li>Rename，重命名</li>
 </ul>
 <p>这个功能也是我最喜欢的，只要选择重命名一个对象或者资源，所有使用到这个对象或者资源的地方，都会进行重新命名。</p>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 重命名</span><br><span class="line">void testRename() &#123;</span><br><span class="line">    String first = &quot;second&quot;;</span><br><span class="line">    System.out.println(first);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 重命名
+void testRename() &#123;
+    String first &#x3D; &quot;second&quot;;
+    System.out.println(first);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//11.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 重命名</span><br><span class="line">void testRename() &#123;</span><br><span class="line">    String second = &quot;second&quot;;</span><br><span class="line">    System.out.println(second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 重命名
+void testRename() &#123;
+    String second &#x3D; &quot;second&quot;;
+    System.out.println(second);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>ReplaceConstructorWithBuilder，构造方法变成builder</li>
 </ul>
 <p>还在羡慕Picasso，Fresco人性化调用方式吗？很简单，通过这个功能就可以快速生成代码</p>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class MyAlertDialog &#123;</span><br><span class="line"></span><br><span class="line">    private String title;</span><br><span class="line">    private String message;</span><br><span class="line">    private String okButton;</span><br><span class="line">    private String cancelButton;</span><br><span class="line"></span><br><span class="line">    public MyAlertDialog(String title, String message, String okButton, String cancelButton) &#123;</span><br><span class="line">        this.title = title;</span><br><span class="line">        this.message = message;</span><br><span class="line">        this.okButton = okButton;</span><br><span class="line">        this.cancelButton = cancelButton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br><span class="line">    // 构造方法变成builder</span><br><span class="line">    void testReplaceConstructorWithBuilder() &#123;</span><br><span class="line">        new MyAlertDialog(&quot;title&quot;, &quot;message&quot;, &quot;ok&quot;, &quot;cancel&quot;).show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public class MyAlertDialog &#123;
+
+    private String title;
+    private String message;
+    private String okButton;
+    private String cancelButton;
+
+    public MyAlertDialog(String title, String message, String okButton, String cancelButton) &#123;
+        this.title &#x3D; title;
+        this.message &#x3D; message;
+        this.okButton &#x3D; okButton;
+        this.cancelButton &#x3D; cancelButton;
+    &#125;
+&#125;    
+    &#x2F;&#x2F; 构造方法变成builder
+    void testReplaceConstructorWithBuilder() &#123;
+        new MyAlertDialog(&quot;title&quot;, &quot;message&quot;, &quot;ok&quot;, &quot;cancel&quot;).show();
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//12.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">    // 构造方法变成builder</span><br><span class="line">    void testReplaceConstructorWithBuilder() &#123;</span><br><span class="line">        new MyAlertDialog.Builder()</span><br><span class="line">                .setTitle(&quot;title&quot;)</span><br><span class="line">                .setMessage(&quot;message&quot;)</span><br><span class="line">                .setOkButton(&quot;ok&quot;)</span><br><span class="line">                .setCancelButton(&quot;cancel&quot;)</span><br><span class="line">                .createMyAlertDialog()</span><br><span class="line">                .show();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">public static class Builder &#123;</span><br><span class="line">    private String title;</span><br><span class="line">    private String message;</span><br><span class="line">    private String okButton;</span><br><span class="line">    private String cancelButton;</span><br><span class="line"></span><br><span class="line">    public Builder setTitle(String title) &#123;</span><br><span class="line">        this.title = title;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Builder setMessage(String message) &#123;</span><br><span class="line">        this.message = message;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Builder setOkButton(String okButton) &#123;</span><br><span class="line">        this.okButton = okButton;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Builder setCancelButton(String cancelButton) &#123;</span><br><span class="line">        this.cancelButton = cancelButton;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public MyAlertDialog createMyAlertDialog() &#123;</span><br><span class="line">        return new MyAlertDialog(title, message, okButton, cancelButton);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">    &#x2F;&#x2F; 构造方法变成builder
+    void testReplaceConstructorWithBuilder() &#123;
+        new MyAlertDialog.Builder()
+                .setTitle(&quot;title&quot;)
+                .setMessage(&quot;message&quot;)
+                .setOkButton(&quot;ok&quot;)
+                .setCancelButton(&quot;cancel&quot;)
+                .createMyAlertDialog()
+                .show();
+    &#125;
+    
+public static class Builder &#123;
+    private String title;
+    private String message;
+    private String okButton;
+    private String cancelButton;
+
+    public Builder setTitle(String title) &#123;
+        this.title &#x3D; title;
+        return this;
+    &#125;
+
+    public Builder setMessage(String message) &#123;
+        this.message &#x3D; message;
+        return this;
+    &#125;
+
+    public Builder setOkButton(String okButton) &#123;
+        this.okButton &#x3D; okButton;
+        return this;
+    &#125;
+
+    public Builder setCancelButton(String cancelButton) &#123;
+        this.cancelButton &#x3D; cancelButton;
+        return this;
+    &#125;
+
+    public MyAlertDialog createMyAlertDialog() &#123;
+        return new MyAlertDialog(title, message, okButton, cancelButton);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>ReplaceConstructorWithFactory，构造方法变成工程方法</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 构造方法变成工程方法</span><br><span class="line">void testReplaceConstructorWithFactory() &#123;</span><br><span class="line">    new MyAlertDialog(&quot;title&quot;, &quot;message&quot;, &quot;ok&quot;, &quot;cancel&quot;).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 构造方法变成工程方法
+void testReplaceConstructorWithFactory() &#123;
+    new MyAlertDialog(&quot;title&quot;, &quot;message&quot;, &quot;ok&quot;, &quot;cancel&quot;).show();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//13.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    // 构造方法变成工程方法</span><br><span class="line">    void testReplaceConstructorWithFactory() &#123;</span><br><span class="line">        MyAlertDialog.newInstance(&quot;title&quot;, &quot;message&quot;, &quot;ok&quot;, &quot;cancel&quot;)</span><br><span class="line">                .show();</span><br><span class="line">    &#125;</span><br><span class="line">public class MyAlertDialog &#123;    </span><br><span class="line">    private MyAlertDialog(String title, String message, String okButton, String cancelButton) &#123;</span><br><span class="line">        this.title = title;</span><br><span class="line">        this.message = message;</span><br><span class="line">        this.okButton = okButton;</span><br><span class="line">        this.cancelButton = cancelButton;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static MyAlertDialog newInstance(String title, String message, String okButton, String cancelButton) &#123;</span><br><span class="line">        return new MyAlertDialog(title, message, okButton, cancelButton);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">    &#x2F;&#x2F; 构造方法变成工程方法
+    void testReplaceConstructorWithFactory() &#123;
+        MyAlertDialog.newInstance(&quot;title&quot;, &quot;message&quot;, &quot;ok&quot;, &quot;cancel&quot;)
+                .show();
+    &#125;
+public class MyAlertDialog &#123;    
+    private MyAlertDialog(String title, String message, String okButton, String cancelButton) &#123;
+        this.title &#x3D; title;
+        this.message &#x3D; message;
+        this.okButton &#x3D; okButton;
+        this.cancelButton &#x3D; cancelButton;
+    &#125;
+
+    public static MyAlertDialog newInstance(String title, String message, String okButton, String cancelButton) &#123;
+        return new MyAlertDialog(title, message, okButton, cancelButton);
+    &#125;
+&#125;    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>通过上面代码发现，如果构造方法变成了工厂方式，那么它的构造参数是private的，这样调用者只能通过工厂方式来生成对象。</p>
 <ul>
 <li>ReplaceInheritanceWithDelegation，代理代替继承</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbsClass &#123;</span><br><span class="line"></span><br><span class="line">    public abstract void sayHello();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class ExtClass extends AbsClass &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void sayHello() &#123;</span><br><span class="line">        System.out.println(&quot;hello&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    // 代理代替继承</span><br><span class="line">    void testReplaceInheritanceWithDelegation() &#123;</span><br><span class="line">        new ExtClass().sayHello();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public abstract class AbsClass &#123;
+
+    public abstract void sayHello();
+&#125;
+
+public class ExtClass extends AbsClass &#123;
+
+    @Override
+    public void sayHello() &#123;
+        System.out.println(&quot;hello&quot;);
+    &#125;
+&#125;
+    &#x2F;&#x2F; 代理代替继承
+    void testReplaceInheritanceWithDelegation() &#123;
+        new ExtClass().sayHello();
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//14.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class ExtClass &#123;</span><br><span class="line"></span><br><span class="line">    private final AbsClassImpl abs = new AbsClassImpl();</span><br><span class="line"></span><br><span class="line">    public void sayHello() &#123;</span><br><span class="line">        abs.sayHello();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private class AbsClassImpl extends AbsClass &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void sayHello() &#123;</span><br><span class="line">            System.out.println(&quot;hello&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    // 代理代替继承</span><br><span class="line">    void testReplaceInheritanceWithDelegation() &#123;</span><br><span class="line">        new ExtClass().sayHello();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public class ExtClass &#123;
+
+    private final AbsClassImpl abs &#x3D; new AbsClassImpl();
+
+    public void sayHello() &#123;
+        abs.sayHello();
+    &#125;
+
+    private class AbsClassImpl extends AbsClass &#123;
+        @Override
+        public void sayHello() &#123;
+            System.out.println(&quot;hello&quot;);
+        &#125;
+    &#125;
+&#125;
+
+    &#x2F;&#x2F; 代理代替继承
+    void testReplaceInheritanceWithDelegation() &#123;
+        new ExtClass().sayHello();
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>书上说过，组合由于继承大概说的就是这个意思。</p>
 <ul>
 <li>SafeDelete，安全删除</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 安全删除</span><br><span class="line">void testSafeDelete() &#123;</span><br><span class="line">    String unUsedString = &quot;abc&quot;;</span><br><span class="line"></span><br><span class="line">    unUsedString = getUnUsedString();</span><br><span class="line">    System.out.println(new Date());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public String getUnUsedString() &#123;</span><br><span class="line">    return unUsedString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 安全删除
+void testSafeDelete() &#123;
+    String unUsedString &#x3D; &quot;abc&quot;;
+
+    unUsedString &#x3D; getUnUsedString();
+    System.out.println(new Date());
+&#125;
+
+public String getUnUsedString() &#123;
+    return unUsedString;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 安全删除</span><br><span class="line">void testSafeDelete() &#123;</span><br><span class="line">    System.out.println(new Date());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 安全删除
+void testSafeDelete() &#123;
+    System.out.println(new Date());
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这个比较简单，如果某个变量没有使用，那么直接直接删除所有引用这个变量的地方。</p>
 <ul>
 <li>WrapReturnValue，封装返回值</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 封装返回值</span><br><span class="line">void testWrapReturnValue() &#123;</span><br><span class="line">    System.out.println(getUserName());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private String getUserName() &#123;</span><br><span class="line">    return &quot;userName&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 封装返回值
+void testWrapReturnValue() &#123;
+    System.out.println(getUserName());
+&#125;
+
+private String getUserName() &#123;
+    return &quot;userName&quot;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//15.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 包装下返回值</span><br><span class="line">void testWrapReturnValue() &#123;</span><br><span class="line">    System.out.println(getUserName().getValue());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private UserInfo getUserName() &#123;</span><br><span class="line">    return new UserInfo(&quot;userName&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class UserInfo &#123;</span><br><span class="line">    private final String value;</span><br><span class="line"></span><br><span class="line">    public UserInfo(String value) &#123;</span><br><span class="line">        this.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getValue() &#123;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 包装下返回值
+void testWrapReturnValue() &#123;
+    System.out.println(getUserName().getValue());
+&#125;
+
+private UserInfo getUserName() &#123;
+    return new UserInfo(&quot;userName&quot;);
+&#125;
+
+public class UserInfo &#123;
+    private final String value;
+
+    public UserInfo(String value) &#123;
+        this.value &#x3D; value;
+    &#125;
+
+    public String getValue() &#123;
+        return value;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>RemoveMiddleMan，去除中间人</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// 去除中间人</span><br><span class="line">void testRemoveMiddleMan() &#123;</span><br><span class="line">    OrderManager manager = new OrderManager();</span><br><span class="line">    manager.newOrder(&quot;new&quot;);</span><br><span class="line">    manager.confirm(&quot;confir&quot;);</span><br><span class="line">    manager.invalidOrder(&quot;invalid&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static class OrderManager &#123;</span><br><span class="line">    private List&lt;String&gt; unProcessOrderList;</span><br><span class="line">    private List&lt;String&gt; processedOrderList;</span><br><span class="line"></span><br><span class="line">    public OrderManager() &#123;</span><br><span class="line">        unProcessOrderList = new ArrayList&lt;&gt;();</span><br><span class="line">        processedOrderList = new ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void newOrder(String order) &#123;</span><br><span class="line">        unProcessOrderList.add(order);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void confirm(String order) &#123;</span><br><span class="line">        unProcessOrderList.remove(order);</span><br><span class="line">        processedOrderList.add(order);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void invalidOrder(String order) &#123;</span><br><span class="line">        processedOrderList.remove(order);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void display() &#123;</span><br><span class="line">        System.out.println(unProcessOrderList);</span><br><span class="line">        System.out.println(processedOrderList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 去除中间人
+void testRemoveMiddleMan() &#123;
+    OrderManager manager &#x3D; new OrderManager();
+    manager.newOrder(&quot;new&quot;);
+    manager.confirm(&quot;confir&quot;);
+    manager.invalidOrder(&quot;invalid&quot;);
+&#125;
+
+public static class OrderManager &#123;
+    private List&lt;String&gt; unProcessOrderList;
+    private List&lt;String&gt; processedOrderList;
+
+    public OrderManager() &#123;
+        unProcessOrderList &#x3D; new ArrayList&lt;&gt;();
+        processedOrderList &#x3D; new ArrayList&lt;&gt;();
+    &#125;
+
+    public void newOrder(String order) &#123;
+        unProcessOrderList.add(order);
+    &#125;
+
+    public void confirm(String order) &#123;
+        unProcessOrderList.remove(order);
+        processedOrderList.add(order);
+    &#125;
+
+    public void invalidOrder(String order) &#123;
+        processedOrderList.remove(order);
+    &#125;
+
+    public void display() &#123;
+        System.out.println(unProcessOrderList);
+        System.out.println(processedOrderList);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//16.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// 去除中间人</span><br><span class="line">void testRemoveMiddleMan() &#123;</span><br><span class="line">    OrderManager manager = new OrderManager();</span><br><span class="line">    manager.getUnProcessOrderList().add(&quot;new&quot;);</span><br><span class="line">    manager.confirm(&quot;confir&quot;);</span><br><span class="line">    manager.getProcessedOrderList().remove(&quot;invalid&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static class OrderManager &#123;</span><br><span class="line">    private List&lt;String&gt; unProcessOrderList;</span><br><span class="line">    private List&lt;String&gt; processedOrderList;</span><br><span class="line"></span><br><span class="line">    public OrderManager() &#123;</span><br><span class="line">        unProcessOrderList = new ArrayList&lt;&gt;();</span><br><span class="line">        processedOrderList = new ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void confirm(String order) &#123;</span><br><span class="line">        unProcessOrderList.remove(order);</span><br><span class="line">        processedOrderList.add(order);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void display() &#123;</span><br><span class="line">        System.out.println(unProcessOrderList);</span><br><span class="line">        System.out.println(processedOrderList);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;String&gt; getUnProcessOrderList() &#123;</span><br><span class="line">        return unProcessOrderList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;String&gt; getProcessedOrderList() &#123;</span><br><span class="line">        return processedOrderList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 去除中间人
+void testRemoveMiddleMan() &#123;
+    OrderManager manager &#x3D; new OrderManager();
+    manager.getUnProcessOrderList().add(&quot;new&quot;);
+    manager.confirm(&quot;confir&quot;);
+    manager.getProcessedOrderList().remove(&quot;invalid&quot;);
+&#125;
+
+public static class OrderManager &#123;
+    private List&lt;String&gt; unProcessOrderList;
+    private List&lt;String&gt; processedOrderList;
+
+    public OrderManager() &#123;
+        unProcessOrderList &#x3D; new ArrayList&lt;&gt;();
+        processedOrderList &#x3D; new ArrayList&lt;&gt;();
+    &#125;
+
+    public void confirm(String order) &#123;
+        unProcessOrderList.remove(order);
+        processedOrderList.add(order);
+    &#125;
+
+    public void display() &#123;
+        System.out.println(unProcessOrderList);
+        System.out.println(processedOrderList);
+    &#125;
+
+    public List&lt;String&gt; getUnProcessOrderList() &#123;
+        return unProcessOrderList;
+    &#125;
+
+    public List&lt;String&gt; getProcessedOrderList() &#123;
+        return processedOrderList;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>用途就是，原先OrderManager持有一个List来保存Order，调用方直接使用OrderManager来处理订单，去除中间人的意思就是说，调用法直接获取保存Order的容器，调用方直接自己控制容器。</p>
 <h2 id="代码抽取"><a href="#代码抽取" class="headerlink" title="代码抽取"></a>代码抽取</h2><p>代码抽取在实际使用当中非常有用。</p>
 <ul>
 <li>ExtraMethod，抽取一个方法</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 抽取一个方法</span><br><span class="line">void testExtraMethod() &#123;</span><br><span class="line">    Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">    map.put(&quot;one&quot;, 1);</span><br><span class="line">    map.put(&quot;two&quot;, 2);</span><br><span class="line">    map.put(&quot;three&quot;, 2);</span><br><span class="line"></span><br><span class="line">    System.out.println(map);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取一个方法
+void testExtraMethod() &#123;
+    Map&lt;String, Integer&gt; map &#x3D; new HashMap&lt;&gt;();
+    map.put(&quot;one&quot;, 1);
+    map.put(&quot;two&quot;, 2);
+    map.put(&quot;three&quot;, 2);
+
+    System.out.println(map);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//17.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 抽取一个方法</span><br><span class="line">void testExtraMethod() &#123;</span><br><span class="line">    Map&lt;String, Integer&gt; map = initMap();</span><br><span class="line"></span><br><span class="line">    System.out.println(map);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@NonNull</span><br><span class="line">private Map&lt;String, Integer&gt; initMap() &#123;</span><br><span class="line">    Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">    map.put(&quot;one&quot;, 1);</span><br><span class="line">    map.put(&quot;two&quot;, 2);</span><br><span class="line">    map.put(&quot;three&quot;, 2);</span><br><span class="line">    return map;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取一个方法
+void testExtraMethod() &#123;
+    Map&lt;String, Integer&gt; map &#x3D; initMap();
+
+    System.out.println(map);
+&#125;
+
+@NonNull
+private Map&lt;String, Integer&gt; initMap() &#123;
+    Map&lt;String, Integer&gt; map &#x3D; new HashMap&lt;&gt;();
+    map.put(&quot;one&quot;, 1);
+    map.put(&quot;two&quot;, 2);
+    map.put(&quot;three&quot;, 2);
+    return map;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <ul>
@@ -666,10 +1359,32 @@
 </ul>
 <p>和上面那个差不多，只不过把方法移动到另外一个类中。</p>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 抽取一个方法到一个对象中</span><br><span class="line">void testExtraMethodObject() &#123;</span><br><span class="line">    Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">    map.put(&quot;one&quot;, 1);</span><br><span class="line">    map.put(&quot;two&quot;, 22);</span><br><span class="line">    map.put(&quot;three&quot;, 33);</span><br><span class="line"></span><br><span class="line">    System.out.println(map);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取一个方法到一个对象中
+void testExtraMethodObject() &#123;
+    Map&lt;String, Integer&gt; map &#x3D; new HashMap&lt;&gt;();
+    map.put(&quot;one&quot;, 1);
+    map.put(&quot;two&quot;, 22);
+    map.put(&quot;three&quot;, 33);
+
+    System.out.println(map);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 抽取一个方法到一个对象中</span><br><span class="line">void testExtraMethodObject() &#123;</span><br><span class="line">    Map&lt;String, Integer&gt; map = MapUtil.invoke();</span><br><span class="line">    System.out.println(map);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static class MapUtil &#123;</span><br><span class="line">    private static Map&lt;String, Integer&gt; invoke() &#123;</span><br><span class="line">        Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        map.put(&quot;one&quot;, 1);</span><br><span class="line">        map.put(&quot;two&quot;, 22);</span><br><span class="line">        map.put(&quot;three&quot;, 33);</span><br><span class="line">        return map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取一个方法到一个对象中
+void testExtraMethodObject() &#123;
+    Map&lt;String, Integer&gt; map &#x3D; MapUtil.invoke();
+    System.out.println(map);
+&#125;
+
+private static class MapUtil &#123;
+    private static Map&lt;String, Integer&gt; invoke() &#123;
+        Map&lt;String, Integer&gt; map &#x3D; new HashMap&lt;&gt;();
+        map.put(&quot;one&quot;, 1);
+        map.put(&quot;two&quot;, 22);
+        map.put(&quot;three&quot;, 33);
+        return map;
+    &#125;
+&#125;   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <ul>
@@ -677,95 +1392,398 @@
 </ul>
 <p>这个比较使用，有时候一个方法参数太多，可以把这些参数合并成一个类。</p>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 抽取若干参数成一个类</span><br><span class="line">void testExtractParameterObject() &#123;</span><br><span class="line">    print(100, 200);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// widht,height --&gt; Size Class</span><br><span class="line">void print(int width, int height) &#123;</span><br><span class="line">    System.out.println(&quot;width = &quot; + width + &quot;, height = &quot; + height);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取若干参数成一个类
+void testExtractParameterObject() &#123;
+    print(100, 200);
+&#125;
+
+&#x2F;&#x2F; widht,height --&gt; Size Class
+void print(int width, int height) &#123;
+    System.out.println(&quot;width &#x3D; &quot; + width + &quot;, height &#x3D; &quot; + height);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//18.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    // 抽取若干参数成一个类</span><br><span class="line">    void testExtractParameterObject() &#123;</span><br><span class="line">        print(new Size(100, 200));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // widht,height --&gt; Size Class</span><br><span class="line">    void print(Size size) &#123;</span><br><span class="line">        System.out.println(&quot;width = &quot; + size.getWidth() + &quot;, height = &quot; + size.getHeight());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">public class Size &#123;</span><br><span class="line">    private final int width;</span><br><span class="line">    private final int height;</span><br><span class="line"></span><br><span class="line">    public Size(int width, int height) &#123;</span><br><span class="line">        this.width = width;</span><br><span class="line">        this.height = height;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getWidth() &#123;</span><br><span class="line">        return width;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getHeight() &#123;</span><br><span class="line">        return height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">    &#x2F;&#x2F; 抽取若干参数成一个类
+    void testExtractParameterObject() &#123;
+        print(new Size(100, 200));
+    &#125;
+
+    &#x2F;&#x2F; widht,height --&gt; Size Class
+    void print(Size size) &#123;
+        System.out.println(&quot;width &#x3D; &quot; + size.getWidth() + &quot;, height &#x3D; &quot; + size.getHeight());
+    &#125;
+    
+    
+public class Size &#123;
+    private final int width;
+    private final int height;
+
+    public Size(int width, int height) &#123;
+        this.width &#x3D; width;
+        this.height &#x3D; height;
+    &#125;
+
+    public int getWidth() &#123;
+        return width;
+    &#125;
+
+    public int getHeight() &#123;
+        return height;
+    &#125;
+&#125;    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <ul>
 <li>ExtractSuperclass，抽取到父类</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 抽取到父类</span><br><span class="line">void testExtractSuperclass() &#123;</span><br><span class="line">    sendEvent(&quot;login_success&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void sendEvent(Object event) &#123;</span><br><span class="line">    // EventBus.getDefault().send(event);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取到父类
+void testExtractSuperclass() &#123;
+    sendEvent(&quot;login_success&quot;);
+&#125;
+
+public void sendEvent(Object event) &#123;
+    &#x2F;&#x2F; EventBus.getDefault().send(event);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//19.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class BaseExtractDemo &#123;</span><br><span class="line">    public void sendEvent(Object event) &#123;</span><br><span class="line">        // EventBus.getDefault().send(event);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class ExtractDemo extends BaseExtractDemo &#123;</span><br><span class="line">    // 抽取到父类</span><br><span class="line">    void testExtractSuperclass() &#123;</span><br><span class="line">        sendEvent(&quot;login_success&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public class BaseExtractDemo &#123;
+    public void sendEvent(Object event) &#123;
+        &#x2F;&#x2F; EventBus.getDefault().send(event);
+    &#125;
+&#125;
+
+public class ExtractDemo extends BaseExtractDemo &#123;
+    &#x2F;&#x2F; 抽取到父类
+    void testExtractSuperclass() &#123;
+        sendEvent(&quot;login_success&quot;);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>ExtractConstant，抽取常量</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 抽取常量</span><br><span class="line">void testExtractConstant() &#123;</span><br><span class="line">    String email = &quot;admin@123.com&quot;;</span><br><span class="line">    String passwd = &quot;1qaz2wsx&quot;;</span><br><span class="line"></span><br><span class="line">    Bundle bundle = new Bundle();</span><br><span class="line">    bundle.putString(&quot;email&quot;, email);</span><br><span class="line">    bundle.putString(&quot;passwd&quot;, passwd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取常量
+void testExtractConstant() &#123;
+    String email &#x3D; &quot;admin@123.com&quot;;
+    String passwd &#x3D; &quot;1qaz2wsx&quot;;
+
+    Bundle bundle &#x3D; new Bundle();
+    bundle.putString(&quot;email&quot;, email);
+    bundle.putString(&quot;passwd&quot;, passwd);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//20.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static final String KEY_EMAIL = &quot;email&quot;;</span><br><span class="line">public static final String KEY_PASSWD = &quot;passwd&quot;;</span><br><span class="line"></span><br><span class="line">// 抽取常量</span><br><span class="line">void testExtractConstant() &#123;</span><br><span class="line">    String email = &quot;admin@123.com&quot;;</span><br><span class="line">    String passwd = &quot;1qaz2wsx&quot;;</span><br><span class="line"></span><br><span class="line">    Bundle bundle = new Bundle();</span><br><span class="line">    bundle.putString(KEY_EMAIL, email);</span><br><span class="line">    bundle.putString(KEY_PASSWD, passwd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public static final String KEY_EMAIL &#x3D; &quot;email&quot;;
+public static final String KEY_PASSWD &#x3D; &quot;passwd&quot;;
+
+&#x2F;&#x2F; 抽取常量
+void testExtractConstant() &#123;
+    String email &#x3D; &quot;admin@123.com&quot;;
+    String passwd &#x3D; &quot;1qaz2wsx&quot;;
+
+    Bundle bundle &#x3D; new Bundle();
+    bundle.putString(KEY_EMAIL, email);
+    bundle.putString(KEY_PASSWD, passwd);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>ExtractField，抽取成成员变量</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 抽取成成员变量</span><br><span class="line">void testExtractField() &#123;</span><br><span class="line">    String testExtractField =  &quot;testExtractField&quot;;</span><br><span class="line">    System.out.println(testExtractField);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取成成员变量
+void testExtractField() &#123;
+    String testExtractField &#x3D;  &quot;testExtractField&quot;;
+    System.out.println(testExtractField);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private String testExtractField;</span><br><span class="line"></span><br><span class="line">// 抽取成成员变量</span><br><span class="line">void testExtractField() &#123;</span><br><span class="line">    testExtractField = &quot;testExtractField&quot;;</span><br><span class="line">    System.out.println(testExtractField);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">private String testExtractField;
+
+&#x2F;&#x2F; 抽取成成员变量
+void testExtractField() &#123;
+    testExtractField &#x3D; &quot;testExtractField&quot;;
+    System.out.println(testExtractField);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>ExtractVariable，抽取成变量</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 抽取成变量</span><br><span class="line">void testExtractVariable() &#123;</span><br><span class="line">    System.out.println(&quot;long name = &quot; + getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">String getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName() &#123;</span><br><span class="line">    return &quot;getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取成变量
+void testExtractVariable() &#123;
+    System.out.println(&quot;long name &#x3D; &quot; + getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName());
+&#125;
+
+String getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName() &#123;
+    return &quot;getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName&quot;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//21.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 抽取成变量</span><br><span class="line">void testExtractVariable() &#123;</span><br><span class="line">    String name = getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName();</span><br><span class="line">    System.out.println(&quot;long name = &quot; + name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">String getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName() &#123;</span><br><span class="line">    return &quot;getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取成变量
+void testExtractVariable() &#123;
+    String name &#x3D; getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName();
+    System.out.println(&quot;long name &#x3D; &quot; + name);
+&#125;
+
+String getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName() &#123;
+    return &quot;getLoooooooooooooooooooooooooooooooooooooooooooooooooooooongName&quot;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>有时候，一行代码写的很长，可以使用这个方法，对代码进行重构。</p>
 <ul>
 <li>ExtractParameter，抽取成方法的参数</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 抽取成方法的参数</span><br><span class="line">void testExtractParameter() &#123;</span><br><span class="line">    printHelloString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void printHelloString() &#123;</span><br><span class="line">    String str = &quot;printHello&quot;;</span><br><span class="line">    System.out.println(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取成方法的参数
+void testExtractParameter() &#123;
+    printHelloString();
+&#125;
+
+private void printHelloString() &#123;
+    String str &#x3D; &quot;printHello&quot;;
+    System.out.println(str);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//22.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 抽取成方法的参数</span><br><span class="line">void testExtractParameter() &#123;</span><br><span class="line">    String str = &quot;printHello&quot;;</span><br><span class="line">    printStringAndLength(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void printStringAndLength(String paramStr) &#123;</span><br><span class="line">    System.out.println(paramStr + &quot; -&gt; &quot; + paramStr.length());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 抽取成方法的参数
+void testExtractParameter() &#123;
+    String str &#x3D; &quot;printHello&quot;;
+    printStringAndLength(str);
+&#125;
+
+private void printStringAndLength(String paramStr) &#123;
+    System.out.println(paramStr + &quot; -&gt; &quot; + paramStr.length());
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Android资源重构"><a href="#Android资源重构" class="headerlink" title="Android资源重构"></a>Android资源重构</h2><ul>
 <li>ExtractLayout，布局文件抽取</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:fitsSystemWindows=&quot;true&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.AppBarLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:theme=&quot;@style/AppTheme.AppBarOverlay&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:id=&quot;@+id/toolbar&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;?attr/actionBarSize&quot;</span><br><span class="line">            android:background=&quot;?attr/colorPrimary&quot;</span><br><span class="line">            app:popupTheme=&quot;@style/AppTheme.PopupOverlay&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;include layout=&quot;@layout/content_main&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">        android:id=&quot;@+id/fab&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_gravity=&quot;bottom|end&quot;</span><br><span class="line">        android:layout_margin=&quot;@dimen/fab_margin&quot;</span><br><span class="line">        android:src=&quot;@android:drawable/ic_dialog_email&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;
+&lt;android.support.design.widget.CoordinatorLayout xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;
+    xmlns:app&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res-auto&quot;
+    android:layout_width&#x3D;&quot;match_parent&quot;
+    android:layout_height&#x3D;&quot;match_parent&quot;
+    android:fitsSystemWindows&#x3D;&quot;true&quot;&gt;
+
+    &lt;android.support.design.widget.AppBarLayout
+        android:layout_width&#x3D;&quot;match_parent&quot;
+        android:layout_height&#x3D;&quot;wrap_content&quot;
+        android:theme&#x3D;&quot;@style&#x2F;AppTheme.AppBarOverlay&quot;&gt;
+
+        &lt;android.support.v7.widget.Toolbar
+            android:id&#x3D;&quot;@+id&#x2F;toolbar&quot;
+            android:layout_width&#x3D;&quot;match_parent&quot;
+            android:layout_height&#x3D;&quot;?attr&#x2F;actionBarSize&quot;
+            android:background&#x3D;&quot;?attr&#x2F;colorPrimary&quot;
+            app:popupTheme&#x3D;&quot;@style&#x2F;AppTheme.PopupOverlay&quot; &#x2F;&gt;
+
+    &lt;&#x2F;android.support.design.widget.AppBarLayout&gt;
+
+    &lt;include layout&#x3D;&quot;@layout&#x2F;content_main&quot; &#x2F;&gt;
+
+    &lt;android.support.design.widget.FloatingActionButton
+        android:id&#x3D;&quot;@+id&#x2F;fab&quot;
+        android:layout_width&#x3D;&quot;wrap_content&quot;
+        android:layout_height&#x3D;&quot;wrap_content&quot;
+        android:layout_gravity&#x3D;&quot;bottom|end&quot;
+        android:layout_margin&#x3D;&quot;@dimen&#x2F;fab_margin&quot;
+        android:src&#x3D;&quot;@android:drawable&#x2F;ic_dialog_email&quot; &#x2F;&gt;
+
+&lt;&#x2F;android.support.design.widget.CoordinatorLayout&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//23.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:fitsSystemWindows=&quot;true&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;include layout=&quot;@layout/view_top&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;include layout=&quot;@layout/content_main&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;include layout=&quot;@layout/view_button&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;
+&lt;android.support.design.widget.CoordinatorLayout xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;
+    android:layout_width&#x3D;&quot;match_parent&quot;
+    android:layout_height&#x3D;&quot;match_parent&quot;
+    android:fitsSystemWindows&#x3D;&quot;true&quot;&gt;
+
+    &lt;include layout&#x3D;&quot;@layout&#x2F;view_top&quot; &#x2F;&gt;
+
+    &lt;include layout&#x3D;&quot;@layout&#x2F;content_main&quot; &#x2F;&gt;
+
+    &lt;include layout&#x3D;&quot;@layout&#x2F;view_button&quot; &#x2F;&gt;
+
+&lt;&#x2F;android.support.design.widget.CoordinatorLayout&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>ExtractStyle，样式抽取</li>
 </ul>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:text=&quot;Hello World!&quot;</span><br><span class="line">    android:textAlignment=&quot;center&quot;</span><br><span class="line">    android:textColor=&quot;#f00ff0&quot;</span><br><span class="line">    android:textSize=&quot;18sp&quot;</span><br><span class="line">    android:textStyle=&quot;bold&quot;</span><br><span class="line">    android:typeface=&quot;normal&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;TextView
+    android:layout_width&#x3D;&quot;wrap_content&quot;
+    android:layout_height&#x3D;&quot;wrap_content&quot;
+    android:text&#x3D;&quot;Hello World!&quot;
+    android:textAlignment&#x3D;&quot;center&quot;
+    android:textColor&#x3D;&quot;#f00ff0&quot;
+    android:textSize&#x3D;&quot;18sp&quot;
+    android:textStyle&#x3D;&quot;bold&quot;
+    android:typeface&#x3D;&quot;normal&quot; &#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//24.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:text=&quot;Hello World!&quot;</span><br><span class="line">    style=&quot;@style/my_textview_style&quot; /&gt;</span><br><span class="line">    </span><br><span class="line">&lt;style name=&quot;my_textview_style&quot;&gt;</span><br><span class="line">    &lt;item name=&quot;android:textAlignment&quot;&gt;center&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;android:textColor&quot;&gt;#f00ff0&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;android:textSize&quot;&gt;18sp&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;android:textStyle&quot;&gt;bold&lt;/item&gt;</span><br><span class="line">    &lt;item name=&quot;android:typeface&quot;&gt;normal&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;        </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;TextView
+    android:layout_width&#x3D;&quot;wrap_content&quot;
+    android:layout_height&#x3D;&quot;wrap_content&quot;
+    android:text&#x3D;&quot;Hello World!&quot;
+    style&#x3D;&quot;@style&#x2F;my_textview_style&quot; &#x2F;&gt;
+    
+&lt;style name&#x3D;&quot;my_textview_style&quot;&gt;
+    &lt;item name&#x3D;&quot;android:textAlignment&quot;&gt;center&lt;&#x2F;item&gt;
+    &lt;item name&#x3D;&quot;android:textColor&quot;&gt;#f00ff0&lt;&#x2F;item&gt;
+    &lt;item name&#x3D;&quot;android:textSize&quot;&gt;18sp&lt;&#x2F;item&gt;
+    &lt;item name&#x3D;&quot;android:textStyle&quot;&gt;bold&lt;&#x2F;item&gt;
+    &lt;item name&#x3D;&quot;android:typeface&quot;&gt;normal&lt;&#x2F;item&gt;
+&lt;&#x2F;style&gt;        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="综合示例"><a href="#综合示例" class="headerlink" title="综合示例"></a>综合示例</h1><p>通过一个示例演示怎么样重构代码，示例是一个Activity里面有个RecyclerView，然后重构代码，演示怎么样分离Adapter,ViewHolder等。</p>
 <p>Before:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">public class StartActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_start);</span><br><span class="line">        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</span><br><span class="line">        setSupportActionBar(toolbar);</span><br><span class="line"></span><br><span class="line">        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);</span><br><span class="line">        recyclerView.setLayoutManager(new LinearLayoutManager(this));</span><br><span class="line"></span><br><span class="line">        final List&lt;String&gt; data = new ArrayList&lt;&gt;();</span><br><span class="line">        for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">            data.add(&quot;Text &quot; + (i + 1));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        recyclerView.setAdapter(new RecyclerView.Adapter&lt;MyViewHolder&gt;() &#123;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</span><br><span class="line">                LayoutInflater layoutInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);</span><br><span class="line">                return new MyViewHolder(layoutInflater.inflate(android.R.layout.simple_list_item_1, parent, false));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onBindViewHolder(MyViewHolder holder, int position) &#123;</span><br><span class="line">                holder.bind(data.get(position));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public int getItemCount() &#123;</span><br><span class="line">                return data.size();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class MyViewHolder extends RecyclerView.ViewHolder &#123;</span><br><span class="line"></span><br><span class="line">        TextView textView;</span><br><span class="line"></span><br><span class="line">        public MyViewHolder(View itemView) &#123;</span><br><span class="line">            super(itemView);</span><br><span class="line">            textView = (TextView) itemView.findViewById(android.R.id.text1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        void bind(String text) &#123;</span><br><span class="line">            textView.setText(text);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public class StartActivity extends AppCompatActivity &#123;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start);
+        Toolbar toolbar &#x3D; (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        RecyclerView recyclerView &#x3D; (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        final List&lt;String&gt; data &#x3D; new ArrayList&lt;&gt;();
+        for (int i &#x3D; 0; i &lt; 100; i++) &#123;
+            data.add(&quot;Text &quot; + (i + 1));
+        &#125;
+
+        recyclerView.setAdapter(new RecyclerView.Adapter&lt;MyViewHolder&gt;() &#123;
+
+            @Override
+            public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;
+                LayoutInflater layoutInflater &#x3D; (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                return new MyViewHolder(layoutInflater.inflate(android.R.layout.simple_list_item_1, parent, false));
+            &#125;
+
+            @Override
+            public void onBindViewHolder(MyViewHolder holder, int position) &#123;
+                holder.bind(data.get(position));
+            &#125;
+
+            @Override
+            public int getItemCount() &#123;
+                return data.size();
+            &#125;
+        &#125;);
+    &#125;
+
+    class MyViewHolder extends RecyclerView.ViewHolder &#123;
+
+        TextView textView;
+
+        public MyViewHolder(View itemView) &#123;
+            super(itemView);
+            textView &#x3D; (TextView) itemView.findViewById(android.R.id.text1);
+        &#125;
+
+        void bind(String text) &#123;
+            textView.setText(text);
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Gif:<br><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/AndroidStudioRefactor/master//100.gif"></p>
 <p>After:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">public class StartActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private RecyclerView recyclerView;</span><br><span class="line">    private List&lt;String&gt; data;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_start);</span><br><span class="line">        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</span><br><span class="line">        setSupportActionBar(toolbar);</span><br><span class="line"></span><br><span class="line">        initData();</span><br><span class="line">        initView();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initData() &#123;</span><br><span class="line">        data = new ArrayList&lt;&gt;();</span><br><span class="line">        for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">            data.add(&quot;Text &quot; + (i + 1));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initView() &#123;</span><br><span class="line">        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);</span><br><span class="line">        recyclerView.setLayoutManager(new LinearLayoutManager(this));</span><br><span class="line">        recyclerView.setAdapter(new MyViewHolderAdapter(data));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MyViewHolderAdapter extends RecyclerView.Adapter&lt;MyViewHolder&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private List&lt;String&gt; data;</span><br><span class="line"></span><br><span class="line">    public MyViewHolderAdapter(List&lt;String&gt; data) &#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</span><br><span class="line">        return MyViewHolder.newInstance(parent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onBindViewHolder(MyViewHolder holder, int position) &#123;</span><br><span class="line">        holder.bind(data.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int getItemCount() &#123;</span><br><span class="line">        return data.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MyViewHolder extends RecyclerView.ViewHolder &#123;</span><br><span class="line"></span><br><span class="line">    public static final int LAYOUT_ID = android.R.layout.simple_list_item_1;</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    static MyViewHolder newInstance(ViewGroup parent) &#123;</span><br><span class="line">        Context context = parent.getContext();</span><br><span class="line">        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);</span><br><span class="line">        return new MyViewHolder(layoutInflater.inflate(LAYOUT_ID, parent, false));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    TextView textView;</span><br><span class="line"></span><br><span class="line">    public MyViewHolder(View itemView) &#123;</span><br><span class="line">        super(itemView);</span><br><span class="line">        textView = (TextView) itemView.findViewById(android.R.id.text1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void bind(String text) &#123;</span><br><span class="line">        textView.setText(text);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">public class StartActivity extends AppCompatActivity &#123;
+
+    private RecyclerView recyclerView;
+    private List&lt;String&gt; data;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start);
+        Toolbar toolbar &#x3D; (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        initData();
+        initView();
+    &#125;
+
+    private void initData() &#123;
+        data &#x3D; new ArrayList&lt;&gt;();
+        for (int i &#x3D; 0; i &lt; 100; i++) &#123;
+            data.add(&quot;Text &quot; + (i + 1));
+        &#125;
+    &#125;
+
+    private void initView() &#123;
+        recyclerView &#x3D; (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new MyViewHolderAdapter(data));
+    &#125;
+&#125;
+
+class MyViewHolderAdapter extends RecyclerView.Adapter&lt;MyViewHolder&gt; &#123;
+
+    private List&lt;String&gt; data;
+
+    public MyViewHolderAdapter(List&lt;String&gt; data) &#123;
+        this.data &#x3D; data;
+    &#125;
+
+    @Override
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;
+        return MyViewHolder.newInstance(parent);
+    &#125;
+
+    @Override
+    public void onBindViewHolder(MyViewHolder holder, int position) &#123;
+        holder.bind(data.get(position));
+    &#125;
+
+    @Override
+    public int getItemCount() &#123;
+        return data.size();
+    &#125;
+&#125;
+
+
+class MyViewHolder extends RecyclerView.ViewHolder &#123;
+
+    public static final int LAYOUT_ID &#x3D; android.R.layout.simple_list_item_1;
+
+    @NonNull
+    static MyViewHolder newInstance(ViewGroup parent) &#123;
+        Context context &#x3D; parent.getContext();
+        LayoutInflater layoutInflater &#x3D; (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        return new MyViewHolder(layoutInflater.inflate(LAYOUT_ID, parent, false));
+    &#125;
+
+    TextView textView;
+
+    public MyViewHolder(View itemView) &#123;
+        super(itemView);
+        textView &#x3D; (TextView) itemView.findViewById(android.R.id.text1);
+    &#125;
+
+    void bind(String text) &#123;
+        textView.setText(text);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>至此，Android Studio的重构功能讲解完成，由于Android Studio更新很快，很多功能还需要自己去发掘。</p>
 <p>『君子生非异也，善假于物也』，好好使用工具，可以偷个懒。</p>
@@ -1169,6 +2187,8 @@ Mockito简介
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -1176,6 +2196,8 @@ Mockito简介
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1341,9 +2363,9 @@ Mockito简介
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1553,8 +2575,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

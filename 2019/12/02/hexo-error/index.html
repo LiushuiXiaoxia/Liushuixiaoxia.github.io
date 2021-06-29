@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -406,6 +450,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -415,13 +462,84 @@
 <p>好友没有写博客了，今天Hexo，发现命令不可用，出现这样的错误<code>TypeError: Cannot read property &#39;replace&#39; of null</code>。</p>
 <span id="more"></span>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded <span class="keyword">in</span> 627 ms</span><br><span class="line">ERROR Render HTML failed: page/2/index.html</span><br><span class="line">TypeError: Cannot <span class="built_in">read</span> property <span class="string">&#x27;replace&#x27;</span> of null</span><br><span class="line">    at Hexo.externalLinkFilter (/Users/xiaqiulei/Documents/blog/node_modules/hexo/lib/plugins/filter/after_render/external_link.js:45:15)</span><br><span class="line">    at Hexo.tryCatcher (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at Hexo.&lt;anonymous&gt; (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/method.js:15:34)</span><br><span class="line">    at /Users/xiaqiulei/Documents/blog/node_modules/hexo/lib/extend/filter.js:60:50</span><br><span class="line">    at tryCatcher (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at Object.gotValue (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/reduce.js:155:18)</span><br><span class="line">    at Object.gotAccum (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/reduce.js:144:25)</span><br><span class="line">    at Object.tryCatcher (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at Promise._settlePromiseFromHandler (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:512:31)</span><br><span class="line">    at Promise._settlePromise (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:569:18)</span><br><span class="line">    at Promise._settlePromiseCtx (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:606:10)</span><br><span class="line">    at _drainQueueStep (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:142:12)</span><br><span class="line">    at _drainQueue (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:131:9)</span><br><span class="line">    at Async._drainQueues (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:147:5)</span><br><span class="line">    at Immediate.Async.drainQueues [as _onImmediate] (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:17:14)</span><br><span class="line">    at processImmediate (internal/timers.js:439:21)</span><br><span class="line">ERROR Cannot <span class="built_in">read</span> property <span class="string">&#x27;replace&#x27;</span> of null</span><br><span class="line">TypeError: Cannot <span class="built_in">read</span> property <span class="string">&#x27;replace&#x27;</span> of null</span><br><span class="line">    at Hexo.externalLinkFilter (/Users/xiaqiulei/Documents/blog/node_modules/hexo/lib/plugins/filter/after_render/external_link.js:45:15)</span><br><span class="line">    at Hexo.tryCatcher (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at Hexo.&lt;anonymous&gt; (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/method.js:15:34)</span><br><span class="line">    at /Users/xiaqiulei/Documents/blog/node_modules/hexo/lib/extend/filter.js:60:50</span><br><span class="line">    at tryCatcher (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at Object.gotValue (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/reduce.js:155:18)</span><br><span class="line">    at Object.gotAccum (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/reduce.js:144:25)</span><br><span class="line">    at Object.tryCatcher (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at Promise._settlePromiseFromHandler (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:512:31)</span><br><span class="line">    at Promise._settlePromise (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:569:18)</span><br><span class="line">    at Promise._settlePromiseCtx (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:606:10)</span><br><span class="line">    at _drainQueueStep (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:142:12)</span><br><span class="line">    at _drainQueue (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:131:9)</span><br><span class="line">    at Async._drainQueues (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:147:5)</span><br><span class="line">    at Immediate.Async.drainQueues [as _onImmediate] (/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:17:14)</span><br><span class="line">    at processImmediate (internal/timers.js:439:21)</span><br><span class="line">INFO  0 files generated <span class="keyword">in</span> 1.6 s</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo g
+INFO  Start processing
+INFO  Files loaded <span class="token keyword">in</span> <span class="token number">627</span> ms
+ERROR Render HTML failed: page/2/index.html
+TypeError: Cannot <span class="token builtin class-name">read</span> property <span class="token string">'replace'</span> of null
+    at Hexo.externalLinkFilter <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/hexo/lib/plugins/filter/after_render/external_link.js:45:15<span class="token punctuation">)</span>
+    at Hexo.tryCatcher <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23<span class="token punctuation">)</span>
+    at Hexo.<span class="token operator">&lt;</span>anonymous<span class="token operator">></span> <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/method.js:15:34<span class="token punctuation">)</span>
+    at /Users/xiaqiulei/Documents/blog/node_modules/hexo/lib/extend/filter.js:60:50
+    at tryCatcher <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23<span class="token punctuation">)</span>
+    at Object.gotValue <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/reduce.js:155:18<span class="token punctuation">)</span>
+    at Object.gotAccum <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/reduce.js:144:25<span class="token punctuation">)</span>
+    at Object.tryCatcher <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23<span class="token punctuation">)</span>
+    at Promise._settlePromiseFromHandler <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:512:31<span class="token punctuation">)</span>
+    at Promise._settlePromise <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:569:18<span class="token punctuation">)</span>
+    at Promise._settlePromiseCtx <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:606:10<span class="token punctuation">)</span>
+    at _drainQueueStep <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:142:12<span class="token punctuation">)</span>
+    at _drainQueue <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:131:9<span class="token punctuation">)</span>
+    at Async._drainQueues <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:147:5<span class="token punctuation">)</span>
+    at Immediate.Async.drainQueues <span class="token punctuation">[</span>as _onImmediate<span class="token punctuation">]</span> <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:17:14<span class="token punctuation">)</span>
+    at processImmediate <span class="token punctuation">(</span>internal/timers.js:439:21<span class="token punctuation">)</span>
+ERROR Cannot <span class="token builtin class-name">read</span> property <span class="token string">'replace'</span> of null
+TypeError: Cannot <span class="token builtin class-name">read</span> property <span class="token string">'replace'</span> of null
+    at Hexo.externalLinkFilter <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/hexo/lib/plugins/filter/after_render/external_link.js:45:15<span class="token punctuation">)</span>
+    at Hexo.tryCatcher <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23<span class="token punctuation">)</span>
+    at Hexo.<span class="token operator">&lt;</span>anonymous<span class="token operator">></span> <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/method.js:15:34<span class="token punctuation">)</span>
+    at /Users/xiaqiulei/Documents/blog/node_modules/hexo/lib/extend/filter.js:60:50
+    at tryCatcher <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23<span class="token punctuation">)</span>
+    at Object.gotValue <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/reduce.js:155:18<span class="token punctuation">)</span>
+    at Object.gotAccum <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/reduce.js:144:25<span class="token punctuation">)</span>
+    at Object.tryCatcher <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/util.js:16:23<span class="token punctuation">)</span>
+    at Promise._settlePromiseFromHandler <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:512:31<span class="token punctuation">)</span>
+    at Promise._settlePromise <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:569:18<span class="token punctuation">)</span>
+    at Promise._settlePromiseCtx <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/promise.js:606:10<span class="token punctuation">)</span>
+    at _drainQueueStep <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:142:12<span class="token punctuation">)</span>
+    at _drainQueue <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:131:9<span class="token punctuation">)</span>
+    at Async._drainQueues <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:147:5<span class="token punctuation">)</span>
+    at Immediate.Async.drainQueues <span class="token punctuation">[</span>as _onImmediate<span class="token punctuation">]</span> <span class="token punctuation">(</span>/Users/xiaqiulei/Documents/blog/node_modules/bluebird/js/release/async.js:17:14<span class="token punctuation">)</span>
+    at processImmediate <span class="token punctuation">(</span>internal/timers.js:439:21<span class="token punctuation">)</span>
+INFO  <span class="token number">0</span> files generated <span class="token keyword">in</span> <span class="token number">1.6</span> s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>跟踪源码到这个文件<code>/Users/xiaqiulei/Documents/blog/node_modules/hexo/lib/plugins/filter/after_render/external_link.js:45:15</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">externalLinkFilter</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; config &#125; = <span class="built_in">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> config.external_link === <span class="string">&#x27;undefined&#x27;</span> || <span class="keyword">typeof</span> config.external_link === <span class="string">&#x27;object&#x27;</span> ||</span><br><span class="line">    config.external_link === <span class="literal">true</span>) &#123;</span><br><span class="line">    config.external_link = <span class="built_in">Object</span>.assign(&#123;</span><br><span class="line">      <span class="attr">enable</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">field</span>: <span class="string">&#x27;site&#x27;</span>,</span><br><span class="line">      <span class="attr">exclude</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;, config.external_link);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (config.external_link === <span class="literal">false</span> || config.external_link.enable === <span class="literal">false</span> ||</span><br><span class="line">    config.external_link.field !== <span class="string">&#x27;site&#x27;</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  data = data.replace(<span class="regexp">/&lt;a.*?(href=[&#x27;&quot;](.*?)[&#x27;&quot;]).*?&gt;/gi</span>, <span class="function">(<span class="params">str, hrefStr, href</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/target=/gi</span>.test(str) || !isExternal(href, config)) <span class="keyword">return</span> str;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/rel=/gi</span>.test(str)) &#123;</span><br><span class="line">      str = str.replace(<span class="regexp">/rel=&quot;(.*?)&quot;/gi</span>, <span class="function">(<span class="params">relStr, rel</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!rel.includes(<span class="string">&#x27;noopenner&#x27;</span>)) relStr = relStr.replace(rel, <span class="string">`<span class="subst">$&#123;rel&#125;</span> noopener`</span>);</span><br><span class="line">        <span class="keyword">return</span> relStr;</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span> str.replace(hrefStr, <span class="string">`<span class="subst">$&#123;hrefStr&#125;</span> target=&quot;_blank&quot;`</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> str.replace(hrefStr, <span class="string">`<span class="subst">$&#123;hrefStr&#125;</span> target=&quot;_blank&quot; rel=&quot;noopener&quot;`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">externalLinkFilter</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> config <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> config<span class="token punctuation">.</span>external_link <span class="token operator">===</span> <span class="token string">'undefined'</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> config<span class="token punctuation">.</span>external_link <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">||</span>
+    config<span class="token punctuation">.</span>external_link <span class="token operator">===</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    config<span class="token punctuation">.</span>external_link <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+      enable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      field<span class="token operator">:</span> <span class="token string">'site'</span><span class="token punctuation">,</span>
+      exclude<span class="token operator">:</span> <span class="token string">''</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> config<span class="token punctuation">.</span>external_link<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>config<span class="token punctuation">.</span>external_link <span class="token operator">===</span> <span class="token boolean">false</span> <span class="token operator">||</span> config<span class="token punctuation">.</span>external_link<span class="token punctuation">.</span>enable <span class="token operator">===</span> <span class="token boolean">false</span> <span class="token operator">||</span>
+    config<span class="token punctuation">.</span>external_link<span class="token punctuation">.</span>field <span class="token operator">!==</span> <span class="token string">'site'</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+  data <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">&lt;a.*?(href=['"](.*?)['"]).*?></span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> hrefStr<span class="token punctuation">,</span> href</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">target=</span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">isExternal</span><span class="token punctuation">(</span>href<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> str<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">rel=</span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      str <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">rel="(.*?)"</span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">relStr<span class="token punctuation">,</span> rel</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>rel<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'noopenner'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> relStr <span class="token operator">=</span> relStr<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>rel<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>rel<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> noopener</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> relStr<span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>hrefStr<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>hrefStr<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> target="_blank"</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>hrefStr<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>hrefStr<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> target="_blank" rel="noopener"</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>发现逻辑有问题，修改<code>_config.yml</code>，如下所示<code>enable: false</code>，即可解决问题。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">external_link:</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">site</span> <span class="comment"># Apply to the whole site</span></span><br><span class="line">  <span class="attr">exclude:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">external_link: # Open external links in new tab
+  enable: false # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: &#39;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -798,6 +916,8 @@ Restful 风格的验证码，图片使用Base64编码，后端使用Redis存储�
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -805,6 +925,8 @@ Restful 风格的验证码，图片使用Base64编码，后端使用Redis存储�
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -970,9 +1092,9 @@ Restful 风格的验证码，图片使用Base64编码，后端使用Redis存储�
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1182,8 +1304,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

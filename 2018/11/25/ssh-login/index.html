@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -410,6 +454,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -420,30 +467,33 @@
 <span id="more"></span>
 
 <h2 id="安装sshpass"><a href="#安装sshpass" class="headerlink" title="安装sshpass"></a>安装sshpass</h2><p>首先下载<code>sshpass</code>，不同系统可能不一样，大致差不多，可以直接使用包管理工具安装。我用的是mac os, 可直接使用<code>brew</code>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew install sshpass</span><br><span class="line">Error: No available formula for sshpass  </span><br><span class="line">We won&#x27;t add sshpass because it makes it too easy for novice SSH users to  ruin SSH&#x27;s security.</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">brew install sshpass
+Error: No available formula for sshpass  
+We won&#39;t add sshpass because it makes it too easy for novice SSH users to  ruin SSH&#39;s security.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>说明不安全，可不管，直接下载安装。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">brew install https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;kadwanev&#x2F;bigboybrew&#x2F;master&#x2F;Library&#x2F;Formula&#x2F;sshpass.rb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="sshpass使用姿势"><a href="#sshpass使用姿势" class="headerlink" title="sshpass使用姿势"></a>sshpass使用姿势</h2><h3 id="直接远程连接某主机"><a href="#直接远程连接某主机" class="headerlink" title="直接远程连接某主机"></a>直接远程连接某主机</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &#123;密码&#125; ssh &#123;用户名&#125;@&#123;主机IP&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="sshpass使用姿势"><a href="#sshpass使用姿势" class="headerlink" title="sshpass使用姿势"></a>sshpass使用姿势</h2><h3 id="直接远程连接某主机"><a href="#直接远程连接某主机" class="headerlink" title="直接远程连接某主机"></a>直接远程连接某主机</h3><pre class="line-numbers language-none"><code class="language-none">sshpass -p &#123;密码&#125; ssh &#123;用户名&#125;@&#123;主机IP&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="远程连接指定ssh的端口"><a href="#远程连接指定ssh的端口" class="headerlink" title="远程连接指定ssh的端口"></a>远程连接指定ssh的端口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &#123;密码&#125; ssh -p $&#123;端口&#125; &#123;用户名&#125;@&#123;主机IP&#125; </span><br></pre></td></tr></table></figure>
+<h3 id="远程连接指定ssh的端口"><a href="#远程连接指定ssh的端口" class="headerlink" title="远程连接指定ssh的端口"></a>远程连接指定ssh的端口</h3><pre class="line-numbers language-none"><code class="language-none">sshpass -p &#123;密码&#125; ssh -p $&#123;端口&#125; &#123;用户名&#125;@&#123;主机IP&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="从密码文件读取文件内容作为密码去远程连接主机"><a href="#从密码文件读取文件内容作为密码去远程连接主机" class="headerlink" title="从密码文件读取文件内容作为密码去远程连接主机"></a>从密码文件读取文件内容作为密码去远程连接主机</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -f $&#123;密码文本文件&#125; ssh &#123;用户名&#125;@&#123;主机IP&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="从密码文件读取文件内容作为密码去远程连接主机"><a href="#从密码文件读取文件内容作为密码去远程连接主机" class="headerlink" title="从密码文件读取文件内容作为密码去远程连接主机"></a>从密码文件读取文件内容作为密码去远程连接主机</h3><pre class="line-numbers language-none"><code class="language-none">sshpass -f $&#123;密码文本文件&#125; ssh &#123;用户名&#125;@&#123;主机IP&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="从远程主机上拉取文件到本地"><a href="#从远程主机上拉取文件到本地" class="headerlink" title="从远程主机上拉取文件到本地"></a>从远程主机上拉取文件到本地</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &#123;密码&#125; scp &#123;用户名&#125;@&#123;主机IP&#125;:$&#123;远程主机目录&#125; $&#123;本地主机目录&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="从远程主机上拉取文件到本地"><a href="#从远程主机上拉取文件到本地" class="headerlink" title="从远程主机上拉取文件到本地"></a>从远程主机上拉取文件到本地</h3><pre class="line-numbers language-none"><code class="language-none">sshpass -p &#123;密码&#125; scp &#123;用户名&#125;@&#123;主机IP&#125;:$&#123;远程主机目录&#125; $&#123;本地主机目录&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="将主机目录文件拷贝至远程主机目录"><a href="#将主机目录文件拷贝至远程主机目录" class="headerlink" title="将主机目录文件拷贝至远程主机目录"></a>将主机目录文件拷贝至远程主机目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &#123;密码&#125; scp $&#123;本地主机目录&#125; &#123;用户名&#125;@&#123;主机IP&#125;:$&#123;远程主机目录&#125; </span><br></pre></td></tr></table></figure>
+<h3 id="将主机目录文件拷贝至远程主机目录"><a href="#将主机目录文件拷贝至远程主机目录" class="headerlink" title="将主机目录文件拷贝至远程主机目录"></a>将主机目录文件拷贝至远程主机目录</h3><pre class="line-numbers language-none"><code class="language-none">sshpass -p &#123;密码&#125; scp $&#123;本地主机目录&#125; &#123;用户名&#125;@&#123;主机IP&#125;:$&#123;远程主机目录&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="远程连接主机并执行命令"><a href="#远程连接主机并执行命令" class="headerlink" title="远程连接主机并执行命令"></a>远程连接主机并执行命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &#123;密码&#125; ssh -o StrictHostKeyChecking=no &#123;用户名&#125;@&#123;主机IP&#125; &#x27;rm -rf /tmp/test&#x27;</span><br><span class="line">-o StrictHostKeyChecking=no ：忽略密码提示</span><br></pre></td></tr></table></figure>
+<h3 id="远程连接主机并执行命令"><a href="#远程连接主机并执行命令" class="headerlink" title="远程连接主机并执行命令"></a>远程连接主机并执行命令</h3><pre class="line-numbers language-none"><code class="language-none">sshpass -p &#123;密码&#125; ssh -o StrictHostKeyChecking&#x3D;no &#123;用户名&#125;@&#123;主机IP&#125; &#39;rm -rf &#x2F;tmp&#x2F;test&#39;
+-o StrictHostKeyChecking&#x3D;no ：忽略密码提示<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="iTerm2结合使用"><a href="#iTerm2结合使用" class="headerlink" title="iTerm2结合使用"></a>iTerm2结合使用</h2><p>参考上面，使用<code>sshpass -p &#123;密码&#125; ssh &#123;用户名&#125;@&#123;主机IP&#125;</code>即可满足我们的需求，每次只要运行同样的命令即可。如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p root ssh  admin@192.168.1.100</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">sshpass -p root ssh  admin@192.168.1.100<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>使用<code>iTerm2</code>中的<code>Profile</code>，添加一条新的配置，如下所示。</p>
 <p><img src="/images/ssh_login_iterm2.png"></p>
 <p>命令如下，sshpass和ssh需要指定具体路径。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/bin/sshpass -p root /usr/bin/ssh  admin@192.168.1.100</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;usr&#x2F;local&#x2F;bin&#x2F;sshpass -p root &#x2F;usr&#x2F;bin&#x2F;ssh  admin@192.168.1.100<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -727,7 +777,7 @@
                     <div class="summary block-with-text">
                         
                             最近使用了Jenkins，碰到一问题，提示如下。
-123456789org.apache.commons.jelly.JellyTagException: jar:file:/Users/xiaqiulei/.jenkins/war/WEB
+org.apache.commons.jelly.JellyTagException: jar:file:/Users/xiaqiulei/.jenkins/war/WEB-INF/lib/
                         
                     </div>
                     <div class="publish-info">
@@ -843,6 +893,8 @@ GsonSerializedNameGen 是一个自动生成Gson SerializedName注解的插件。
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -850,6 +902,8 @@ GsonSerializedNameGen 是一个自动生成Gson SerializedName注解的插件。
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1015,9 +1069,9 @@ GsonSerializedNameGen 是一个自动生成Gson SerializedName注解的插件。
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1227,8 +1281,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

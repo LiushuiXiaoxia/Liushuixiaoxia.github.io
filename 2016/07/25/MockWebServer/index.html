@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -401,6 +445,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -419,29 +466,98 @@
 <li>验证做出的请求是否符合预期</li>
 </ul>
 <p>下面是官方给的示例代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> <span class="title">Exception</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建一个 MockWebServer</span></span><br><span class="line">    MockWebServer server = <span class="keyword">new</span> MockWebServer();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置响应</span></span><br><span class="line">    server.enqueue(<span class="keyword">new</span> MockResponse().setBody(<span class="string">&quot;hello, world!&quot;</span>));</span><br><span class="line">    server.enqueue(<span class="keyword">new</span> MockResponse().setBody(<span class="string">&quot;sup, bra?&quot;</span>));</span><br><span class="line">    server.enqueue(<span class="keyword">new</span> MockResponse().setBody(<span class="string">&quot;yo dog&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 启动服务</span></span><br><span class="line">    <span class="comment">// Start the server.</span></span><br><span class="line">    server.start();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置服务端的URL，客户端请求中使用</span></span><br><span class="line">    HttpUrl baseUrl = server.url(<span class="string">&quot;/v1/chat&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 运行你的应用程序代码，进行HTTP请求</span></span><br><span class="line">    <span class="comment">// 响应会按照上面设置中放入队列的顺序被返回</span></span><br><span class="line">    Chat chat = <span class="keyword">new</span> Chat(baseUrl);</span><br><span class="line"></span><br><span class="line">    chat.loadMore();</span><br><span class="line">    assertEquals(<span class="string">&quot;hello, world!&quot;</span>, chat.message());</span><br><span class="line"></span><br><span class="line">    chat.loadMore();</span><br><span class="line">    chat.loadMore();</span><br><span class="line">    assertEquals(<span class="string">&quot;&quot;</span></span><br><span class="line">                + <span class="string">&quot;hello, world!\n&quot;</span></span><br><span class="line">                + <span class="string">&quot;sup, bra?\n&quot;</span></span><br><span class="line">                + <span class="string">&quot;yo dog&quot;</span>, chat.message());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 可选：确认你的应用做出了正确的请求</span></span><br><span class="line">    RecordedRequest request1 = server.takeRequst();</span><br><span class="line">    assertEquals(<span class="string">&quot;/v1/chat/messages/&quot;</span>, request1.getPath());</span><br><span class="line">    assertNotNull(request1.getHeader(<span class="string">&quot;Authorization&quot;</span>));</span><br><span class="line"></span><br><span class="line">    RecordedRequest request2 = server.takeRequest();</span><br><span class="line">    assertEquals(<span class="string">&quot;/v1/chat/message/2&quot;</span>, request.getPath());</span><br><span class="line"></span><br><span class="line">    RecordedRequest request3 = server.takeRequest();</span><br><span class="line">    assertEquals(<span class="string">&quot;/v1/chat/message/3&quot;</span>, request.getPath());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关闭服务，因为不能重用</span></span><br><span class="line">    server.shutdown();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 创建一个 MockWebServer</span>
+    <span class="token class-name">MockWebServer</span> server <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MockWebServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 设置响应</span>
+    server<span class="token punctuation">.</span><span class="token function">enqueue</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MockResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBody</span><span class="token punctuation">(</span><span class="token string">"hello, world!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    server<span class="token punctuation">.</span><span class="token function">enqueue</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MockResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBody</span><span class="token punctuation">(</span><span class="token string">"sup, bra?"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    server<span class="token punctuation">.</span><span class="token function">enqueue</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MockResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBody</span><span class="token punctuation">(</span><span class="token string">"yo dog"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 启动服务</span>
+    <span class="token comment">// Start the server.</span>
+    server<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 设置服务端的URL，客户端请求中使用</span>
+    <span class="token class-name">HttpUrl</span> baseUrl <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">url</span><span class="token punctuation">(</span><span class="token string">"/v1/chat"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 运行你的应用程序代码，进行HTTP请求</span>
+    <span class="token comment">// 响应会按照上面设置中放入队列的顺序被返回</span>
+    <span class="token class-name">Chat</span> chat <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Chat</span><span class="token punctuation">(</span>baseUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    chat<span class="token punctuation">.</span><span class="token function">loadMore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"hello, world!"</span><span class="token punctuation">,</span> chat<span class="token punctuation">.</span><span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    chat<span class="token punctuation">.</span><span class="token function">loadMore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    chat<span class="token punctuation">.</span><span class="token function">loadMore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">""</span>
+                <span class="token operator">+</span> <span class="token string">"hello, world!\n"</span>
+                <span class="token operator">+</span> <span class="token string">"sup, bra?\n"</span>
+                <span class="token operator">+</span> <span class="token string">"yo dog"</span><span class="token punctuation">,</span> chat<span class="token punctuation">.</span><span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 可选：确认你的应用做出了正确的请求</span>
+    <span class="token class-name">RecordedRequest</span> request1 <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">takeRequst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"/v1/chat/messages/"</span><span class="token punctuation">,</span> request1<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">assertNotNull</span><span class="token punctuation">(</span>request1<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"Authorization"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">RecordedRequest</span> request2 <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">takeRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"/v1/chat/message/2"</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">RecordedRequest</span> request3 <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">takeRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"/v1/chat/message/3"</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 关闭服务，因为不能重用</span>
+    server<span class="token punctuation">.</span><span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>单元测试时候，可以把 server 作为一个字段，然后在 tearDown() 方法中关闭服务。</p>
 <h1 id="Api接口"><a href="#Api接口" class="headerlink" title="Api接口"></a>Api接口</h1><h2 id="模拟Response-MockResponse"><a href="#模拟Response-MockResponse" class="headerlink" title="模拟Response(MockResponse)"></a>模拟Response(MockResponse)</h2><p>MockResponse 可以默认返回http code是200的response，相依可以设置字符串、输入流、字节数组，设置可以设置Header。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MockResponse response = <span class="keyword">new</span> MockResponse()</span><br><span class="line">    .addHeader(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;application/json,charset=utf-8&quot;</span>)</span><br><span class="line">    .addHeader(<span class="string">&quot;Cache-Control&quot;</span>, <span class="string">&quot;no-cache&quot;</span>)</span><br><span class="line">    .setBody(<span class="string">&quot;&#123;&#125;&quot;</span>);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">MockResponse</span> response <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MockResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">addHeader</span><span class="token punctuation">(</span><span class="token string">"Content-Type"</span><span class="token punctuation">,</span> <span class="token string">"application/json,charset=utf-8"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">addHeader</span><span class="token punctuation">(</span><span class="token string">"Cache-Control"</span><span class="token punctuation">,</span> <span class="token string">"no-cache"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">setBody</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>MockResponse还可以模拟低速率网络的情况。这一点在测试超时和交互式测试时非常有用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.throttleBody(<span class="number">1024</span>, <span class="number">1</span>, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">response<span class="token punctuation">.</span><span class="token function">throttleBody</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="记录请求（RecordedRequest）"><a href="#记录请求（RecordedRequest）" class="headerlink" title="记录请求（RecordedRequest）"></a>记录请求（RecordedRequest）</h2><p>校验请求的请求方法、路径、HTTP版本、请求体、请求头。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RecordedRequest request = server.takeRequest();</span><br><span class="line">assertEquals(<span class="string">&quot;POST /v1/chat/send HTTP/1.1&quot;</span>, request.getRequestLine());</span><br><span class="line">assertEquals(<span class="string">&quot;application/json; charset=utf-8&quot;</span>, request.getHeader(<span class="string">&quot;Content-Type&quot;</span>));</span><br><span class="line">assertEquals(<span class="string">&quot;&#123;&#125;&quot;</span>, request.getUtf8Body());</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">RecordedRequest</span> request <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">takeRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"POST /v1/chat/send HTTP/1.1"</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span><span class="token function">getRequestLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"application/json; charset=utf-8"</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"Content-Type"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span><span class="token function">getUtf8Body</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="转发器（Dispatcher）"><a href="#转发器（Dispatcher）" class="headerlink" title="转发器（Dispatcher）"></a>转发器（Dispatcher）</h2><p>默认情况下 MockWebServer 使用队列来指定响应。另外，可以根据需要使用另外一种响应策略，可以通过转发器来处理器，可以通过请求的路径来选择转发策略。比如，我们可以过滤请求替代 server.enqueue()。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Dispatcher dispatcher = <span class="keyword">new</span> Dispatcher() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MockResponse <span class="title">dispatch</span><span class="params">(RecordedRequest request)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (request.getPath().equals(<span class="string">&quot;/v1/login/auth/&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MockResponse().setResponseCode(<span class="number">200</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (request.getPath().equals(<span class="string">&quot;v1/check/version/&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MockResponse().setResponseCode(<span class="number">200</span>).setBody(<span class="string">&quot;version=9&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (request.getPath().equals(<span class="string">&quot;/v1/profile/info&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MockResponse().setResponseCode(<span class="number">200</span>).setBody(<span class="string">&quot;&#123;\\\&quot;info\\\&quot;:&#123;\\\&quot;name\&quot;:\&quot;Lucas Albuquerque\&quot;,\&quot;age\&quot;:\&quot;21\&quot;,\&quot;gender\&quot;:\&quot;male\&quot;&#125;&#125;&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MockResponse().setResponseCode(<span class="number">404</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">server.setDispatcher(dispatcher);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">Dispatcher</span> dispatcher <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dispatcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">MockResponse</span> <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token class-name">RecordedRequest</span> request<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">InterruptedException</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"/v1/login/auth/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MockResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setResponseCode</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"v1/check/version/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MockResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setResponseCode</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBody</span><span class="token punctuation">(</span><span class="token string">"version=9"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"/v1/profile/info"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MockResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setResponseCode</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBody</span><span class="token punctuation">(</span><span class="token string">"&#123;\\\"info\\\":&#123;\\\"name\":\"Lucas Albuquerque\",\"age\":\"21\",\"gender\":\"male\"&#125;&#125;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MockResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setResponseCode</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+server<span class="token punctuation">.</span><span class="token function">setDispatcher</span><span class="token punctuation">(</span>dispatcher<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h1><ul>
 <li>Gradle</li>
 </ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">testCompile <span class="string">&#x27;com.squareup.okhttp3:mockwebserver:(insert latest version)&#x27;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">testCompile <span class="token string">'com.squareup.okhttp3:mockwebserver:(insert latest version)'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>Maven</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.squareup.okhttp3<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mockwebserver<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>(insert latest version)<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.squareup.okhttp3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mockwebserver<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>(insert latest version)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -826,6 +942,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -833,6 +951,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -998,9 +1118,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1210,8 +1330,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

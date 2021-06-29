@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -410,6 +454,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -443,31 +490,55 @@
 </li>
 </ul>
 <h2 id="Kafka安装与使用"><a href="#Kafka安装与使用" class="headerlink" title="Kafka安装与使用"></a>Kafka安装与使用</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>我使用的是Mac，下面介绍如何使用安装。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line"></span><br><span class="line">brew install kafka</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">brew update
+
+brew install kafka<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>结果</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">To have launchd start kafka now and restart at login:</span><br><span class="line">  brew services start kafka</span><br><span class="line">Or, <span class="keyword">if</span> you don<span class="string">&#x27;t want/need a background service you can just run:</span></span><br><span class="line"><span class="string">  zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties &amp; kafka-server-start /usr/local/etc/kafka/server.properties</span></span><br><span class="line"><span class="string">==&gt; Summary</span></span><br><span class="line"><span class="string">🍺  /usr/local/Cellar/kafka/0.11.0.1: 149 files, 35.5MB</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">To have launchd start kafka now and restart at login:
+  brew services start kafka
+Or, if you don&#39;t want&#x2F;need a background service you can just run:
+  zookeeper-server-start &#x2F;usr&#x2F;local&#x2F;etc&#x2F;kafka&#x2F;zookeeper.properties &amp; kafka-server-start &#x2F;usr&#x2F;local&#x2F;etc&#x2F;kafka&#x2F;server.properties
+&#x3D;&#x3D;&gt; Summary
+🍺  &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;kafka&#x2F;0.11.0.1: 149 files, 35.5MB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>结果显示，需要有2个配置文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/etc/kafka/server.properties</span><br><span class="line"></span><br><span class="line">/usr/<span class="built_in">local</span>/etc/kafka/zookeeper.properties</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">&#x2F;usr&#x2F;local&#x2F;etc&#x2F;kafka&#x2F;server.properties
+
+&#x2F;usr&#x2F;local&#x2F;etc&#x2F;kafka&#x2F;zookeeper.properties<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="服务启动"><a href="#服务启动" class="headerlink" title="服务启动"></a>服务启动</h3><p>这里为了简单，直接使用<code>brew services start kafka</code>和<code>brew services start zookeeper</code>来启动服务。</p>
 <h3 id="Topic"><a href="#Topic" class="headerlink" title="Topic"></a>Topic</h3><p>首先找到kafka安装目录，可以直接使用<code>brew info kafka</code>，可以看出安装目录为<code>/usr/local/Cellar/kafka/0.11.0.1</code>，然后cd到这个目录下面。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">brew info kafka</span><br><span class="line">kafka: stable 0.11.0.1 (bottled)</span><br><span class="line">Publish-subscribe messaging rethought as a distributed commit <span class="built_in">log</span></span><br><span class="line">https://kafka.apache.org/</span><br><span class="line">/usr/<span class="built_in">local</span>/Cellar/kafka/0.11.0.1 (156 files, 36.0MB) *</span><br><span class="line">  Poured from bottle on 2017-11-26 at 14:09:18</span><br><span class="line">From: https://github.com/Homebrew/homebrew-core/blob/master/Formula/kafka.rb</span><br><span class="line">==&gt; Dependencies</span><br><span class="line">Required: zookeeper ✔</span><br><span class="line">==&gt; Requirements</span><br><span class="line">Required: java = 1.8 ✔</span><br><span class="line">==&gt; Caveats</span><br><span class="line">To have launchd start kafka now and restart at login:</span><br><span class="line">  brew services start kafka</span><br><span class="line">Or, <span class="keyword">if</span> you don<span class="string">&#x27;t want/need a background service you can just run:</span></span><br><span class="line"><span class="string">  zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties &amp; kafka-server-start /usr/local/etc/kafka/server.properties</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">brew info kafka
+kafka: stable 0.11.0.1 (bottled)
+Publish-subscribe messaging rethought as a distributed commit log
+https:&#x2F;&#x2F;kafka.apache.org&#x2F;
+&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;kafka&#x2F;0.11.0.1 (156 files, 36.0MB) *
+  Poured from bottle on 2017-11-26 at 14:09:18
+From: https:&#x2F;&#x2F;github.com&#x2F;Homebrew&#x2F;homebrew-core&#x2F;blob&#x2F;master&#x2F;Formula&#x2F;kafka.rb
+&#x3D;&#x3D;&gt; Dependencies
+Required: zookeeper ✔
+&#x3D;&#x3D;&gt; Requirements
+Required: java &#x3D; 1.8 ✔
+&#x3D;&#x3D;&gt; Caveats
+To have launchd start kafka now and restart at login:
+  brew services start kafka
+Or, if you don&#39;t want&#x2F;need a background service you can just run:
+  zookeeper-server-start &#x2F;usr&#x2F;local&#x2F;etc&#x2F;kafka&#x2F;zookeeper.properties &amp; kafka-server-start &#x2F;usr&#x2F;local&#x2F;etc&#x2F;kafka&#x2F;server.properties<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>创建一个<code>abc123</code>的topic</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic abc123</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">&#x2F;bin&#x2F;kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic abc123<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>查看创建的topic</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-topics --list --zookeeper localhost:2181</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">.&#x2F;bin&#x2F;kafka-topics --list --zookeeper localhost:2181<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/SpringKafkaDemo/master/doc/1.png" alt="kafka"></p>
 <h3 id="消息发送与消费"><a href="#消息发送与消费" class="headerlink" title="消息发送与消费"></a>消息发送与消费</h3><p>Kafka提供了一个命令行客户端，它将从文件或标准输入接收输入，并将其作为消息发送到Kafka集群。默认情况下，每行都将作为单独的消息发送。</p>
 <p>运行生产者，然后在控制台中键入一些消息发送到服务器。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-console-producer --broker-list localhost:9092 --topic abc123</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">.&#x2F;bin&#x2F;kafka-console-producer --broker-list localhost:9092 --topic abc123<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>Kafka还有一个命令行消费者，将消息转储到标准输出。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic abc123 --from-beginning</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">.&#x2F;bin&#x2F;kafka-console-consumer --bootstrap-server localhost:9092 --topic abc123 --from-beginning<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/SpringKafkaDemo/master/doc/2.png" alt="kafka"></p>
 <p>如图，上面的是生产者，下面的是消费者，依次发送aaa,bbb,….ggg，消费者依次会收到对应的消息。</p>
@@ -478,28 +549,106 @@
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/SpringKafkaDemo/master/doc/spring_boot_4.png"></p>
 <p>也可以接添加依赖库。</p>
 <p>Gralde 依赖</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">	<span class="keyword">compile</span>(<span class="string">&#x27;org.springframework.boot:spring-boot-starter&#x27;</span>)</span><br><span class="line">	<span class="keyword">compile</span>(<span class="string">&#x27;org.springframework.kafka:spring-kafka&#x27;</span>)</span><br><span class="line">	<span class="keyword">compile</span>(<span class="string">&#x27;org.projectlombok:lombok&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-gradle" data-language="gradle"><code class="language-gradle">dependencies &#123;
+	compile(&#39;org.springframework.boot:spring-boot-starter&#39;)
+	compile(&#39;org.springframework.kafka:spring-kafka&#39;)
+	compile(&#39;org.projectlombok:lombok&#39;)
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Maven 依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.kafka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-kafka<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.kafka<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-kafka<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.1.1.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>配置<code>application.properties</code>文件中kafka属性。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># kafka</span><br><span class="line">spring.kafka.bootstrap-servers=localhost:9092</span><br><span class="line">spring.kafka.consumer.group-id=myGroup</span><br><span class="line">spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer</span><br><span class="line">spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer</span><br><span class="line">spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer</span><br><span class="line">spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none"># kafka
+spring.kafka.bootstrap-servers&#x3D;localhost:9092
+spring.kafka.consumer.group-id&#x3D;myGroup
+spring.kafka.consumer.key-deserializer&#x3D;org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer&#x3D;org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.producer.key-serializer&#x3D;org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer&#x3D;org.apache.kafka.common.serialization.StringSerializer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>创建一个消息结构体</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Message</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String msg;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Date sendTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Message</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> msg<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Date</span> sendTime<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>一个消息发送者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaSender</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> KafkaTemplate&lt;String, String&gt; kafkaTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Gson gson = <span class="keyword">new</span> GsonBuilder().create();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Message message = <span class="keyword">new</span> Message();</span><br><span class="line">        message.setId(System.currentTimeMillis());</span><br><span class="line">        message.setMsg(UUID.randomUUID().toString());</span><br><span class="line">        message.setSendTime(<span class="keyword">new</span> Date());</span><br><span class="line">        kafkaTemplate.send(<span class="string">&quot;abc123&quot;</span>, gson.toJson(message));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">KafkaSender</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">KafkaTemplate</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> kafkaTemplate<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Gson</span> gson <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GsonBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Message</span> message <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        message<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        message<span class="token punctuation">.</span><span class="token function">setMsg</span><span class="token punctuation">(</span>UUID<span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        message<span class="token punctuation">.</span><span class="token function">setSendTime</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        kafkaTemplate<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"abc123"</span><span class="token punctuation">,</span> gson<span class="token punctuation">.</span><span class="token function">toJson</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>一个消息消费者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaReceiver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@KafkaListener(topics = &#123;&quot;abc123&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listen</span><span class="params">(ConsumerRecord&lt;?, ?&gt; record)</span> </span>&#123;</span><br><span class="line">        Optional&lt;?&gt; kafkaMessage = Optional.ofNullable(record.value());</span><br><span class="line">        <span class="keyword">if</span> (kafkaMessage.isPresent()) &#123;</span><br><span class="line">            Object message = kafkaMessage.get();</span><br><span class="line"></span><br><span class="line">            log.info(<span class="string">&quot;record =&quot;</span> + record);</span><br><span class="line">            log.info(<span class="string">&quot;message =&quot;</span> + message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token annotation punctuation">@Slf4j</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">KafkaReceiver</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@KafkaListener</span><span class="token punctuation">(</span>topics <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"abc123"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">listen</span><span class="token punctuation">(</span><span class="token class-name">ConsumerRecord</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span> <span class="token operator">?</span><span class="token punctuation">></span></span> <span class="token keyword">record</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Optional</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> kafkaMessage <span class="token operator">=</span> <span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span><span class="token keyword">record</span><span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>kafkaMessage<span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Object</span> message <span class="token operator">=</span> kafkaMessage<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"record ="</span> <span class="token operator">+</span> <span class="token keyword">record</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"message ="</span> <span class="token operator">+</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在主程序中调用发送方法，模拟生产者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringKafkaDemoApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ConfigurableApplicationContext context = SpringApplication.run(SpringKafkaDemoApplication.class, args);</span><br><span class="line"></span><br><span class="line">        KafkaSender sender = context.getBean(KafkaSender.class);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">            sender.send();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">3_000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringKafkaDemoApplication</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">ConfigurableApplicationContext</span> context <span class="token operator">=</span> <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">SpringKafkaDemoApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">KafkaSender</span> sender <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token class-name">KafkaSender</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            sender<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3_000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>运行输出如下</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">record =ConsumerRecord(topic = abc123, partition = 0, offset = 17, CreateTime = 1511678827095, checksum = 2229762760, serialized key size = -1, serialized value size = 102, key = null, value = &#123;<span class="string">&quot;id&quot;</span>:1511678826816,<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;2ff150e4-d7f9-4b4d-9604-b8d13a1d4538&quot;</span>,<span class="string">&quot;sendTime&quot;</span>:<span class="string">&quot;Nov 26, 2017 2:47:06 PM&quot;</span>&#125;)</span><br><span class="line">message =&#123;<span class="string">&quot;id&quot;</span>:1511678826816,<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;2ff150e4-d7f9-4b4d-9604-b8d13a1d4538&quot;</span>,<span class="string">&quot;sendTime&quot;</span>:<span class="string">&quot;Nov 26, 2017 2:47:06 PM&quot;</span>&#125;</span><br><span class="line">record =ConsumerRecord(topic = abc123, partition = 0, offset = 18, CreateTime = 1511678830109, checksum = 1589760372, serialized key size = -1, serialized value size = 102, key = null, value = &#123;<span class="string">&quot;id&quot;</span>:1511678830108,<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;e1b93a1c-d88e-4b9b-8e1d-98e05edeb7c6&quot;</span>,<span class="string">&quot;sendTime&quot;</span>:<span class="string">&quot;Nov 26, 2017 2:47:10 PM&quot;</span>&#125;)</span><br><span class="line">message =&#123;<span class="string">&quot;id&quot;</span>:1511678830108,<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;e1b93a1c-d88e-4b9b-8e1d-98e05edeb7c6&quot;</span>,<span class="string">&quot;sendTime&quot;</span>:<span class="string">&quot;Nov 26, 2017 2:47:10 PM&quot;</span>&#125;</span><br><span class="line">record =ConsumerRecord(topic = abc123, partition = 0, offset = 19, CreateTime = 1511678833110, checksum = 4176540846, serialized key size = -1, serialized value size = 102, key = null, value = &#123;<span class="string">&quot;id&quot;</span>:1511678833109,<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;f77fbb85-0eb9-402c-8265-c37987011551&quot;</span>,<span class="string">&quot;sendTime&quot;</span>:<span class="string">&quot;Nov 26, 2017 2:47:13 PM&quot;</span>&#125;)</span><br><span class="line">message =&#123;<span class="string">&quot;id&quot;</span>:1511678833109,<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;f77fbb85-0eb9-402c-8265-c37987011551&quot;</span>,<span class="string">&quot;sendTime&quot;</span>:<span class="string">&quot;Nov 26, 2017 2:47:13 PM&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">record &#x3D;ConsumerRecord(topic &#x3D; abc123, partition &#x3D; 0, offset &#x3D; 17, CreateTime &#x3D; 1511678827095, checksum &#x3D; 2229762760, serialized key size &#x3D; -1, serialized value size &#x3D; 102, key &#x3D; null, value &#x3D; &#123;&quot;id&quot;:1511678826816,&quot;msg&quot;:&quot;2ff150e4-d7f9-4b4d-9604-b8d13a1d4538&quot;,&quot;sendTime&quot;:&quot;Nov 26, 2017 2:47:06 PM&quot;&#125;)
+message &#x3D;&#123;&quot;id&quot;:1511678826816,&quot;msg&quot;:&quot;2ff150e4-d7f9-4b4d-9604-b8d13a1d4538&quot;,&quot;sendTime&quot;:&quot;Nov 26, 2017 2:47:06 PM&quot;&#125;
+record &#x3D;ConsumerRecord(topic &#x3D; abc123, partition &#x3D; 0, offset &#x3D; 18, CreateTime &#x3D; 1511678830109, checksum &#x3D; 1589760372, serialized key size &#x3D; -1, serialized value size &#x3D; 102, key &#x3D; null, value &#x3D; &#123;&quot;id&quot;:1511678830108,&quot;msg&quot;:&quot;e1b93a1c-d88e-4b9b-8e1d-98e05edeb7c6&quot;,&quot;sendTime&quot;:&quot;Nov 26, 2017 2:47:10 PM&quot;&#125;)
+message &#x3D;&#123;&quot;id&quot;:1511678830108,&quot;msg&quot;:&quot;e1b93a1c-d88e-4b9b-8e1d-98e05edeb7c6&quot;,&quot;sendTime&quot;:&quot;Nov 26, 2017 2:47:10 PM&quot;&#125;
+record &#x3D;ConsumerRecord(topic &#x3D; abc123, partition &#x3D; 0, offset &#x3D; 19, CreateTime &#x3D; 1511678833110, checksum &#x3D; 4176540846, serialized key size &#x3D; -1, serialized value size &#x3D; 102, key &#x3D; null, value &#x3D; &#123;&quot;id&quot;:1511678833109,&quot;msg&quot;:&quot;f77fbb85-0eb9-402c-8265-c37987011551&quot;,&quot;sendTime&quot;:&quot;Nov 26, 2017 2:47:13 PM&quot;&#125;)
+message &#x3D;&#123;&quot;id&quot;:1511678833109,&quot;msg&quot;:&quot;f77fbb85-0eb9-402c-8265-c37987011551&quot;,&quot;sendTime&quot;:&quot;Nov 26, 2017 2:47:13 PM&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>同时原先的命令行消费者也会受到程序发送的消息。</p>
 <p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/SpringKafkaDemo/master/doc/kafka_cli.png"></p>
@@ -893,6 +1042,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -900,6 +1051,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1065,9 +1218,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1277,8 +1430,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

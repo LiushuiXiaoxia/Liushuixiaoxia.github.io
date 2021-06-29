@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -410,6 +454,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -429,302 +476,578 @@
 
 <h2 id="普通查询"><a href="#普通查询" class="headerlink" title="普通查询"></a>普通查询</h2><p>首先放一下<a href="https://docs.mongodb.com/manual/tutorial/query-documents/">官方文档</a>，普通查询主要用到<code>db.collection.find()</code>函数。</p>
 <p>定义下示例数据库，下面是是初始化数据，可以在Mongo中的控制台执行。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.insertMany([</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">&quot;journal&quot;</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">14</span>, <span class="attr">w</span>: <span class="number">21</span>, <span class="attr">uom</span>: <span class="string">&quot;cm&quot;</span> &#125;, <span class="attr">status</span>: <span class="string">&quot;A&quot;</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">&quot;notebook&quot;</span>, <span class="attr">qty</span>: <span class="number">50</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">&quot;in&quot;</span> &#125;, <span class="attr">status</span>: <span class="string">&quot;A&quot;</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">&quot;paper&quot;</span>, <span class="attr">qty</span>: <span class="number">100</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">8.5</span>, <span class="attr">w</span>: <span class="number">11</span>, <span class="attr">uom</span>: <span class="string">&quot;in&quot;</span> &#125;, <span class="attr">status</span>: <span class="string">&quot;D&quot;</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">&quot;planner&quot;</span>, <span class="attr">qty</span>: <span class="number">75</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">22.85</span>, <span class="attr">w</span>: <span class="number">30</span>, <span class="attr">uom</span>: <span class="string">&quot;cm&quot;</span> &#125;, <span class="attr">status</span>: <span class="string">&quot;D&quot;</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">&quot;postcard&quot;</span>, <span class="attr">qty</span>: <span class="number">45</span>, <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">10</span>, <span class="attr">w</span>: <span class="number">15.25</span>, <span class="attr">uom</span>: <span class="string">&quot;cm&quot;</span> &#125;, <span class="attr">status</span>: <span class="string">&quot;A&quot;</span> &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>inventory<span class="token punctuation">.</span><span class="token function">insertMany</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span> item<span class="token operator">:</span> <span class="token string">"journal"</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span> size<span class="token operator">:</span> <span class="token punctuation">&#123;</span> h<span class="token operator">:</span> <span class="token number">14</span><span class="token punctuation">,</span> w<span class="token operator">:</span> <span class="token number">21</span><span class="token punctuation">,</span> uom<span class="token operator">:</span> <span class="token string">"cm"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> status<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span> item<span class="token operator">:</span> <span class="token string">"notebook"</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token number">50</span><span class="token punctuation">,</span> size<span class="token operator">:</span> <span class="token punctuation">&#123;</span> h<span class="token operator">:</span> <span class="token number">8.5</span><span class="token punctuation">,</span> w<span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">,</span> uom<span class="token operator">:</span> <span class="token string">"in"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> status<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span> item<span class="token operator">:</span> <span class="token string">"paper"</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">:</span> <span class="token punctuation">&#123;</span> h<span class="token operator">:</span> <span class="token number">8.5</span><span class="token punctuation">,</span> w<span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">,</span> uom<span class="token operator">:</span> <span class="token string">"in"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> status<span class="token operator">:</span> <span class="token string">"D"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span> item<span class="token operator">:</span> <span class="token string">"planner"</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token number">75</span><span class="token punctuation">,</span> size<span class="token operator">:</span> <span class="token punctuation">&#123;</span> h<span class="token operator">:</span> <span class="token number">22.85</span><span class="token punctuation">,</span> w<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span> uom<span class="token operator">:</span> <span class="token string">"cm"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> status<span class="token operator">:</span> <span class="token string">"D"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span> item<span class="token operator">:</span> <span class="token string">"postcard"</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token number">45</span><span class="token punctuation">,</span> size<span class="token operator">:</span> <span class="token punctuation">&#123;</span> h<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> w<span class="token operator">:</span> <span class="token number">15.25</span><span class="token punctuation">,</span> uom<span class="token operator">:</span> <span class="token string">"cm"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> status<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>查询所有</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123;&#125; )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>inventory<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> inventory</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> inventory<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>条件查询</li>
 </ul>
 <p>语法格式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &lt;field1&gt;: &lt;value1&gt;, ... &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token punctuation">&#123;</span> <span class="token operator">&lt;</span>field1<span class="token operator">></span><span class="token operator">:</span> <span class="token operator">&lt;</span>value1<span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">...</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>比如查询<code>status</code>为<code>D</code>记录。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: <span class="string">&quot;D&quot;</span> &#125; )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>inventory<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">"D"</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> inventory <span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;D&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> inventory <span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"D"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>使用操作符进行条件查询</li>
 </ul>
 <p>语法格式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &lt;field1&gt;: &#123; &lt;operator1&gt;: &lt;value1&gt; &#125;, ... &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token punctuation">&#123;</span> <span class="token operator">&lt;</span>field1<span class="token operator">></span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token operator">&lt;</span>operator1<span class="token operator">></span><span class="token operator">:</span> <span class="token operator">&lt;</span>value1<span class="token operator">></span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token operator">...</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>比如查询满足<code>status</code>是数组<code>[A,D]</code>中的记录</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: &#123; <span class="attr">$in</span>: [ <span class="string">&quot;A&quot;</span>, <span class="string">&quot;D&quot;</span> ] &#125; &#125; )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>inventory<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $<span class="token keyword">in</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"D"</span> <span class="token punctuation">]</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> inventory <span class="keyword">WHERE</span> status <span class="keyword">in</span> (&quot;A&quot;, &quot;D&quot;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> inventory <span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"D"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>AND 条件查询</li>
 </ul>
 <p>直接在find函数指定多个字段满足即可，这样就是 and 条件。</p>
 <p>比如下面语句就是 <code>status</code> 为 <code>A</code>，<code>qty</code> 小于 <code>30</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123; <span class="attr">status</span>: <span class="string">&quot;A&quot;</span>, <span class="attr">qty</span>: &#123; <span class="attr">$lt</span>: <span class="number">30</span> &#125; &#125; )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>inventory<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">"A"</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $lt<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> inventory <span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;A&quot; <span class="keyword">AND</span> qty <span class="operator">&lt;</span> <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> inventory <span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"A"</span> <span class="token operator">AND</span> qty <span class="token operator">&lt;</span> <span class="token number">30</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>OR 条件查询</li>
 </ul>
 <p>OR 和 AND 就不一样了，需要用到操作符 <code>$or</code>，如下所示。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123; <span class="attr">$or</span>: [ &#123; <span class="attr">status</span>: <span class="string">&quot;A&quot;</span> &#125;, &#123; <span class="attr">qty</span>: &#123; <span class="attr">$lt</span>: <span class="number">30</span> &#125; &#125; ] &#125; )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>inventory<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> $or<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> qty<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $lt<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">]</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>类似于SQL中的</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> inventory <span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;A&quot; <span class="keyword">OR</span> qty <span class="operator">&lt;</span> <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> inventory <span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"A"</span> <span class="token operator">OR</span> qty <span class="token operator">&lt;</span> <span class="token number">30</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>OR 和 AND 集合一起</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.inventory.find( &#123;</span><br><span class="line">     <span class="attr">status</span>: <span class="string">&quot;A&quot;</span>,</span><br><span class="line">     <span class="attr">$or</span>: [ &#123; <span class="attr">qty</span>: &#123; <span class="attr">$lt</span>: <span class="number">30</span> &#125; &#125;, &#123; <span class="attr">item</span>: <span class="regexp">/^p/</span> &#125; ]</span><br><span class="line">&#125; )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>inventory<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span>
+     status<span class="token operator">:</span> <span class="token string">"A"</span><span class="token punctuation">,</span>
+     $or<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token punctuation">&#123;</span> qty<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $lt<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> item<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^p</span><span class="token regex-delimiter">/</span></span> <span class="token punctuation">&#125;</span> <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>表示这样的意思。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> inventory <span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;A&quot; <span class="keyword">AND</span> ( qty <span class="operator">&lt;</span> <span class="number">30</span> <span class="keyword">OR</span> item <span class="keyword">LIKE</span> &quot;p%&quot;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> inventory <span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"A"</span> <span class="token operator">AND</span> <span class="token punctuation">(</span> qty <span class="token operator">&lt;</span> <span class="token number">30</span> <span class="token operator">OR</span> item <span class="token operator">LIKE</span> <span class="token string">"p%"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="查询举例"><a href="#查询举例" class="headerlink" title="查询举例"></a>查询举例</h3><ul>
 <li>查询全部</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.people.find()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>指定字段</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       user_id,</span><br><span class="line">       status</span><br><span class="line"><span class="keyword">FROM</span> people</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> id<span class="token punctuation">,</span>
+       user_id<span class="token punctuation">,</span>
+       <span class="token keyword">status</span>
+<span class="token keyword">FROM</span> people<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.people.find(</span><br><span class="line">    &#123; &#125;,</span><br><span class="line">    &#123; <span class="attr">user_id</span>: <span class="number">1</span>, <span class="attr">status</span>: <span class="number">1</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+    <span class="token punctuation">&#123;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> status<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> user_id, status</span><br><span class="line"><span class="keyword">FROM</span> people</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> user_id<span class="token punctuation">,</span> <span class="token keyword">status</span>
+<span class="token keyword">FROM</span> people<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ul>
 <li>指定字段，不显示<code>_id</code></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.people.find(</span><br><span class="line">    &#123; &#125;,</span><br><span class="line">    &#123; <span class="attr">user_id</span>: <span class="number">1</span>, <span class="attr">status</span>: <span class="number">1</span>, <span class="attr">_id</span>: <span class="number">0</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+    <span class="token punctuation">&#123;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> status<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> _id<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>条件查询全部</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;A&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"A"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.people.find(</span><br><span class="line">    &#123; <span class="attr">status</span>: <span class="string">&quot;A&quot;</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+    <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>条件查询指定字段</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> user_id, status</span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;A&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> user_id<span class="token punctuation">,</span> <span class="token keyword">status</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"A"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.people.find(</span><br><span class="line">    &#123; <span class="attr">status</span>: <span class="string">&quot;A&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">user_id</span>: <span class="number">1</span>, <span class="attr">status</span>: <span class="number">1</span>, <span class="attr">_id</span>: <span class="number">0</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+    <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> status<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> _id<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>条件查询不等于</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">!=</span> &quot;A&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">!=</span> <span class="token string">"A"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.people.find(</span><br><span class="line">    &#123; <span class="attr">status</span>: &#123; <span class="attr">$ne</span>: <span class="string">&quot;A&quot;</span> &#125; &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+    <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $ne<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>条件查询 AND</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;A&quot;</span><br><span class="line"><span class="keyword">AND</span> age <span class="operator">=</span> <span class="number">50</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"A"</span>
+<span class="token operator">AND</span> age <span class="token operator">=</span> <span class="token number">50</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.people.find(</span><br><span class="line">    &#123; <span class="attr">status</span>: <span class="string">&quot;A&quot;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">50</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+    <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">"A"</span><span class="token punctuation">,</span>
+      age<span class="token operator">:</span> <span class="token number">50</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>条件查询 OR</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;A&quot;</span><br><span class="line"><span class="keyword">OR</span> age <span class="operator">=</span> <span class="number">50</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"A"</span>
+<span class="token operator">OR</span> age <span class="token operator">=</span> <span class="token number">50</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.people.find(</span><br><span class="line">    &#123; <span class="attr">$or</span>: [ &#123; <span class="attr">status</span>: <span class="string">&quot;A&quot;</span> &#125; ,</span><br><span class="line">             &#123; <span class="attr">age</span>: <span class="number">50</span> &#125; ] &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+    <span class="token punctuation">&#123;</span> $or<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">,</span>
+             <span class="token punctuation">&#123;</span> age<span class="token operator">:</span> <span class="token number">50</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">]</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>条件查询 &gt;</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> age <span class="operator">&gt;</span> <span class="number">25</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> age <span class="token operator">></span> <span class="token number">25</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.people.find(</span><br><span class="line">    &#123; <span class="attr">age</span>: &#123; <span class="attr">$gt</span>: <span class="number">25</span> &#125; &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+    <span class="token punctuation">&#123;</span> age<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $gt<span class="token operator">:</span> <span class="token number">25</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>条件查询 &lt;</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> age <span class="operator">&lt;</span> <span class="number">25</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> age <span class="token operator">&lt;</span> <span class="token number">25</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.people.find(</span><br><span class="line">   &#123; <span class="attr">age</span>: &#123; <span class="attr">$lt</span>: <span class="number">25</span> &#125; &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+   <span class="token punctuation">&#123;</span> age<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $lt<span class="token operator">:</span> <span class="token number">25</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>复杂的条件查询</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> age <span class="operator">&gt;</span> <span class="number">25</span></span><br><span class="line"><span class="keyword">AND</span>   age <span class="operator">&lt;=</span> <span class="number">50</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> age <span class="token operator">></span> <span class="token number">25</span>
+<span class="token operator">AND</span>   age <span class="token operator">&lt;=</span> <span class="token number">50</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.people.find(</span><br><span class="line">   &#123; <span class="attr">age</span>: &#123; <span class="attr">$gt</span>: <span class="number">25</span>, <span class="attr">$lte</span>: <span class="number">50</span> &#125; &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
+   <span class="token punctuation">&#123;</span> age<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $gt<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span> $lte<span class="token operator">:</span> <span class="token number">50</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>条件查询 LIKE</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> user_id <span class="keyword">like</span> &quot;%bc%&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> user_id <span class="token operator">like</span> <span class="token string">"%bc%"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.people.find( &#123; <span class="attr">user_id</span>: <span class="regexp">/bc/</span> &#125; )</span><br><span class="line"></span><br><span class="line"><span class="comment">// OR</span></span><br><span class="line"></span><br><span class="line">db.people.find( &#123; <span class="attr">user_id</span>: &#123; <span class="attr">$regex</span>: <span class="regexp">/bc/</span> &#125; &#125; )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">bc</span><span class="token regex-delimiter">/</span></span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> user_id <span class="keyword">like</span> &quot;bc%&quot;</span><br></pre></td></tr></table></figure>
+<span class="token comment">// OR</span>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.people.find( &#123; <span class="attr">user_id</span>: <span class="regexp">/^bc/</span> &#125; )</span><br><span class="line"></span><br><span class="line"><span class="comment">// OR</span></span><br><span class="line"></span><br><span class="line">db.people.find( &#123; <span class="attr">user_id</span>: &#123; <span class="attr">$regex</span>: <span class="regexp">/^bc/</span> &#125; &#125; )</span><br></pre></td></tr></table></figure>
+db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $regex<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">bc</span><span class="token regex-delimiter">/</span></span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> user_id <span class="token operator">like</span> <span class="token string">"bc%"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^bc</span><span class="token regex-delimiter">/</span></span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span>
+
+<span class="token comment">// OR</span>
+
+db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $regex<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^bc</span><span class="token regex-delimiter">/</span></span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>排序</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;A&quot;</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> user_id <span class="keyword">ASC</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"A"</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> user_id <span class="token keyword">ASC</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.people.find( &#123; <span class="attr">status</span>: <span class="string">&quot;A&quot;</span> &#125; ).sort( &#123; <span class="attr">user_id</span>: <span class="number">1</span> &#125; )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;A&quot;</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> user_id <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"A"</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> user_id <span class="token keyword">DESC</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.people.find( &#123; <span class="attr">status</span>: <span class="string">&quot;A&quot;</span> &#125; ).sort( &#123; <span class="attr">user_id</span>: -<span class="number">1</span> &#125; )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>统计数量</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line"><span class="keyword">FROM</span> people</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> people<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.people.count()</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line">db.people.find().count()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(user_id)</span><br><span class="line"><span class="keyword">FROM</span> people</span><br></pre></td></tr></table></figure>
+<span class="token comment">// or</span>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.people.count( &#123; <span class="attr">user_id</span>: &#123; <span class="attr">$exists</span>: <span class="literal">true</span> &#125; &#125; )</span><br><span class="line">or</span><br></pre></td></tr></table></figure>
+db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.people.find( &#123; <span class="attr">user_id</span>: &#123; <span class="attr">$exists</span>: <span class="literal">true</span> &#125; &#125; ).count()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> people<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> age <span class="operator">&gt;</span> <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $exists<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span>
+or<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.people.count( &#123; <span class="attr">age</span>: &#123; <span class="attr">$gt</span>: <span class="number">30</span> &#125; &#125; )</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line">db.people.find( &#123; <span class="attr">age</span>: &#123; <span class="attr">$gt</span>: <span class="number">30</span> &#125; &#125; ).count()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> user_id<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $exists<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> age <span class="token operator">></span> <span class="token number">30</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> age<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $gt<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span>
+
+<span class="token comment">// or</span>
+
+db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> age<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $gt<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>去除重复distinct</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span>(status)</span><br><span class="line"><span class="keyword">FROM</span> people</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span><span class="token punctuation">(</span><span class="token keyword">status</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> people<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.people.distinct( <span class="string">&quot;status&quot;</span> )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">distinct</span><span class="token punctuation">(</span> <span class="token string">"status"</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line">LIMIT <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">LIMIT</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>限制数量</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.people.findOne()</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line">db.people.find().limit(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line">LIMIT <span class="number">5</span></span><br><span class="line"><span class="keyword">SKIP</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<span class="token comment">// or</span>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.people.find().limit(<span class="number">5</span>).skip(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">LIMIT</span> <span class="token number">5</span>
+SKIP <span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">skip</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>EXPLAIN</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> people</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> &quot;A&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">EXPLAIN</span> <span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> people
+<span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">"A"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.people.find( &#123; <span class="attr">status</span>: <span class="string">&quot;A&quot;</span> &#125; ).explain()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>people<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">explain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h2><p>上面普通查询使用<code>find</code>函数即可，但是聚合查询使用另外一个函数<code>aggregate</code>，这里是<a href="https://docs.mongodb.com/manual/core/aggregation-pipeline/">官方文档</a>。</p>
 <p>初始化数据如下，有2个表 <code>orders</code> 和 <code>order_lineitem</code> ，外键关联<code>order_lineitem.order_id and the orders.id </code>。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  cust_id: <span class="string">&quot;abc123&quot;</span>,</span><br><span class="line">  ord_date: ISODate(<span class="string">&quot;2012-11-02T17:04:11.102Z&quot;</span>),</span><br><span class="line">  status: &#x27;A&#x27;,</span><br><span class="line">  price: <span class="number">50</span>,</span><br><span class="line">  items: [ &#123; sku: <span class="string">&quot;xxx&quot;</span>, qty: <span class="number">25</span>, price: <span class="number">1</span> &#125;,</span><br><span class="line">           &#123; sku: <span class="string">&quot;yyy&quot;</span>, qty: <span class="number">25</span>, price: <span class="number">1</span> &#125; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  cust_id<span class="token operator">:</span> <span class="token string">"abc123"</span><span class="token punctuation">,</span>
+  ord_date<span class="token operator">:</span> ISODate(<span class="token string">"2012-11-02T17:04:11.102Z"</span>)<span class="token punctuation">,</span>
+  status<span class="token operator">:</span> 'A'<span class="token punctuation">,</span>
+  price<span class="token operator">:</span> <span class="token number">50</span><span class="token punctuation">,</span>
+  items<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token punctuation">&#123;</span> sku<span class="token operator">:</span> <span class="token string">"xxx"</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span> price<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+           <span class="token punctuation">&#123;</span> sku<span class="token operator">:</span> <span class="token string">"yyy"</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span> price<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>统计数量</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="attr">count</span>: &#123; <span class="attr">$sum</span>: <span class="number">1</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        count<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> count</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> count
+<span class="token keyword">FROM</span> orders<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ul>
 <li>计算总和</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="attr">total</span>: &#123; <span class="attr">$sum</span>: <span class="string">&quot;$price&quot;</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        total<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token string">"$price"</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(price) <span class="keyword">AS</span> total</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">SUM</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">AS</span> total
+<span class="token keyword">FROM</span> orders<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ul>
 <li>分组计算总和</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: <span class="string">&quot;$cust_id&quot;</span>,</span><br><span class="line">        <span class="attr">total</span>: &#123; <span class="attr">$sum</span>: <span class="string">&quot;$price&quot;</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token string">"$cust_id"</span><span class="token punctuation">,</span>
+        total<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token string">"$price"</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_id,</span><br><span class="line">       <span class="built_in">SUM</span>(price) <span class="keyword">AS</span> total</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> cust_id<span class="token punctuation">,</span>
+       <span class="token function">SUM</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">AS</span> total
+<span class="token keyword">FROM</span> orders
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> cust_id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>分组计算总和并排序</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: <span class="string">&quot;$cust_id&quot;</span>,</span><br><span class="line">        <span class="attr">total</span>: &#123; <span class="attr">$sum</span>: <span class="string">&quot;$price&quot;</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123; <span class="attr">$sort</span>: &#123; <span class="attr">total</span>: <span class="number">1</span> &#125; &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token string">"$cust_id"</span><span class="token punctuation">,</span>
+        total<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token string">"$price"</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span> $sort<span class="token operator">:</span> <span class="token punctuation">&#123;</span> total<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_id,</span><br><span class="line">       <span class="built_in">SUM</span>(price) <span class="keyword">AS</span> total</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> tota</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> cust_id<span class="token punctuation">,</span>
+       <span class="token function">SUM</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">AS</span> total
+<span class="token keyword">FROM</span> orders
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> cust_id
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> tota<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>多个字段分组</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: &#123;</span><br><span class="line">           <span class="attr">cust_id</span>: <span class="string">&quot;$cust_id&quot;</span>,</span><br><span class="line">           <span class="attr">ord_date</span>: &#123;</span><br><span class="line">               <span class="attr">month</span>: &#123; <span class="attr">$month</span>: <span class="string">&quot;$ord_date&quot;</span> &#125;,</span><br><span class="line">               <span class="attr">day</span>: &#123; <span class="attr">$dayOfMonth</span>: <span class="string">&quot;$ord_date&quot;</span> &#125;,</span><br><span class="line">               <span class="attr">year</span>: &#123; <span class="attr">$year</span>: <span class="string">&quot;$ord_date&quot;</span>&#125;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">total</span>: &#123; <span class="attr">$sum</span>: <span class="string">&quot;$price&quot;</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+           cust_id<span class="token operator">:</span> <span class="token string">"$cust_id"</span><span class="token punctuation">,</span>
+           ord_date<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+               month<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $month<span class="token operator">:</span> <span class="token string">"$ord_date"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+               day<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $dayOfMonth<span class="token operator">:</span> <span class="token string">"$ord_date"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+               year<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $year<span class="token operator">:</span> <span class="token string">"$ord_date"</span><span class="token punctuation">&#125;</span>
+           <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        total<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token string">"$price"</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_id,</span><br><span class="line">       ord_date,</span><br><span class="line">       <span class="built_in">SUM</span>(price) <span class="keyword">AS</span> total</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id,</span><br><span class="line">         ord_date</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> cust_id<span class="token punctuation">,</span>
+       ord_date<span class="token punctuation">,</span>
+       <span class="token function">SUM</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">AS</span> total
+<span class="token keyword">FROM</span> orders
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> cust_id<span class="token punctuation">,</span>
+         ord_date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>条件分组——HAVING</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: <span class="string">&quot;$cust_id&quot;</span>,</span><br><span class="line">        <span class="attr">count</span>: &#123; <span class="attr">$sum</span>: <span class="number">1</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123; <span class="attr">$match</span>: &#123; <span class="attr">count</span>: &#123; <span class="attr">$gt</span>: <span class="number">1</span> &#125; &#125; &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token string">"$cust_id"</span><span class="token punctuation">,</span>
+        count<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span> $match<span class="token operator">:</span> <span class="token punctuation">&#123;</span> count<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $gt<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_id,</span><br><span class="line">       <span class="built_in">count</span>(<span class="operator">*</span>)</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> cust_id<span class="token punctuation">,</span>
+       <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> orders
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> cust_id
+<span class="token keyword">HAVING</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>复杂条件分组统计</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: &#123;</span><br><span class="line">           <span class="attr">cust_id</span>: <span class="string">&quot;$cust_id&quot;</span>,</span><br><span class="line">           <span class="attr">ord_date</span>: &#123;</span><br><span class="line">               <span class="attr">month</span>: &#123; <span class="attr">$month</span>: <span class="string">&quot;$ord_date&quot;</span> &#125;,</span><br><span class="line">               <span class="attr">day</span>: &#123; <span class="attr">$dayOfMonth</span>: <span class="string">&quot;$ord_date&quot;</span> &#125;,</span><br><span class="line">               <span class="attr">year</span>: &#123; <span class="attr">$year</span>: <span class="string">&quot;$ord_date&quot;</span>&#125;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">total</span>: &#123; <span class="attr">$sum</span>: <span class="string">&quot;$price&quot;</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123; <span class="attr">$match</span>: &#123; <span class="attr">total</span>: &#123; <span class="attr">$gt</span>: <span class="number">250</span> &#125; &#125; &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+           cust_id<span class="token operator">:</span> <span class="token string">"$cust_id"</span><span class="token punctuation">,</span>
+           ord_date<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+               month<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $month<span class="token operator">:</span> <span class="token string">"$ord_date"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+               day<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $dayOfMonth<span class="token operator">:</span> <span class="token string">"$ord_date"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+               year<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $year<span class="token operator">:</span> <span class="token string">"$ord_date"</span><span class="token punctuation">&#125;</span>
+           <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        total<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token string">"$price"</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span> $match<span class="token operator">:</span> <span class="token punctuation">&#123;</span> total<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $gt<span class="token operator">:</span> <span class="token number">250</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_id,</span><br><span class="line">       ord_date,</span><br><span class="line">       <span class="built_in">SUM</span>(price) <span class="keyword">AS</span> total</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id,</span><br><span class="line">         ord_date</span><br><span class="line"><span class="keyword">HAVING</span> total <span class="operator">&gt;</span> <span class="number">250</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> cust_id<span class="token punctuation">,</span>
+       ord_date<span class="token punctuation">,</span>
+       <span class="token function">SUM</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">AS</span> total
+<span class="token keyword">FROM</span> orders
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> cust_id<span class="token punctuation">,</span>
+         ord_date
+<span class="token keyword">HAVING</span> total <span class="token operator">></span> <span class="token number">250</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>复杂条件分组统计示例1</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123; <span class="attr">$match</span>: &#123; <span class="attr">status</span>: <span class="string">&#x27;A&#x27;</span> &#125; &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: <span class="string">&quot;$cust_id&quot;</span>,</span><br><span class="line">        <span class="attr">total</span>: &#123; <span class="attr">$sum</span>: <span class="string">&quot;$price&quot;</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span> $match<span class="token operator">:</span> <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">'A'</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token string">"$cust_id"</span><span class="token punctuation">,</span>
+        total<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token string">"$price"</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_id,</span><br><span class="line">       <span class="built_in">SUM</span>(price) <span class="keyword">as</span> total</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> cust_id<span class="token punctuation">,</span>
+       <span class="token function">SUM</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">as</span> total
+<span class="token keyword">FROM</span> orders
+<span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">'A'</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> cust_id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>复杂条件分组统计示例2</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123; <span class="attr">$match</span>: &#123; <span class="attr">status</span>: <span class="string">&#x27;A&#x27;</span> &#125; &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: <span class="string">&quot;$cust_id&quot;</span>,</span><br><span class="line">        <span class="attr">total</span>: &#123; <span class="attr">$sum</span>: <span class="string">&quot;$price&quot;</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123; <span class="attr">$match</span>: &#123; <span class="attr">total</span>: &#123; <span class="attr">$gt</span>: <span class="number">250</span> &#125; &#125; &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span> $match<span class="token operator">:</span> <span class="token punctuation">&#123;</span> status<span class="token operator">:</span> <span class="token string">'A'</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token string">"$cust_id"</span><span class="token punctuation">,</span>
+        total<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token string">"$price"</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span> $match<span class="token operator">:</span> <span class="token punctuation">&#123;</span> total<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $gt<span class="token operator">:</span> <span class="token number">250</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_id,</span><br><span class="line">       <span class="built_in">SUM</span>(price) <span class="keyword">as</span> total</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</span><br><span class="line"><span class="keyword">HAVING</span> total <span class="operator">&gt;</span> <span class="number">250</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> cust_id<span class="token punctuation">,</span>
+       <span class="token function">SUM</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">as</span> total
+<span class="token keyword">FROM</span> orders
+<span class="token keyword">WHERE</span> <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">'A'</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> cust_id
+<span class="token keyword">HAVING</span> total <span class="token operator">></span> <span class="token number">250</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>表关联</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123; <span class="attr">$unwind</span>: <span class="string">&quot;$items&quot;</span> &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: <span class="string">&quot;$cust_id&quot;</span>,</span><br><span class="line">        <span class="attr">qty</span>: &#123; <span class="attr">$sum</span>: <span class="string">&quot;$items.qty&quot;</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span> $unwind<span class="token operator">:</span> <span class="token string">"$items"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token string">"$cust_id"</span><span class="token punctuation">,</span>
+        qty<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token string">"$items.qty"</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> cust_id,</span><br><span class="line">       <span class="built_in">SUM</span>(li.qty) <span class="keyword">as</span> qty</span><br><span class="line"><span class="keyword">FROM</span> orders o,</span><br><span class="line">     order_lineitem li</span><br><span class="line"><span class="keyword">WHERE</span> li.order_id <span class="operator">=</span> o.id</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> cust_id<span class="token punctuation">,</span>
+       <span class="token function">SUM</span><span class="token punctuation">(</span>li<span class="token punctuation">.</span>qty<span class="token punctuation">)</span> <span class="token keyword">as</span> qty
+<span class="token keyword">FROM</span> orders o<span class="token punctuation">,</span>
+     order_lineitem li
+<span class="token keyword">WHERE</span> li<span class="token punctuation">.</span>order_id <span class="token operator">=</span> o<span class="token punctuation">.</span>id
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> cust_id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>嵌套查询</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">db.orders.aggregate( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: &#123;</span><br><span class="line">           <span class="attr">cust_id</span>: <span class="string">&quot;$cust_id&quot;</span>,</span><br><span class="line">           <span class="attr">ord_date</span>: &#123;</span><br><span class="line">               <span class="attr">month</span>: &#123; <span class="attr">$month</span>: <span class="string">&quot;$ord_date&quot;</span> &#125;,</span><br><span class="line">               <span class="attr">day</span>: &#123; <span class="attr">$dayOfMonth</span>: <span class="string">&quot;$ord_date&quot;</span> &#125;,</span><br><span class="line">               <span class="attr">year</span>: &#123; <span class="attr">$year</span>: <span class="string">&quot;$ord_date&quot;</span>&#125;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">$group</span>: &#123;</span><br><span class="line">        <span class="attr">_id</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="attr">count</span>: &#123; <span class="attr">$sum</span>: <span class="number">1</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+           cust_id<span class="token operator">:</span> <span class="token string">"$cust_id"</span><span class="token punctuation">,</span>
+           ord_date<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+               month<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $month<span class="token operator">:</span> <span class="token string">"$ord_date"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+               day<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $dayOfMonth<span class="token operator">:</span> <span class="token string">"$ord_date"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+               year<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $year<span class="token operator">:</span> <span class="token string">"$ord_date"</span><span class="token punctuation">&#125;</span>
+           <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+   <span class="token punctuation">&#123;</span>
+     $group<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        _id<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        count<span class="token operator">:</span> <span class="token punctuation">&#123;</span> $sum<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>映射Sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> cust_id,</span><br><span class="line">             ord_date</span><br><span class="line">      <span class="keyword">FROM</span> orders</span><br><span class="line">      <span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id,</span><br><span class="line">               ord_date)</span><br><span class="line">      <span class="keyword">as</span> DerivedTable</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> cust_id<span class="token punctuation">,</span>
+             ord_date
+      <span class="token keyword">FROM</span> orders
+      <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> cust_id<span class="token punctuation">,</span>
+               ord_date<span class="token punctuation">)</span>
+      <span class="token keyword">as</span> DerivedTable<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Map-Reduce"><a href="#Map-Reduce" class="headerlink" title="Map-Reduce"></a>Map-Reduce</h2><p>Mongo中聚合查询还有一种叫Map-Reduce，官方文档在<a href="https://docs.mongodb.com/manual/core/map-reduce/">这里</a>，在思想上它跟Hadoop一样，从一个单一集合中输入数据，然后将结果输出到一个集合中。通常在使用类似SQL中<code>Group By</code>操作时，Map/Reduce会是一个好的工具。</p>
 <p><img src="https://docs.mongodb.com/manual/_images/map-reduce.bakedsvg.svg" alt="Map-Reduce"></p>
-<h3 id="接口方法定义"><a href="#接口方法定义" class="headerlink" title="接口方法定义"></a>接口方法定义</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">db.collection.mapReduce(</span><br><span class="line">    &lt;map&gt;,</span><br><span class="line">    &lt;reduce&gt;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">out</span>: &lt;collection&gt;,</span><br><span class="line">        query: &lt;<span class="built_in">document</span>&gt;,</span><br><span class="line">        sort: &lt;<span class="built_in">document</span>&gt;,</span><br><span class="line">        limit: &lt;number&gt;,</span><br><span class="line">        finalize: &lt;<span class="function"><span class="keyword">function</span>&gt;,</span></span><br><span class="line"><span class="function">        <span class="title">scope</span>: &lt;<span class="title">document</span>&gt;,</span></span><br><span class="line"><span class="function">        <span class="title">jsMode</span>: &lt;<span class="title">boolean</span>&gt;,</span></span><br><span class="line"><span class="function">        <span class="title">verbose</span>: &lt;<span class="title">boolean</span>&gt;,</span></span><br><span class="line"><span class="function">        <span class="title">bypassDocumentValidation</span>: &lt;<span class="title">boolean</span>&gt;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+<h3 id="接口方法定义"><a href="#接口方法定义" class="headerlink" title="接口方法定义"></a>接口方法定义</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>collection<span class="token punctuation">.</span><span class="token function">mapReduce</span><span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>map<span class="token operator">></span><span class="token punctuation">,</span>
+    <span class="token operator">&lt;</span>reduce<span class="token operator">></span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span>
+        out<span class="token operator">:</span> <span class="token operator">&lt;</span>collection<span class="token operator">></span><span class="token punctuation">,</span>
+        query<span class="token operator">:</span> <span class="token operator">&lt;</span>document<span class="token operator">></span><span class="token punctuation">,</span>
+        sort<span class="token operator">:</span> <span class="token operator">&lt;</span>document<span class="token operator">></span><span class="token punctuation">,</span>
+        limit<span class="token operator">:</span> <span class="token operator">&lt;</span>number<span class="token operator">></span><span class="token punctuation">,</span>
+        finalize<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token keyword">function</span><span class="token operator">></span><span class="token punctuation">,</span>
+        scope<span class="token operator">:</span> <span class="token operator">&lt;</span>document<span class="token operator">></span><span class="token punctuation">,</span>
+        jsMode<span class="token operator">:</span> <span class="token operator">&lt;</span>boolean<span class="token operator">></span><span class="token punctuation">,</span>
+        verbose<span class="token operator">:</span> <span class="token operator">&lt;</span>boolean<span class="token operator">></span><span class="token punctuation">,</span>
+        bypassDocumentValidation<span class="token operator">:</span> <span class="token operator">&lt;</span>boolean<span class="token operator">></span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul>
 <li><p>mapReduce： 要执行Map/Reduce集合的名字</p>
@@ -752,31 +1075,78 @@
 </ul>
 <h2 id="示例说明"><a href="#示例说明" class="headerlink" title="示例说明"></a>示例说明</h2><p>举例说明Map-Reduce的用途，虽然代码比较多，也行用上面的聚合查询，一下子就搞定了，但是这里只是举例。</p>
 <p>比如有个订单表，如下所示，我们需要计算每个人的订单总价。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">     _id: ObjectId(<span class="string">&quot;50a8240b927d5d8b5891743c&quot;</span>),</span><br><span class="line">     cust_id: <span class="string">&quot;abc123&quot;</span>,</span><br><span class="line">     ord_date: new Date(<span class="string">&quot;Oct 04, 2012&quot;</span>),</span><br><span class="line">     status: &#x27;A&#x27;,</span><br><span class="line">     price: <span class="number">25</span>,</span><br><span class="line">     items: [ &#123; sku: <span class="string">&quot;mmm&quot;</span>, qty: <span class="number">5</span>, price: <span class="number">2.5</span> &#125;,</span><br><span class="line">              &#123; sku: <span class="string">&quot;nnn&quot;</span>, qty: <span class="number">5</span>, price: <span class="number">2.5</span> &#125; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+     _id<span class="token operator">:</span> ObjectId(<span class="token string">"50a8240b927d5d8b5891743c"</span>)<span class="token punctuation">,</span>
+     cust_id<span class="token operator">:</span> <span class="token string">"abc123"</span><span class="token punctuation">,</span>
+     ord_date<span class="token operator">:</span> new Date(<span class="token string">"Oct 04, 2012"</span>)<span class="token punctuation">,</span>
+     status<span class="token operator">:</span> 'A'<span class="token punctuation">,</span>
+     price<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+     items<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token punctuation">&#123;</span> sku<span class="token operator">:</span> <span class="token string">"mmm"</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span> price<span class="token operator">:</span> <span class="token number">2.5</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+              <span class="token punctuation">&#123;</span> sku<span class="token operator">:</span> <span class="token string">"nnn"</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span> price<span class="token operator">:</span> <span class="token number">2.5</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>首先定义Map方法，就说我们后面的聚合计算需要哪些字段，由于需要计算每个人的订单总结，那么个人信息和加个肯定是我们需要的。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mapFunction1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    emit(<span class="built_in">this</span>.cust_id, <span class="built_in">this</span>.price);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> <span class="token function-variable function">mapFunction1</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">emit</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>cust_id<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>price<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>然后定义reduce方法，计算每个人的订单价格。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reduceFunction1 = <span class="function"><span class="keyword">function</span>(<span class="params">keyCustId, valuesPrices</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.sum(valuesPrices);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> <span class="token function-variable function">reduceFunction1</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">keyCustId<span class="token punctuation">,</span> valuesPrices</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> Array<span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span>valuesPrices<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>然后存储最后的计算结果。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.orders.mapReduce(</span><br><span class="line">    mapFunction1,</span><br><span class="line">    reduceFunction1,</span><br><span class="line">    &#123; <span class="attr">out</span>: <span class="string">&quot;map_reduce_example&quot;</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">mapReduce</span><span class="token punctuation">(</span>
+    mapFunction1<span class="token punctuation">,</span>
+    reduceFunction1<span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span> out<span class="token operator">:</span> <span class="token string">"map_reduce_example"</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这样一个简单的Map-Reduce实例就完成了，结果放在<code>map_reduce_example</code>中。</p>
 <p>上面示例比较简单，那么我们来一个复杂一点的例子。</p>
 <p>一条订单记录中，有sdk的名称、数量、价格，那么要查询出日期大于<code>01/01/2012</code>，所有订单的总数，以及平均sdk价格。</p>
 <p>首先还是定义个map函数。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mapFunction2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> idx = <span class="number">0</span>; idx &lt; <span class="built_in">this</span>.items.length; idx++) &#123;</span><br><span class="line">        <span class="keyword">var</span> key = <span class="built_in">this</span>.items[idx].sku;</span><br><span class="line">        <span class="keyword">var</span> value = &#123;</span><br><span class="line">                        <span class="attr">count</span>: <span class="number">1</span>,</span><br><span class="line">                        <span class="attr">qty</span>: <span class="built_in">this</span>.items[idx].qty</span><br><span class="line">                    &#125;;</span><br><span class="line">        emit(key, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> <span class="token function-variable function">mapFunction2</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> idx <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> idx <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">.</span>length<span class="token punctuation">;</span> idx<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">var</span> key <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">.</span>sku<span class="token punctuation">;</span>
+        <span class="token keyword">var</span> value <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+                        count<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                        qty<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">.</span>qty
+                    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+        <span class="token function">emit</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>然后算出sku的数量，和总价格。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reduceFunction2 = <span class="function"><span class="keyword">function</span>(<span class="params">keySKU, countObjVals</span>) </span>&#123;</span><br><span class="line">    reducedVal = &#123; <span class="attr">count</span>: <span class="number">0</span>, <span class="attr">qty</span>: <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> idx = <span class="number">0</span>; idx &lt; countObjVals.length; idx++) &#123;</span><br><span class="line">        reducedVal.count += countObjVals[idx].count;</span><br><span class="line">        reducedVal.qty += countObjVals[idx].qty;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> reducedVal;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> <span class="token function-variable function">reduceFunction2</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">keySKU<span class="token punctuation">,</span> countObjVals</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    reducedVal <span class="token operator">=</span> <span class="token punctuation">&#123;</span> count<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> qty<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> idx <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> idx <span class="token operator">&lt;</span> countObjVals<span class="token punctuation">.</span>length<span class="token punctuation">;</span> idx<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        reducedVal<span class="token punctuation">.</span>count <span class="token operator">+=</span> countObjVals<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+        reducedVal<span class="token punctuation">.</span>qty <span class="token operator">+=</span> countObjVals<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">.</span>qty<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">return</span> reducedVal<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>总价格出来后，还要计算出平均价格。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> finalizeFunction2 = <span class="function"><span class="keyword">function</span> (<span class="params">key, reducedVal</span>) </span>&#123;</span><br><span class="line">    reducedVal.avg = reducedVal.qty / reducedVal.count;</span><br><span class="line">    <span class="keyword">return</span> reducedVal;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> <span class="token function-variable function">finalizeFunction2</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> reducedVal</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    reducedVal<span class="token punctuation">.</span>avg <span class="token operator">=</span> reducedVal<span class="token punctuation">.</span>qty <span class="token operator">/</span> reducedVal<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> reducedVal<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>还有日期的条件过滤，最后得出完整的map-reduce。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">db.orders.mapReduce(</span><br><span class="line">    mapFunction2,</span><br><span class="line">    reduceFunction2,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">out</span>: &#123; <span class="attr">merge</span>: <span class="string">&quot;map_reduce_example&quot;</span> &#125;,</span><br><span class="line">        <span class="attr">query</span>: &#123;</span><br><span class="line">            <span class="attr">ord_date</span>:&#123; <span class="attr">$gt</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;01/01/2012&#x27;</span>) &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">finalize</span>: finalizeFunction2</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">db<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">mapReduce</span><span class="token punctuation">(</span>
+    mapFunction2<span class="token punctuation">,</span>
+    reduceFunction2<span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span>
+        out<span class="token operator">:</span> <span class="token punctuation">&#123;</span> merge<span class="token operator">:</span> <span class="token string">"map_reduce_example"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        query<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+            ord_date<span class="token operator">:</span><span class="token punctuation">&#123;</span> $gt<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'01/01/2012'</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        finalize<span class="token operator">:</span> finalizeFunction2
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上就是我对MongoDB的示例总结，本人是一个初学者，也有很多地方不懂，如果有错误的地方，欢迎指出。</p>
 <h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a href="http://www.jianshu.com/p/9e1d34eb1d4c">浅谈MongoDB数据库</a></p>
@@ -1172,6 +1542,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -1179,6 +1551,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1344,9 +1718,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1556,8 +1930,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

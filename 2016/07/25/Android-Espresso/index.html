@@ -95,6 +95,28 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -161,6 +183,28 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -405,6 +449,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -421,29 +468,92 @@
 <li>检查结果：判断做出的动作是否符合期望，比如按钮点击后，是否符合我的期望</li>
 </ul>
 <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>集成Espresso，首先需要保证App项目已经依赖了Gradle Testing。然后在gradle中添加如下依赖即可。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    androidTestCompile <span class="string">&#x27;com.android.support.test.espresso:espresso-core:2.2.1&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">dependencies <span class="token punctuation">&#123;</span>
+    androidTestCompile <span class="token string">'com.android.support.test.espresso:espresso-core:2.2.1'</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h1 id="创建Test-Case"><a href="#创建Test-Case" class="headerlink" title="创建Test Case"></a>创建Test Case</h1><p>创建一个Espresso测试用例可以按照如下步骤。</p>
 <ul>
 <li>找到你想测试的Activity，然后使用<code>onView</code>或者<code>onData</code>来查找UI元素</li>
 <li>模拟用户用户点击，可以调用 <code>ViewInteraction.perform() </code>or<code> DataInteraction.perform()</code>,为了顺序的给同一个组件执行一些列的动作，可以使用链式的调用方式调用，中间使用逗号分隔，相当于传入一个动作数组。</li>
 </ul>
 <p>下面是官方网站给出的一个例子，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onView(withId(R.id.my_view))            <span class="comment">// withId(R.id.my_view) is a ViewMatcher</span></span><br><span class="line">        .perform(click())               <span class="comment">// click() is a ViewAction</span></span><br><span class="line">        .check(matches(isDisplayed())); <span class="comment">// matches(isDisplayed()) is a ViewAssertion</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">onView</span><span class="token punctuation">(</span><span class="token function">withId</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>my_view<span class="token punctuation">)</span><span class="token punctuation">)</span>            <span class="token comment">// withId(R.id.my_view) is a ViewMatcher</span>
+        <span class="token punctuation">.</span><span class="token function">perform</span><span class="token punctuation">(</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>               <span class="token comment">// click() is a ViewAction</span>
+        <span class="token punctuation">.</span><span class="token function">check</span><span class="token punctuation">(</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token function">isDisplayed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// matches(isDisplayed()) is a ViewAssertion</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="使用ActivityTestRule创建Espresso"><a href="#使用ActivityTestRule创建Espresso" class="headerlink" title="使用ActivityTestRule创建Espresso"></a>使用ActivityTestRule创建Espresso</h2><p>接下来的步骤是，使用ActivityTestRule来创建Espresso测试用例，下面是代码示例。<code>@RunWith(AndroidJUnit4.class)</code>设置测试代码怎么运行，<code>@Rule</code>来标注一个测试的Rule。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.android.testing.espresso.BasicSample;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Rule;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.support.test.rule.ActivityTestRule;</span><br><span class="line"><span class="keyword">import</span> android.support.test.runner.AndroidJUnit4;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith(AndroidJUnit4.class)</span></span><br><span class="line"><span class="meta">@LargeTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChangeTextBehaviorTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String mStringToBetyped;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Rule</span></span><br><span class="line">    <span class="keyword">public</span> ActivityTestRule&lt;MainActivity&gt; mActivityRule = <span class="keyword">new</span> ActivityTestRule&lt;&gt;(</span><br><span class="line">            MainActivity.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initValidString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Specify a valid string.</span></span><br><span class="line">        mStringToBetyped = <span class="string">&quot;Espresso&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeText_sameActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Type text and then press the button.</span></span><br><span class="line">        onView(withId(R.id.editTextUserInput))</span><br><span class="line">                .perform(typeText(mStringToBetyped), closeSoftKeyboard());</span><br><span class="line">        onView(withId(R.id.changeTextBt)).perform(click());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Check that the text was changed.</span></span><br><span class="line">        onView(withId(R.id.textToBeChanged))</span><br><span class="line">                .check(matches(withText(mStringToBetyped)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>android<span class="token punctuation">.</span>testing<span class="token punctuation">.</span>espresso<span class="token punctuation">.</span></span><span class="token class-name">BasicSample</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Before</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Rule</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>runner<span class="token punctuation">.</span></span><span class="token class-name">RunWith</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>test<span class="token punctuation">.</span>rule<span class="token punctuation">.</span></span><span class="token class-name">ActivityTestRule</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>test<span class="token punctuation">.</span>runner<span class="token punctuation">.</span></span><span class="token class-name">AndroidJUnit4</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">AndroidJUnit4</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@LargeTest</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ChangeTextBehaviorTest</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> mStringToBetyped<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Rule</span>
+    <span class="token keyword">public</span> <span class="token class-name">ActivityTestRule</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">MainActivity</span><span class="token punctuation">></span></span> mActivityRule <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActivityTestRule</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>
+            <span class="token class-name">MainActivity</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Before</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initValidString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Specify a valid string.</span>
+        mStringToBetyped <span class="token operator">=</span> <span class="token string">"Espresso"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">changeText_sameActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Type text and then press the button.</span>
+        <span class="token function">onView</span><span class="token punctuation">(</span><span class="token function">withId</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>editTextUserInput<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">perform</span><span class="token punctuation">(</span><span class="token function">typeText</span><span class="token punctuation">(</span>mStringToBetyped<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">closeSoftKeyboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">onView</span><span class="token punctuation">(</span><span class="token function">withId</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>changeTextBt<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">perform</span><span class="token punctuation">(</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Check that the text was changed.</span>
+        <span class="token function">onView</span><span class="token punctuation">(</span><span class="token function">withId</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>textToBeChanged<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">check</span><span class="token punctuation">(</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token function">withText</span><span class="token punctuation">(</span>mStringToBetyped<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="使用ActivityInstrumentationTestCase2来创建Espresso"><a href="#使用ActivityInstrumentationTestCase2来创建Espresso" class="headerlink" title="使用ActivityInstrumentationTestCase2来创建Espresso"></a>使用ActivityInstrumentationTestCase2来创建Espresso</h2><p>相对于上的测试用例，也可以使用ActivityInstrumentationTestCase2来创建Esprsso测试用例。<br>下面是代码示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.support.test.InstrumentationRegistry;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyEspressoTest</span> <span class="keyword">extends</span> <span class="title">ActivityInstrumentationTestCase2</span>&lt;<span class="title">MyActivity</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MyActivity mActivity;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyEspressoTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(MyActivity.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.setUp();</span><br><span class="line">        injectInstrumentation(InstrumentationRegistry.getInstrumentation());</span><br><span class="line">        mActivity = getActivity();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>test<span class="token punctuation">.</span></span><span class="token class-name">InstrumentationRegistry</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyEspressoTest</span> <span class="token keyword">extends</span> <span class="token class-name">ActivityInstrumentationTestCase2</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">MyActivity</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">MyActivity</span> mActivity<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">MyEspressoTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token class-name">MyActivity</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Before</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">injectInstrumentation</span><span class="token punctuation">(</span><span class="token class-name">InstrumentationRegistry</span><span class="token punctuation">.</span><span class="token function">getInstrumentation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mActivity <span class="token operator">=</span> <span class="token function">getActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="访问UI元素"><a href="#访问UI元素" class="headerlink" title="访问UI元素"></a>访问UI元素</h1><p>对比与UiAutomator，Espresso可以直接根据id来访问元素，同样Espresso也是可以根据文本信息匹配进行访问的。<br>Espresso 提供<code>onView()</code>方法来访问UI元素，然后在执行一种操作，最后再进行验证。<br>下面的一个代码示例，表示访问一个EditText，输入一些内容，关闭输入法，最后点击按钮。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testChangeText_sameActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Type text and then press the button.</span></span><br><span class="line">    onView(withId(R.id.editTextUserInput)).perform(typeText(STRING_TO_BE_TYPED), closeSoftKeyboard());</span><br><span class="line">    onView(withId(R.id.changeTextButton)).perform(click());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testChangeText_sameActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Type text and then press the button.</span>
+    <span class="token function">onView</span><span class="token punctuation">(</span><span class="token function">withId</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>editTextUserInput<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">perform</span><span class="token punctuation">(</span><span class="token function">typeText</span><span class="token punctuation">(</span>STRING_TO_BE_TYPED<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">closeSoftKeyboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">onView</span><span class="token punctuation">(</span><span class="token function">withId</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>changeTextButton<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">perform</span><span class="token punctuation">(</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用<code>withId()</code>进行Id访问，也可以使用<code>withText()</code>进行文本匹配。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Espresso.onView(ViewMatchers.withText(<span class="string">&quot;Sign-in&quot;</span>));</span><br><span class="line">Espresso.onView(ViewMatchers.withId(R.id.button_signin));</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Espresso</span><span class="token punctuation">.</span><span class="token function">onView</span><span class="token punctuation">(</span><span class="token class-name">ViewMatchers</span><span class="token punctuation">.</span><span class="token function">withText</span><span class="token punctuation">(</span><span class="token string">"Sign-in"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Espresso</span><span class="token punctuation">.</span><span class="token function">onView</span><span class="token punctuation">(</span><span class="token class-name">ViewMatchers</span><span class="token punctuation">.</span><span class="token function">withId</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>button_signin<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>结合 Hamcrest库中的<code>Matchers</code>，可以使用<code>allOf()</code>来组合选择多个UI元素。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">onView(allOf(withId(R.id.button_signin), withText(<span class="string">&quot;Sign-in&quot;</span>)));</span><br><span class="line">onView(allOf(withId(R.id.button_signin), not(withText(<span class="string">&quot;Sign-out&quot;</span>))));</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">onView</span><span class="token punctuation">(</span><span class="token function">allOf</span><span class="token punctuation">(</span><span class="token function">withId</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>button_signin<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">withText</span><span class="token punctuation">(</span><span class="token string">"Sign-in"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">onView</span><span class="token punctuation">(</span><span class="token function">allOf</span><span class="token punctuation">(</span><span class="token function">withId</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>button_signin<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">not</span><span class="token punctuation">(</span><span class="token function">withText</span><span class="token punctuation">(</span><span class="token string">"Sign-out"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h1 id="AdapterView"><a href="#AdapterView" class="headerlink" title="AdapterView"></a>AdapterView</h1><p>当查找<code>AdapterView</code>之类的组件的时候，它的子元素都是动态生成的，如果要访问这些类的子元素，使用<code>onView</code>就会起不了作用。<br>Espresso提供<code>onData</code>方法来获取<code>DataInteraction</code>对象，然后在来访问目标元素。Espresso处理加载目标元素到当前层次结构。</p>
 <p><strong>注意</strong><br><code>onData() </code>方法不检查找到的元素是否匹配，它只是检查当前层次结构，如果不匹配会抛出<code>NoMatchingviewExption</code>异常。</p>
 <p>下面代码演示，使用<code>onData</code>方法加载指定字符串数组的，找到对应的元素。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">onData(allOf(is(instanceOf(Map.class)),hasEntry(equalTo(LongListActivity.ROW_TEXT), is(str))));</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">onData</span><span class="token punctuation">(</span><span class="token function">allOf</span><span class="token punctuation">(</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token function">instanceOf</span><span class="token punctuation">(</span><span class="token class-name">Map</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">hasEntry</span><span class="token punctuation">(</span><span class="token function">equalTo</span><span class="token punctuation">(</span><span class="token class-name">LongListActivity</span><span class="token punctuation">.</span>ROW_TEXT<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">is</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>`</p>
 <h1 id="执行动作"><a href="#执行动作" class="headerlink" title="执行动作"></a>执行动作</h1><p>调用<code> ViewInteraction.perform()</code>和 <code>DataInteraction.perform() </code>，可以模拟用户执行UI元素的操作。可以指定一个或者多个动作，Espresso会按照指定的顺序，依次发送动作事件，这些动作是线程安全的。<br><code> ViewActions</code> 可以提供一些列常用的方法，我们可以利用写方法来操作UI元素。</p>
 <ul>
@@ -460,7 +570,12 @@
 <li>selectedDescendentsMatch :断言指定的子元素存在，且他们的状态符合一些列的匹配</li>
 </ul>
 <p>如下所示，代码表示查找的元素是否符合指定的字符串。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testChangeText_sameActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Type text and then press the button.</span></span><br><span class="line">    <span class="comment">// Check that the text was changed.</span></span><br><span class="line">    onView(withId(R.id.textToBeChanged)).check(matches(withText(STRING_TO_BE_TYPED)));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testChangeText_sameActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Type text and then press the button.</span>
+    <span class="token comment">// Check that the text was changed.</span>
+    <span class="token function">onView</span><span class="token punctuation">(</span><span class="token function">withId</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>textToBeChanged<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">check</span><span class="token punctuation">(</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token function">withText</span><span class="token punctuation">(</span>STRING_TO_BE_TYPED<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a href="https://developer.android.com/training/testing/ui-testing/espresso-testing.html">https://developer.android.com/training/testing/ui-testing/espresso-testing.html</a></p>
 
@@ -853,6 +968,8 @@
 
 <!-- 代码语言 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
 
 <!-- 代码块复制 -->
 
@@ -860,6 +977,8 @@
 
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1025,9 +1144,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2015-2021</span>
+                <span id="year">2016-2021</span>
             
-            <span id="year">2015</span>
+            <span id="year">2016</span>
             <a href="/about" target="_blank">流水不腐小夏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1237,8 +1356,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
