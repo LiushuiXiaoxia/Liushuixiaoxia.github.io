@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mycommons.cn/"/>
-  <updated>2021-05-21T10:08:31.000Z</updated>
+  <updated>2021-06-30T04:11:06.339Z</updated>
   <id>https://mycommons.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Zstd 压缩算法</title>
+    <link href="https://mycommons.cn/2021/06/30/zstd/"/>
+    <id>https://mycommons.cn/2021/06/30/zstd/</id>
+    <published>2021-06-30T03:52:41.000Z</published>
+    <updated>2021-06-30T04:11:06.339Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="后端开发" scheme="https://mycommons.cn/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="zstd" scheme="https://mycommons.cn/tags/zstd/"/>
+    
+      <category term="压缩算法" scheme="https://mycommons.cn/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker快速删除</title>
@@ -500,33 +528,6 @@
     
     
       <category term="Curl" scheme="https://mycommons.cn/tags/Curl/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈Android Architecture Components</title>
-    <link href="https://mycommons.cn/2017/09/15/Android-Architecture-Components/"/>
-    <id>https://mycommons.cn/2017/09/15/Android-Architecture-Components/</id>
-    <published>2017-09-15T10:51:28.000Z</published>
-    <updated>2021-05-21T10:08:31.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;浅谈Android-Architecture-Components&quot;&gt;&lt;a href=&quot;#浅谈Android-Architecture-Components&quot; class=&quot;headerlink&quot; title=&quot;浅谈Android Architecture Components&quot;&gt;&lt;/a&gt;浅谈Android Architecture Components&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;Google IO 2017发布Android Architecture Components，自己先研究了一下，蛮有意思的，特来记录一下。本文内容主要是参考&lt;a href=&quot;https://developer.android.com/topic/libraries/architecture/index.html&quot;&gt;官方文档&lt;/a&gt;以及自己的理解，如有错误之处，恳请指出。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="https://mycommons.cn/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://mycommons.cn/tags/Android/"/>
-    
-      <category term="Android Architecture Components" scheme="https://mycommons.cn/tags/Android-Architecture-Components/"/>
-    
-      <category term="AAC" scheme="https://mycommons.cn/tags/AAC/"/>
-    
-      <category term="Google" scheme="https://mycommons.cn/tags/Google/"/>
     
   </entry>
   
