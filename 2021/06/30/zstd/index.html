@@ -474,8 +474,8 @@
 <li>支持字典文件的训练与添加</li>
 </ul>
 <h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>添加依赖</p>
-<pre class="line-numbers language-gradle" data-language="gradle"><code class="language-gradle">&#x2F;&#x2F; https:&#x2F;&#x2F;github.com&#x2F;luben&#x2F;zstd-jni
-implementation(&quot;com.github.luben:zstd-jni:1.4.9-5&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy"><span class="token comment">// https://github.com/luben/zstd-jni</span>
+<span class="token function">implementation</span><span class="token punctuation">(</span><span class="token string gstring">"com.github.luben:zstd-jni:1.4.9-5"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>读取历史文件，解压数据，写入到新文件。</p>
 <pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">convertOldToNew</span><span class="token punctuation">(</span>file<span class="token operator">:</span> File<span class="token punctuation">,</span> path<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> File <span class="token punctuation">&#123;</span>
