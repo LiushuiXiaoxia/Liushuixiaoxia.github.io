@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mycommons.cn/"/>
-  <updated>2021-06-30T04:16:08.985Z</updated>
+  <updated>2021-07-15T08:35:43.212Z</updated>
   <id>https://mycommons.cn/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Docker安装OSX</title>
+    <link href="https://mycommons.cn/2021/07/15/docker-osx/"/>
+    <id>https://mycommons.cn/2021/07/15/docker-osx/</id>
+    <published>2021-07-15T08:34:45.000Z</published>
+    <updated>2021-07-15T08:35:43.212Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;因为工作关系，需要使用一些MACOS系统的电脑用作服务器，所以尝试下在ubuntu环境下使用docker安装macox。中间经历坑无数，特记录一下。&lt;/p&gt;
+&lt;p&gt;官方资料有介绍怎么安装，英语较好的同学可以直接查看官方文档。&lt;/p&gt;
+&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="工具使用" scheme="https://mycommons.cn/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="docker" scheme="https://mycommons.cn/tags/docker/"/>
+    
+      <category term="mac os" scheme="https://mycommons.cn/tags/mac-os/"/>
+    
+      <category term="osx" scheme="https://mycommons.cn/tags/osx/"/>
+    
+      <category term="黑苹果" scheme="https://mycommons.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>Zstd 压缩算法</title>
@@ -502,32 +536,6 @@
       <category term="MongoDB" scheme="https://mycommons.cn/tags/MongoDB/"/>
     
       <category term="Java MongoDB" scheme="https://mycommons.cn/tags/Java-MongoDB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Curl不显示统计信息% Total % Received %</title>
-    <link href="https://mycommons.cn/2017/09/21/Curl-S/"/>
-    <id>https://mycommons.cn/2017/09/21/Curl-S/</id>
-    <published>2017-09-21T10:42:29.000Z</published>
-    <updated>2021-05-21T10:08:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Curl不显示统计信息-Total-Received&quot;&gt;&lt;a href=&quot;#Curl不显示统计信息-Total-Received&quot; class=&quot;headerlink&quot; title=&quot;Curl不显示统计信息% Total % Received
-        
-      
-    
-    </summary>
-    
-      <category term="工具使用" scheme="https://mycommons.cn/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-    
-      <category term="Curl" scheme="https://mycommons.cn/tags/Curl/"/>
     
   </entry>
   
