@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="使用Docker安装OSX, 流水不腐小夏">
+    <meta name="keywords" content="流水不腐小夏">
     <meta name="description" content="Liushuixiaoxia(流水不腐小夏) https://github.com/LiushuiXiaoxia">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>使用Docker安装OSX | 流水不腐小夏</title>
+    <title>流水不腐小夏</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -288,12 +288,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">使用Docker安装OSX</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -407,37 +407,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/docker/">
-                                <span class="chip bg-color">docker</span>
-                            </a>
-                        
-                            <a href="/tags/mac-os/">
-                                <span class="chip bg-color">mac os</span>
-                            </a>
-                        
-                            <a href="/tags/osx/">
-                                <span class="chip bg-color">osx</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/">
-                                <span class="chip bg-color">黑苹果</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="post-category">
-                                工具使用
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -470,11 +445,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>因为工作关系，需要使用一些MACOS系统的电脑用作服务器，所以尝试下在ubuntu环境下使用docker安装macox。中间经历坑无数，特记录一下。</p>
+                <h1 id="使用Docker安装OSX"><a href="#使用Docker安装OSX" class="headerlink" title="使用Docker安装OSX"></a>使用Docker安装OSX</h1><hr>
+<p>因为工作关系，需要使用一些MACOS系统的电脑用作服务器，所以尝试下在ubuntu环境下使用docker安装macox。中间经历坑无数，特记录一下。</p>
 <p>官方资料有介绍怎么安装，英语较好的同学可以直接查看官方文档。</p>
 <p><a href="https://hub.docker.com/r/sickcodes/docker-osx">https://hub.docker.com/r/sickcodes/docker-osx</a></p>
 <p><a href="https://github.com/sickcodes/Docker-OSX">https://github.com/sickcodes/Docker-OSX</a></p>
-<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. <a name=''></a>准备工作</h2><p>准备以下工具或环境。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>准备以下工具或环境。</p>
 <ul>
 <li>一个工作电脑，可以用来上网查资料，最好同时具备科学上网能力，我使用的是MacBook Pro。</li>
 <li>一个安装好ubuntu系统的电脑，安装必要的工具，同时修改相应的APT源。建议配置较好，至少8G内存，200G。我的是Intel Core i7、内存32G、磁盘4T。</li>
@@ -487,7 +463,7 @@
 <p><img src="https://github.com/LiushuiXiaoxia/docker-osx/raw/main/images/3-1.png" alt="ssh &amp; vnc"></p>
 <p>Ubuntu电脑需要CPU支持虚拟化，否则无法使用。重启电脑，进入bios设置，以下为我这边的，不同电脑可能会不一样。</p>
 <p><img src="https://github.com/LiushuiXiaoxia/docker-osx/raw/main/images/4.jpg" alt="VTx &amp; VTd"></p>
-<h2 id="2-安装Docker"><a href="#2-安装Docker" class="headerlink" title="2. 安装Docker"></a>2. <a name='Docker'></a>安装Docker</h2><p>Ubuntu 安装docker还是比较简单，可以网上找资料，安装命令如下：</p>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><p>Ubuntu 安装docker还是比较简单，可以网上找资料，安装命令如下：</p>
 <pre class="line-numbers language-none"><code class="language-none">curl -fsSL https:&#x2F;&#x2F;get.docker.com | bash -s docker --mirror Aliyun<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>同时修改Docker源，添加<code>/etc/docker/daemon.json</code>文件。</p>
@@ -506,7 +482,7 @@ sudo systemctl restart docker<span aria-hidden="true" class="line-numbers-rows">
 <pre class="line-numbers language-none"><code class="language-none">sudo docker pull sickcodes&#x2F;docker-osx:big-sur
 sudo docker pull sickcodes&#x2F;docker-osx:naked<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="3-安装OSX"><a href="#3-安装OSX" class="headerlink" title="3. 安装OSX"></a>3. <a name='OSX'></a>安装OSX</h2><p> 安装必要软件，这里官网都有介绍，直接复制即可。</p>
+<h2 id="安装OSX"><a href="#安装OSX" class="headerlink" title="安装OSX"></a>安装OSX</h2><p> 安装必要软件，这里官网都有介绍，直接复制即可。</p>
 <blockquote>
 <p>Before you do anything else, you will need to turn on hardware virtualization in your BIOS. Precisely how will depend on your particular machine (and BIOS), but it should be straightforward.</p>
 <p>Then, you’ll need QEMU and some other dependencies on your host:</p>
@@ -560,7 +536,7 @@ sudo modprobe kvm<span aria-hidden="true" class="line-numbers-rows"><span></span
 <p><img src="https://github.com/LiushuiXiaoxia/docker-osx/raw/main/images/7-2.png" alt="安装"></p>
 <p><img src="https://github.com/LiushuiXiaoxia/docker-osx/raw/main/images/7-3.png" alt="安装"></p>
 <p>到此系统安装就已经成功。</p>
-<h2 id="4-后续"><a href="#4-后续" class="headerlink" title="4. 后续"></a>4. <a name='-1'></a>后续</h2><h3 id="4-1-如何重启系统"><a href="#4-1-如何重启系统" class="headerlink" title="4.1. 如何重启系统?"></a>4.1. <a name='-1'></a>如何重启系统?</h3><p>因为我这个是使用docker来启动的，后面如果保留并重启系统呢？</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><h3 id="如何重启系统"><a href="#如何重启系统" class="headerlink" title="如何重启系统?"></a>如何重启系统?</h3><p>因为我这个是使用docker来启动的，后面如果保留并重启系统呢？</p>
 <p>首先回到原先的启动终端，直接中断命令，系统会自动关闭。</p>
 <p>然后查看docker的容器ID，使用如下命令，然后每次启动时候直接指定当前的容器ID即可。</p>
 <pre class="line-numbers language-none"><code class="language-none">sudo docker ps -a
@@ -570,7 +546,7 @@ sudo docker start -ai xxxxx<span aria-hidden="true" class="line-numbers-rows"><s
 
 <p><img src="https://github.com/LiushuiXiaoxia/docker-osx/raw/main/images/8.png" alt="启动"></p>
 <p><img src="https://github.com/LiushuiXiaoxia/docker-osx/raw/main/images/8-1.png" alt="启动"></p>
-<h3 id="4-2-如何移植Docker镜像"><a href="#4-2-如何移植Docker镜像" class="headerlink" title="4.2. 如何移植Docker镜像?"></a>4.2. <a name='Docker-1'></a>如何移植Docker镜像?</h3><p>当前在本地电脑已经可以了，docker是可以移植的，那么如果在其他电脑运行？</p>
+<h3 id="如何移植Docker镜像"><a href="#如何移植Docker镜像" class="headerlink" title="如何移植Docker镜像?"></a>如何移植Docker镜像?</h3><p>当前在本地电脑已经可以了，docker是可以移植的，那么如果在其他电脑运行？</p>
 <p>官方有说明的，在docker目录找到对应的镜像文件，然后备份这个文件。</p>
 <pre class="line-numbers language-none"><code class="language-none">sudo find &#x2F;var&#x2F;lib&#x2F;docker -size +10G | grep mac_hdd_ng.img<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -591,8 +567,9 @@ sudo docker start -ai xxxxx<span aria-hidden="true" class="line-numbers-rows"><s
 <p><img src="https://github.com/LiushuiXiaoxia/docker-osx/raw/main/images/9-3.png" alt="启动"></p>
 <p>启动后，系统显示内存大约为20G。</p>
 <p><img src="https://github.com/LiushuiXiaoxia/docker-osx/raw/main/images/9-4.png" alt="启动"></p>
-<h2 id="5-相关资料"><a href="#5-相关资料" class="headerlink" title="5. 相关资料"></a>5. <a name='-1'></a>相关资料</h2><p><a href="https://hub.docker.com/r/sickcodes/docker-osx">DOCKER OSX</a></p>
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a href="https://hub.docker.com/r/sickcodes/docker-osx">DOCKER OSX</a></p>
 <p><a href="https://github.com/sickcodes/Docker-OSX">DOCKER OSX Github</a></p>
+<p><a href="https://github.com/LiushuiXiaoxia/docker-osx">使用Docker安装OSX</a></p>
 
                 
             </div>
@@ -656,23 +633,7 @@ sudo docker start -ai xxxxx<span aria-hidden="true" class="line-numbers-rows"><s
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/docker/">
-                                    <span class="chip bg-color">docker</span>
-                                </a>
-                            
-                                <a href="/tags/mac-os/">
-                                    <span class="chip bg-color">mac os</span>
-                                </a>
-                            
-                                <a href="/tags/osx/">
-                                    <span class="chip bg-color">osx</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/">
-                                    <span class="chip bg-color">黑苹果</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -838,7 +799,7 @@ sudo docker start -ai xxxxx<span aria-hidden="true" class="line-numbers-rows"><s
     disqus_config = function () {
         this.page.url = 'https://mycommons.cn/2021/07/15/docker-osx/';
         this.page.identifier = '/2021/07/15/docker-osx/';
-        this.page.title = '使用Docker安装OSX';
+        this.page.title = '';
     };
     let disqus_shortname = 'mycommons-cn';
 
@@ -877,9 +838,9 @@ sudo docker start -ai xxxxx<span aria-hidden="true" class="line-numbers-rows"><s
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="使用Docker安装OSX">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">使用Docker安装OSX</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -894,37 +855,13 @@ sudo docker start -ai xxxxx<span aria-hidden="true" class="line-numbers-rows"><s
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="post-category">
-                                    工具使用
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            流水不腐小夏
                             
                         </span>
                     </div>
                 </div>
 
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
-                    </a>
-                    
-                    <a href="/tags/mac-os/">
-                        <span class="chip bg-color">mac os</span>
-                    </a>
-                    
-                    <a href="/tags/osx/">
-                        <span class="chip bg-color">osx</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/">
-                        <span class="chip bg-color">黑苹果</span>
-                    </a>
-                    
-                </div>
                 
             </div>
         </div>
