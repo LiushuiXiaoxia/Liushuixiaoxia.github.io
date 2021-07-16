@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mycommons.cn/"/>
-  <updated>2021-07-15T08:49:34.295Z</updated>
+  <updated>2021-07-16T03:09:12.082Z</updated>
   <id>https://mycommons.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>使用Docker安装OSX</title>
     <link href="https://mycommons.cn/2021/07/15/docker-osx/"/>
     <id>https://mycommons.cn/2021/07/15/docker-osx/</id>
-    <published>2021-07-15T08:34:45.272Z</published>
-    <updated>2021-07-15T08:49:34.295Z</updated>
+    <published>2021-07-15T07:52:41.000Z</published>
+    <updated>2021-07-16T03:09:12.082Z</updated>
     
     <summary type="html">
     
@@ -29,12 +29,22 @@
       
         
         
-          &lt;h1 id=&quot;使用Docker安装OSX&quot;&gt;&lt;a href=&quot;#使用Docker安装OSX&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;因为工作关系，需要使用一些MACOS系统的电脑用作服务器，所以尝试下在ubuntu环境下使用docker安装macox。中间经历坑无数，特记录一下。&lt;/p&gt;
+&lt;p&gt;官方资料有介绍怎么安装，英语较好的同学可以直接查看官方文档。&lt;/p&gt;
+&lt;p&gt;&lt;a
         
       
     
     </summary>
     
+      <category term="Docker" scheme="https://mycommons.cn/categories/Docker/"/>
+    
+    
+      <category term="Docker" scheme="https://mycommons.cn/tags/Docker/"/>
+    
+      <category term="黑苹果" scheme="https://mycommons.cn/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+    
+      <category term="OSX" scheme="https://mycommons.cn/tags/OSX/"/>
     
   </entry>
   
