@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>IntelliJ IDEA Remote Development 使用体验</title>
+      <link href="/2021/12/01/ideaRemoteDevelopment/"/>
+      <url>/2021/12/01/ideaRemoteDevelopment/</url>
+      
+        <content type="html"><![CDATA[<h1 id="IntelliJ-IDEA-Remote-Development-使用体验"><a href="#IntelliJ-IDEA-Remote-Development-使用体验" class="headerlink" title="IntelliJ IDEA Remote Development 使用体验"></a>IntelliJ IDEA Remote Development 使用体验</h1><hr><p>前天JetBrains发布新一代IDE —— <code>Fleet</code>，其中有我最感兴趣的分布式开发，因为本人从事 <code>CI/CD</code> 相关工作，所以特地关注了一下。</p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-01.jpg" alt="Fleet"></p><p>刚刚今天IDEA 提示更新新版本，看有Remote Development，特来体验一下。</p><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>本地准备2个项目，分别 Spring Boot、 Android 项目，并且能正确运行，然后上传到git仓库，如 Gitlab 或 Github。</p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-02.png"></p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-03.png"></p><p>准备一个远程服务器，我这里是Ubuntu 系统，SpringBoot 与 Android 编译环境已经预先设置，平常用作实验与打包，机器配置稍微高一点，然后下载以上2个项目代码。</p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-04.png"></p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-031.png"></p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>下载或者更新到最新的IDEA，我这里是2021.3， 打开就会有 Remote Development功能。</p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-05.png"></p><p>然后使用ssh连接到远程服务器，先测试spring-boot项目。</p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-06.png"></p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-07.png"></p><p>IDE VERSION 选择 IntelliJ IDEA，最后选择下载和启动，因为我预先测试过，所以我这里显示 <code>Installed</code>。</p><p>测试的时候启动失败，但是打开启动界面是有记录的，直接打开即可。</p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-08.png"></p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-09.png"></p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-10.png"></p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-11.png"></p><p>开始加载和建立索引，此过程比较慢，不知道是我的机器性能问题，还是网络问题，有卡顿现象。</p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-12.png"></p><p>运行与测试。</p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-13.png"></p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-14.png"></p><p>远程使用localhost，本地使用IP直连。</p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-15.png"></p><h2 id="Android-测试"><a href="#Android-测试" class="headerlink" title="Android 测试"></a>Android 测试</h2><p>根据以上步骤，打开Android测试项目。</p><p><img src="https://raw.githubusercontent.com/LiushuiXiaoxia/IdeaRemoteDevelopment/main/docs/img-16.png"></p><p>结果可以编译与识别手机设备，但是无法安装apk，不知道是不是bug。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>界面显示是Beta功能，部分功能不太稳定，经常出现崩溃与卡顿现象。 运行Spring Boot 项目是成功的，Android有点问题，总体来说体验不错。</p><p>以前也用过 <code>code-server</code> 与 <code>vscode</code> 的 Remote Development，相比而言，IDEA 的 remote development 有天然的优势，代码提示与使用体验基本与本地一致。</p><p>本人从事 Android 与 Java 相关开发，IDEA 的提示功能还是强依赖的，使用s纯文本编辑器来开发还是有压力的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具使用 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具使用 </tag>
+            
+            <tag> IDEA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用Docker安装OSX</title>
       <link href="/2021/07/15/docker-osx/"/>
       <url>/2021/07/15/docker-osx/</url>
